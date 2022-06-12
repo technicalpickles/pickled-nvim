@@ -59,26 +59,44 @@ vim.keymap.set('i', '<D-t>', '<cmd>tabnew<cr>')
 -- telescope
 vim.api.nvim_set_keymap('n', '<C-P>', "<cmd>lua require('telescope.builtin').find_files()<CR>", { noremap = true })
 --vim.api.nvim_set_keymap('n', '<C-F>', "<cmd>lua require('telescope.builtin').live_grep()<CR>", { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-B>', "<cmd>lua require('telescope.builtin').buffers()<CR>", { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<CR>", { noremap = true })
 
 -- nvim-tree
 vim.api.nvim_set_keymap('n', '<leader>d', ':NvimTreeToggle<CR>', {noremap = true, silent = true })
 
 -- { VS Code and other IDE like behavior }} --
+-- ⌘ s - save
+vim.keymap.set('n', '<D-s>', ':w<CR>', {silent = true})
 -- ⌘ / - toggle comment with commentary.vim --
-vim.keymap.set('n', '<D-/>', 'gcc', {})
+vim.keymap.set('n', '<D-/>', 'gcc', {silent = true})
 -- ⌘ ]  - shift identation righ
-vim.keymap.set('n', '<D-]>', '>>')
-vim.keymap.set('v', '<D-]>', '>')
-vim.keymap.set('i', '<D-]>', '<C-O>>')
+vim.keymap.set('n', '<D-]>', '>>', {silent = true})
+vim.keymap.set('v', '<D-]>', '>', {silent = true})
+vim.keymap.set('i', '<D-]>', '<C-O>>>', {silent = true})
 
 -- ⌘ ] - shift identation righ
-vim.keymap.set('n', '<D-[>', '<<')
-vim.keymap.set('v', '<D-[>', '<')
-vim.keymap.set('i', '<D-[>', '<C-O<<')
+vim.keymap.set('n', '<D-[>', '<<', {silent = true})
+vim.keymap.set('v', '<D-[>', '<', {silent = true})
+vim.keymap.set('i', '<D-[>', '<C-O><<', {silent = true})
+
+-- ⌘ 1 through ⌘ 0 to go to tab - shift identation righ
+local barbar_opts = { noremap = true, silent = true }
+vim.keymap.set('n', '<D-1>', ':BufferGoto 1<CR>', barbar_opts)
+vim.keymap.set('n', '<D-2>', ':BufferGoto 2<CR>', barbar_opts)
+vim.keymap.set('n', '<D-3>', ':BufferGoto 3<CR>', barbar_opts)
+vim.keymap.set('n', '<D-4>', ':BufferGoto 4<CR>', barbar_opts)
+vim.keymap.set('n', '<D-5>', ':BufferGoto 5<CR>', barbar_opts)
+vim.keymap.set('n', '<D-6>', ':BufferGoto 6<CR>', barbar_opts)
+vim.keymap.set('n', '<D-7>', ':BufferGoto 7<CR>', barbar_opts)
+vim.keymap.set('n', '<D-8>', ':BufferGoto 8<CR>', barbar_opts)
+vim.keymap.set('n', '<D-9>', ':BufferGoto 9<CR>', barbar_opts)
+vim.keymap.set('n', '<D-0>', ':BufferLast<CR>', barbar_opts)
 
 -- ⌘ b - toggle left hand tree
 vim.api.nvim_set_keymap('n', '<D-b>', ':NvimTreeToggle<CR>', {noremap = true, silent = true })
+
+-- ctrl-` toggle terminal
+-- see toggleterm's setup
 
 vim.g["netrw_banner"] = 0
 vim.g["netrw_liststyle"] = 3

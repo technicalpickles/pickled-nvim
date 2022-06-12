@@ -6,7 +6,60 @@ vim.g.neovide_cursor_vfx_mode = "railgun"
 
 require('basics')
 
-print("before packer")
+
+vim.cmd([[colorscheme ayu]])
+
+require('coc-config')
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",
+  ignore_install = { "phpdoc" },
+  context_commentstring = {
+    enable = true
+  },
+  highlight = {
+    enable = true,
+    disable = { "lua" }
+  },
+  indent = {
+    enable = true
+  }
+}
+
+require('telescope').setup {
+  pickers = {
+    find_files = {
+      theme = "ivy",
+    }
+  }
+}
+
+require("surround").setup {
+  mappings_style = "surround"
+}
+
+require("toggleterm").setup {
+ open_mapping = [[<C-`>]]
+}
+
+require('nvim-tree').setup {}
+
+require('bufferline').setup {
+  icon_close_tab = '✕'
+}
+
+-- nvim-tree barbar.nvim integration
+local nvim_tree_events = require('nvim-tree.events')
+local bufferline_state = require('bufferline.state')
+
+nvim_tree_events.on_tree_open(function ()
+  bufferline_state.set_offset(31, "File Tree")
+end)
+
+nvim_tree_events.on_tree_close(function ()
+  bufferline_state.set_offset(0)
+end)
+
 return require('packer').startup(function()
   -- package manager
   use 'wbthomason/packer.nvim'
@@ -14,30 +67,10 @@ return require('packer').startup(function()
   use {
     'neoclide/coc.nvim',
     branch = 'release',
-    config = function()
-      require('coc-config')
-    end
-
   }
 
   use {
     'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require'nvim-treesitter.configs'.setup {
-        ensure_installed = "all",
-        ignore_install = { "phpdoc" },
-        context_commentstring = {
-          enable = true
-        },
-        highlight = {
-          enable = true,
-          disable = { "lua" }
-        },
-        indent = {
-          enable = true
-        }
-      }
-    end
   }
 
   use 'tpope/vim-commentary'
@@ -50,56 +83,35 @@ return require('packer').startup(function()
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
 
-
   -- Find, Filter, Preview, Pick. All lua, all the time.
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} },
-    config = function()
-      require('telescope').setup {
-        pickers = {
-          find_files = {
-            theme = "ivy",
-          }
-        }
-      }
-    end
   }
 
-  use {
-    "ur4ltz/surround.nvim",
-    config = function()
-      require("surround").setup {
-        mappings_style = "surround"
-      }
-    end
-  }
+  use "ur4ltz/surround.nvim"
 
   -- terminal manager
-  use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-    require("toggleterm").setup {
-    }
-    print("set up toggleterm")
-  end}
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = 'v1.*'
+  }
 
   -- tree explorer
---  use {
---    'kyazdani42/nvim-tree.lua',
---    requires = {
---      'kyazdani42/nvim-web-devicons'
---    },
---    cmd = 'NvimTreeToggle',
---    config = function() 
---      require'nvim-tree'.setup {
---      }
---    end
---  }
+ use {
+   'kyazdani42/nvim-tree.lua',
+   requires = {
+     'kyazdani42/nvim-web-devicons'
+   }
+ }
 
-  print("inside colorscheme config")
-  -- colorschemes
+  -- nicer tabs
+  -- use {
   use {
-    "ayu-theme/ayu-vim",
-    config = function()
-    end
+    'romgrk/barbar.nvim',
+    requires = {'kyazdani42/nvim-web-devicons'}
   }
+
+  -- colorschemes
+  use "ayu-theme/ayu-vim"
 end)
