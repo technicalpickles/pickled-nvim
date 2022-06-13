@@ -6,7 +6,6 @@ vim.g.neovide_cursor_vfx_mode = "railgun"
 
 require('basics')
 
-
 vim.cmd([[colorscheme ayu]])
 
 require('coc-config')
@@ -39,13 +38,18 @@ require("surround").setup {
 }
 
 require("toggleterm").setup {
- open_mapping = [[<C-`>]]
+ open_mapping = [[<C-`>]],
+ hide_numbers = false,
 }
 
 require('nvim-tree').setup {}
 
 require('bufferline').setup {
   icon_close_tab = '✕'
+}
+
+require('lualine').setup {
+  extensions = {'quickfix', 'nvim-tree', 'toggleterm', 'quickfix'},
 }
 
 -- nvim-tree barbar.nvim integration
@@ -61,6 +65,7 @@ nvim_tree_events.on_tree_close(function ()
 end)
 
 return require('packer').startup(function()
+
   -- package manager
   use 'wbthomason/packer.nvim'
 
@@ -80,7 +85,7 @@ return require('packer').startup(function()
   -- customizable statusline with nice defaults
   use {
     'nvim-lualine/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    requires = {'kyazdani42/nvim-web-devicons', opt = true},
   }
 
   -- Find, Filter, Preview, Pick. All lua, all the time.
@@ -114,4 +119,5 @@ return require('packer').startup(function()
 
   -- colorschemes
   use "ayu-theme/ayu-vim"
+
 end)
