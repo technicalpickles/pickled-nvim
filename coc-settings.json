@@ -13,9 +13,12 @@
   "diagnostic.virtualTextLevel": "warning",
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.virtualTextPrefix": " ",
+
   "sumneko-lua.enableNvimLuaDev": true,
   "Lua.telemetry.enable": true,
+  "Lua.diagnostics.globals": [
+    "use"
+  ],
   "sumneko-lua.checkUpdate": false,
-  "sumneko-lua.enableNvimLuaDev": true
 
 }
