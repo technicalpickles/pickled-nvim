@@ -16,9 +16,6 @@
 
   "sumneko-lua.enableNvimLuaDev": true,
   "Lua.telemetry.enable": true,
-  "Lua.diagnostics.globals": [
-    "use"
-  ],
   "sumneko-lua.checkUpdate": false,
 
 }
