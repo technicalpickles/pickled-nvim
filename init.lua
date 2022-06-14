@@ -1,13 +1,14 @@
 vim.g.do_filetype_lua = 1
-vim.g.did_load_filetypes = 0
 vim.g.neovide_input_use_logo = true -- Ensure we can pass the command key
 vim.g.neovide_confirm_quit = true -- Prevent exit on unsaved buffer on window close
 vim.g.neovide_cursor_vfx_mode = "railgun"
+vim.g.do_filetype_lua = 1 -- use filetype.lua
+vim.g.did_load_filetypes = 0 -- don't use filetype.vim
 
 require('plugins')
 require('basics')
 
-vim.cmd([[colorscheme ayu]])
+vim.cmd([[colorscheme neon]])
 
 require('coc-config')
 
@@ -33,6 +34,7 @@ require('telescope').setup {
     }
   }
 }
+require('telescope').load_extension('fzf')
 
 require("surround").setup {
   mappings_style = "surround"
@@ -51,9 +53,12 @@ require('bufferline').setup {
 
 require('lualine').setup {
   extensions = {'quickfix', 'nvim-tree', 'toggleterm', 'quickfix'},
+  theme = 'neon',
 }
 
--- nvim-tree barbar.nvim integration
+require('vgit').setup()
+
+-- nvim-tree/barbar.nvim integration
 local nvim_tree_events = require('nvim-tree.events')
 local bufferline_state = require('bufferline.state')
 

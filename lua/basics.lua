@@ -41,6 +41,11 @@ vim.api.nvim_set_keymap('n', '<C-N>', ":Lexplore<CR> :vertical resize 30<CR>", {
 vim.api.nvim_set_keymap("n", "<leader>t", ":sp<CR> :term<CR> :resize 20N<CR> i", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {noremap = true, silent = true})
 
+
+-- leader-q to toggle quickfix via vim-toggle-quickfix
+vim.keymap.set('n', '<leader>q', ':TroubleToggle<CR>', {silent = true})
+vim.keymap.set('v', '<leader>q', ':TroubleToggle<CR>', {silent = true})
+
 --{ macOS convenience keybinds }--
 -- Cut/Copy/Paste to/from system clipboard
 vim.keymap.set('v', '<D-c>', '"+y')
@@ -92,6 +97,9 @@ vim.keymap.set('n', '<D-8>', ':BufferGoto 8<CR>', barbar_opts)
 vim.keymap.set('n', '<D-9>', ':BufferGoto 9<CR>', barbar_opts)
 vim.keymap.set('n', '<D-0>', ':BufferLast<CR>', barbar_opts)
 
+-- ⌘ shift m - toggle quickfix (aka problems)
+vim.keymap.set('n', '<S-D-M>', ':TroubleToggle<CR>', {silent = true})
+
 -- ⌘ b - toggle left hand tree
 vim.api.nvim_set_keymap('n', '<D-b>', ':NvimTreeToggle<CR>', {noremap = true, silent = true })
 
@@ -100,4 +108,4 @@ vim.api.nvim_set_keymap('n', '<D-b>', ':NvimTreeToggle<CR>', {noremap = true, si
 
 vim.g["netrw_banner"] = 0
 vim.g["netrw_liststyle"] = 3
-vim.g["netrw_winsize"] = 25
+vim.g["netrw_winsize"] = 2
