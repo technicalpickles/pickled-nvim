@@ -1,21 +1,10 @@
 {
-  "languageserver": {
-    "sorbet": {
-      "command": "srb",
-      "args": ["tc", "--lsp"],
-      "filetypes": ["ruby"],
-      "rootPatterns": ["sorbet/config"],
-      "initializationOptions": {},
-      "settings": {}
-    }
-  },
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextLevel": "warning",
   "diagnostic.virtualTextCurrentLineOnly": false,
-  "diagnostic.virtualTextPrefix": " ",
+  "diagnostic.virtualTextPrefix": "",
 
   "sumneko-lua.enableNvimLuaDev": true,
   "Lua.telemetry.enable": true,
-  "sumneko-lua.checkUpdate": false,
-
+  "sumneko-lua.checkUpdate": false
 }

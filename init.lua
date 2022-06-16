@@ -28,13 +28,32 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require('telescope').setup {
+  extensions = {
+    command_palette = {
+      {"GitHub",
+        { "Copy Permalink", "<leader>gy" }
+      },
+    }
+  },
   pickers = {
     find_files = {
-      theme = "ivy",
+      theme = "dropdown",
     }
   }
 }
 require('telescope').load_extension('fzf')
+require("telescope").load_extension('command_center')
+
+local command_center = require("command_center")
+
+command_center.add({
+  {
+    {
+      description = "Copy GitHub Permalink",
+      cmd = "<leader>gy"
+    }
+  }
+})
 
 require("surround").setup {
   mappings_style = "surround"
@@ -57,6 +76,23 @@ require('lualine').setup {
 }
 
 require('vgit').setup()
+
+-- linters, formaters, etc
+local null_ls = require("null-ls")
+local rubocop_options = { prefer_local = 'bin' }
+local node_options = { prefer_local = "node_modules/.bin" }
+
+local rubocop_yml = io.open(".rubocop.yml", "r")
+local sources = {}
+if rubocop_yml~=nil then
+  io.close(rubocop_yml)
+  table.insert(sources, null_ls.builtins.diagnostics.rubocop.with(rubocop_options))
+  table.insert(sources, null_ls.builtins.formatting.rubocop.with(rubocop_options))
+end
+
+null_ls.setup({
+    sources = sources
+})
 
 -- nvim-tree/barbar.nvim integration
 local nvim_tree_events = require('nvim-tree.events')

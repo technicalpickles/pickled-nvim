@@ -48,11 +48,15 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- dashboard when starting à la startify
   use {
     'goolord/alpha-nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
     config = function ()
-        require'alpha'.setup(require'alpha.themes.startify'.config)
+      local alpha = require 'alpha'
+      local startify = require'alpha.themes.startify'
+      startify.section.mru.val = { { type = "padding", val = 0 } }
+      alpha.setup(startify.config)
     end
   }
 
@@ -74,6 +78,10 @@ return require('packer').startup(function(use)
 
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
+  use {
+    "gfeiyou/command-center.nvim",
+    requires = { "nvim-telescope/telescope.nvim" }
+  }
 
   use "ur4ltz/surround.nvim"
 
@@ -105,6 +113,12 @@ return require('packer').startup(function(use)
     }
   }
 
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb'
+
+  -- linters, formatters, etc
+  use 'jose-elias-alvarez/null-ls.nvim'
+
   -- colorschemes
   use "ayu-theme/ayu-vim"
   use "averak/laserwave.vim"
@@ -112,14 +126,11 @@ return require('packer').startup(function(use)
 
   -- quicfix and diagnostic type stuff
   use {
-  "folke/trouble.nvim",
-  requires = "kyazdani42/nvim-web-devicons",
-  config = function()
-    require("trouble").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  end
-}
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+      }
+    end
+  }
 end)
