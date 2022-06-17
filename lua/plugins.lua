@@ -99,7 +99,7 @@ return require('packer').startup(function(use)
    }
  }
 
-  -- nicer tabs
+  -- nicer tabs, aka bufferline
   use {
     'romgrk/barbar.nvim',
     requires = {'kyazdani42/nvim-web-devicons'}
