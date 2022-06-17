@@ -1,6 +1,7 @@
 require('basics')
 require('plugins')
 require('keybindings')
+require('navigation')
 require('ui')
 require('language-support')
 

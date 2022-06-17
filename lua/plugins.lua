@@ -6,7 +6,6 @@ vim.cmd([[
 ]])
 
 return require('packer').startup(function(use)
-
   -- package manager
   use 'wbthomason/packer.nvim'
 
@@ -34,7 +33,10 @@ return require('packer').startup(function(use)
     'RRethy/nvim-treesitter-endwise',
   }
 
+  use "yamatsum/nvim-cursorline"
+
   use "lukas-reineke/indent-blankline.nvim"
+  use "p00f/nvim-ts-rainbow"
 
   use "folke/which-key.nvim"
 
@@ -111,6 +113,7 @@ return require('packer').startup(function(use)
   use "ayu-theme/ayu-vim"
   use "averak/laserwave.vim"
   use "rafamadriz/neon"
+  use "tiagovla/tokyodark.nvim"
 
   -- quicfix and diagnostic type stuff
   use {

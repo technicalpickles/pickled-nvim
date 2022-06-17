@@ -16,6 +16,20 @@ require'nvim-treesitter.configs'.setup {
   },
   indent = {
     enable = true
+  },
+  rainbow = {
+    enable = true,
+    -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    extended_mode = true, 
+    colors = {
+      -- Line up with indent_blankline colors in ui.lua
+      "#E06C75",
+      "#E5C07B",
+      "#98C379",
+      "#56B6C2",
+      "#61AFEF",
+      "#C678DD",
+    },
   }
 }
 
@@ -24,7 +38,6 @@ require('nvim-treesitter.configs').setup {
   endwise = {
     enable = true,
   },
-  
 }
 
 -- linters, formaters, etc

@@ -1,9 +1,12 @@
 {
+  "languageserver": {
+  },
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextLevel": "warning",
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.virtualTextPrefix": "",
 
+  
   "sumneko-lua.enableNvimLuaDev": true,
   "Lua.telemetry.enable": true,
   "sumneko-lua.checkUpdate": false
