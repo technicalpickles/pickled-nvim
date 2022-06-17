@@ -113,8 +113,12 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- more git!
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
+
+  -- directory specific path, etc
+  use 'direnv/direnv.vim'
 
   -- linters, formatters, etc
   use 'jose-elias-alvarez/null-ls.nvim'

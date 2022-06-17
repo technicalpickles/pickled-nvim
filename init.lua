@@ -5,6 +5,9 @@ vim.g.neovide_cursor_vfx_mode = "railgun"
 vim.g.do_filetype_lua = 1 -- use filetype.lua
 vim.g.did_load_filetypes = 0 -- don't use filetype.vim
 
+local noremap = {noremap = true}
+local silent_noremap = {noremap = true, silent = true}
+
 require('plugins')
 require('basics')
 
@@ -86,6 +89,7 @@ local rubocop_yml = io.open(".rubocop.yml", "r")
 local sources = {}
 if rubocop_yml~=nil then
   io.close(rubocop_yml)
+  print("enabling rubocop")
   table.insert(sources, null_ls.builtins.diagnostics.rubocop.with(rubocop_options))
   table.insert(sources, null_ls.builtins.formatting.rubocop.with(rubocop_options))
 end
