@@ -21,7 +21,7 @@ require("surround").setup {
 
 require("toggleterm").setup {
   open_mapping = [[<C-`>]],
-  hide_numbers = false,
+  hide_numbers = true,
 }
 
 require('vgit').setup()

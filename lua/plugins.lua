@@ -1,11 +1,12 @@
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile | PackerInstall
   augroup end
 ]])
 
 return require('packer').startup(function(use)
+
   -- package manager
   use 'wbthomason/packer.nvim'
 
@@ -31,33 +32,16 @@ return require('packer').startup(function(use)
 
   use {
     'RRethy/nvim-treesitter-endwise',
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        endwise = {
-          enable = true,
-        },
-      }
-    end
   }
 
-  use {
-    "folke/which-key.nvim",
-    config = function()
-      require("which-key").setup {
-      }
-    end
-  }
+  use "lukas-reineke/indent-blankline.nvim"
+
+  use "folke/which-key.nvim"
 
   -- dashboard when starting à la startify
   use {
     'goolord/alpha-nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
-    config = function ()
-      local alpha = require 'alpha'
-      local startify = require'alpha.themes.startify'
-      startify.section.mru.val = { { type = "padding", val = 0 } }
-      alpha.setup(startify.config)
-    end
   }
 
   use 'tpope/vim-commentary'

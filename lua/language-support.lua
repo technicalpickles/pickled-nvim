@@ -19,14 +19,23 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
+-- adding endings for ruby/shell/lua like do/end
+require('nvim-treesitter.configs').setup {
+  endwise = {
+    enable = true,
+  },
+  
+}
 
 -- linters, formaters, etc
 local null_ls = require("null-ls")
 local rubocop_options = { prefer_local = 'bin' }
 local node_options = { prefer_local = "node_modules/.bin" }
 
-local rubocop_yml = io.open(".rubocop.yml", "r")
 local sources = {}
+
+-- only enable rubocop if there's a configuration
+local rubocop_yml = io.open(".rubocop.yml", "r")
 if rubocop_yml~=nil then
   io.close(rubocop_yml)
   print("enabling rubocop")
@@ -35,4 +44,3 @@ if rubocop_yml~=nil then
 end
 
 null_ls.setup({ sources = sources })
-
