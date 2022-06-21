@@ -1,6 +1,6 @@
 -- for UI frontends
 vim.o.termguicolors = true
-vim.o.guifont = 'DankMono Nerd Font Mono:h14'
+vim.o.guifont = 'DankMono Nerd Font Mono:h16'
 vim.g.neovide_input_use_logo = true -- Ensure we can pass the command key
 vim.g.neovide_confirm_quit = true -- Prevent exit on unsaved buffer on window close
 vim.g.neovide_cursor_vfx_mode = "railgun"
@@ -21,7 +21,18 @@ require('lualine').setup {
 -- tabs
 -- see barbar in plugin.lua
 require('bufferline').setup {
-  icon_close_tab = '✕'
+  options = {
+    close_icon = '✕',
+    buffer_close_icon = '✕',
+    offsets = {
+      {
+        filetype = "NvimTree",
+        text = "",
+        highlight = "Directory",
+        text_align = "left"
+      }
+    }
+  }
 }
 -- always show tab line, even if there is only 1 item
 vim.o.showtabline = 2
@@ -73,7 +84,6 @@ require('nvim-cursorline').setup {
 }
 
 
--- vim.o.colorcolumn = '80'
 vim.o.showmode = false
 
 -- startup screen

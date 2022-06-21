@@ -66,17 +66,16 @@ vim.keymap.set('v', '<D-[>', '<', silent)
 vim.keymap.set('i', '<D-[>', '<C-O><<', silent)
 
 -- ⌘ 1 through ⌘ 0 to go to tab - shift identation righ
-local barbar_opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<D-1>', ':BufferGoto 1<CR>', silent_noremap)
-vim.keymap.set('n', '<D-2>', ':BufferGoto 2<CR>', silent_noremap)
-vim.keymap.set('n', '<D-3>', ':BufferGoto 3<CR>', silent_noremap)
-vim.keymap.set('n', '<D-4>', ':BufferGoto 4<CR>', silent_noremap)
-vim.keymap.set('n', '<D-5>', ':BufferGoto 5<CR>', silent_noremap)
-vim.keymap.set('n', '<D-6>', ':BufferGoto 6<CR>', silent_noremap)
-vim.keymap.set('n', '<D-7>', ':BufferGoto 7<CR>', silent_noremap)
-vim.keymap.set('n', '<D-8>', ':BufferGoto 8<CR>', silent_noremap)
-vim.keymap.set('n', '<D-9>', ':BufferGoto 9<CR>', silent_noremap)
-vim.keymap.set('n', '<D-0>', ':BufferLast<CR>', silent_noremap)
+vim.keymap.set('n', '<D-1>', '<Cmd>BufferLineGoToBuffer 1<CR>', silent_noremap)
+vim.keymap.set('n', '<D-2>', '<Cmd>BufferLineGoToBuffer 2<CR>', silent_noremap)
+vim.keymap.set('n', '<D-3>', '<Cmd>BufferLineGoToBuffer 3<CR>', silent_noremap)
+vim.keymap.set('n', '<D-4>', '<Cmd>BufferLineGoToBuffer 4<CR>', silent_noremap)
+vim.keymap.set('n', '<D-5>', '<Cmd>BufferLineGoToBuffer 5<CR>', silent_noremap)
+vim.keymap.set('n', '<D-6>', '<Cmd>BufferLineGoToBuffer 6<CR>', silent_noremap)
+vim.keymap.set('n', '<D-7>', '<Cmd>BufferLineGoToBuffer 7<CR>', silent_noremap)
+vim.keymap.set('n', '<D-8>', '<Cmd>BufferLineGoToBuffer 8<CR>', silent_noremap)
+vim.keymap.set('n', '<D-9>', '<Cmd>BufferLineGoToBuffer 9<CR>', silent_noremap)
+-- vim.keymap.set('n', '<D-0>', ':BufferLast<CR>', silent_noremap)
 
 -- ⌘ shift m - toggle quickfix (aka problems)
 -- FIXME neovide can't distinguish between shift and non-shift

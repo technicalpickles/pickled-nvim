@@ -25,4 +25,7 @@ require("toggleterm").setup {
   hide_numbers = true,
 }
 
+require("project_nvim").setup {
+}
+
 require('vgit').setup()

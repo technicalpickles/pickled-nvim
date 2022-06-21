@@ -14,19 +14,19 @@ require('telescope').setup {
 }
 require('telescope').load_extension('fzf')
 require("telescope").load_extension('command_center')
+require('telescope').load_extension('projects')
 
-
-require('nvim-tree').setup {}
-
--- nvim-tree/barbar.nvim integration
-local nvim_tree_events = require('nvim-tree.events')
-local bufferline_state = require('bufferline.state')
-
-nvim_tree_events.on_tree_open(function ()
-  bufferline_state.set_offset(31, "File Tree")
-end)
-
-nvim_tree_events.on_tree_close(function ()
-  bufferline_state.set_offset(0)
-end)
-
+require('nvim-tree').setup {
+  renderer = {
+    -- display only the folder name
+    -- see See `:help filename-modifiers` for available options.
+    root_folder_modifier = ':t',
+  },
+  -- projects integration
+  respect_buf_cwd = true,
+  update_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_cwd = true
+  },
+}

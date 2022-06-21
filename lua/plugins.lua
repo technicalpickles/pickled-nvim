@@ -85,11 +85,8 @@ return require('packer').startup(function(use)
    }
  }
 
-  -- nicer tabs, aka bufferline
-  use {
-    'romgrk/barbar.nvim',
-    requires = {'kyazdani42/nvim-web-devicons'}
-  }
+-- for tabs and stuff
+  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 
   -- visual git integration
   use {
@@ -102,6 +99,9 @@ return require('packer').startup(function(use)
   -- more git!
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
+
+  -- project managementment
+  use  "ahmedkhalf/project.nvim"
 
   -- directory specific path, etc
   use 'direnv/direnv.vim'
