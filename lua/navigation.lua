@@ -1,10 +1,5 @@
 require('telescope').setup {
   extensions = {
-    command_palette = {
-      {"GitHub",
-        { "Copy Permalink", "<leader>gy" }
-      },
-    }
   },
   pickers = {
     find_files = {
@@ -30,3 +25,4 @@ require('nvim-tree').setup {
     update_cwd = true
   },
 }
+

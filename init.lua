@@ -6,13 +6,18 @@ require('ui')
 require('language-support')
 
 
-local command_center = require("command_center")
+local silent_noremap = {noremap = true, silent = true}
+
+local command_center = require('command_center')
 command_center.add({
   {
-    {
-      description = "Copy GitHub Permalink",
-      cmd = "<leader>gy"
-    }
+    description = 'Copy GitHub Permalink',
+    cmd = '<leader>gy'
+  },
+  {
+    description = 'Format Document',
+    cmd = "lua vim.lsp.buf.formatting_sync()",
+    keybindings = {'n', '<leader>f', silent_noremap}
   }
 })
 

@@ -113,7 +113,7 @@ return require('packer').startup(function(use)
   use "ayu-theme/ayu-vim"
   use "averak/laserwave.vim"
   use "rafamadriz/neon"
-  use "tiagovla/tokyodark.nvim"
+  use 'folke/tokyonight.nvim'
 
   -- quicfix and diagnostic type stuff
   use {
@@ -124,4 +124,9 @@ return require('packer').startup(function(use)
       }
     end
   }
+
+  use 'AndrewRadev/splitjoin.vim'
+
+  use 'gpanders/editorconfig.nvim'
+  use 'mg979/vim-visual-multi'
 end)

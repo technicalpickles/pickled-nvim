@@ -4,21 +4,26 @@ local noremap = {noremap = true}
 local silent_noremap = {noremap = true, silent = true}
 local silent = {silent = true}
 
--- quick.nvim original bindings
+-- split management
 vim.api.nvim_set_keymap('n', 'vs', ':vs<CR>', noremap)
 vim.api.nvim_set_keymap('n', 'sp', ':sp<CR>', noremap)
 vim.api.nvim_set_keymap('n', '<C-L>', '<C-W><C-L>', noremap)
 vim.api.nvim_set_keymap('n', '<C-H>', '<C-W><C-H>', noremap)
 vim.api.nvim_set_keymap('n', '<C-K>', '<C-W><C-K>', noremap)
 vim.api.nvim_set_keymap('n', '<C-J>', '<C-W><C-J>', noremap)
+-- tab convenience
 vim.api.nvim_set_keymap('n', 'tn', ':tabnew<CR>', noremap)
 vim.api.nvim_set_keymap('n', 'tk', ':tabnext<CR>', noremap)
 vim.api.nvim_set_keymap('n', 'tj', ':tabprev<CR>', noremap)
 vim.api.nvim_set_keymap('n', 'to', ':tabo<CR>', noremap)
+
 vim.api.nvim_set_keymap('n', '<C-S>', ':%s/', noremap)
-vim.api.nvim_set_keymap('n', '<C-N>', ":Lexplore<CR> :vertical resize 30<CR>", noremap)
-vim.api.nvim_set_keymap("n", "<leader>t", ":sp<CR> :term<CR> :resize 20N<CR> i", silent_noremap)
+
+-- terminal mapping
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", silent_noremap)
+
+vim.keymap.set({"n", "v"}, "K", vim.lsp.buf.hover, { buffer = 0 })
+
 
 --{ macOS convenience keybinds }--
 -- Cut/Copy/Paste to/from system clipboard
@@ -42,8 +47,10 @@ vim.api.nvim_set_keymap('n', '<leader>b', "<cmd>lua require('telescope.builtin')
 
 -- ⌘ P - Command Palette
 -- FIXME neovide can't distinguish between shift and non-shift
- vim.api.nvim_set_keymap('n', '<D-P>', "<cmd>Telescope command_palette<CR>", { noremap = true })
- vim.api.nvim_set_keymap('n', '<D-S-p>', "<cmd>Telescope command_palette<CR>", { noremap = true })
+ -- vim.api.nvim_set_keymap('n', '<D-P>', "<cmd>Telescope command_center<CR>", { noremap = true })
+ -- vim.api.nvim_set_keymap('n', '<D-S-p>', "<cmd>Telescope command_center<CR>", { noremap = true })
+
+vim.keymap.set('n', '<leader>c', '<cmd>Telescope command_center<CR>', silent)
 
 -- ⌘ p - fuzzy find files
 vim.api.nvim_set_keymap('n', '<D-p>', "<cmd>lua require('telescope.builtin').find_files()<CR>", noremap)
@@ -54,7 +61,7 @@ vim.keymap.set('n', '<leader>s', ':w<CR>')
 
 -- ⌘ / - toggle comment with commentary.vim --
 vim.keymap.set('n', '<D-/>', 'gcc', silent)
-vim.keymap.set('v', '<D-/>', 'gcc', silent)
+vim.keymap.set('v', '<D-/>', 'gc', silent)
 -- ⌘ ]  - shift identation righ
 vim.keymap.set('n', '<D-]>', '>>', silent)
 vim.keymap.set('v', '<D-]>', '>', silent)
