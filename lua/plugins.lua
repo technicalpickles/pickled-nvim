@@ -134,4 +134,14 @@ return require("packer").startup(function(use)
   use { "mhinz/vim-grepper",
     cmd = "Grepper"
   }
+
+  use {'kevinhwang91/nvim-bqf'}
+
+  use {'junegunn/fzf',
+    run = function()
+      vim.fn['fzf#install']()
+    end
+  }
+
+  use 'romainl/vim-qf'
 end)

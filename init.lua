@@ -5,6 +5,7 @@ require("navigation")
 require("ui")
 require("language-support")
 require("search")
+require("quickfix")
 
 local silent_noremap = { noremap = true, silent = true }
 
