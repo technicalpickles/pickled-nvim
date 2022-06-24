@@ -1,8 +1,9 @@
-vim.g.tools = { 'rg', 'ag', 'pt', 'git', 'sift'}
-vim.g.highlight             = 1
-vim.g.prompt                = 1
-vim.g.next_tool     = '<leader>g'
-
+vim.g.grepper = {
+	tools = { "rg", "ag", "pt", "git", "sift" },
+	highlight = 1,
+	prompt = 1,
+	next_tool_mapping = "<tab>",
+}
 
 -- from https://github.com/kevinhwang91/nvim-bqf#integrate-with-other-plugins
 vim.cmd(([[

@@ -12,8 +12,8 @@ vim.g.tokyodark_enable_italic_comment = true
 vim.g.tokyodark_enable_italic = true
 vim.g.tokyodark_color_gamma = "1.0"
 vim.g.tokyonight_style = "storm"
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_style = "day"
+-- vim.g.tokyonight_style = "night"
+-- vim.g.tokyonight_style = "day"
 vim.cmd([[colorscheme tokyonight]])
 
 -- statusline

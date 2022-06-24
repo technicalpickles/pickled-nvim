@@ -131,17 +131,16 @@ return require("packer").startup(function(use)
 	use("gpanders/editorconfig.nvim")
 	use("mg979/vim-visual-multi")
 
-  use { "mhinz/vim-grepper",
-    cmd = "Grepper"
-  }
+	use({ "mhinz/vim-grepper", cmd = "Grepper" })
 
-  use {'kevinhwang91/nvim-bqf'}
+	use({ "kevinhwang91/nvim-bqf" })
 
-  use {'junegunn/fzf',
-    run = function()
-      vim.fn['fzf#install']()
-    end
-  }
+	use({
+		"junegunn/fzf",
+		run = function()
+			vim.fn["fzf#install"]()
+		end,
+	})
 
-  use 'romainl/vim-qf'
+	use("romainl/vim-qf")
 end)

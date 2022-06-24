@@ -1,8 +1,8 @@
 vim.g.mapleader = ","
 
-local noremap = {noremap = true}
-local silent_noremap = {noremap = true, silent = true}
-local silent = {silent = true}
+local noremap = { noremap = true }
+local silent_noremap = { noremap = true, silent = true }
+local silent = { silent = true }
 
 -- split management
 vim.api.nvim_set_keymap("n", "vs", ":vs<CR>", noremap)
@@ -19,7 +19,6 @@ vim.api.nvim_set_keymap("n", "to", ":tabo<CR>", noremap)
 
 vim.api.nvim_set_keymap("n", "<C-S>", ":%s/", noremap)
 
-
 -- quickfix
 --vim.api.vim_buf_set_keymap("n", "<leader>qq", "<Plug>qf_qf_toggle<CR>", noremap)
 vim.api.nvim_set_keymap("n", "<leader>qq", "<Plug>(qf_qf_toggle)", noremap)
@@ -28,23 +27,21 @@ vim.keymap.set("n", "<leader>qp", "<Plug>(qf_qf_previous)", noremap)
 
 vim.keymap.set("n", "<leader>qN", "<Plug>(qf_next_file)", noremap)
 vim.keymap.set("n", "<leader>qP", "<Plug>(qf_previous_file)", noremap)
--- trouble 
+
+vim.keymap.set("n", "<leader>qb", "<Cmd>BqfToggle<CR>", noremap)
+
+-- trouble
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", silent_noremap)
-vim.api.nvim_set_keymap("n", "<leader>xw",
-                        "<cmd>Trouble workspace_diagnostics<cr>", silent_noremap)
-vim.api.nvim_set_keymap("n", "<leader>xd",
-                        "<cmd>Trouble document_diagnostics<cr>", silent_noremap)
-vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>",
-                        silent_noremap)
-vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",
-                        silent_noremap)
-vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
-                        {silent = true, noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", silent_noremap)
+vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", silent_noremap)
+vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", silent_noremap)
+vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", silent_noremap)
+vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
 
 -- terminal mapping
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", silent_noremap)
 
-vim.keymap.set({"n", "v"}, "K", vim.lsp.buf.hover, {buffer = 0})
+vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { buffer = 0 })
 
 -- search
 -- -- try `gsiw` under word
@@ -68,12 +65,8 @@ vim.keymap.set("", "<D-t>", "<cmd>tabnew<cr>")
 vim.keymap.set("i", "<D-t>", "<cmd>tabnew<cr>")
 
 -- telescope
-vim.api.nvim_set_keymap("n", "<D-F>",
-                        "<cmd>lua require('telescope.builtin').live_grep()<CR>",
-                        noremap)
-vim.api.nvim_set_keymap("n", "<leader>b",
-                        "<cmd>lua require('telescope.builtin').buffers()<CR>",
-                        noremap)
+vim.api.nvim_set_keymap("n", "<D-F>", "<cmd>lua require('telescope.builtin').live_grep()<CR>", noremap)
+vim.api.nvim_set_keymap("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers()<CR>", noremap)
 
 -- { VS Code and other IDE like behavior }} --
 
@@ -85,9 +78,7 @@ vim.api.nvim_set_keymap("n", "<leader>b",
 vim.keymap.set("n", "<leader>c", "<cmd>Telescope command_center<CR>", silent)
 
 -- ⌘ p - fuzzy find files
-vim.api.nvim_set_keymap("n", "<D-p>",
-                        "<cmd>lua require('telescope.builtin').find_files()<CR>",
-                        noremap)
+vim.api.nvim_set_keymap("n", "<D-p>", "<cmd>lua require('telescope.builtin').find_files()<CR>", noremap)
 
 -- ⌘ s - save
 vim.keymap.set("n", "<D-s>", ":w<CR>", silent)
@@ -119,10 +110,9 @@ vim.keymap.set("n", "<D-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", silent_noremap)
 -- vim.keymap.set('n', '<D-0>', ':BufferLast<CR>', silent_noremap)
 
 -- ⌘ f - search current
-vim.keymap.set("n", "<leader>f", ":Grepper -noprompt -buffer -query ", silent)
 -- ⌘ shift f - search across project
-vim.keymap.set("n", "<leader>F", ":Grepper -noprompt -query ", silent)
-vim.keymap.set("n", "<D-F>", ":Grepper -noprompt -query ", silent)
+vim.keymap.set("n", "<leader>F", ":Grepper<CR>", silent)
+vim.keymap.set("n", "<D-F>", ":Grepper<CR> ", silent)
 
 -- ⌘ shift m - toggle quickfix (aka problems)
 -- FIXME neovide can't distinguish between shift and non-shift
