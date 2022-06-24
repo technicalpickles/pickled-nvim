@@ -161,6 +161,6 @@ return require("packer").startup(function(use)
 	use("romainl/vim-qf")
 
   use("farmergreg/vim-lastplace")
-
   use('rmagatti/auto-session')
+  use('sickill/vim-pasta')
 end)
