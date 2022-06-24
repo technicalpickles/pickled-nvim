@@ -2,9 +2,16 @@
 vim.g.do_filetype_lua = 1 -- use filetype.lua
 vim.g.did_load_filetypes = 0 -- don't use filetype.vim
 
-require("coc-config")
+--require("coc-config")
+--
+--vim.g.coc_global_extensions = { "coc-sumneko-lua", "coc-sh" }
 
-vim.g.coc_global_extensions = { "coc-sumneko-lua", "coc-sh" }
+
+local lsp = require('lsp-zero')
+
+lsp.preset('recommended')
+lsp.nvim_workspace()
+lsp.setup()
 
 require("nvim-treesitter.configs").setup({
 	ensure_installed = "all",
