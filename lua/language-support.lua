@@ -6,10 +6,9 @@ vim.g.did_load_filetypes = 0 -- don't use filetype.vim
 --
 --vim.g.coc_global_extensions = { "coc-sumneko-lua", "coc-sh" }
 
+local lsp = require("lsp-zero")
 
-local lsp = require('lsp-zero')
-
-lsp.preset('recommended')
+lsp.preset("recommended")
 lsp.nvim_workspace()
 lsp.setup()
 
@@ -60,8 +59,8 @@ end
 -- ruby
 local rubocop_options = { prefer_local = "bin" }
 if vim.fn.filereadable(".rubocop_yml") then
-	table.insert(sources, null_ls.builtins.diagnostics.rubocop.with(rubocop_options))
-	table.insert(sources, null_ls.builtins.formatting.rubocop.with(rubocop_options))
+  table.insert(sources, null_ls.builtins.diagnostics.rubocop.with(rubocop_options))
+  table.insert(sources, null_ls.builtins.formatting.rubocop.with(rubocop_options))
 end
 
 -- erb
@@ -78,3 +77,32 @@ if vim.fn.filereadable(".eslinteslint_config") then
 end
 
 null_ls.setup({ sources = sources })
+
+require("nvim-autopairs").setup({})
+
+local Rule = require("nvim-autopairs.rule")
+local npairs = require("nvim-autopairs")
+local cond = require("nvim-autopairs.conds")
+local ts_conds = require("nvim-autopairs.ts-conds")
+
+local not_string_or_comment = ts_conds.is_not_ts_node({ "string", "comment" })
+local not_inside_code_block = ts_conds.is_not_ts_node({ "fenced_code_block", "indented_code_block", "code_span" })
+npairs.add_rules({
+	-- commonly closed types
+	-- - avoid triggering when inside a string or comment
+	Rule("(", ")"):with_pair(not_string_or_comment), -- parens
+	Rule("'", "'"):with_pair(not_string_or_comment), -- single quotes
+	Rule("[", "]"):with_pair(not_string_or_comment), -- bracket
+
+	-- markdown stuff
+	-- italics
+	Rule("_", "_", "markdown"):with_pair(not_inside_code_block),
+	Rule("*", "*", "markdown"):with_pair(not_inside_code_block),
+	-- bold --
+	Rule("__", "__", "markdown"):with_pair(not_inside_code_block),
+	Rule("**", "**", "markdown"):with_pair(not_inside_code_block),
+})
+
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+local cmp = require("cmp")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
