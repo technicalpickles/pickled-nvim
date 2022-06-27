@@ -9,6 +9,7 @@ return require("packer").startup(function(use)
 	-- package manager
 	use("wbthomason/packer.nvim")
 
+  -- lsp, linters, formatters, etc
 	use({
 		"VonHeikemen/lsp-zero.nvim",
 		requires = {
@@ -29,6 +30,8 @@ return require("packer").startup(function(use)
 			{ "rafamadriz/friendly-snippets" },
 		},
 	})
+  use("jose-elias-alvarez/null-ls.nvim")
+  use("onsails/lspkind.nvim")
 
 	-- Speed up loading Lua modules in Neovim to improve startup time.
 	-- Load before ay other lua plugins
@@ -51,8 +54,8 @@ return require("packer").startup(function(use)
 		"RRethy/nvim-treesitter-endwise",
 	})
 
+  -- styling cursor, ident lines, etc
 	use("yamatsum/nvim-cursorline")
-
 	use("lukas-reineke/indent-blankline.nvim")
 	use("p00f/nvim-ts-rainbow")
 
@@ -86,8 +89,6 @@ return require("packer").startup(function(use)
 		"gfeiyou/command-center.nvim",
 		requires = { "nvim-telescope/telescope.nvim" },
 	})
-
-	use("ur4ltz/surround.nvim")
 
 	-- terminal manager
 	use({
@@ -124,8 +125,6 @@ return require("packer").startup(function(use)
 	-- directory specific path, etc
 	use("direnv/direnv.vim")
 
-	-- linters, formatters, etc
-	use("jose-elias-alvarez/null-ls.nvim")
 
 	-- colorschemes
 	use("ayu-theme/ayu-vim")
@@ -142,26 +141,32 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use("AndrewRadev/splitjoin.vim")
-
 	use("gpanders/editorconfig.nvim")
 	use("mg979/vim-visual-multi")
 
 	use({ "mhinz/vim-grepper", cmd = "Grepper" })
+  use({
+    "junegunn/fzf",
+    run = function()
+      vim.fn["fzf#install"]()
+    end,
+  })
+
 
 	use({ "kevinhwang91/nvim-bqf" })
 
-	use({
-		"junegunn/fzf",
-		run = function()
-			vim.fn["fzf#install"]()
-		end,
-	})
-
 	use("romainl/vim-qf")
 
-	use("farmergreg/vim-lastplace")
-	use("rmagatti/auto-session")
 	use("sickill/vim-pasta")
 	use("windwp/nvim-autopairs")
+  use("ur4ltz/surround.nvim")
+  use("AndrewRadev/splitjoin.vim")
+
+
+  -- session, remembering where we were
+  use("farmergreg/vim-lastplace")
+  use("rmagatti/auto-session")
+
+  use("tpope/vim-characterize")
+
 end)

@@ -2,14 +2,27 @@
 vim.g.do_filetype_lua = 1 -- use filetype.lua
 vim.g.did_load_filetypes = 0 -- don't use filetype.vim
 
---require("coc-config")
---
---vim.g.coc_global_extensions = { "coc-sumneko-lua", "coc-sh" }
-
 local lsp = require("lsp-zero")
+local lspkind = require('lspkind')
 
 lsp.preset("recommended")
 lsp.nvim_workspace()
+
+lsp.setup_nvim_cmp({
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[Latex]",
+      })
+    }),
+  },
+})
+
 lsp.setup()
 
 require("nvim-treesitter.configs").setup({
@@ -105,4 +118,5 @@ npairs.add_rules({
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp = require("cmp")
+-- FIXME this seems to throw an error when starting [] inside a .editorconfig
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

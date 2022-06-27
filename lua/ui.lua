@@ -1,6 +1,6 @@
 -- for UI frontends
 vim.o.termguicolors = true
-vim.o.guifont = "DankMono Nerd Font Mono:h16"
+vim.o.guifont = "DankMono Nerd Font:h16"
 vim.g.neovide_input_use_logo = true -- Ensure we can pass the command key
 vim.g.neovide_confirm_quit = true -- Prevent exit on unsaved buffer on window close
 vim.g.neovide_cursor_vfx_mode = "railgun"
