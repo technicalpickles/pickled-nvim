@@ -25,6 +25,8 @@ vim.api.nvim_set_keymap("n", "<leader>qq", "<Plug>(qf_qf_toggle)", noremap)
 vim.keymap.set("n", "<leader>qn", "<Plug>(qf_qf_next)", noremap)
 vim.keymap.set("n", "<leader>qp", "<Plug>(qf_qf_previous)", noremap)
 
+vim.api.nvim_set_keymap("n", "<leader>ql", "<Plug>(qf_loc_toggle)", noremap)
+
 vim.keymap.set("n", "<leader>qN", "<Plug>(qf_next_file)", noremap)
 vim.keymap.set("n", "<leader>qP", "<Plug>(qf_previous_file)", noremap)
 
