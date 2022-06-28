@@ -53,6 +53,12 @@ LSP:
 
 * `<F4>`: Selects a code action available at the current cursor position. See `:help vim.lsp.buf.code_action()`.
 
+Diagnostics
+
+- `gl`: Show diagnostics in a floating window. See :help vim.diagnostic.open_float().
+- `[d`: Move to the previous diagnostic in the current buffer. See :help vim.diagnostic.goto_prev().
+- `]d`: Move to the next diagnostic. See :help vim.diagnostic.goto_next().
+
 
 Misc:
 
