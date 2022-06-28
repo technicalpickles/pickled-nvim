@@ -3,24 +3,32 @@ vim.g.do_filetype_lua = 1 -- use filetype.lua
 vim.g.did_load_filetypes = 0 -- don't use filetype.vim
 
 local lsp = require("lsp-zero")
-local lspkind = require('lspkind')
+local lspkind = require("lspkind")
 
 lsp.preset("recommended")
 lsp.nvim_workspace()
 
 lsp.setup_nvim_cmp({
-  formatting = {
-    format = lspkind.cmp_format({
-      mode = "symbol_text",
-      menu = ({
-        buffer = "[Buffer]",
-        nvim_lsp = "[LSP]",
-        luasnip = "[LuaSnip]",
-        nvim_lua = "[Lua]",
-        latex_symbols = "[Latex]",
-      })
-    }),
-  },
+	formatting = {
+		format = lspkind.cmp_format({
+			mode = "symbol_text",
+			menu = {
+				buffer = "[Buffer]",
+				nvim_lsp = "[LSP]",
+				luasnip = "[LuaSnip]",
+				nvim_lua = "[Lua]",
+				latex_symbols = "[Latex]",
+			},
+		}),
+	},
+	sources = {
+		{ name = "nvim_lsp_signature_help" },
+		{ name = "path" },
+		{ name = "fish" },
+		{ name = "nvim_lsp", keyword_length = 3 },
+		{ name = "buffer", keyword_length = 3 },
+		{ name = "luasnip", keyword_length = 2 },
+	},
 })
 
 lsp.setup()
