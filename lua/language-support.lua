@@ -123,7 +123,7 @@ require("nvim-autopairs").setup({})
 
 local Rule = require("nvim-autopairs.rule")
 local npairs = require("nvim-autopairs")
-local cond = require("nvim-autopairs.conds")
+-- local cond = require("nvim-autopairs.conds")
 local ts_conds = require("nvim-autopairs.ts-conds")
 
 local not_string_or_comment = ts_conds.is_not_ts_node({ "string", "comment" })
@@ -142,6 +142,11 @@ npairs.add_rules({
 	-- bold --
 	Rule("__", "__", "markdown"):with_pair(not_inside_code_block),
 	Rule("**", "**", "markdown"):with_pair(not_inside_code_block),
+})
+
+npairs.setup({
+	check_ts = true,
+	disable_filetype = { "TelescopePrompt", "guihua", "guihua_rust", "clap_input" },
 })
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
