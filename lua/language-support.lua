@@ -53,6 +53,26 @@ require("nvim-treesitter.configs").setup({
 			"#C678DD",
 		},
 	},
+	-- https://github.com/nvim-treesitter/nvim-treesitter-refactor
+	refactor = {
+		highlight_current_scope = { enable = true },
+		smart_rename = {
+			enable = true,
+			keymaps = {
+				smart_rename = "grr",
+			},
+		},
+		navigation = {
+			enable = true,
+			keymaps = {
+				goto_definition = "gnd",
+				list_definitions = "gnD",
+				list_definitions_toc = "gO",
+				goto_next_usage = "<a-*>",
+				goto_previous_usage = "<a-#>",
+			},
+		},
+	},
 })
 
 -- adding endings for ruby/shell/lua like do/end
