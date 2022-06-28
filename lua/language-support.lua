@@ -100,8 +100,8 @@ end
 -- ruby
 local rubocop_options = { prefer_local = "bin" }
 if vim.fn.filereadable(".rubocop_yml") then
-  table.insert(sources, null_ls.builtins.diagnostics.rubocop.with(rubocop_options))
-  table.insert(sources, null_ls.builtins.formatting.rubocop.with(rubocop_options))
+	table.insert(sources, null_ls.builtins.diagnostics.rubocop.with(rubocop_options))
+	table.insert(sources, null_ls.builtins.formatting.rubocop.with(rubocop_options))
 end
 
 -- erb
