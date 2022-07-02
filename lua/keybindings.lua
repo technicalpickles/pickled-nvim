@@ -80,7 +80,8 @@ vim.api.nvim_set_keymap("n", "<leader>b", "<cmd>lua require('telescope.builtin')
 vim.keymap.set("n", "<leader>c", "<cmd>Telescope command_center<CR>", silent)
 
 -- ⌘ p - fuzzy find files
-vim.api.nvim_set_keymap("n", "<D-p>", "<cmd>lua require('telescope.builtin').find_files()<CR>", noremap)
+vim.api.nvim_set_keymap("n", "<D-p>", "<cmd>Telescope frecency<CR>", noremap)
+vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>Telescope frecency<CR>", noremap)
 
 -- ⌘ s - save
 vim.keymap.set("n", "<D-s>", ":w<CR>", silent)

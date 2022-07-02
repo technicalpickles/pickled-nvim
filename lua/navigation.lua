@@ -1,5 +1,10 @@
 require("telescope").setup({
-	extensions = {},
+	extensions = {
+        frecency = {
+            default_workspace = 'CWD',
+            show_filter_column = false,
+        }
+    },
 	pickers = {
 		find_files = {
 			theme = "dropdown",
@@ -9,6 +14,9 @@ require("telescope").setup({
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("command_center")
 require("telescope").load_extension("projects")
+
+
+require("telescope").load_extension("frecency")
 
 require("nvim-tree").setup({
 	renderer = {
