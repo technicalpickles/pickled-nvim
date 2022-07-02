@@ -38,9 +38,9 @@ require("nvim-treesitter.configs").setup({
 	ignore_install = { "phpdoc" },
 	context_commentstring = { enable = true },
 	highlight = { enable = true, disable = { "lua" } },
-	indent = { enable = true },
 	rainbow = {
 		enable = true,
+		disable = { "help" },
 		-- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
 		extended_mode = true,
 		colors = {
