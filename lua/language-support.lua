@@ -73,10 +73,8 @@ require("nvim-treesitter.configs").setup({
 			},
 		},
 	},
+	{ endwise = { enable = true } },
 })
-
--- adding endings for ruby/shell/lua like do/end
-require("nvim-treesitter.configs").setup({ endwise = { enable = true } })
 
 -- linters, formaters, etc
 local null_ls = require("null-ls")
@@ -123,18 +121,12 @@ require("nvim-autopairs").setup({})
 
 local Rule = require("nvim-autopairs.rule")
 local npairs = require("nvim-autopairs")
--- local cond = require("nvim-autopairs.conds")
 local ts_conds = require("nvim-autopairs.ts-conds")
 
-local not_string_or_comment = ts_conds.is_not_ts_node({ "string", "comment" })
+-- local not_string_or_comment = ts_conds.is_not_ts_node({ "string", "comment" })
 local not_inside_code_block = ts_conds.is_not_ts_node({ "fenced_code_block", "indented_code_block", "code_span" })
-npairs.add_rules({
-	-- commonly closed types
-	-- - avoid triggering when inside a string or comment
-	Rule("(", ")"):with_pair(not_string_or_comment), -- parens
-	Rule("'", "'"):with_pair(not_string_or_comment), -- single quotes
-	Rule("[", "]"):with_pair(not_string_or_comment), -- bracket
 
+npairs.add_rules({
 	-- markdown stuff
 	-- italics
 	Rule("_", "_", "markdown"):with_pair(not_inside_code_block),

@@ -53,9 +53,7 @@ return require("packer").startup(function(use)
 	})
 
 	use("nvim-treesitter/nvim-treesitter-refactor")
-	use({
-		"RRethy/nvim-treesitter-endwise",
-	})
+	use("RRethy/nvim-treesitter-endwise")
 
 	-- styling cursor, ident lines, etc
 	use("yamatsum/nvim-cursorline")
@@ -168,4 +166,12 @@ return require("packer").startup(function(use)
 	use("rmagatti/auto-session")
 
 	use("tpope/vim-characterize")
+
+	use({
+		"nvim-telescope/telescope-frecency.nvim",
+		config = function()
+			require("telescope").load_extension("frecency")
+		end,
+		requires = { "tami5/sqlite.lua" },
+	})
 end)
