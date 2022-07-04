@@ -86,14 +86,14 @@ if vim.fn.executable("fish") then
 	table.insert(sources, null_ls.builtins.diagnostics.fish)
 end
 
--- shell
--- see coc-sh
-
 -- lua
 if vim.fn.executable("lua-format") and vim.fn.filereadable(".lua-check") then
 	table.insert(sources, null_ls.builtins.formatting.lua_format)
 end
--- use coc-lua for diagnostics
+
+if vim.fn.executable("stylua") and vim.fn.filereadable(".styluaignore") then
+    table.insert(sources, null_ls.builtins.formatting.stylelua)
+end
 
 -- ruby
 local rubocop_options = { prefer_local = "bin" }
