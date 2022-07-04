@@ -106,66 +106,68 @@ return require("packer").startup(function(use)
 	use("tpope/vim-fugitive")
 	use("tpope/vim-rhubarb")
 
-	-- project managementment
-	use("ahmedkhalf/project.nvim")
+    -- project managementment
+    use("ahmedkhalf/project.nvim")
 
-	-- directory specific path, etc
-	use("direnv/direnv.vim")
+    -- directory specific path, etc
+    use("direnv/direnv.vim")
 
-	-- colorschemes
-	use("ayu-theme/ayu-vim")
-	use("averak/laserwave.vim")
-	use("rafamadriz/neon")
-	use("folke/tokyonight.nvim")
+    -- colorschemes
+    use("ayu-theme/ayu-vim")
+    use("averak/laserwave.vim")
+    use("rafamadriz/neon")
+    use("folke/tokyonight.nvim")
 
-	-- quicfix and diagnostic type stuff
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("trouble").setup({})
-		end,
-	})
+    -- quicfix and diagnostic type stuff
+    use({
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup({})
+        end,
+    })
 
-	use("gpanders/editorconfig.nvim")
-	use("mg979/vim-visual-multi")
+    use("gpanders/editorconfig.nvim")
+    use("mg979/vim-visual-multi")
 
-	use({ "mhinz/vim-grepper", cmd = "Grepper" })
-	use({
-		"junegunn/fzf",
-		run = function()
-			vim.fn["fzf#install"]()
-		end,
-	})
+    use({ "mhinz/vim-grepper", cmd = "Grepper" })
+    use({
+        "junegunn/fzf",
+        run = function()
+            vim.fn["fzf#install"]()
+        end,
+    })
 
-	use({ "kevinhwang91/nvim-bqf" })
+    use({ "kevinhwang91/nvim-bqf" })
 
-	use("romainl/vim-qf")
+    use("romainl/vim-qf")
 
-	use("sickill/vim-pasta")
-	use("windwp/nvim-autopairs")
-	use("ur4ltz/surround.nvim")
-	use("AndrewRadev/splitjoin.vim")
+    use("sickill/vim-pasta")
+    use("windwp/nvim-autopairs")
+    use("ur4ltz/surround.nvim")
+    use("AndrewRadev/splitjoin.vim")
 
-	-- session, remembering where we were
-	use("farmergreg/vim-lastplace")
-	use("rmagatti/auto-session")
+    -- session, remembering where we were
+    use("farmergreg/vim-lastplace")
+    use("rmagatti/auto-session")
 
-	use("tpope/vim-characterize")
+    use("tpope/vim-characterize")
 
-	use({
-		"nvim-telescope/telescope-frecency.nvim",
-		config = function() end,
-		requires = { "tami5/sqlite.lua" },
-	})
+    use({
+        "nvim-telescope/telescope-frecency.nvim",
+        config = function() end,
+        requires = { "tami5/sqlite.lua" },
+    })
 
-	use("gelguy/wilder.nvim")
-	use("raghur/fruzzy", { cmd = "fruzzy#install()" })
+    use("gelguy/wilder.nvim")
+    use("raghur/fruzzy", { cmd = "fruzzy#install()" })
 
-	use({
-		"roxma/nvim-yarp",
-		run = "pip install -r requirements.txt",
-	})
+    use({
+        "roxma/nvim-yarp",
+        run = "pip install -r requirements.txt",
+    })
 
-	use("romgrk/fzy-lua-native", { run = "make", on = "CmdlineEnter" })
+    use("romgrk/fzy-lua-native", { run = "make", on = "CmdlineEnter" })
+
+    use "ktunprasert/gui-font-resize.nvim"
 end)

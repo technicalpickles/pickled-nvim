@@ -1,6 +1,5 @@
 -- for UI frontends
 vim.o.termguicolors = true
-vim.o.guifont = "DankMono Nerd Font:h16"
 vim.g.neovide_input_use_logo = true -- Ensure we can pass the command key
 vim.g.neovide_confirm_quit = true -- Prevent exit on unsaved buffer on window close
 vim.g.neovide_cursor_vfx_mode = "railgun"
@@ -20,6 +19,12 @@ vim.cmd([[colorscheme tokyonight]])
 require("lualine").setup({
 	extensions = { "quickfix", "nvim-tree", "toggleterm", "quickfix" },
 	theme = "tokyonight",
+})
+
+-- font
+vim.o.guifont = "DankMono Nerd Font:h16"
+require("gui-font-resize").setup({
+    default_size = 16
 })
 
 -- tabs

@@ -110,7 +110,11 @@ vim.keymap.set("n", "<D-6>", "<Cmd>BufferLineGoToBuffer 6<CR>", silent_noremap)
 vim.keymap.set("n", "<D-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", silent_noremap)
 vim.keymap.set("n", "<D-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", silent_noremap)
 vim.keymap.set("n", "<D-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", silent_noremap)
--- vim.keymap.set('n', '<D-0>', ':BufferLast<CR>', silent_noremap)
+
+-- ⌘ -/+ to increase/decrease font. ⌘ 0 to reset font
+vim.keymap.set("n", "<D-=>", "<cmd>:GUIFontSizeUp<CR>", silent_noremap)
+vim.keymap.set("n", "<D-->", "<cmd>:GUIFontSizeDown<CR>", silent_noremap)
+vim.keymap.set("n", "<D-0>", "<cmd>:GUIFontSizeSet<CR>", silent_noremap)
 
 -- ⌘ f - search current
 -- ⌘ shift f - search across project
