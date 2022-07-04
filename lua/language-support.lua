@@ -92,7 +92,7 @@ if vim.fn.executable("lua-format") and vim.fn.filereadable(".lua-check") then
 end
 
 if vim.fn.executable("stylua") and vim.fn.filereadable(".styluaignore") then
-    table.insert(sources, null_ls.builtins.formatting.stylelua)
+	table.insert(sources, null_ls.builtins.formatting.stylelua)
 end
 
 -- ruby
