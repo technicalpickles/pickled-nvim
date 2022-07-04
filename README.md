@@ -59,6 +59,10 @@ Diagnostics
 - `[d`: Move to the previous diagnostic in the current buffer. See :help vim.diagnostic.goto_prev().
 - `]d`: Move to the next diagnostic. See :help vim.diagnostic.goto_next().
 
+Splitting and Joining lines
+
+- `gS`: change from one-line syntax to multi-line syntax
+- `gJ`: change from multi-line syntax to one-line syntax
 
 Misc:
 
