@@ -170,4 +170,6 @@ return require("packer").startup(function(use)
     use("romgrk/fzy-lua-native", { run = "make", on = "CmdlineEnter" })
 
     use "ktunprasert/gui-font-resize.nvim"
+
+    use "chentoast/marks.nvim"
 end)

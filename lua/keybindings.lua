@@ -68,7 +68,8 @@ vim.keymap.set("i", "<D-t>", "<cmd>tabnew<cr>")
 
 -- telescope
 vim.api.nvim_set_keymap("n", "<D-F>", "<cmd>lua require('telescope.builtin').live_grep()<CR>", noremap)
-vim.api.nvim_set_keymap("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers()<CR>", noremap)
+vim.api.nvim_set_keymap("n", "<leader>b", "Telescope buffers<CR>", noremap)
+vim.api.nvim_set_keymap("n", "<leader>m", "<cmd>Telescope marks<CR>", noremap)
 
 -- { VS Code and other IDE like behavior }} --
 
