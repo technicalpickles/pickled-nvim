@@ -132,7 +132,7 @@ vim.keymap.set("n", "<leader>M", ":TroubleToggle<CR>", silent)
 
 -- ⌘ b - toggle left hand tree
 vim.api.nvim_set_keymap("n", "<D-b>", ":NvimTreeToggle<CR>", silent_noremap)
-vim.api.nvim_set_keymap("n", "<leader>b", ":NvimTreeToggle<CR>", silent_noremap)
+-- vim.api.nvim_set_keymap("n", "<leader>b", ":NvimTreeToggle<CR>", silent_noremap)
 -- my legacy binding
 vim.api.nvim_set_keymap("n", "<leader>d", ":NvimTreeToggle<CR>", silent_noremap)
 
