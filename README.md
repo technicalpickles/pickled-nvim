@@ -53,21 +53,46 @@ LSP:
 
 * `<F4>`: Selects a code action available at the current cursor position. See `:help vim.lsp.buf.code_action()`.
 
-Diagnostics
+### Diagnostics
+
+powered by trouble.nvim
 
 - `gl`: Show diagnostics in a floating window. See :help vim.diagnostic.open_float().
 - `[d`: Move to the previous diagnostic in the current buffer. See :help vim.diagnostic.goto_prev().
 - `]d`: Move to the next diagnostic. See :help vim.diagnostic.goto_next().
 
-Splitting and Joining lines
+
+### Splitting and Joining lines
 
 - `gS`: change from one-line syntax to multi-line syntax
 - `gJ`: change from multi-line syntax to one-line syntax
 
-Misc:
+### Misc:
 
 * `ga`: show info about the character under cursor as decimal, octal, and hex (_powered by vim-characterize_)
 
+### Marks
+
+```
+    mx              Set mark x
+    m,              Set the next available alphabetical (lowercase) mark
+    m;              Toggle the next available mark at the current line
+    dmx             Delete mark x
+    dm-             Delete all marks on the current line
+    dm<space>       Delete all marks in the current buffer
+    m]              Move to next mark
+    m[              Move to previous mark
+    m:              Preview mark. This will prompt you for a specific mark to
+                    preview; press <cr> to preview the next mark.
+                    
+    m[0-9]          Add a bookmark from bookmark group[0-9].
+    dm[0-9]         Delete all bookmarks from bookmark group[0-9].
+    m}              Move to the next bookmark having the same type as the bookmark under
+                    the cursor. Works across buffers.
+    m{              Move to the previous bookmark having the same type as the bookmark under
+                    the cursor. Works across buffers.
+    dm=             Delete the bookmark under the cursor.
+```
 
 ### Auto-closing
 
