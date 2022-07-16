@@ -31,3 +31,6 @@ require("nvim-tree").setup({
 		update_cwd = true,
 	},
 })
+
+require('marks').setup({
+})
