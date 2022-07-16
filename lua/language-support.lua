@@ -40,7 +40,7 @@ require("nvim-treesitter.configs").setup({
 	highlight = { enable = true, disable = { "lua" } },
 	rainbow = {
 		enable = true,
-		disable = { "help" },
+		disable = { "help", "log" },
 		-- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
 		extended_mode = true,
 		colors = {
