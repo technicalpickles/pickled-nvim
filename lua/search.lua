@@ -1,8 +1,12 @@
 vim.g.grepper = {
-	tools = { "rg", "ag", "pt", "git", "sift" },
-	highlight = 1,
-	prompt = 1,
-	next_tool_mapping = "<tab>",
+    tools = { "rg", "ag", "pt", "git", "sift" },
+    highlight = 1,
+    prompt = 1,
+    prompt_text = " $t> ",
+    next_tool_mapping = "<tab>",
+    rg = {
+        grepprg = 'rg -H --no-heading --vimgrep --hidden --glob "!.git" --glob "!node_modules"',
+    },
 }
 
 -- from https://github.com/kevinhwang91/nvim-bqf#integrate-with-other-plugins
