@@ -17,7 +17,7 @@ vim.cmd([[colorscheme tokyonight]])
 
 -- statusline
 require("lualine").setup({
-	extensions = { "quickfix", "nvim-tree", "toggleterm", "quickfix" },
+	extensions = { "quickfix", "nvim-tree", "toggleterm", "quickfix",  },
 	theme = "tokyonight",
 })
 
@@ -70,7 +70,7 @@ require("indent_blankline").setup({
 		"IndentBlanklineIndent5",
 		"IndentBlanklineIndent6",
 	},
-	filetype_exclude = { "markdown", "help" },
+	filetype_exclude = { "markdown", "help", "log", "txt" },
 })
 
 -- gutter
