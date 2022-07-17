@@ -9,6 +9,11 @@ return require("packer").startup(function(use)
 	-- package manager
 	use("wbthomason/packer.nvim")
 
+    use("tpope/vim-bundler")
+    use("tpope/vim-rake")
+    use("tpope/vim-rails")
+    use("tpope/vim-projectionist")
+
 	-- lsp, linters, formatters, etc
 	use({
 		"VonHeikemen/lsp-zero.nvim",
@@ -61,7 +66,6 @@ return require("packer").startup(function(use)
 	use({ "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } })
 
 	use("tpope/vim-commentary")
-
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
 	-- customizable statusline with nice defaults

@@ -56,6 +56,13 @@ lsp.configure('sumneko_lua', {
 
 lsp.setup()
 
+ vim.api.nvim_command([[
+    augroup mybundler_lock
+        autocmd BufNewFile,BufRead [Gg]emfile.lock setf gemfilelock
+    augroup END
+ ]])
+
+
 require("nvim-treesitter.configs").setup({
 	ensure_installed = "all",
 	ignore_install = { "phpdoc" },
