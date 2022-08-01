@@ -13,6 +13,7 @@ return require("packer").startup(function(use)
     use("tpope/vim-rake")
     use("tpope/vim-rails")
     use("tpope/vim-projectionist")
+    use("tpope/vim-unimpaired")
 
 	-- lsp, linters, formatters, etc
 	use({
