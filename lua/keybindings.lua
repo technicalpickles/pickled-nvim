@@ -38,12 +38,16 @@ vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<c
 vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", silent_noremap)
 vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", silent_noremap)
 vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", silent_noremap)
-vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", silent_noremap)
 
 -- terminal mapping
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", silent_noremap)
 
 vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { buffer = 0 })
+
+-- toggle search highlight
+
+vim.keymap.set({ "n", "v" }, "<leader>nh", "<cmd>nohls<cr>", silent_noremap)
 
 -- search
 -- -- try `gsiw` under word
