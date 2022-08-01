@@ -142,3 +142,6 @@ vim.api.nvim_set_keymap("n", "<leader>d", ":NvimTreeToggle<CR>", silent_noremap)
 
 -- ctrl-` toggle terminal
 -- see toggleterm's setup
+
+-- ⌘ a - select all
+vim.keymap.set("n", "<D-a>", "ggVG", silent)
