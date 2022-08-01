@@ -48,7 +48,9 @@ return require("packer").startup(function(use)
 	})
 
 	-- drop in replacement for filetype.vim
-	use("nathom/filetype.nvim")
+    -- TODO: switch back to nathom/filetype.nvim after landing fix
+    -- TODO: figure out why filetype=lock is being set from lua and where
+	-- use{"technicalpickles/filetype.nvim", branch = "more-specific-cargo-lock"}
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
