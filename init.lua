@@ -11,13 +11,16 @@ local silent_noremap = { noremap = true, silent = true }
 
 local command_center = require("command_center")
 command_center.add({
-	{ description = "Copy GitHub Permalink", cmd = "<leader>gy" },
+	{ desc = "Copy GitHub Permalink", cmd = "<leader>gy" },
+	{ desc = "Close Other Buffers", cmd = "<CMD>%bd|e#|bd#<CR>" },
+	{ desc = "Copy Relative Filename", cmd = '<CMD>let @" = expand("%")"<CR>' },
+	{ desc = "Copy Absolute Filename", cmd = '<CMD>let @" = expand("%:p")"<CR>' },
 	{
-		description = "Format Document",
+		desc = "Format Document",
 		cmd = function()
 			vim.lsp.buf.formatting_sync()
 		end,
-		keybindings = { "n", "<leader>f", silent_noremap },
+		keys = { "n", "<leader>f", silent_noremap },
 	},
 })
 

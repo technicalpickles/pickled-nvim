@@ -17,31 +17,31 @@ vim.cmd([[colorscheme tokyonight]])
 
 -- statusline
 require("lualine").setup({
-    extensions = { "quickfix", "nvim-tree", "toggleterm", "quickfix", },
-    theme = "tokyonight",
+	extensions = { "quickfix", "nvim-tree", "toggleterm", "quickfix" },
+	theme = "tokyonight",
 })
 
 -- font
 vim.o.guifont = "DankMono Nerd Font:h16"
 require("gui-font-resize").setup({
-    default_size = 16
+	default_size = 16,
 })
 
 -- tabs
 -- see barbar in plugin.lua
 require("bufferline").setup({
-    options = {
-        close_icon = "✕",
-        buffer_close_icon = "✕",
-        offsets = {
-            {
-                filetype = "NvimTree",
-                text = "",
-                highlight = "Directory",
-                text_align = "left",
-            },
-        },
-    },
+	options = {
+		close_icon = "✕",
+		buffer_close_icon = "✕",
+		offsets = {
+			{
+				filetype = "NvimTree",
+				text = "",
+				highlight = "Directory",
+				text_align = "left",
+			},
+		},
+	},
 })
 -- always show tab line, even if there is only 1 item
 vim.o.showtabline = 2
@@ -60,17 +60,17 @@ vim.cmd([[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]])
 
 -- TODO: can we make the current context bold in the same color?
 require("indent_blankline").setup({
-    show_current_context = true,
-    show_current_context_start = true,
-    char_highlight_list = {
-        "IndentBlanklineIndent1",
-        "IndentBlanklineIndent2",
-        "IndentBlanklineIndent3",
-        "IndentBlanklineIndent4",
-        "IndentBlanklineIndent5",
-        "IndentBlanklineIndent6",
-    },
-    filetype_exclude = { "markdown", "help", "log", "txt" },
+	show_current_context = true,
+	show_current_context_start = true,
+	char_highlight_list = {
+		"IndentBlanklineIndent1",
+		"IndentBlanklineIndent2",
+		"IndentBlanklineIndent3",
+		"IndentBlanklineIndent4",
+		"IndentBlanklineIndent5",
+		"IndentBlanklineIndent6",
+	},
+	filetype_exclude = { "markdown", "help", "log", "txt" },
 })
 
 -- gutter
@@ -80,8 +80,8 @@ vim.o.relativenumber = true
 
 -- cursorline
 require("nvim-cursorline").setup({
-    cursorline = { enable = true, timeout = 1000, number = false },
-    cursorword = { enable = true, min_length = 3, hl = { underline = true } },
+	cursorline = { enable = true, timeout = 1000, number = false },
+	cursorword = { enable = true, min_length = 3, hl = { underline = true } },
 })
 
 vim.o.showmode = false
@@ -90,10 +90,10 @@ vim.o.showmode = false
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
 dashboard.section.buttons.val = {
-    dashboard.button("r", "  Restore session", "<Cmd>RestoreSession<CR>"),
-    dashboard.button("e", "  New file", ":ene<CR>"),
-    dashboard.button("p", "  Open Project", "<Cmd>Telescope projects<CR>"),
-    dashboard.button("q", "  Quit NVIM", ":qa<CR>"),
+	dashboard.button("r", "  Restore session", "<Cmd>RestoreSession<CR>"),
+	dashboard.button("e", "  New file", ":ene<CR>"),
+	dashboard.button("p", "  Open Project", "<Cmd>Telescope projects<CR>"),
+	dashboard.button("q", "  Quit NVIM", ":qa<CR>"),
 }
 alpha.setup(dashboard.config)
 
@@ -166,6 +166,13 @@ alpha.setup(dashboard.config)
 -- }))
 
 -- wilder.set_option("renderer", popupmenu_renderer)
+
+-- reload current file with focus for frontends that support it
+-- https://github.com/neovim/neovim/issues/1936
+vim.cmd([[
+set autoread
+au FocusGained * :checktime
+]])
 
 -- mouse
 vim.o.mouse = "a"
