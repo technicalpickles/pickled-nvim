@@ -6,9 +6,9 @@ forked from [quick.nvim](https://github.com/albingroen/quick.nvim)
 
 ### Language Support and Completion
 
-_powed by lsp-zero_
+_powered by lsp-zero_
 
-#### Keybindings
+### Keybindings
 
 Completion Menu:
 
@@ -60,12 +60,49 @@ powered by trouble.nvim
 - `gl`: Show diagnostics in a floating window. See :help vim.diagnostic.open_float().
 - `[d`: Move to the previous diagnostic in the current buffer. See :help vim.diagnostic.goto_prev().
 - `]d`: Move to the next diagnostic. See :help vim.diagnostic.goto_next().
+- `<leader>xx`: toggle trouble window
 
 
 ### Splitting and Joining lines
 
+_powered by splitjoin.vim_ 
+
 - `gS`: change from one-line syntax to multi-line syntax
 - `gJ`: change from multi-line syntax to one-line syntax
+
+### Matching words
+
+_powered by vim-matchup_
+
+- `%`:  go forwards to next matching word. If at a close word, cycle back to the corresponding open word.
+- `g%`: go backwards to Nth previous matching word. If at an open word, cycle around to the corresponding close word
+- `[%`: go to Nth previous outer open word. Allows navigation to the start of blocks surrounding the cursor. This is similar to vim's built-in [( and [{ and is an exclusive motion.
+- `]%`: go to Nth next surrounding close word. This is an exclusive motion.
+- `z%`: go to inside Nth nearest inner contained block. This is an exclusive motion when used with operators, except it eats whitespace
+
+Text objects:
+- `i%`: inside of any block
+- `a%`: an any block
+
+[text object examples](https://github.com/andymass/vim-matchup#line-wise-operatortext-object-combinations)
+
+### Textobjects
+
+_powered by nvim-treesitter-textobjects and nvim-treesitter-textsubjects__
+
+Method/function Arguments/paremeters:
+
+- `<leader>a`
+- `<leader>A`
+
+
+While in visual mode:
+
+- `.`: Depending on your location it may select comments, function calls/definitions, loops, if statements, arguments, return values.
+- `;`: Depending on your location it may select classes, structs, functions, methods.
+- `i;`: Depending on your location it may select inside classes, structs, functions, methods.
+- `,`: go back to previous selection
+
 
 ### Bracket keymapings 
 
@@ -104,12 +141,30 @@ Misc:
 - `[f` and `]f`: the next/previous file in the directory
 - `[n` and `]n`: jump between SCM conflict markers.
 
+### Multiple Cursors
+
+_powered by vim-visual-multi_
+
+
+
+- select words with `C-N` (like Ctrl-d in Sublime Text/VS Code)
+- create cursors vertically with `C-Down`/`Ctrl-Up`
+- select one character at a time with `S-Arrows`
+- press `n`/`N` to get next/previous occurrence
+- press `[`/`]` to select next/previous cursor
+- press `q` to skip current and get next occurrence
+- press `Q` to remove current cursor/selection
+- start insert mode with i,a,I,A
+
+_note: you'll need to disable macOS Keyboard Shortcuts for Mission Control for some of these to not be hijacked
 
 ### Misc:
 
 * `ga`: show info about the character under cursor as decimal, octal, and hex (_powered by vim-characterize_)
 
 ### Marks
+
+_powered by marks.nvim_
 
 ```
     mx              Set mark x

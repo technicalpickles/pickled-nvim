@@ -14,6 +14,8 @@ return require("packer").startup(function(use)
 	use("tpope/vim-rails")
 	use("tpope/vim-projectionist")
 	use("tpope/vim-unimpaired")
+	use("tpope/vim-commentary")
+	use("tpope/vim-repeat")
 
 	-- lsp, linters, formatters, etc
 	use({
@@ -56,8 +58,11 @@ return require("packer").startup(function(use)
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
+	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("RRethy/nvim-treesitter-textsubjects")
 	use("nvim-treesitter/nvim-treesitter-refactor")
 	use("RRethy/nvim-treesitter-endwise")
+	use("andymass/vim-matchup")
 
 	-- styling cursor, ident lines, etc
 	use("yamatsum/nvim-cursorline")
@@ -69,7 +74,6 @@ return require("packer").startup(function(use)
 	-- dashboard when starting à la startify
 	use({ "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } })
 
-	use("tpope/vim-commentary")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
 	-- customizable statusline with nice defaults
@@ -92,7 +96,7 @@ return require("packer").startup(function(use)
 	})
 
 	-- terminal manager
-	use({ "akinsho/toggleterm.nvim", tag = "v1.*" })
+	-- use({ "akinsho/toggleterm.nvim", tag = "v1.*" })
 
 	-- tree explorer
 	use({
@@ -180,4 +184,6 @@ return require("packer").startup(function(use)
 	use("ktunprasert/gui-font-resize.nvim")
 
 	use("chentoast/marks.nvim")
+
+	use("github/copilot.vim")
 end)

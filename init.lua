@@ -28,11 +28,16 @@ command_center.add({
 		end,
 		keys = { "n", "<leader>f", silent_noremap },
 	},
+	-- hi
 })
 
 require("surround").setup({ mappings_style = "surround" })
+-- paired with vim-repeat to repeat surrounding texts
 
-require("toggleterm").setup({ open_mapping = [[<C-`>]], hide_numbers = true })
+-- require("toggleterm").setup({ open_mapping = [[<C-`>]], hide_numbers = true })
+function foo()
+	-- hi
+end
 
 require("project_nvim").setup({})
 require("auto-session").setup({
