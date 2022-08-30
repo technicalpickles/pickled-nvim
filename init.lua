@@ -35,9 +35,6 @@ require("surround").setup({ mappings_style = "surround" })
 -- paired with vim-repeat to repeat surrounding texts
 
 -- require("toggleterm").setup({ open_mapping = [[<C-`>]], hide_numbers = true })
-function foo()
-	-- hi
-end
 
 require("project_nvim").setup({})
 require("auto-session").setup({
@@ -46,4 +43,10 @@ require("auto-session").setup({
 	auto_restore_enabled = false,
 })
 
-require("vgit").setup()
+require("vgit").setup({
+	settings = {
+		signs = {
+			priority = 30
+		}
+	}
+})

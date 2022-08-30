@@ -74,7 +74,12 @@ require("indent_blankline").setup({
 })
 
 -- gutter
-vim.o.signcolumn = "yes" -- always show to avoid it jumping around
+-- always show to avoid it jumping around
+-- set to 2 to be able to show these plugins:
+-- - vgit
+-- - marks.nvim
+-- NOTE: make sure to adjust priority for consistency
+vim.o.signcolumn = "yes:2"
 vim.o.number = true
 vim.o.relativenumber = true
 

@@ -187,6 +187,15 @@ _powered by marks.nvim_
     dm=             Delete the bookmark under the cursor.
 ```
 
+### Copilot
+
+`<C-]>`: Dismiss the current suggestion.
+
+`<M-]>`: Cycle to the next suggestion, if one is available.
+<Plug>(copilot-next)
+
+`<M-[>`: Cycle to the previous suggestion.
+
 ### Auto-closing
 
 - single quotes
@@ -195,6 +204,5 @@ _powered by marks.nvim_
 - Markdown:
   - italics
   - bold
-
 
 _powered via nvim-autopairs_

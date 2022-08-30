@@ -33,4 +33,6 @@ require("nvim-tree").setup({
 	},
 })
 
-require("marks").setup({})
+require("marks").setup({
+	sign_priority = 40
+})
