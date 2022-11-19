@@ -85,8 +85,8 @@ vim.keymap.set("n", "<leader>c", "<cmd>Telescope command_center<CR>", silent)
 -- FIXME: frecency really falls over in large repositories
 -- vim.api.nvim_set_keymap("n", "<D-p>", "<cmd>Telescope frecency<CR>", noremap)
 -- vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>Telescope frecency<CR>", noremap)
-vim.api.nvim_set_keymap("n", "<D-p>", "<cmd>Telescope find_files<CR>", noremap)
-vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>Telescope find_files<CR>", noremap)
+vim.api.nvim_set_keymap("n", "<D-p>", "<cmd>lua file_picker()<CR>", noremap)
+vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>lua file_picker()<CR>", noremap)
 
 -- ⌘ s - save
 vim.keymap.set("n", "<D-s>", ":w<CR>", silent)

@@ -25,6 +25,22 @@ require("telescope").load_extension("projects")
 
 require("telescope").load_extension("frecency")
 
+telescope_builtins = require('telescope.builtin')
+function _G.file_picker()
+	local file_picker_name
+
+	-- prefer git ls-files when available because it's a ton faster
+	if vim.fn.empty(vim.fn.FugitiveGitDir()) == 0 then
+		file_picker_name = 'git_files'
+	else
+		file_picker_name = 'find_files'
+	end
+
+	local file_picker = loadstring("telescope_builtins." .. file_picker_name .. "()")
+
+	file_picker()
+end
+
 require("nvim-tree").setup({
 	renderer = {
 		-- display only the folder name
