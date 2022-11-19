@@ -69,6 +69,15 @@ command_center.add({
 	{ desc = "Telescope: Location List", cmd = "<CMD>Telescope loclist<CR>"},
 
 	{ desc = "Telescope: Spell Suggestion", cmd = "<CMD>Telescope spell_suggest<CR>"},
+
+	{ desc = "BufferLine: Toggle Pin", cmd = "<CMD>BufferLineTogglePin<CR>"},
+	{ desc = "BufferLine: Sort By Extension", cmd = "<CMD>BufferLineSortByExtension<CR>"},
+	{ desc = "BufferLine: Sort By Directory", cmd = "<CMD>BufferLineSortByDirectory<CR>"},
+	{ desc = "BufferLine: Sort By Tabs", cmd = "<CMD>BufferLineSortByTabs<CR>"},
+
+	{ desc = "BufferLine: Pick", cmd = "<CMD>BufferLinePick<CR>", keys = {"n", "gb", silent_noremap}},
+	{ desc = "BufferLine: Pick to Close", cmd = "<CMD>BufferLinePickClose<CR>"},
+
 })
 
 require("surround").setup({ mappings_style = "surround" })
