@@ -17,7 +17,7 @@ vim.cmd([[colorscheme tokyonight]])
 
 -- statusline
 require("lualine").setup({
-	extensions = { "quickfix", "nvim-tree", "toggleterm", "quickfix" },
+	extensions = { "quickfix", "nvim-tree", "toggleterm", "quickfix", "symbols-outline" },
 	theme = "tokyonight",
 })
 

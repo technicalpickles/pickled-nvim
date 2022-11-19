@@ -29,7 +29,46 @@ command_center.add({
 		end,
 		keys = { "n", "<leader>f", silent_noremap },
 	},
-	-- hi
+
+	{ desc = "Packer: Install", cmd = "<CMD>so ~/.config/nvim/lua/plugins.lua<CR><CMD>PackerInstall<CR>" },
+	{ desc = "Packer: Update", cmd = "<CMD>so ~/.config/nvim/lua/plugins.lua<CR><CMD>PackerUpdate<CR>" },
+
+	{ desc = "Comment: Toggle", cmd = "gcc"},
+
+	{ desc = "Treesitter: Toggle Playground", cmd = "<CMD>TSPlaygroundToggle<CR>"},
+
+	{ desc = "View: Toggle vertical guide lines", cmd = "<CMD>IndentBlanklineToggle<CR>" },
+
+	{ desc = "File: Toggle tree view", cmd = "<CMD>NvimTreeToggle<CR>"},
+	{ desc = "File: Reveal current file in tree view", cmd = "<CMD>NvimTreeFindFile<CR>"},
+
+	{ desc = "Telescope: Files", cmd = "<CMD>Telescope find_files<CR>"},
+	{ desc = "Telescope: Buffers", cmd = "<CMD>Telescope buffers<CR>"},
+
+	{ desc = "Telescope: Live Grep", cmd = "<CMD>Telescope live_grep<CR>"},
+	{ desc = "Telescope: Search History", cmd = "<CMD>Telescope search_history<CR>" },
+	{ desc = "Telescope: Highlights", cmd = "<CMD>Telescope highlights<CR>"},
+
+
+	{ desc = "Telescope: Commands", cmd = "<CMD>Telescope commands<CR>"},
+	{ desc = "Telescope: Command History", cmd = "<CMD>Telescope command_history<CR>"},
+
+	{ desc = "Telescope: Tags", cmd = "<CMD>Telescope tags<CR>"},
+
+	{ desc = "Telescope: Help Tags", cmd = "<CMD>Telescope help_tags<CR>"},
+	{ desc = "Telescope: Man Pages", cmd = "<CMD>Telescope man_pages<CR>"},
+	{ desc = "Telescope: VIM Options", cmd = "<CMD>Telescope: vim_options" },
+
+	{ desc = "Telescope: Autocommands", cmd = "<CMD>Telescope: autocommands" },
+	{ desc = "Telescope: Keymaps", cmd = "<CMD>Telescope: keymaps" },
+	{ desc = "Telescope: Filetypes", cmd = "<CMD>Telescope: filetypes" },
+
+
+	{ desc = "Telescope: Registers", cmd = "<CMD>Telescope registers<CR>"},
+	{ desc = "Telescope: Quickfix", cmd = "<CMD>Telescope quickfix<CR>"},
+	{ desc = "Telescope: Location List", cmd = "<CMD>Telescope loclist<CR>"},
+
+	{ desc = "Telescope: Spell Suggestion", cmd = "<CMD>Telescope spell_suggest<CR>"},
 })
 
 require("surround").setup({ mappings_style = "surround" })

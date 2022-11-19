@@ -46,7 +46,6 @@ vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", silent_noremap)
 vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { buffer = 0 })
 
 -- toggle search highlight
-
 vim.keymap.set({ "n", "v" }, "<leader>nh", "<cmd>nohls<cr>", silent_noremap)
 
 -- search
@@ -78,8 +77,6 @@ vim.api.nvim_set_keymap("n", "<leader>m", "<cmd>Telescope marks<CR>", noremap)
 -- { VS Code and other IDE like behavior }} --
 
 -- ⌘ P - Command Palette
--- FIXME neovide can't distinguish between shift and non-shift
--- vim.api.nvim_set_keymap('n', '<D-P>', "<cmd>Telescope command_center<CR>", { noremap = true })
 vim.api.nvim_set_keymap('n', '<D-S-p>', "<cmd>Telescope command_center<CR>", { noremap = true })
 
 vim.keymap.set("n", "<leader>c", "<cmd>Telescope command_center<CR>", silent)

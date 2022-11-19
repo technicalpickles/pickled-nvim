@@ -9,12 +9,21 @@ return require("packer").startup(function(use)
 	-- package manager
 	use("wbthomason/packer.nvim")
 
+	-- ruby
 	use("tpope/vim-bundler")
 	use("tpope/vim-rake")
 	use("tpope/vim-rails")
+
+	-- per project alternate setup
 	use("tpope/vim-projectionist")
+
+	-- lots of handy shortcuts
 	use("tpope/vim-unimpaired")
+
+	-- toggling comments
 	use("tpope/vim-commentary")
+
+	-- make . work in more places
 	use("tpope/vim-repeat")
 
 	-- lsp, linters, formatters, etc
@@ -51,20 +60,27 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- filetypes
 	-- drop in replacement for filetype.vim
 	-- TODO: switch back to nathom/filetype.nvim after landing fix
 	-- TODO: figure out why filetype=lock is being set from lua and where
 	-- use{"technicalpickles/filetype.nvim", branch = "more-specific-cargo-lock"}
 	use("technicalpickles/procfile.vim")
 
+	-- treesitter, syntax, etc
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-
+	-- debug info
 	use("nvim-treesitter/playground")
-
 	use("nvim-treesitter/nvim-treesitter-textobjects")
 	use("RRethy/nvim-treesitter-textsubjects")
 	use("nvim-treesitter/nvim-treesitter-refactor")
+	-- determine what type of comments to use in multi-syntax files, ie css in html... use with commentary
+	use("JoosepAlviste/nvim-ts-context-commentstring")
+	-- adding end automatically
 	use("RRethy/nvim-treesitter-endwise")
+
+	-- better support for % to bounce between sets of matching text, ie parens, etc
+	-- drop in replacement for matchit.vim
 	use("andymass/vim-matchup")
 
 	-- styling cursor, ident lines, etc
@@ -72,12 +88,12 @@ return require("packer").startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 	use("p00f/nvim-ts-rainbow")
 
+	-- popups for suggestions when starting shortcuts
 	use("folke/which-key.nvim")
 
 	-- dashboard when starting à la startify
 	use({ "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } })
 
-	use("JoosepAlviste/nvim-ts-context-commentstring")
 
 	-- customizable statusline with nice defaults
 	use({
@@ -92,14 +108,13 @@ return require("packer").startup(function(use)
 	})
 
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	use({'nvim-telescope/telescope-fzy-native.nvim', run = 'make' })
+	use("natecraddock/telescope-zf-native.nvim")
 
 	use({
 		"gfeiyou/command-center.nvim",
 		requires = { "nvim-telescope/telescope.nvim" },
 	})
-
-	-- terminal manager
-	-- use({ "akinsho/toggleterm.nvim", tag = "v1.*" })
 
 	-- tree explorer
 	use({

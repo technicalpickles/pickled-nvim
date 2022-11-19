@@ -8,11 +8,18 @@ require("telescope").setup({
 	pickers = {
 		find_files = {
 			theme = "dropdown",
-			find_command = { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" },
+			-- find_command = { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" },
+		},
+		git_files = {
+			theme = "dropdown",
 		},
 	},
 })
-require("telescope").load_extension("fzf")
+-- require("telescope").load_extension("fzf")
+-- require('telescope').load_extension('fzy_native')
+require("telescope").load_extension("zf-native")
+
+
 require("telescope").load_extension("command_center")
 require("telescope").load_extension("projects")
 
