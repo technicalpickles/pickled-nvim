@@ -80,7 +80,7 @@ vim.api.nvim_set_keymap("n", "<leader>m", "<cmd>Telescope marks<CR>", noremap)
 -- ⌘ P - Command Palette
 -- FIXME neovide can't distinguish between shift and non-shift
 -- vim.api.nvim_set_keymap('n', '<D-P>', "<cmd>Telescope command_center<CR>", { noremap = true })
--- vim.api.nvim_set_keymap('n', '<D-S-p>', "<cmd>Telescope command_center<CR>", { noremap = true })
+vim.api.nvim_set_keymap('n', '<D-S-p>', "<cmd>Telescope command_center<CR>", { noremap = true })
 
 vim.keymap.set("n", "<leader>c", "<cmd>Telescope command_center<CR>", silent)
 
