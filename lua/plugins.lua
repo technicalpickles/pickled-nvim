@@ -162,6 +162,11 @@ return require("packer").startup(function(use)
 	use("ur4ltz/surround.nvim")
 	use("AndrewRadev/splitjoin.vim")
 
+	use {"akinsho/toggleterm.nvim", tag = '*'}
+	-- so you can can vim in the terimal
+	use "samjwill/nvim-unception"
+
+
 	-- session, remembering where we were
 	use("farmergreg/vim-lastplace")
 	use("rmagatti/auto-session")

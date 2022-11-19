@@ -21,6 +21,16 @@ require("lualine").setup({
 	theme = "tokyonight",
 })
 
+-- terminal
+require("toggleterm").setup({
+	open_mapping = [[<c-`>]],
+	insert_mapping = true,
+	terminal_mappings = true,
+})
+
+-- vim-pasta
+vim.g.pasta_disabled_filetypes = { "toggleterm" }
+
 -- font
 vim.o.guifont = "DankMono Nerd Font:h16"
 require("gui-font-resize").setup({
