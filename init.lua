@@ -1,4 +1,5 @@
 require("basics")
+require("filetypes")
 require("plugins")
 require("keybindings")
 require("navigation")
