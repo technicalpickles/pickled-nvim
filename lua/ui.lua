@@ -112,6 +112,16 @@ dashboard.section.buttons.val = {
 }
 alpha.setup(dashboard.config)
 
+-- git
+require("vgit").setup({
+	settings = {
+		signs = {
+			priority = 30
+		}
+	}
+})
+
+
 -- FIXME: not working on second machine due to python failing to initialize
 -- enhance wildmenu
 -- local wilder = require("wilder")
