@@ -43,7 +43,9 @@ return require("packer").startup(function(use)
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "hrsh7th/cmp-nvim-lua" },
 			{ "hrsh7th/cmp-nvim-lsp-signature-help" },
-			{ "mtoohey31/cmp-fish" }, -- Snippets
+			{ "mtoohey31/cmp-fish" },
+
+			-- Snippets
 			{ "L3MON4D3/LuaSnip" },
 			{ "rafamadriz/friendly-snippets" },
 		},

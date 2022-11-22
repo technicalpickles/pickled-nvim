@@ -20,7 +20,6 @@ require("telescope").setup({
 require("telescope").load_extension("zf-native")
 
 
-require("telescope").load_extension("command_center")
 require("telescope").load_extension("projects")
 
 require("telescope").load_extension("frecency")
