@@ -8,7 +8,7 @@ require("telescope").setup({
 	pickers = {
 		find_files = {
 			theme = "dropdown",
-			-- find_command = { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" },
+			find_command = { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" },
 		},
 		git_files = {
 			theme = "dropdown",
