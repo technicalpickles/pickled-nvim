@@ -1,9 +1,54 @@
 -- filetype
 local lsp = require("lsp-zero")
 local lspkind = require("lspkind")
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+require("luasnip.loaders.from_snipmate").lazy_load()
 
 lsp.preset("recommended")
 lsp.nvim_workspace()
+
+local cmp_sources = lsp.defaults.cmp_sources()
+
+table.insert(cmp_sources, { name = "nvim_lsp_signature_help" })
+table.insert(cmp_sources, { name = "fish" })
+
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_mappings = lsp.defaults.cmp_mappings({
+	['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+	['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+
+	-- super tab like behavior w/ luasnip
+	-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
+	["<Tab>"] = cmp.mapping(function(fallback)
+		if cmp.visible() then
+			cmp.select_next_item()
+		elseif luasnip.expand_or_jumpable() then
+			luasnip.expand_or_jump()
+		elseif has_words_before() then
+			cmp.complete()
+		else
+			fallback()
+		end
+	end, { "i", "s" }),
+
+	-- super shift-tab like behavior w/ luasnip
+	["<S-Tab>"] = cmp.mapping(function(fallback)
+		if cmp.visible() then
+			cmp.select_prev_item()
+		elseif luasnip.jumpable(-1) then
+			luasnip.jump(-1)
+		else
+			fallback()
+		end
+	end, { "i", "s" }),
+})
+
 
 lsp.setup_nvim_cmp({
 	formatting = {
@@ -12,20 +57,14 @@ lsp.setup_nvim_cmp({
 			menu = {
 				buffer = "[Buffer]",
 				nvim_lsp = "[LSP]",
-				luasnip = "[LuaSnip]",
+				luasnip = "[Snippet]",
 				nvim_lua = "[Lua]",
 				latex_symbols = "[Latex]",
 			},
 		}),
 	},
-	sources = {
-		{ name = "nvim_lsp_signature_help" },
-		{ name = "path" },
-		{ name = "fish" },
-		{ name = "nvim_lsp", keyword_length = 3 },
-		{ name = "buffer", keyword_length = 3 },
-		{ name = "luasnip", keyword_length = 2 },
-	},
+	mapping = cmp_mappings,
+	sources = sources,
 })
 
 lsp.configure("sumneko_lua", {

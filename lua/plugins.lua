@@ -47,7 +47,11 @@ return require("packer").startup(function(use)
 
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" },
-			{ "rafamadriz/friendly-snippets" },
+			-- { "rafamadriz/friendly-snippets" },
+			-- use snipmate/ultisnip style snippets instead
+			-- this has a lot more stars, and a little less problematic in ruby
+			-- https://github.com/VonHeikemen/lsp-zero.nvim/issues/61
+			{"honza/vim-snippets"},
 		},
 	})
 	use("jose-elias-alvarez/null-ls.nvim")
@@ -61,7 +65,6 @@ return require("packer").startup(function(use)
 			require("impatient")
 		end,
 	})
-
 	-- filetypes
 	-- drop in replacement for filetype.vim
 	-- TODO: switch back to nathom/filetype.nvim after landing fix
