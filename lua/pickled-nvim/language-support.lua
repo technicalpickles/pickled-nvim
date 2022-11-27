@@ -119,8 +119,6 @@ lspconfig.ruby_ls.setup({
 	end
 })
 
-lsp.ensure_installed({'gopls'})
-
 lsp.setup()
 
 -- debug lsp

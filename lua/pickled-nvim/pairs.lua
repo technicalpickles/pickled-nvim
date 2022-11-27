@@ -27,3 +27,6 @@ npairs.setup({
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 -- FIXME this seems to throw an error when starting [] inside a .editorconfig
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+
+require("surround").setup({ mappings_style = "surround" })

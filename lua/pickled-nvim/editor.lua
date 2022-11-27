@@ -19,3 +19,5 @@ opt.undoreload = 10000 -- Maximum number lines to save for undo on a buffer relo
 -- pasta, which helps correctly indent
 vim.g.pasta_disabled_filetypes = { "toggleterm" }
 
+require('sibling-swap').setup({})
+

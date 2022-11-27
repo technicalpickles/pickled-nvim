@@ -19,7 +19,6 @@ api.nvim_create_autocmd(
 )
 
 -- dockerignore is  close enough to gitignore
-
 api.nvim_create_autocmd(
 	{"BufRead","BufNewFile"},
 	{

@@ -20,7 +20,6 @@ require("pickled-nvim.command_palette")
 require("pickled-nvim.custom-help")
 
 
-require("surround").setup({ mappings_style = "surround" })
 -- paired with vim-repeat to repeat surrounding texts
 
 -- require("toggleterm").setup({ open_mapping = [[<C-`>]], hide_numbers = true })

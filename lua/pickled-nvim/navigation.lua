@@ -53,8 +53,6 @@ function _G.file_picker()
 	file_picker()
 end
 
-require('sibling-swap').setup({})
-
 -- close nvim tree when quitting... to avoid keeping it open by itself
 vim.api.nvim_create_autocmd({ "QuitPre" }, {
 	pattern = "*",
@@ -143,8 +141,6 @@ vim.api.nvim_set_hl(1, 'FocusedSymbol', {fg = colors.blue, bold = true})
 -- Pmenu (already exists)
 -- SymbolsOutlineConnector (default seems fine)
 -- Comment (default seems fine)
-
-
 
 require("marks").setup({
 	sign_priority = 40

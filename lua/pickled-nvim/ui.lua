@@ -4,7 +4,7 @@ opt.scrolloff = 5 -- Minumum lines to keep above and below cursor
 opt.title = true -- show title
 
 -- for UI frontends
-vim.o.termguicolors = true
+o.termguicolors = true
 vim.g.neovide_input_use_logo = true -- Ensure we can pass the command key
 vim.g.neovide_confirm_quit = true -- Prevent exit on unsaved buffer on window close
 vim.g.neovide_cursor_vfx_mode = "railgun"
@@ -122,7 +122,6 @@ require("vgit").setup({
 		}
 	}
 })
-
 
 -- FIXME: not working on second machine due to python failing to initialize
 -- enhance wildmenu
