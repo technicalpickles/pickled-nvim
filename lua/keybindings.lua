@@ -7,10 +7,10 @@ local silent = { silent = true }
 -- split management
 vim.api.nvim_set_keymap("n", "vs", ":vs<CR>", noremap)
 vim.api.nvim_set_keymap("n", "sp", ":sp<CR>", noremap)
-vim.api.nvim_set_keymap("n", "<C-L>", "<C-W><C-L>", noremap)
-vim.api.nvim_set_keymap("n", "<C-H>", "<C-W><C-H>", noremap)
-vim.api.nvim_set_keymap("n", "<C-K>", "<C-W><C-K>", noremap)
-vim.api.nvim_set_keymap("n", "<C-J>", "<C-W><C-J>", noremap)
+-- vim.api.nvim_set_keymap("n", "<C-L>", "<C-W><C-L>", noremap)
+-- vim.api.nvim_set_keymap("n", "<C-H>", "<C-W><C-H>", noremap)
+-- vim.api.nvim_set_keymap("n", "<C-K>", "<C-W><C-K>", noremap)
+-- vim.api.nvim_set_keymap("n", "<C-J>", "<C-W><C-J>", noremap)
 -- tab convenience
 vim.api.nvim_set_keymap("n", "tn", ":tabnew<CR>", noremap)
 vim.api.nvim_set_keymap("n", "tk", ":tabnext<CR>", noremap)
