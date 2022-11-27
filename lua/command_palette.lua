@@ -63,6 +63,17 @@ command_center.add({
 
 	{ desc = "Telescope: Projects", cmd = "<CMD>Telescope projects<CR>"},
 
+
+	{ desc = "Telescope (LSP): References", cmd = "<CMD>Telescope lsp_references<CR>"},
+	{ desc = "Telescope (LSP): Incoming Calls", cmd = "<CMD>Telescope lsp_incoming_calls<CR>"},
+	{ desc = "Telescope (LSP): Outgoing Calls", cmd = "<CMD>Telescope lsp_outgoing_calls<CR>"},
+	{ desc = "Telescope (LSP): Document Symbols", cmd = "<CMD>Telescope lsp_document_symbols<CR>"},
+	{ desc = "Telescope (LSP): Workspace Symbols", cmd = "<CMD>Telescope lsp_workspace_symbols<CR>"},
+	{ desc = "Telescope (LSP): Diagnostics", cmd = "<CMD>Telescope diagnostics<CR>"},
+	{ desc = "Telescope (LSP): Implementations", cmd = "<CMD>Telescope lsp_implementations<CR>"},
+	{ desc = "Telescope (LSP): Definitions", cmd = "<CMD>Telescope lsp_definitions<CR>"},
+	{ desc = "Telescope (LSP): Type Definitions", cmd = "<CMD>Telescope lsp_type_definitions<CR>"},
+
 	{ desc = "BufferLine: Toggle Pin", cmd = "<CMD>BufferLineTogglePin<CR>"},
 	{ desc = "BufferLine: Sort By Extension", cmd = "<CMD>BufferLineSortByExtension<CR>"},
 	{ desc = "BufferLine: Sort By Directory", cmd = "<CMD>BufferLineSortByDirectory<CR>"},
@@ -85,9 +96,11 @@ command_center.add({
 	{ desc = "Trouble: Toggle", cmd = "<CMD>Trouble<CR>"},
 	{ desc = "Trouble: Document Diagnostics", cmd = "<CMD>Trouble document_diagnostics<CR>"},
 	{ desc = "Trouble: Workspace Diagnostics", cmd = "<CMD>Trouble workspace_diagnostics<CR>"},
+
 	{ desc = "Trouble: LSP References", cmd = "<CMD>Trouble lsp_references<CR>"},
 	{ desc = "Trouble: LSP Definitions", cmd = "<CMD>Trouble lsp_definitions<CR>"},
 	{ desc = "Trouble: LSP Type Definitions", cmd = "<CMD>Trouble lsp_type_definitions<CR>"},
+
 	{ desc = "Trouble: Quickfix", cmd = "<CMD>Trouble quickfix<CR>"},
 	{ desc = "Trouble: Location List", cmd = "<CMD>Trouble loclist<CR>"},
 
