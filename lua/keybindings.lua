@@ -45,18 +45,12 @@ vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", silent_noremap)
 
 vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { buffer = 0 })
 
+-- symbols outline
 vim.api.nvim_set_keymap("n", "<leader>s", "<CMD>SymbolsOutline<CR>", silent_noremap)
 vim.api.nvim_set_keymap("n", "<D-.>", "<CMD>SymbolsOutline<CR>", silent_noremap)
 
 -- toggle search highlight
 vim.keymap.set({ "n", "v" }, "<leader>nh", "<cmd>nohls<cr>", silent_noremap)
-
--- search
--- -- try `gsiw` under word
-vim.cmd([[
-    nmap gs  <plug>(GrepperOperator)
-    xmap gs  <plug>(GrepperOperator)
-]])
 
 -- { macOS convenience keybinds }--
 -- Cut/Copy/Paste to/from system clipboard
