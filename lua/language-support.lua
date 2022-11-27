@@ -64,7 +64,7 @@ lsp.setup_nvim_cmp({
 		}),
 	},
 	mapping = cmp_mappings,
-	sources = sources,
+	sources = cmp_sources,
 })
 
 lsp.configure("sumneko_lua", {
