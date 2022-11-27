@@ -1,57 +1,8 @@
 # pickled-nvim
 
-forked from [quick.nvim](https://github.com/albingroen/quick.nvim)
+forked from [quick.nvim](https://github.com/albingroen/quick.nvim), with heavy modifications :grin:
 
 ## Features
-
-### Language Support and Completion
-
-_powered by lsp-zero_
-
-### Keybindings
-
-Completion Menu:
-
-* <kbd>Enter</kbd>: Confirms selection.
-
-* <kbd>Up</kbd>: Navigate to previous item on the list.
-
-* `<Down>`: Navigate to the next item on the list.
-
-* `<Ctrl-u>`: Scroll up in the item's documentation.
-
-* `<Ctrl-f>`: Scroll down in the item's documentation.
-
-* `<Ctrl-e>`: Toggles the completion.
-
-* `<Ctrl-d>`: Go to the next placeholder in the snippet.
-
-* `<Ctrl-b>`: Go to the previous placeholder in the snippet.
-
-* `<Tab>`: Enables completion when the cursor is inside a word. If the completion menu is visible it will navigate to the next item in the list.
-
-* `<S-Tab>`: When the completion menu is visible navigate to the previous item in the list.
-
-
-LSP:
-
-* `K`: Displays hover information about the symbol under the cursor in a floating window. See `:help vim.lsp.buf.hover()`.
-
-* `gd`: Jumps to the definition of the symbol under the cursor. See `:help vim.lsp.buf.definition()`.
-
-* `gD`: Jumps to the declaration of the symbol under the cursor. Some servers don't implement this feature. See `:help vim.lsp.buf.declaration()`.
-
-* `gi`: Lists all the implementations for the symbol under the cursor in the quickfix window. See `:help vim.lsp.buf.implementation()`.
-
-* `go`: Jumps to the definition of the type of the symbol under the cursor. See `:help vim.lsp.buf.type_definition()`.
-
-* `gr`: Lists all the references to the symbol under the cursor in the quickfix window. See `:help vim.lsp.buf.references()`.
-
-* `<Ctrl-k>`: Displays signature information about the symbol under the cursor in a floating window. See `:help vim.lsp.buf.signature_help()`. If a mapping already exists for this key this function is not bound.
-
-* `<F2>`: Renames all references to the symbol under the cursor. See `:help vim.lsp.buf.rename()`.
-
-* `<F4>`: Selects a code action available at the current cursor position. See `:help vim.lsp.buf.code_action()`.
 
 ### Diagnostics
 
@@ -141,51 +92,10 @@ Misc:
 - `[f` and `]f`: the next/previous file in the directory
 - `[n` and `]n`: jump between SCM conflict markers.
 
-### Multiple Cursors
-
-_powered by vim-visual-multi_
-
-
-
-- select words with `C-N` (like Ctrl-d in Sublime Text/VS Code)
-- create cursors vertically with `C-Down`/`Ctrl-Up`
-- select one character at a time with `S-Arrows`
-- press `n`/`N` to get next/previous occurrence
-- press `[`/`]` to select next/previous cursor
-- press `q` to skip current and get next occurrence
-- press `Q` to remove current cursor/selection
-- start insert mode with i,a,I,A
-
-_note: you'll need to disable macOS Keyboard Shortcuts for Mission Control for some of these to not be hijacked
-
 ### Misc:
 
 * `ga`: show info about the character under cursor as decimal, octal, and hex (_powered by vim-characterize_)
 
-### Marks
-
-_powered by marks.nvim_
-
-```
-    mx              Set mark x
-    m,              Set the next available alphabetical (lowercase) mark
-    m;              Toggle the next available mark at the current line
-    dmx             Delete mark x
-    dm-             Delete all marks on the current line
-    dm<space>       Delete all marks in the current buffer
-    m]              Move to next mark
-    m[              Move to previous mark
-    m:              Preview mark. This will prompt you for a specific mark to
-                    preview; press <cr> to preview the next mark.
-                    
-    m[0-9]          Add a bookmark from bookmark group[0-9].
-    dm[0-9]         Delete all bookmarks from bookmark group[0-9].
-    m}              Move to the next bookmark having the same type as the bookmark under
-                    the cursor. Works across buffers.
-    m{              Move to the previous bookmark having the same type as the bookmark under
-                    the cursor. Works across buffers.
-    dm=             Delete the bookmark under the cursor.
-```
 
 ### Copilot
 

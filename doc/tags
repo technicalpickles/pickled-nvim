@@ -1,0 +1,12 @@
+pickled-nvim	pickled-vim.txt	/*pickled-nvim*
+pickled-nvim-autocomplete	pickled-vim.txt	/*pickled-nvim-autocomplete*
+pickled-nvim-autocomplete-keybindings	pickled-vim.txt	/*pickled-nvim-autocomplete-keybindings*
+pickled-nvim-diagnostic-keybindings	pickled-vim.txt	/*pickled-nvim-diagnostic-keybindings*
+pickled-nvim-index	pickled-vim.txt	/*pickled-nvim-index*
+pickled-nvim-lsp-config	pickled-vim.txt	/*pickled-nvim-lsp-config*
+pickled-nvim-marks	pickled-vim.txt	/*pickled-nvim-marks*
+pickled-nvim-multiple-cursors	pickled-vim.txt	/*pickled-nvim-multiple-cursors*
+pickled-nvim-symbols-outline	pickled-vim.txt	/*pickled-nvim-symbols-outline*
+pickled-nvim-tree	pickled-vim.txt	/*pickled-nvim-tree*
+pickled-nvim-tree-keybindings	pickled-vim.txt	/*pickled-nvim-tree-keybindings*
+picklednvim-lsp-keybindings	pickled-vim.txt	/*picklednvim-lsp-keybindings*

@@ -1,0 +1,270 @@
+==============================================================================
+*pickled-nvim*
+
+==============================================================================
+Index                                                  *pickled-nvim-index*
+
+- |pickled-nvim-autocomplete|
+- |pickled-nvim-lsp-config|
+- |pickled-nvim-symbols-outline|
+- |pickled-nvim-tree|
+
+==============================================================================
+Autocomplete                                           *pickled-nvim-autocomplete*
+
+Brought to you by |lsp-zero|, and thus |cmp|
+
+                                             *pickled-nvim-autocomplete-keybindings*
+
+The default configuration declares the following keybindings.
+
+  <Enter>:  
+      Confirms selection.
+
+  <Up>:  
+      Navigate to previous item on the list.
+
+  <Down>:  
+      Navigate to the next item on the list.
+
+  <Ctrl-u>:  
+      Scroll up in the item's documentation.
+
+  <Ctrl-f>:  
+      Scroll down in the item's documentation.
+
+  <Ctrl-e>:  
+      Toggles the completion.
+
+  <Ctrl-d>:  
+      Go to the next placeholder in the snippet.
+
+  <Ctrl-b>:  
+      Go to the previous placeholder in the snippet.
+
+  <Tab>:  
+      Enables completion when the cursor is inside a word. If the completion
+      menu is visible it will navigate to the next item in the list.
+
+  <S-Tab>:  
+      When the completion menu is visible navigate to the previous
+      item in the list.
+
+
+==============================================================================
+LSP                                                     *pickled-nvim-lsp-config*
+
+Powered by |lsp-zero|, and thus |lspconfig|, |mason-lspconfig|
+
+When a language server gets attached to a buffer you gain access to some
+keybindings and commands. All of these are bound to a built-in function
+so you can get more details using the `:help` command.
+
+                                                        *picklednvim-lsp-keybindings*
+
+  K:  
+      Displays hover information about the symbol under the cursor in a
+      floating window. See |vim.lsp.buf.hover()|.
+
+  gd:  
+      Jumps to the definition of the symbol under the cursor.
+      See |vim.lsp.buf.definition()|.
+
+  gD:  
+      Jumps to the declaration of the symbol under the cursor. Some servers
+      don't implement this feature. See |vim.lsp.buf.declaration()|.
+
+  gi:  
+      Lists all the implementations for the symbol under the cursor in the
+      quickfix window. See |vim.lsp.buf.implementation()|.
+
+  go:  
+      Jumps to the definition of the type of the symbol under the cursor.
+      See |vim.lsp.buf.type_definition()|.
+
+  gr:  
+      Lists all the references to the symbol under the cursor in the quickfix
+      window. See |vim.lsp.buf.references()|.
+
+  <Ctrl-k>:  
+      Displays signature information about the symbol under the cursor in a
+      floating window. See |vim.lsp.buf.signature_help()|. If a mapping
+      already exists for this key this function is not bound.
+
+  <F2>:  
+      Renames all references to the symbol under the cursor.
+      See |vim.lsp.buf.rename()|.
+
+  <F4>:  
+      Selects a code action available at the current cursor position.
+      See |vim.lsp.buf.code_action()|.
+
+                                             *pickled-nvim-diagnostic-keybindings*
+
+  gl:  
+      Show diagnostic in a floating window. See |vim.diagnostic.open_float()|.
+
+  [d:  
+      Move to the previous diagnostic in the current buffer.
+      See |vim.diagnostic.goto_prev()|.
+
+  ]d:  
+      Move to the next diagnostic. See |vim.diagnostic.goto_next()|.
+
+==============================================================================
+Symbols Outline
+*pickled-nvim-symbols-outline*
+
+Powered by |symbols-outline|
+
+
+  <Esc>:  
+      Close outline
+
+  <CR>:  
+      Go to symbol location in code
+
+  o:  
+      Go to symbol location in code without losing focus
+
+  <C-Space>:  
+      Hover current symbol
+
+  K:  
+      Toggles the current symbol preview
+
+  r:  
+      Rename symbol
+
+  a:  
+      Code actions
+
+  h:  
+      Unfold symbol
+
+  l:  
+      Fold symbol
+
+  W:  
+      Fold all symbols
+
+  E:  
+      Unfold all symbols
+
+  R:  
+      Reset all folding
+
+  ?:  
+      Show help message
+
+
+==============================================================================
+Tree view                                              *pickled-nvim-tree*
+
+Powered by |nvim-tree|
+
+*pickled-nvim-tree-keybindings*
+
+`<CR>`            edit                open a file or folder; root will cd to the above directory
+`o`
+`<2-LeftMouse>`
+`<C-e>`           edit_in_place       edit the file in place, effectively replacing the tree explorer
+`O`               edit_no_picker      same as (edit) with no window picker
+`<C-]>`           cd                  cd in the directory under the cursor
+`<2-RightMouse>`
+`<C-v>`           vsplit              open the file in a vertical split
+`<C-x>`           split               open the file in a horizontal split
+`<C-t>`           tabnew              open the file in a new tab
+`<`               prev_sibling        navigate to the previous sibling of current file/directory
+`>`               next_sibling        navigate to the next sibling of current file/directory
+`P`               parent_node         move cursor to the parent directory
+`<BS>`            close_node          close current opened directory or parent
+`<Tab>`           preview             open the file as a preview (keeps the cursor in the tree)
+`K`               first_sibling       navigate to the first sibling of current file/directory
+`J`               last_sibling        navigate to the last sibling of current file/directory
+`I`               toggle_git_ignored  toggle visibility of files/folders hidden via |git.ignore| option
+`H`               toggle_dotfiles     toggle visibility of dotfiles via |filters.dotfiles| option
+`U`               toggle_custom       toggle visibility of files/folders hidden via |filters.custom| option
+`R`               refresh             refresh the tree
+`a`               create              add a file; leaving a trailing `/` will add a directory
+`d`               remove              delete a file (will prompt for confirmation)
+`D`               trash               trash a file via |trash| option
+`r`               rename              rename a file
+`<C-r>`           full_rename         rename a file and omit the filename on input
+`x`               cut                 add/remove file/directory to cut clipboard
+`c`               copy                add/remove file/directory to copy clipboard
+`p`               paste               paste from clipboard; cut clipboard has precedence over copy; will prompt for confirmation
+`y`               copy_name           copy name to system clipboard
+`Y`               copy_path           copy relative path to system clipboard
+`gy`              copy_absolute_path  copy absolute path to system clipboard
+`[e`              prev_diag_item      go to next diagnostic item
+`[c`              prev_git_item       go to next git item
+`]e`              next_diag_item      go to prev diagnostic item
+`]c`              next_git_item       go to prev git item
+`-`               dir_up              navigate up to the parent directory of the current file/directory
+`s`               system_open         open a file with default system application or a folder with default file manager, using |system_open| option
+`f`               live_filter         live filter nodes dynamically based on regex matching.
+`F`               clear_live_filter   clear live filter
+`q`               close               close tree window
+`W`               collapse_all        collapse the whole tree
+`E`               expand_all          expand the whole tree, stopping after expanding |actions.expand_all.max_folder_discovery| folders; this might hang neovim for a while if running on a big folder
+`S`               search_node         prompt the user to enter a path and then expands the tree to match the path
+`.`               run_file_command    enter vim command mode with the file the cursor is on
+`<C-k>`           toggle_file_info    toggle a popup with file infos about the file under the cursor
+`g?`              toggle_help         toggle help
+`m`               toggle_mark         Toggle node in bookmarks
+`bmv`             bulk_move           Move all bookmarked nodes into specified location
+
+==============================================================================
+Multiple Selections/Cursors                               *pickled-nvim-multiple-cursors*
+
+Powered by |visual-multi|
+
+There are two main modes VM can work in, |cursor-mode| and |extend-mode|.
+They roughly correspond to |normal-mode| and |visual-mode|.
+
+
+_note: you'll need to disable macOS Keyboard Shortcuts for Mission Control for some of these to not be hijacked
+
+Find Word                    <C-n>                        |vm-find-word|
+Next/Previous/Skip           n / N / q                    |vm-find-next|
+Remove Region                Q                            |vm-remove-region|
+Add Cursors Down/Up          <C-Down> / <C-Up>            |vm-add-cursors|
+Add Cursor at Position       \\\                          |vm-add-cursor|
+Select Right/Left            <S-Right>, <S-Left>          |vm-shift-select|
+Select All Words             \\A                          |vm-select-all|
+Slash motion                 g/                           |vm-slash|
+Find with Regex              \\/                          |vm-regex-search|
+Reselect Last                \\gS                         |vm-reselect-last|
+Toggle Mappings              \\<Space>                    |vm-mappings-toggle|
+Select Operator              s                            |vm-select-operator|
+Find Operator                m                            |vm-find-operator|
+Alignment                    \\a                          |vm-align|
+Transposition                \\t                          |vm-transpose|
+
+
+Start insert mode as normal with i,a,I,A
+
+==============================================================================
+Marks                               *pickled-nvim-marks*
+
+Powered by |marks-nvim|
+`mx`              Set mark x
+`m,`              Set the next available alphabetical (lowercase) mark
+`m;`              Toggle the next available mark at the current line
+`dmx`             Delete mark x
+`dm-`             Delete all marks on the current line
+`dm<space>`       Delete all marks in the current buffer
+`m]`              Move to next mark
+`m[`              Move to previous mark
+`m:`              Preview mark. This will prompt you for a specific mark to
+                preview; press <cr> to preview the next mark.
+`m[0-9]`          Add a bookmark from bookmark group[0-9].
+`dm[0-9]`         Delete all bookmarks from bookmark group[0-9].
+`m}`              Move to the next bookmark having the same type as the bookmark under
+                the cursor. Works across buffers.
+`m{`              Move to the previous bookmark having the same type as the bookmark under
+                the cursor. Works across buffers.
+`dm=`             Delete the bookmark under the cursor.
+
+vim:tw=78:ts=8:ft=help:norl:modifable:noreadonly
