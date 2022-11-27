@@ -14,6 +14,7 @@ require("telescope").setup({
 	pickers = {
 		find_files = {
 			theme = "dropdown",
+			-- customize by adding --hidden, so we can get files that start with . which turns out to be a lot
 			find_command = { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" },
 		},
 		git_files = {
@@ -21,15 +22,22 @@ require("telescope").setup({
 		},
 	},
 })
+-- faster native picker & sorter implementations
+-- zf seems the fastest, and has 
 -- require("telescope").load_extension("fzf")
 -- require('telescope').load_extension('fzy_native')
 require("telescope").load_extension("zf-native")
 
 require("telescope").load_extension("projects")
+
+-- combine frequency and recency to give better results by default
 require("telescope").load_extension("frecency")
+
+-- replace vim.ui with telescope
 require("telescope").load_extension("ui-select")
 
 
+-- use git picker for git based directories
 function _G.file_picker()
 	local file_picker_name
 
@@ -47,6 +55,25 @@ end
 
 require('sibling-swap').setup({})
 
+-- close nvim tree when quitting... to avoid keeping it open by itself
+vim.api.nvim_create_autocmd({ "QuitPre" }, {
+	pattern = "*",
+	callback = function()
+		if vim.bo.filetype == "NvimTree" or vim.bo.filetype == "Outline" then
+			return
+		end
+
+		-- FIXME: figure out if there's any nvim-tree or symbols-outline buffers in current window
+		local win_amount = #vim.api.nvim_tabpage_list_wins(0)
+		-- more than 2, and probably have nvim tree open
+		if win_amount > 2 then
+			return
+		end
+
+		require("nvim-tree.api").tree.close()
+	end,
+})
+
 require("nvim-tree").setup({
 	update_focused_file = {
 		enable = true,
@@ -55,6 +82,10 @@ require("nvim-tree").setup({
 		-- display only the folder name
 		-- see See `:help filename-modifiers` for available options.
 		root_folder_modifier = ":t",
+		-- ie if you have lua/pickled-nvim, and lua is otherwise empty, only show lua/pickled-nvim instead of lua with one child
+		group_empty = true,
+
+		highlight_opened_files = 'icon',
 	},
 
 	view = {
@@ -107,13 +138,12 @@ require("symbols-outline").setup({
 })
 local colors = require("tokyonight.colors").setup()
 
--- copy NvimTreeRootFolder
+-- tokyonight support for 
 vim.api.nvim_set_hl(1, 'FocusedSymbol', {fg = colors.blue, bold = true})
+-- Pmenu (already exists)
+-- SymbolsOutlineConnector (default seems fine)
+-- Comment (default seems fine)
 
--- FocusedSymbol
--- Pmenu
--- SymbolsOutlineConnector
--- Comment
 
 
 require("marks").setup({

@@ -1,3 +1,10 @@
+local opt = vim.o
+
+-- search
+opt.incsearch = true
+opt.hlsearch = true
+opt.grepprg = "rg --vimgrep"
+
 vim.g.grepper = {
 	tools = { "rg", "ag", "pt", "git", "sift" },
 	highlight = 1,

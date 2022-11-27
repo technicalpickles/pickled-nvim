@@ -1,14 +1,22 @@
 require("pickled-nvim.basics")
-require("pickled-nvim.filetypes")
-require("pickled-nvim.plugins")
+
 require("pickled-nvim.keybindings")
-require("pickled-nvim.navigation")
+require("pickled-nvim.plugins")
+
 require("pickled-nvim.ui")
-require("pickled-nvim.language-support")
 require("pickled-nvim.search")
+require("pickled-nvim.editor")
+require("pickled-nvim.navigation")
 require("pickled-nvim.quickfix")
 require("pickled-nvim.sessions")
+
+require("pickled-nvim.treesitter")
+require("pickled-nvim.filetypes")
+require("pickled-nvim.autopairs")
+require("pickled-nvim.language-support")
+
 require("pickled-nvim.command_palette")
+
 require("pickled-nvim.custom-help")
 
 

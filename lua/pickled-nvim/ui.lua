@@ -1,3 +1,8 @@
+local opt = vim.o
+
+opt.scrolloff = 5 -- Minumum lines to keep above and below cursor
+opt.title = true -- show title
+
 -- for UI frontends
 vim.o.termguicolors = true
 vim.g.neovide_input_use_logo = true -- Ensure we can pass the command key
@@ -27,9 +32,6 @@ require("toggleterm").setup({
 	insert_mapping = true,
 	terminal_mappings = true,
 })
-
--- vim-pasta
-vim.g.pasta_disabled_filetypes = { "toggleterm" }
 
 -- font
 vim.o.guifont = "DankMono Nerd Font:h16"
@@ -105,7 +107,7 @@ vim.o.showmode = false
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
 dashboard.section.buttons.val = {
-	dashboard.button("r", "  Restore session", "<Cmd>RestoreSession<CR>"),
+	dashboard.button("r", "  Restore session", "<Cmd>Autosession search<CR>"),
 	dashboard.button("e", "  New file", ":ene<CR>"),
 	dashboard.button("p", "  Open Project", "<Cmd>Telescope projects<CR>"),
 	dashboard.button("q", "  Quit NVIM", ":qa<CR>"),
