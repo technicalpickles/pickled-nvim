@@ -276,11 +276,11 @@ end
 -- end
 
 -- ruby
-local rubocop_options = { prefer_local = "bin" }
-if vim.fn.filereadable(".rubocop_yml") == 1 then
-	table.insert(sources, null_ls.builtins.diagnostics.rubocop.with(rubocop_options))
-	table.insert(sources, null_ls.builtins.formatting.rubocop.with(rubocop_options))
-end
+-- local rubocop_options = { prefer_local = "bin" }
+-- if vim.fn.filereadable(".rubocop_yml") == 1 then
+-- 	table.insert(sources, null_ls.builtins.diagnostics.rubocop.with(rubocop_options))
+-- 	table.insert(sources, null_ls.builtins.formatting.rubocop.with(rubocop_options))
+-- end
 
 -- erb
 if vim.fn.filereadable(".erb-lint.yml") == 1 then
@@ -322,6 +322,5 @@ npairs.setup({
 })
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-local cmp = require("cmp")
 -- FIXME this seems to throw an error when starting [] inside a .editorconfig
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
