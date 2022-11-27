@@ -214,4 +214,10 @@ return require("packer").startup(function(use)
 	use("chentoast/marks.nvim")
 
 	use("github/copilot.vim")
+
+	use("bfredl/nvim-luadev")
+
+	use("tpope/vim-rbenv")
+
+	use("simrat39/symbols-outline.nvim")
 end)
