@@ -3,6 +3,12 @@ require("telescope").setup({
 		frecency = {
 			default_workspace = "CWD",
 			show_filter_column = false,
+			show_unindexed = false,
+			ignore_patterns = {"*.git/*", "*/tmp/*", "node_modules/*"},
+		},
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown({
+			})
 		},
 	},
 	pickers = {
@@ -19,10 +25,10 @@ require("telescope").setup({
 -- require('telescope').load_extension('fzy_native')
 require("telescope").load_extension("zf-native")
 
-
 require("telescope").load_extension("projects")
-
 require("telescope").load_extension("frecency")
+require("telescope").load_extension("ui-select")
+
 
 function _G.file_picker()
 	local file_picker_name
