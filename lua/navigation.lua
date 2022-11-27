@@ -45,6 +45,8 @@ function _G.file_picker()
 	file_picker()
 end
 
+require('sibling-swap').setup({})
+
 require("nvim-tree").setup({
 	renderer = {
 		-- display only the folder name

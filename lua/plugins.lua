@@ -84,6 +84,11 @@ return require("packer").startup(function(use)
 	-- adding end automatically
 	use("RRethy/nvim-treesitter-endwise")
 
+	use({
+		'Wansmer/sibling-swap.nvim',
+		requires = { 'nvim-treesitter' },
+	})
+
 	-- better support for % to bounce between sets of matching text, ie parens, etc
 	-- drop in replacement for matchit.vim
 	use("andymass/vim-matchup")
