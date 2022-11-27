@@ -24,7 +24,6 @@ require("telescope").load_extension("projects")
 
 require("telescope").load_extension("frecency")
 
-telescope_builtins = require('telescope.builtin')
 function _G.file_picker()
 	local file_picker_name
 
@@ -35,7 +34,7 @@ function _G.file_picker()
 		file_picker_name = 'find_files'
 	end
 
-	local file_picker = loadstring("telescope_builtins." .. file_picker_name .. "()")
+	local file_picker = loadstring("require('telescope.builtin')." .. file_picker_name .. "()")
 
 	file_picker()
 end
