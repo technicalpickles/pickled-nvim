@@ -124,8 +124,7 @@ vim.keymap.set("n", "<leader>F", ":Grepper<CR>", silent)
 vim.keymap.set("n", "<D-F>", ":Grepper<CR> ", silent)
 
 -- ⌘ shift m - toggle quickfix (aka problems)
--- FIXME neovide can't distinguish between shift and non-shift
--- vim.keymap.set('n', '<S-D-M>', ':TroubleToggle<CR>', silent)
+vim.keymap.set('n', '<S-D-M>', ':TroubleToggle<CR>', silent)
 vim.keymap.set("n", "<leader>M", ":TroubleToggle<CR>", silent)
 
 -- ⌘ b - toggle left hand tree
