@@ -48,18 +48,15 @@ end
 require('sibling-swap').setup({})
 
 require("nvim-tree").setup({
+	update_focused_file = {
+		enable = true,
+	},
 	renderer = {
 		-- display only the folder name
 		-- see See `:help filename-modifiers` for available options.
 		root_folder_modifier = ":t",
 	},
-	-- projects integration
-	respect_buf_cwd = true,
-	update_cwd = true,
-	update_focused_file = {
-		enable = true,
-		update_cwd = true,
-	},
+
 	view = {
 		mappings = {
 			list = {
@@ -68,6 +65,9 @@ require("nvim-tree").setup({
 		}
 	}
 })
+
+-- close nvim-tree when it's the last thing in a window, ie the other buffer is closed
+vim.g.nvim_tree_auto_close = 1
 
 
 require("symbols-outline").setup({
