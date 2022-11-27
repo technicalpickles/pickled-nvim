@@ -90,7 +90,44 @@ lsp.configure("sumneko_lua", {
 	},
 })
 
+local lspconfig = require("lspconfig")
+
+lspconfig.ruby_ls.setup({
+	cmd = { "bundle", "exec", "ruby-lsp" },
+	on_attach = function(client, bufnr)
+		vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufEnter', 'BufWritePre', 'CursorHold' }, {
+			buffer = bufnr,
+
+			callback = function()
+				local params = vim.lsp.util.make_text_document_params(bufnr)
+
+				client.request(
+				'textDocument/diagnostic',
+				{ textDocument = params },
+				function(err, result)
+					if err then return end
+
+					vim.lsp.diagnostic.on_publish_diagnostics(
+					nil,
+					vim.tbl_extend('keep', params, { diagnostics = result.items }),
+					{ client_id = client.id }
+					)
+				end
+				)
+			end,
+		})
+	end
+})
+
+lsp.ensure_installed({'gopls'})
+
 lsp.setup()
+
+-- debug lsp
+-- vim.lsp.set_log_level 'trace'
+-- if vim.fn.has 'nvim-0.5.1' == 1 then
+--   require('vim.lsp.log').set_format_func(vim.inspect)
+-- end
 
 require("nvim-treesitter.configs").setup({
 	ensure_installed = "all",
