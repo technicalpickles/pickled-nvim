@@ -6,7 +6,9 @@ local luasnip = require("luasnip")
 require("luasnip.loaders.from_snipmate").lazy_load()
 
 lsp.preset("recommended")
-lsp.nvim_workspace()
+lsp.nvim_workspace({
+  library = vim.api.nvim_get_runtime_file('', true)
+})
 
 local cmp_sources = lsp.defaults.cmp_sources()
 
@@ -65,29 +67,6 @@ lsp.setup_nvim_cmp({
 	},
 	mapping = cmp_mappings,
 	sources = cmp_sources,
-})
-
-lsp.configure("sumneko_lua", {
-	settings = {
-		Lua = {
-			runtime = {
-				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-				version = "LuaJIT",
-			},
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { "vim" },
-			},
-			workspace = {
-				-- Make the server aware of Neovim runtime files
-				library = vim.api.nvim_get_runtime_file("", true),
-			},
-			-- Do not send telemetry data containing a randomized but unique identifier
-			telemetry = {
-				enable = false,
-			},
-		},
-	},
 })
 
 local lspconfig = require("lspconfig")
