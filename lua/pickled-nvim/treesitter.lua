@@ -1,13 +1,21 @@
 require("nvim-treesitter.configs").setup({
 	ensure_installed = "all",
 	ignore_install = { "phpdoc" },
-	highlight = { enable = true },
+	highlight = {
+		enable = true,
+		disable = function(lang, _)
+			-- eruby.yaml not supported https://github.com/windwp/nvim-ts-autotag/issues/73
+			return lang == "eruby.yaml"
+		end,
+	},
 	context_commentstring = { enable = true },
+
 
 	-- https://github.com/andymass/vim-matchup
 	matchup = {
 		enable = true,
 	},
+
 
 	-- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	textobjects = {
