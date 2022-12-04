@@ -267,4 +267,4 @@ Powered by |marks-nvim|
                 the cursor. Works across buffers.
 `dm=`             Delete the bookmark under the cursor.
 
-vim:tw=78:ts=8:ft=help:norl:modifable:noreadonly
+vim:tw=78:ts=8:ft=help:norl:ma:noreadonly
