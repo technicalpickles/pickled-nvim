@@ -53,6 +53,12 @@ require("bufferline").setup({
 				highlight = "Directory",
 				text_align = "left",
 			},
+			{
+				filetype = "filetree",
+				text = "",
+				highlight = "Explorer",
+				text_align = "left",
+			}
 		},
 	},
 })
