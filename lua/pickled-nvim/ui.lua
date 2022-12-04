@@ -1,23 +1,24 @@
-local opt = vim.o
+local o = vim.o
+local g = vim.g
 
-opt.scrolloff = 5 -- Minumum lines to keep above and below cursor
-opt.title = true -- show title
+o.scrolloff = 5 -- Minumum lines to keep above and below cursor
+o.title = true -- show title
 
 -- for UI frontends
 o.termguicolors = true
-vim.g.neovide_input_use_logo = true -- Ensure we can pass the command key
-vim.g.neovide_confirm_quit = true -- Prevent exit on unsaved buffer on window close
-vim.g.neovide_cursor_vfx_mode = "railgun"
-vim.g.neovide_remember_window_size = true
+g.neovide_input_use_logo = true -- Ensure we can pass the command key
+g.neovide_confirm_quit = true -- Prevent exit on unsaved buffer on window close
+g.neovide_cursor_vfx_mode = "railgun"
+g.neovide_remember_window_size = true
 
 -- theme
-vim.g.tokyodark_transparent_background = false
-vim.g.tokyodark_enable_italic_comment = true
-vim.g.tokyodark_enable_italic = true
-vim.g.tokyodark_color_gamma = "1.0"
-vim.g.tokyonight_style = "storm"
--- vim.g.tokyonight_style = "night"
--- vim.g.tokyonight_style = "day"
+g.tokyodark_transparent_background = false
+g.tokyodark_enable_italic_comment = true
+g.tokyodark_enable_italic = true
+g.tokyodark_color_gamma = "1.0"
+g.tokyonight_style = "storm"
+-- g.tokyonight_style = "night"
+-- g.tokyonight_style = "day"
 vim.cmd([[colorscheme tokyonight]])
 
 -- statusline
