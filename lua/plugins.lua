@@ -122,7 +122,6 @@ return require("packer").startup(function(use)
 	use("natecraddock/telescope-zf-native.nvim")
 	use{'nvim-telescope/telescope-ui-select.nvim' }
 
-
 	use({
 		"gfeiyou/command-center.nvim",
 		requires = { "nvim-telescope/telescope.nvim" },
@@ -227,4 +226,8 @@ return require("packer").startup(function(use)
 	use("tpope/vim-rbenv")
 
 	use("simrat39/symbols-outline.nvim")
+
+	use("ldelossa/nvim-ide", {branch = 'no-cursor-restore'})
+
+	use("tyru/open-browser.vim")
 end)
