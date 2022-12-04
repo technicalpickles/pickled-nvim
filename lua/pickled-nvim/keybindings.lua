@@ -4,6 +4,9 @@ local noremap = { noremap = true }
 local silent_noremap = { noremap = true, silent = true }
 local silent = { silent = true }
 
+-- open browser, since we disabled netrw
+vim.keymap.set({'v', 'n'}, 'gx', '<Plug>(openbrowser-smart-search)', silent_noremap)
+
 -- split management
 vim.api.nvim_set_keymap("n", "vs", ":vs<CR>", noremap)
 vim.api.nvim_set_keymap("n", "sp", ":sp<CR>", noremap)
