@@ -54,23 +54,23 @@ function _G.file_picker()
 end
 
 -- close nvim tree when quitting... to avoid keeping it open by itself
-vim.api.nvim_create_autocmd({ "QuitPre" }, {
-	pattern = "*",
-	callback = function()
-		if vim.bo.filetype == "NvimTree" or vim.bo.filetype == "Outline" then
-			return
-		end
+-- vim.api.nvim_create_autocmd({ "QuitPre" }, {
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		if vim.bo.filetype == "NvimTree" or vim.bo.filetype == "Outline" then
+-- 			return
+-- 		end
 
-		-- FIXME: figure out if there's any nvim-tree or symbols-outline buffers in current window
-		local win_amount = #vim.api.nvim_tabpage_list_wins(0)
-		-- more than 2, and probably have nvim tree open
-		if win_amount > 2 then
-			return
-		end
+-- 		-- FIXME: figure out if there's any nvim-tree or symbols-outline buffers in current window
+-- 		local win_amount = #vim.api.nvim_tabpage_list_wins(0)
+-- 		-- more than 2, and probably have nvim tree open
+-- 		if win_amount > 2 then
+-- 			return
+-- 		end
 
-		require("nvim-tree.api").tree.close()
-	end,
-})
+-- 		require("nvim-tree.api").tree.close()
+-- 	end,
+-- })
 
 require("nvim-tree").setup({
 	update_focused_file = {

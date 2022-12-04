@@ -42,12 +42,13 @@ vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", silent_nor
 
 -- terminal mapping
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", silent_noremap)
-
 vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { buffer = 0 })
 
 -- symbols outline
-vim.api.nvim_set_keymap("n", "<leader>s", "<CMD>SymbolsOutline<CR>", silent_noremap)
-vim.api.nvim_set_keymap("n", "<D-.>", "<CMD>SymbolsOutline<CR>", silent_noremap)
+local symbols_outline = "<CMD>SymbolsOutline<CR>"
+-- local symbols_outline = "<CMD>Workspace RightPanelToggle<CR>"
+vim.api.nvim_set_keymap("n", "<leader>s", symbols_outline, silent_noremap)
+vim.api.nvim_set_keymap("n", "<D-.>", symbols_outline, silent_noremap)
 
 -- toggle search highlight
 vim.keymap.set({ "n", "v" }, "<leader>nh", "<cmd>nohls<cr>", silent_noremap)
@@ -75,8 +76,7 @@ vim.api.nvim_set_keymap("n", "<leader>m", "<cmd>Telescope marks<CR>", noremap)
 
 -- ⌘ P - Command Palette
 vim.api.nvim_set_keymap('n', '<D-S-p>', "<cmd>Telescope command_center<CR>", { noremap = true })
-
-vim.keymap.set("n", "<leader>c", "<cmd>Telescope command_center<CR>", silent)
+vim.keymap.set("n", "<leader>c", "<CMD>Telescope command_center<CR>", silent)
 
 -- ⌘ p - fuzzy find files
 -- FIXME: frecency really falls over in large repositories
@@ -128,11 +128,12 @@ vim.keymap.set('n', '<S-D-M>', ':TroubleToggle<CR>', silent)
 vim.keymap.set("n", "<leader>M", ":TroubleToggle<CR>", silent)
 
 -- ⌘ b - toggle left hand tree
-vim.api.nvim_set_keymap("n", "<D-b>", ":NvimTreeToggle<CR>", silent_noremap)
-vim.api.nvim_set_keymap("n", "<D-/>", ":NvimTreeToggle<CR>", silent_noremap)
--- vim.api.nvim_set_keymap("n", "<leader>b", ":NvimTreeToggle<CR>", silent_noremap)
+local tree = "<CMD>NvimTreeToggle<CR>"
+-- local tree = "<CMD>Workspace ToggleLeftPanel<CR>"
+vim.api.nvim_set_keymap("n", "<D-b>", tree, silent_noremap)
+vim.api.nvim_set_keymap("n", "<D-/>", tree, silent_noremap)
 -- my legacy binding
-vim.api.nvim_set_keymap("n", "<leader>d", ":NvimTreeToggle<CR>", silent_noremap)
+vim.api.nvim_set_keymap("n", "<leader>d", tree, silent_noremap)
 
 -- ctrl-` toggle terminal
 -- see toggleterm's setup
