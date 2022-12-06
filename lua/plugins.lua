@@ -65,12 +65,14 @@ return require("packer").startup(function(use)
 			require("impatient")
 		end,
 	})
+
 	-- filetypes
 	-- drop in replacement for filetype.vim
 	-- TODO: switch back to nathom/filetype.nvim after landing fix
 	-- TODO: figure out why filetype=lock is being set from lua and where
 	-- use{"technicalpickles/filetype.nvim", branch = "more-specific-cargo-lock"}
 	use("technicalpickles/procfile.vim")
+	use("gpanders/editorconfig.nvim")
 
 	-- treesitter, syntax, etc
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -85,8 +87,8 @@ return require("packer").startup(function(use)
 	use("RRethy/nvim-treesitter-endwise")
 
 	use({
-		'Wansmer/sibling-swap.nvim',
-		requires = { 'nvim-treesitter' },
+		"Wansmer/sibling-swap.nvim",
+		requires = { "nvim-treesitter" },
 	})
 
 	-- better support for % to bounce between sets of matching text, ie parens, etc
@@ -117,10 +119,21 @@ return require("packer").startup(function(use)
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 
+	use("romgrk/fzy-lua-native", { run = "make", on = "CmdlineEnter" })
+
 	use({"nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({"nvim-telescope/telescope-fzy-native.nvim", run = 'make' })
 	use("natecraddock/telescope-zf-native.nvim")
-	use{'nvim-telescope/telescope-ui-select.nvim' }
+	use("nvim-telescope/telescope-ui-select.nvim")
+
+	-- keep telescope from changing directory when picking files
+	use("desdic/telescope-rooter.nvim")
+
+	use({
+		"nvim-telescope/telescope-frecency.nvim",
+		config = function() end,
+		requires = { "tami5/sqlite.lua" },
+	})
 
 	use({
 		"gfeiyou/command-center.nvim",
@@ -167,10 +180,13 @@ return require("packer").startup(function(use)
 			require("trouble").setup({})
 		end,
 	})
+	use("kevinhwang91/nvim-bqf")
+	use("romainl/vim-qf")
 
-	use("gpanders/editorconfig.nvim")
+
 	use("mg979/vim-visual-multi")
 
+	-- 
 	use({ "mhinz/vim-grepper", cmd = "Grepper" })
 	use({
 		"junegunn/fzf",
@@ -179,13 +195,11 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({ "kevinhwang91/nvim-bqf" })
-
-	use("romainl/vim-qf")
-
 	use("sickill/vim-pasta")
+
 	use("windwp/nvim-autopairs")
 	use("ur4ltz/surround.nvim")
+
 	use("AndrewRadev/splitjoin.vim")
 
 	use {"akinsho/toggleterm.nvim", tag = '*'}
@@ -199,12 +213,6 @@ return require("packer").startup(function(use)
 
 	use("tpope/vim-characterize")
 
-	use({
-		"nvim-telescope/telescope-frecency.nvim",
-		config = function() end,
-		requires = { "tami5/sqlite.lua" },
-	})
-
 	use("gelguy/wilder.nvim")
 	use("raghur/fruzzy", { cmd = "fruzzy#install()" })
 
@@ -212,8 +220,6 @@ return require("packer").startup(function(use)
 		"roxma/nvim-yarp",
 		run = "pip install -r requirements.txt",
 	})
-
-	use("romgrk/fzy-lua-native", { run = "make", on = "CmdlineEnter" })
 
 	use("ktunprasert/gui-font-resize.nvim")
 
@@ -225,9 +231,9 @@ return require("packer").startup(function(use)
 
 	use("tpope/vim-rbenv")
 
-	use("simrat39/symbols-outline.nvim")
 
 	use("ldelossa/nvim-ide", {branch = 'no-cursor-restore'})
+	use("simrat39/symbols-outline.nvim")
 
 	use("tyru/open-browser.vim")
 end)
