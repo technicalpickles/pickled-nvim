@@ -51,7 +51,7 @@ return require("packer").startup(function(use)
 			-- use snipmate/ultisnip style snippets instead
 			-- this has a lot more stars, and a little less problematic in ruby
 			-- https://github.com/VonHeikemen/lsp-zero.nvim/issues/61
-			{"honza/vim-snippets"},
+			{ "honza/vim-snippets" },
 		},
 	})
 	use("jose-elias-alvarez/null-ls.nvim")
@@ -105,7 +105,6 @@ return require("packer").startup(function(use)
 
 	-- dashboard when starting à la startify
 	use({ "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } })
-
 
 	-- customizable statusline with nice defaults
 	use({
@@ -202,10 +201,9 @@ return require("packer").startup(function(use)
 
 	use("AndrewRadev/splitjoin.vim")
 
-	use {"akinsho/toggleterm.nvim", tag = '*'}
+	use({ "akinsho/toggleterm.nvim", tag = "*" })
 	-- so you can can vim in the terimal
-	use "samjwill/nvim-unception"
-
+	use("samjwill/nvim-unception")
 
 	-- session, remembering where we were
 	use("farmergreg/vim-lastplace")

@@ -8,7 +8,6 @@ require("nvim-autopairs").setup({})
 -- local not_string_or_comment = ts_conds.is_not_ts_node({ "string", "comment" })
 local not_inside_code_block = ts_conds.is_not_ts_node({ "fenced_code_block", "indented_code_block", "code_span" })
 
-
 npairs.add_rules({
 	-- markdown stuff
 	-- italics
@@ -27,6 +26,5 @@ npairs.setup({
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 -- FIXME this seems to throw an error when starting [] inside a .editorconfig
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
 
 require("surround").setup({ mappings_style = "surround" })

@@ -13,9 +13,9 @@
 -- 	-- the global icon set to use.
 -- 	-- values: "nerd", "codicon", "default"
 -- 	icon_set = "nerd",
--- 
--- 	-- place Component config overrides here. 
--- 	-- they key to this table must be the Component's unique name and the value 
+--
+-- 	-- place Component config overrides here.
+-- 	-- they key to this table must be the Component's unique name and the value
 -- 	-- is a table which overrides any default config values.
 -- 	components = {
 --		global_keymaps = {
@@ -27,7 +27,7 @@
 --			show_file_permissions = false
 --		}
 -- 	},
--- 
+--
 --	-- panels defined by groups of components, user is free to redefine these
 -- 	-- or add more.
 -- 	panel_groups = {
@@ -49,7 +49,7 @@
 -- 		terminalbrowser = { terminalbrowser.Name },
 -- 		bookmarks = { bookmarks.Name },
 -- 	},
--- 
+--
 --	workspaces ={
 --		auto_open = 'none',
 --	},

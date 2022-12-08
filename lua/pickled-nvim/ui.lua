@@ -51,7 +51,7 @@ require("bufferline").setup({
 				text = "",
 				highlight = "Explorer",
 				text_align = "left",
-			}
+			},
 		},
 	},
 })
@@ -118,9 +118,9 @@ alpha.setup(dashboard.config)
 require("vgit").setup({
 	settings = {
 		signs = {
-			priority = 30
-		}
-	}
+			priority = 30,
+		},
+	},
 })
 
 -- FIXME: not working on second machine due to python failing to initialize

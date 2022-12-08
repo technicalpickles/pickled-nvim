@@ -5,26 +5,10 @@ local silent_noremap = { noremap = true, silent = true }
 local silent = { silent = true }
 
 -- open browser, since we disabled netrw
-vim.keymap.set({'v', 'n'}, 'gx', '<Plug>(openbrowser-smart-search)', silent_noremap)
-
--- split management
-vim.api.nvim_set_keymap("n", "vs", ":vs<CR>", noremap)
-vim.api.nvim_set_keymap("n", "sp", ":sp<CR>", noremap)
--- vim.api.nvim_set_keymap("n", "<C-L>", "<C-W><C-L>", noremap)
--- vim.api.nvim_set_keymap("n", "<C-H>", "<C-W><C-H>", noremap)
--- vim.api.nvim_set_keymap("n", "<C-K>", "<C-W><C-K>", noremap)
--- vim.api.nvim_set_keymap("n", "<C-J>", "<C-W><C-J>", noremap)
--- tab convenience
-vim.api.nvim_set_keymap("n", "tn", ":tabnew<CR>", noremap)
-vim.api.nvim_set_keymap("n", "tk", ":tabnext<CR>", noremap)
-vim.api.nvim_set_keymap("n", "tj", ":tabprev<CR>", noremap)
-vim.api.nvim_set_keymap("n", "to", ":tabo<CR>", noremap)
-
-vim.api.nvim_set_keymap("n", "<C-S>", ":%s/", noremap)
+vim.keymap.set({ "v", "n" }, "gx", "<Plug>(openbrowser-smart-search)", silent_noremap)
 
 -- quickfix
---vim.api.vim_buf_set_keymap("n", "<leader>qq", "<Plug>qf_qf_toggle<CR>", noremap)
-vim.api.nvim_set_keymap("n", "<leader>qq", "<Plug>(qf_qf_toggle)", noremap)
+vim.keymap.set("n", "<leader>qq", "<Plug>(qf_qf_toggle)", noremap)
 vim.keymap.set("n", "<leader>qn", "<Plug>(qf_qf_next)", noremap)
 vim.keymap.set("n", "<leader>qp", "<Plug>(qf_qf_previous)", noremap)
 
@@ -50,8 +34,8 @@ vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { buffer = 0 })
 -- symbols outline
 local symbols_outline = "<CMD>SymbolsOutline<CR>"
 -- local symbols_outline = "<CMD>Workspace RightPanelToggle<CR>"
-vim.api.nvim_set_keymap("n", "<leader>s", symbols_outline, silent_noremap)
-vim.api.nvim_set_keymap("n", "<D-.>", symbols_outline, silent_noremap)
+vim.keymap.set("n", "<leader>s", symbols_outline, silent_noremap)
+vim.keymap.set("n", "<D-.>", symbols_outline, silent_noremap)
 
 -- toggle search highlight
 vim.keymap.set({ "n", "v" }, "<leader>nh", "<cmd>nohls<cr>", silent_noremap)
@@ -63,29 +47,35 @@ vim.keymap.set("v", "<D-x>", '"+c')
 vim.keymap.set("", "<D-v>", '"+p')
 vim.keymap.set("c", "<D-v>", "<C-r><C-o>+")
 vim.keymap.set("i", "<D-v>", "<C-r><C-o>+")
+
+-- save
+vim.api.nvim_set_keymap("n", "<C-S>", ":%s/", silent_noremap)
+
 -- Delete a buffer when asking for a "window close"
-vim.keymap.set("", "<D-w>", "<cmd>confirm bd<cr>")
-vim.keymap.set("i", "<D-w>", "<cmd>confirm bd<cr>")
+vim.keymap.set("", "<D-w>", "<cmd>confirm bd<cr>", silent)
+vim.keymap.set("i", "<D-w>", "<cmd>confirm bd<cr>", silent)
+
 -- Create new tab with Command-T
-vim.keymap.set("", "<D-t>", "<cmd>tabnew<cr>")
-vim.keymap.set("i", "<D-t>", "<cmd>tabnew<cr>")
+vim.keymap.set("", "<D-t>", "<cmd>tabnew<cr>", silent_noremap)
+vim.keymap.set("i", "<D-t>", "<cmd>tabnew<cr>", silent_noremap)
 
 -- telescope
-vim.api.nvim_set_keymap("n", "<D-F>", "<cmd>lua require('telescope.builtin').live_grep()<CR>", noremap)
-vim.api.nvim_set_keymap("n", "<leader>b", "Telescope buffers<CR>", noremap)
-vim.api.nvim_set_keymap("n", "<leader>m", "<cmd>Telescope marks<CR>", noremap)
+vim.keymap.set("n", "<D-f>", "<cmd>lua require('telescope.builtin').live_grep()<CR>", silent_noremap)
+-- FIXME: not working
+vim.keymap.set("n", "<leader>b", "Telescope buffers<CR>", silent_noremap)
+vim.keymap.set("n", "<leader>m", "<cmd>Telescope marks<CR>", silent_noremap)
 
 -- { VS Code and other IDE like behavior }} --
 
 -- ⌘ P - Command Palette
-vim.api.nvim_set_keymap('n', '<D-S-p>', "<cmd>Telescope command_center<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>c", "<CMD>Telescope command_center<CR>", silent)
+vim.api.nvim_set_keymap("n", "<D-S-p>", "<cmd>Telescope command_center<CR>", silent_noremap)
+vim.keymap.set("n", "<leader>c", "<CMD>Telescope command_center<CR>", silent_noremap)
 
 -- ⌘ p - fuzzy find files
 local file_picker = "Telescope frecency"
 -- local file_picker = "lua file_picker()"
-vim.api.nvim_set_keymap("n", "<D-p>", "<cmd>".. file_picker .."<CR>", noremap)
-vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>" .. file_picker .. "<CR>", noremap)
+vim.api.nvim_set_keymap("n", "<D-p>", "<cmd>".. file_picker .."<CR>", silent_noremap)
+vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap)
 
 -- ⌘ s - save
 vim.keymap.set("n", "<D-s>", ":w<CR>", silent)
@@ -126,7 +116,7 @@ vim.keymap.set("n", "<leader>F", ":Grepper<CR>", silent)
 vim.keymap.set("n", "<D-F>", ":Grepper<CR> ", silent)
 
 -- ⌘ shift m - toggle quickfix (aka problems)
-vim.keymap.set('n', '<S-D-M>', ':TroubleToggle<CR>', silent)
+vim.keymap.set("n", "<S-D-M>", ":TroubleToggle<CR>", silent)
 vim.keymap.set("n", "<leader>M", ":TroubleToggle<CR>", silent)
 
 -- ⌘ b - toggle left hand tree
