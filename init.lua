@@ -11,6 +11,7 @@ require("pickled-nvim.tree")
 require("pickled-nvim.telescope")
 require("pickled-nvim.navigation")
 require("pickled-nvim.quickfix")
+require("pickled-nvim.terminal")
 require("pickled-nvim.sessions")
 
 require("pickled-nvim.treesitter")
