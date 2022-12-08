@@ -7,7 +7,7 @@ require("auto-session").setup({
 	auto_session_enable_last_session = false,
 
 	-- only keep sessions for this directory
-	auto_session_allowed_dirs = {"~/workspace/*"},
+	auto_session_allowed_dirs = { "~/workspace/*" },
 
 	cwd_change_handling = {
 		post_cwd_changed_hook = function()
@@ -16,4 +16,4 @@ require("auto-session").setup({
 	},
 })
 
-vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

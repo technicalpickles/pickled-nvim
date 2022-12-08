@@ -7,7 +7,7 @@ require("luasnip.loaders.from_snipmate").lazy_load()
 
 lsp.preset("recommended")
 lsp.nvim_workspace({
-  library = vim.api.nvim_get_runtime_file('', true)
+	library = vim.api.nvim_get_runtime_file("", true),
 })
 
 local cmp_sources = lsp.defaults.cmp_sources()
@@ -16,14 +16,14 @@ table.insert(cmp_sources, { name = "nvim_lsp_signature_help" })
 table.insert(cmp_sources, { name = "fish" })
 
 local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-	['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-	['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+	["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 
 	-- super tab like behavior w/ luasnip
 	-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
@@ -51,7 +51,6 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	end, { "i", "s" }),
 })
 
-
 lsp.setup_nvim_cmp({
 	formatting = {
 		format = lspkind.cmp_format({
@@ -74,28 +73,26 @@ local lspconfig = require("lspconfig")
 lspconfig.ruby_ls.setup({
 	cmd = { "bundle", "exec", "ruby-lsp" },
 	on_attach = function(client, bufnr)
-		vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufEnter', 'BufWritePre', 'CursorHold' }, {
+		vim.api.nvim_create_autocmd({ "BufReadPre", "BufEnter", "BufWritePre", "CursorHold" }, {
 			buffer = bufnr,
 
 			callback = function()
 				local params = vim.lsp.util.make_text_document_params(bufnr)
 
-				client.request(
-				'textDocument/diagnostic',
-				{ textDocument = params },
-				function(err, result)
-					if err then return end
+				client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
+					if err then
+						return
+					end
 
 					vim.lsp.diagnostic.on_publish_diagnostics(
-					nil,
-					vim.tbl_extend('keep', params, { diagnostics = result.items }),
-					{ client_id = client.id }
+						nil,
+						vim.tbl_extend("keep", params, { diagnostics = result.items }),
+						{ client_id = client.id }
 					)
-				end
-				)
+				end)
 			end,
 		})
-	end
+	end,
 })
 
 lsp.setup()
@@ -146,4 +143,3 @@ if vim.fn.filereadable(".eslinteslint_config") == 1 then
 end
 
 null_ls.setup({ sources = sources })
-

@@ -51,7 +51,7 @@ return require("packer").startup(function(use)
 			-- use snipmate/ultisnip style snippets instead
 			-- this has a lot more stars, and a little less problematic in ruby
 			-- https://github.com/VonHeikemen/lsp-zero.nvim/issues/61
-			{"honza/vim-snippets"},
+			{ "honza/vim-snippets" },
 		},
 	})
 	use("jose-elias-alvarez/null-ls.nvim")
@@ -85,8 +85,8 @@ return require("packer").startup(function(use)
 	use("RRethy/nvim-treesitter-endwise")
 
 	use({
-		'Wansmer/sibling-swap.nvim',
-		requires = { 'nvim-treesitter' },
+		"Wansmer/sibling-swap.nvim",
+		requires = { "nvim-treesitter" },
 	})
 
 	-- better support for % to bounce between sets of matching text, ie parens, etc
@@ -104,7 +104,6 @@ return require("packer").startup(function(use)
 	-- dashboard when starting à la startify
 	use({ "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } })
 
-
 	-- customizable statusline with nice defaults
 	use({
 		"nvim-lualine/lualine.nvim",
@@ -117,10 +116,10 @@ return require("packer").startup(function(use)
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 
-	use({"nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use({"nvim-telescope/telescope-fzy-native.nvim", run = 'make' })
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	use({ "nvim-telescope/telescope-fzy-native.nvim", run = "make" })
 	use("natecraddock/telescope-zf-native.nvim")
-	use{'nvim-telescope/telescope-ui-select.nvim' }
+	use({ "nvim-telescope/telescope-ui-select.nvim" })
 
 	use({
 		"gfeiyou/command-center.nvim",
@@ -188,10 +187,9 @@ return require("packer").startup(function(use)
 	use("ur4ltz/surround.nvim")
 	use("AndrewRadev/splitjoin.vim")
 
-	use {"akinsho/toggleterm.nvim", tag = '*'}
+	use({ "akinsho/toggleterm.nvim", tag = "*" })
 	-- so you can can vim in the terimal
-	use "samjwill/nvim-unception"
-
+	use("samjwill/nvim-unception")
 
 	-- session, remembering where we were
 	use("farmergreg/vim-lastplace")
@@ -227,7 +225,7 @@ return require("packer").startup(function(use)
 
 	use("simrat39/symbols-outline.nvim")
 
-	use("ldelossa/nvim-ide", {branch = 'no-cursor-restore'})
+	use("ldelossa/nvim-ide", { branch = "no-cursor-restore" })
 
 	use("tyru/open-browser.vim")
 end)

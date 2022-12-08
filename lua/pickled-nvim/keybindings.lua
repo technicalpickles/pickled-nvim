@@ -5,7 +5,7 @@ local silent_noremap = { noremap = true, silent = true }
 local silent = { silent = true }
 
 -- open browser, since we disabled netrw
-vim.keymap.set({'v', 'n'}, 'gx', '<Plug>(openbrowser-smart-search)', silent_noremap)
+vim.keymap.set({ "v", "n" }, "gx", "<Plug>(openbrowser-smart-search)", silent_noremap)
 
 -- split management
 vim.api.nvim_set_keymap("n", "vs", ":vs<CR>", noremap)
@@ -78,7 +78,7 @@ vim.api.nvim_set_keymap("n", "<leader>m", "<cmd>Telescope marks<CR>", noremap)
 -- { VS Code and other IDE like behavior }} --
 
 -- ⌘ P - Command Palette
-vim.api.nvim_set_keymap('n', '<D-S-p>', "<cmd>Telescope command_center<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<D-S-p>", "<cmd>Telescope command_center<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>c", "<CMD>Telescope command_center<CR>", silent)
 
 -- ⌘ p - fuzzy find files
@@ -127,7 +127,7 @@ vim.keymap.set("n", "<leader>F", ":Grepper<CR>", silent)
 vim.keymap.set("n", "<D-F>", ":Grepper<CR> ", silent)
 
 -- ⌘ shift m - toggle quickfix (aka problems)
-vim.keymap.set('n', '<S-D-M>', ':TroubleToggle<CR>', silent)
+vim.keymap.set("n", "<S-D-M>", ":TroubleToggle<CR>", silent)
 vim.keymap.set("n", "<leader>M", ":TroubleToggle<CR>", silent)
 
 -- ⌘ b - toggle left hand tree

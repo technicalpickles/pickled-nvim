@@ -21,7 +21,6 @@ require("pickled-nvim.ide")
 
 require("pickled-nvim.custom-help")
 
-
 -- paired with vim-repeat to repeat surrounding texts
 
 -- require("toggleterm").setup({ open_mapping = [[<C-`>]], hide_numbers = true })

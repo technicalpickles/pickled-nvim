@@ -10,12 +10,10 @@ require("nvim-treesitter.configs").setup({
 	},
 	context_commentstring = { enable = true },
 
-
 	-- https://github.com/andymass/vim-matchup
 	matchup = {
 		enable = true,
 	},
-
 
 	-- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	textobjects = {
@@ -132,4 +130,3 @@ require("nvim-treesitter.configs").setup({
 	-- https://github.com/RRethy/nvim-treesitter-endwise
 	{ endwise = { enable = true } },
 })
-
