@@ -13,6 +13,7 @@ api.nvim_create_autocmd(
 			"*.god",
 			"*.ru",
 			".caprc",
+			"*.rbi",
 		},
 		command = "set filetype=ruby"
 	}
