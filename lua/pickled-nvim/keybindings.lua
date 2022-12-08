@@ -74,7 +74,7 @@ vim.keymap.set("n", "<leader>c", "<CMD>Telescope command_center<CR>", silent_nor
 -- ⌘ p - fuzzy find files
 local file_picker = "Telescope frecency"
 -- local file_picker = "lua file_picker()"
-vim.api.nvim_set_keymap("n", "<D-p>", "<cmd>".. file_picker .."<CR>", silent_noremap)
+vim.api.nvim_set_keymap("n", "<D-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap)
 vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap)
 
 -- ⌘ s - save

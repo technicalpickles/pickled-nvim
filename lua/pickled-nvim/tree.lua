@@ -11,18 +11,17 @@ require("nvim-tree").setup({
 		root_folder_modifier = ":t",
 		-- ie if you have lua/pickled-nvim, and lua is otherwise empty, only show lua/pickled-nvim instead of lua with one child
 		group_empty = true,
-		highlight_opened_files = 'icon',
+		highlight_opened_files = "icon",
 	},
 
 	view = {
 		mappings = {
 			list = {
-				{ key = {"?"}, action = "toggle_help" }
-			}
-		}
+				{ key = { "?" }, action = "toggle_help" },
+			},
+		},
 	},
 })
 
 -- close nvim-tree when it's the last thing in a window, ie the other buffer is closed
 -- vim.g.nvim_tree_auto_close = 1
-

@@ -120,8 +120,8 @@ return require("packer").startup(function(use)
 
 	use("romgrk/fzy-lua-native", { run = "make", on = "CmdlineEnter" })
 
-	use({"nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use({"nvim-telescope/telescope-fzy-native.nvim", run = 'make' })
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	use({ "nvim-telescope/telescope-fzy-native.nvim", run = "make" })
 	use("natecraddock/telescope-zf-native.nvim")
 	use("nvim-telescope/telescope-ui-select.nvim")
 
@@ -182,10 +182,9 @@ return require("packer").startup(function(use)
 	use("kevinhwang91/nvim-bqf")
 	use("romainl/vim-qf")
 
-
 	use("mg979/vim-visual-multi")
 
-	-- 
+	--
 	use({ "mhinz/vim-grepper", cmd = "Grepper" })
 	use({
 		"junegunn/fzf",
@@ -229,8 +228,7 @@ return require("packer").startup(function(use)
 
 	use("tpope/vim-rbenv")
 
-
-	use("ldelossa/nvim-ide", {branch = 'no-cursor-restore'})
+	use("ldelossa/nvim-ide", { branch = "no-cursor-restore" })
 	use("simrat39/symbols-outline.nvim")
 
 	use("tyru/open-browser.vim")

@@ -3,4 +3,3 @@ require("toggleterm").setup({
 	insert_mapping = true,
 	terminal_mappings = true,
 })
-

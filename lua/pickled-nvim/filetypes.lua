@@ -1,23 +1,20 @@
- local api = vim.api
- 
-  -- ruby things with different endings
-api.nvim_create_autocmd(
-    {"BufRead","BufNewFile"},
-	{
-		pattern = {
-			"Dangerfile",
-			"Brewfile",
-			"*.Brewfile",
-			"Capfile",
-			"Thorfile",
-			"*.god",
-			"*.ru",
-			".caprc",
-			"*.rbi",
-		},
-		command = "set filetype=ruby"
-	}
-)
+local api = vim.api
+
+-- ruby things with different endings
+api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = {
+		"Dangerfile",
+		"Brewfile",
+		"*.Brewfile",
+		"Capfile",
+		"Thorfile",
+		"*.god",
+		"*.ru",
+		".caprc",
+		"*.rbi",
+	},
+	command = "set filetype=ruby",
+})
 
 -- dockerignore is  close enough to gitignore
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {

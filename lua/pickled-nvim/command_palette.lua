@@ -27,11 +27,11 @@ command_center.add({
 
 	{ desc = "Comment: Toggle", cmd = "gcc" },
 
-	{ desc = "Tree: Toggle", cmd = "<CMD>NvimTreeToggle<CR>"},
-	{ desc = "Tree: Focus on current file", cmd = "<CMD>NvimTreeFindFile<CR>"},
-	{ desc = "Tree: Toggle focusing on current file", cmd = "<CMD>NvimTreeFindFileToggle<CR>"},
+	{ desc = "Tree: Toggle", cmd = "<CMD>NvimTreeToggle<CR>" },
+	{ desc = "Tree: Focus on current file", cmd = "<CMD>NvimTreeFindFile<CR>" },
+	{ desc = "Tree: Toggle focusing on current file", cmd = "<CMD>NvimTreeFindFileToggle<CR>" },
 
-	{ desc = "Treesitter: Toggle Playground", cmd = "<CMD>TSPlaygroundToggle<CR>"},
+	{ desc = "Treesitter: Toggle Playground", cmd = "<CMD>TSPlaygroundToggle<CR>" },
 
 	{ desc = "View: Toggle vertical guide lines", cmd = "<CMD>IndentBlanklineToggle<CR>" },
 
