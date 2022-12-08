@@ -6,9 +6,9 @@ local luasnip = require("luasnip")
 require("luasnip.loaders.from_snipmate").lazy_load()
 
 lsp.preset("recommended")
-lsp.nvim_workspace({
-	library = vim.api.nvim_get_runtime_file("", true),
-})
+-- lsp.nvim_workspace({
+-- 	library = vim.api.nvim_get_runtime_file("", true),
+-- })
 
 local cmp_sources = lsp.defaults.cmp_sources()
 
@@ -98,10 +98,10 @@ lspconfig.ruby_ls.setup({
 lsp.setup()
 
 -- debug lsp
--- vim.lsp.set_log_level 'trace'
--- if vim.fn.has 'nvim-0.5.1' == 1 then
---   require('vim.lsp.log').set_format_func(vim.inspect)
--- end
+vim.lsp.set_log_level("trace")
+if vim.fn.has("nvim-0.5.1") == 1 then
+	require("vim.lsp.log").set_format_func(vim.inspect)
+end
 
 -- linters, formaters, etc
 local null_ls = require("null-ls")

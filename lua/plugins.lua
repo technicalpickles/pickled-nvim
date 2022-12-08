@@ -9,10 +9,14 @@ return require("packer").startup(function(use)
 	-- package manager
 	use("wbthomason/packer.nvim")
 
-	-- ruby
-	use("tpope/vim-bundler")
-	use("tpope/vim-rake")
-	use("tpope/vim-rails")
+	-- Speed up loading Lua modules in Neovim to improve startup time.
+	-- Load before any other lua plugins
+	use({
+		"lewis6991/impatient.nvim",
+		config = function()
+			require("impatient")
+		end,
+	})
 
 	-- per project alternate setup
 	use("tpope/vim-projectionist")
@@ -54,23 +58,25 @@ return require("packer").startup(function(use)
 			{ "honza/vim-snippets" },
 		},
 	})
+	-- use command output as LSP for places that don't have one yet
 	use("jose-elias-alvarez/null-ls.nvim")
+
+	-- nice icons
 	use("onsails/lspkind.nvim")
 
-	-- Speed up loading Lua modules in Neovim to improve startup time.
-	-- Load before ay other lua plugins
-	use({
-		"lewis6991/impatient.nvim",
-		config = function()
-			require("impatient")
-		end,
-	})
+	-- ide like features
+	use("ldelossa/nvim-ide", { branch = "no-cursor-restore" })
+	use("simrat39/symbols-outline.nvim")
 
-	-- filetypes
-	-- drop in replacement for filetype.vim
-	-- TODO: switch back to nathom/filetype.nvim after landing fix
-	-- TODO: figure out why filetype=lock is being set from lua and where
-	-- use{"technicalpickles/filetype.nvim", branch = "more-specific-cargo-lock"}
+	-- ruby
+	use("tpope/vim-bundler")
+	use("tpope/vim-rake")
+	use("tpope/vim-rails")
+
+	-- lua
+	use("bfredl/nvim-luadev")
+
+	-- language and filetype specific
 	use("technicalpickles/procfile.vim")
 	use("gpanders/editorconfig.nvim")
 
@@ -85,15 +91,6 @@ return require("packer").startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	-- adding end automatically
 	use("RRethy/nvim-treesitter-endwise")
-
-	use({
-		"Wansmer/sibling-swap.nvim",
-		requires = { "nvim-treesitter" },
-	})
-
-	-- better support for % to bounce between sets of matching text, ie parens, etc
-	-- drop in replacement for matchit.vim
-	use("andymass/vim-matchup")
 
 	-- styling cursor, ident lines, etc
 	use("yamatsum/nvim-cursorline")
@@ -139,6 +136,25 @@ return require("packer").startup(function(use)
 		requires = { "nvim-telescope/telescope.nvim" },
 	})
 
+	-- various things for editing and jumping around
+	use({
+		"Wansmer/sibling-swap.nvim",
+		requires = { "nvim-treesitter" },
+	})
+	use("sickill/vim-pasta")
+	use("chentoast/marks.nvim")
+	-- multi-cursor
+	use("mg979/vim-visual-multi")
+	use("ktunprasert/gui-font-resize.nvim")
+
+	use("windwp/nvim-autopairs")
+	use("ur4ltz/surround.nvim")
+
+	use("AndrewRadev/splitjoin.vim")
+	-- better support for % to bounce between sets of matching text, ie parens, etc
+	-- drop in replacement for matchit.vim
+	use("andymass/vim-matchup")
+
 	-- tree explorer
 	use({
 		"kyazdani42/nvim-tree.lua",
@@ -152,18 +168,10 @@ return require("packer").startup(function(use)
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 
-	-- visual git integration
+	-- git stuff
 	use({ "tanvirtin/vgit.nvim", requires = { "nvim-lua/plenary.nvim" } })
-
-	-- more git!
 	use("tpope/vim-fugitive")
 	use("tpope/vim-rhubarb")
-
-	-- project managementment
-	use("ahmedkhalf/project.nvim")
-
-	-- directory specific path, etc
-	use("direnv/direnv.vim")
 
 	-- colorschemes
 	use("ayu-theme/ayu-vim")
@@ -182,9 +190,7 @@ return require("packer").startup(function(use)
 	use("kevinhwang91/nvim-bqf")
 	use("romainl/vim-qf")
 
-	use("mg979/vim-visual-multi")
-
-	--
+	-- search!
 	use({ "mhinz/vim-grepper", cmd = "Grepper" })
 	use({
 		"junegunn/fzf",
@@ -193,13 +199,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use("sickill/vim-pasta")
-
-	use("windwp/nvim-autopairs")
-	use("ur4ltz/surround.nvim")
-
-	use("AndrewRadev/splitjoin.vim")
-
+	-- terminal
 	use({ "akinsho/toggleterm.nvim", tag = "*" })
 	-- so you can can vim in the terimal
 	use("samjwill/nvim-unception")
@@ -218,18 +218,12 @@ return require("packer").startup(function(use)
 		run = "pip install -r requirements.txt",
 	})
 
-	use("ktunprasert/gui-font-resize.nvim")
-
-	use("chentoast/marks.nvim")
-
 	use("github/copilot.vim")
 
-	use("bfredl/nvim-luadev")
-
+	-- directory specific path, etc
+	use("direnv/direnv.vim")
 	use("tpope/vim-rbenv")
 
-	use("ldelossa/nvim-ide", { branch = "no-cursor-restore" })
-	use("simrat39/symbols-outline.nvim")
-
+	-- replace gx for URLs when netrw is disabled
 	use("tyru/open-browser.vim")
 end)

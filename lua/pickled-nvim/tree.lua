@@ -24,4 +24,4 @@ require("nvim-tree").setup({
 })
 
 -- close nvim-tree when it's the last thing in a window, ie the other buffer is closed
--- vim.g.nvim_tree_auto_close = 1
+vim.g.nvim_tree_auto_close = 1
