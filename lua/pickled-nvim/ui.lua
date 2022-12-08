@@ -27,13 +27,6 @@ require("lualine").setup({
 	theme = "tokyonight",
 })
 
--- terminal
-require("toggleterm").setup({
-	open_mapping = [[<c-`>]],
-	insert_mapping = true,
-	terminal_mappings = true,
-})
-
 -- font
 vim.o.guifont = "DankMono Nerd Font:h16"
 require("gui-font-resize").setup({
@@ -214,8 +207,6 @@ vim.o.mouse = "a"
 vim.o.scrolloff = 3
 
 vim.o.errorbells = false
-
-vim.o.wrap = false
 
 -- where do split windows open?
 vim.o.splitbelow = true

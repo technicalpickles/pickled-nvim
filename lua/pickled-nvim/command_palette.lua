@@ -8,9 +8,10 @@ command_center.add({
 	-- @+ is the system clipboard
 	-- @" is the default register
 	-- so assign default register to system clipboard
+	{ desc = "Buffer: Close All", cmd = "<CMD>:bufdo bdelete<CR>" },
+	{ desc = "Buffer: Close Other", cmd = "<CMD>%bd|e#|bd#<CR>" },
+
 	{ desc = "Copy Default Register to System Clipboard", cmd = "<CMD>let @+=@" },
-	{ desc = "Close All Buffers", cmd = "<CMD>:bufdo bdelete<CR>" },
-	{ desc = "Close Other Buffers", cmd = "<CMD>%bd|e#|bd#<CR>" },
 	{ desc = "Copy Relative Filename", cmd = '<CMD>let @" = expand("%")"<CR>' },
 	{ desc = "Copy Absolute Filename", cmd = '<CMD>let @" = expand("%:p")"<CR>' },
 	{
@@ -25,6 +26,10 @@ command_center.add({
 	{ desc = "Packer: Update", cmd = "<CMD>so ~/.config/nvim/lua/plugins.lua<CR><CMD>PackerUpdate<CR>" },
 
 	{ desc = "Comment: Toggle", cmd = "gcc"},
+
+	{ desc = "Tree: Toggle", cmd = "<CMD>NvimTreeToggle<CR>"},
+	{ desc = "Tree: Focus on current file", cmd = "<CMD>NvimTreeFindFile<CR>"},
+	{ desc = "Tree: Toggle focusing on current file", cmd = "<CMD>NvimTreeFindFileToggle<CR>"},
 
 	{ desc = "Treesitter: Toggle Playground", cmd = "<CMD>TSPlaygroundToggle<CR>"},
 

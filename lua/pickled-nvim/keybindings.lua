@@ -82,11 +82,10 @@ vim.api.nvim_set_keymap('n', '<D-S-p>', "<cmd>Telescope command_center<CR>", { n
 vim.keymap.set("n", "<leader>c", "<CMD>Telescope command_center<CR>", silent)
 
 -- ⌘ p - fuzzy find files
--- FIXME: frecency really falls over in large repositories
--- vim.api.nvim_set_keymap("n", "<D-p>", "<cmd>Telescope frecency<CR>", noremap)
--- vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>Telescope frecency<CR>", noremap)
-vim.api.nvim_set_keymap("n", "<D-p>", "<cmd>lua file_picker()<CR>", noremap)
-vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>lua file_picker()<CR>", noremap)
+local file_picker = "Telescope frecency"
+-- local file_picker = "lua file_picker()"
+vim.api.nvim_set_keymap("n", "<D-p>", "<cmd>".. file_picker .."<CR>", noremap)
+vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>" .. file_picker .. "<CR>", noremap)
 
 -- ⌘ s - save
 vim.keymap.set("n", "<D-s>", ":w<CR>", silent)
