@@ -118,7 +118,7 @@ alpha.setup(dashboard.config)
 require("vgit").setup({
 	settings = {
 		signs = {
-			priority = 30,
+			priority = vim.g.sign_priorities.git,
 		},
 	},
 })

@@ -48,8 +48,12 @@ vim.keymap.set("", "<D-v>", '"+p')
 vim.keymap.set("c", "<D-v>", "<C-r><C-o>+")
 vim.keymap.set("i", "<D-v>", "<C-r><C-o>+")
 
--- save
+-- ⌘ s - save
+vim.keymap.set("n", "<D-s>", ":w<CR>", silent)
+vim.keymap.set("n", "<leader>s", ":w<CR>", silent)
 vim.api.nvim_set_keymap("n", "<C-S>", ":%s/", silent_noremap)
+-- ⌘ a - select all
+vim.keymap.set("n", "<D-a>", "ggVG", silent)
 
 -- Delete a buffer when asking for a "window close"
 vim.keymap.set("", "<D-w>", "<cmd>confirm bd<cr>", silent)
@@ -77,11 +81,7 @@ local file_picker = "Telescope frecency"
 vim.api.nvim_set_keymap("n", "<D-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap)
 vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap)
 
--- ⌘ s - save
-vim.keymap.set("n", "<D-s>", ":w<CR>", silent)
-vim.keymap.set("n", "<leader>s", ":w<CR>")
-
--- ⌘ / - toggle comment with commentary.vim --
+-- ⌘ / - toggle comment
 vim.keymap.set("n", "<D-/>", "gcc", silent)
 vim.keymap.set("v", "<D-/>", "gc", silent)
 -- ⌘ ]  - shift identation right
@@ -93,6 +93,10 @@ vim.keymap.set("i", "<D-]>", "<C-O>>>", silent)
 vim.keymap.set("n", "<D-[>", "<<", silent)
 vim.keymap.set("v", "<D-[>", "<", silent)
 vim.keymap.set("i", "<D-[>", "<C-O><<", silent)
+
+-- folds
+vim.keymap.set("n", "<D-M-[>", "zf")
+vim.keymap.set("n", "<D-M-]>", "zo")
 
 -- ⌘ 1 through ⌘ 0 to go to tab - shift identation righ
 vim.keymap.set("n", "<D-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", silent_noremap)
@@ -130,5 +134,3 @@ vim.api.nvim_set_keymap("n", "<leader>d", tree, silent_noremap)
 -- ctrl-` toggle terminal
 -- see toggleterm's setup
 
--- ⌘ a - select all
-vim.keymap.set("n", "<D-a>", "ggVG", silent)

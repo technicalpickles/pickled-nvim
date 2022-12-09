@@ -4,6 +4,8 @@ require("pickled-nvim.basics")
 
 require("pickled-nvim.keybindings")
 
+require("pickled-nvim.signs")
+
 require("pickled-nvim.ui")
 require("pickled-nvim.search")
 require("pickled-nvim.editor")
@@ -15,6 +17,7 @@ require("pickled-nvim.terminal")
 require("pickled-nvim.sessions")
 
 require("pickled-nvim.treesitter")
+require("pickled-nvim.folds") -- requires treesitter first
 require("pickled-nvim.filetypes")
 require("pickled-nvim.pairs")
 require("pickled-nvim.language-support")

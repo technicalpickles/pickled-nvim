@@ -42,5 +42,5 @@ vim.api.nvim_set_hl(1, "FocusedSymbol", { fg = colors.blue, bold = true })
 -- Comment (default seems fine)
 
 require("marks").setup({
-	sign_priority = 40,
+	sign_priority = vim.g.sign_priorities.mark,
 })

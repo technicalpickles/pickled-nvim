@@ -22,6 +22,11 @@ command_center.add({
 		keys = { "n", "<leader>f", silent_noremap },
 	},
 
+	{ desc = "Fold", cmd = "zf" },
+	{ desc = "Fold All", cmd = "zM" },
+	{ desc = "Unfold", cmd = "zo" },
+	{ desc = "Unfold All", cmd = "zM" },
+
 	{ desc = "Packer: Install", cmd = "<CMD>so ~/.config/nvim/lua/plugins.lua<CR><CMD>PackerInstall<CR>" },
 	{ desc = "Packer: Update", cmd = "<CMD>so ~/.config/nvim/lua/plugins.lua<CR><CMD>PackerUpdate<CR>" },
 
@@ -137,4 +142,7 @@ command_center.add({
 	{ desc = "Marks: Toggle", cmd = "m;" },
 	{ desc = "Marks: Delete All on Current Line", cmd = "dm-" },
 	{ desc = "Marks: Delete All in Current Buffer", cmd = "dm " },
+
+	{ desc = "Copilot: Status", cmd = "<CMD>Copilot<CR>"},
+	{ desc = "Copilot: Show Solutions", cmd = "<CMD>Copilot<CR>"},
 })

@@ -10,10 +10,20 @@ lsp.preset("recommended")
 -- 	library = vim.api.nvim_get_runtime_file("", true),
 -- })
 
-local cmp_sources = lsp.defaults.cmp_sources()
+-- local cmp_sources = lsp.defaults.cmp_sources()
+local cmp_sources = {
+    -- This one provides the data from copilot.
+    {name = 'copilot'},
 
-table.insert(cmp_sources, { name = "nvim_lsp_signature_help" })
-table.insert(cmp_sources, { name = "fish" })
+	{name = "nvim_lsp_signature_help"},
+	{name = "fish", keyword_length = 2},
+
+    --- These are the default sources for lsp-zero
+    {name = 'path'},
+    {name = 'nvim_lsp', keyword_length = 3},
+    {name = 'buffer', keyword_length = 3},
+    {name = 'luasnip', keyword_length = 2},
+}
 
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -96,6 +106,12 @@ lspconfig.ruby_ls.setup({
 })
 
 lsp.setup()
+
+vim.diagnostic.config({
+	signs = {
+		priority = vim.g.sign_priorities.diagnostic,
+	}
+})
 
 -- debug lsp
 vim.lsp.set_log_level("trace")

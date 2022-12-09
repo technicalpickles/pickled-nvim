@@ -218,7 +218,23 @@ return require("packer").startup(function(use)
 		run = "pip install -r requirements.txt",
 	})
 
-	use("github/copilot.vim")
+	use {
+		'zbirenbaum/copilot.lua',
+		event = 'VimEnter',
+		config = function()
+			vim.defer_fn(function()
+				require('copilot').setup()
+			end, 100)
+		end,
+	}
+
+	use {
+		'zbirenbaum/copilot-cmp',
+		after = {'copilot.lua'},
+		config = function ()
+			require('copilot_cmp').setup()
+		end
+	}
 
 	-- directory specific path, etc
 	use("direnv/direnv.vim")
@@ -226,4 +242,7 @@ return require("packer").startup(function(use)
 
 	-- replace gx for URLs when netrw is disabled
 	use("tyru/open-browser.vim")
+
+	-- folds
+	use({'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'})
 end)
