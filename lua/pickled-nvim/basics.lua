@@ -13,6 +13,7 @@ CONFIG_PATH = vim.fn.stdpath("config")
 DATA_PATH = vim.fn.stdpath("data")
 CACHE_PATH = vim.fn.stdpath("cache")
 
+o.errorbells = false
 
 o.swapfile = false
 
@@ -21,3 +22,15 @@ o.autoread = true -- reload changes from disk
 o.number = true
 o.relativenumber = true
 
+
+o.showmode = false
+
+-- where do split windows open?
+o.splitbelow = true
+o.splitright = true
+
+
+-- Minumum lines to keep above and below cursor
+o.scrolloff = 5
+-- show title
+o.title = true

@@ -1,9 +1,6 @@
 local o = vim.o
 local g = vim.g
 
-o.scrolloff = 5 -- Minumum lines to keep above and below cursor
-o.title = true -- show title
-
 -- for UI frontends
 o.termguicolors = true
 g.neovide_input_use_logo = true -- Ensure we can pass the command key
@@ -60,26 +57,13 @@ require("indent_blankline").setup({
 	filetype_exclude = { "markdown", "help", "log", "txt" },
 })
 
--- gutter
--- always show to avoid it jumping around
--- set to 2 to be able to show these plugins:
--- - vgit
--- - marks.nvim
--- NOTE: make sure to adjust priority for consistency
-vim.o.signcolumn = "yes:2"
-vim.o.number = true
-vim.o.relativenumber = true
-
 -- cursorline
 require("nvim-cursorline").setup({
 	cursorline = { enable = true, timeout = 1000, number = false },
 	cursorword = { enable = true, min_length = 3, hl = { underline = true } },
 })
 
-vim.o.showmode = false
-
 -- startup screen
-local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
 dashboard.section.buttons.val = {
 	dashboard.button("r", "  Restore session", "<Cmd>RestoreSession<CR>"),
@@ -87,7 +71,7 @@ dashboard.section.buttons.val = {
 	dashboard.button("p", "  Open Project", "<Cmd>Telescope projects<CR>"),
 	dashboard.button("q", "  Quit NVIM", ":qa<CR>"),
 }
-alpha.setup(dashboard.config)
+require("alpha").setup(dashboard.config)
 
 -- git
 require("vgit").setup({
@@ -98,76 +82,6 @@ require("vgit").setup({
 	},
 })
 
--- FIXME: not working on second machine due to python failing to initialize
--- enhance wildmenu
--- local wilder = require("wilder")
--- wilder.setup({ modes = { ":" } })
-
--- local pipeline = {
--- 	wilder.branch(
--- 		wilder.python_file_finder_pipeline({
--- 			file_command = function(ctx, arg)
--- 				if string.find(arg, ".") ~= nil then
--- 					return { "rg", "--files", "--hidden" }
--- 				else
--- 					return { "rg", "--files" }
--- 				end
--- 			end,
--- 			dir_command = { "fd", "-td" },
--- 			filters = { "fruzzy_filter" },
--- 		}),
--- 		wilder.substitute_pipeline({
--- 			pipeline = wilder.python_search_pipeline({
--- 				skip_cmdtype_check = 1,
--- 				pattern = wilder.python_fuzzy_pattern({
--- 					start_at_boundary = 0,
--- 				}),
--- 			}),
--- 		}),
--- 		wilder.cmdline_pipeline({
--- 			fuzzy = 2,
--- 			fuzzy_filter = wilder.lua_fzy_filter(),
--- 		}),
--- 		{
--- 			wilder.check(function(_, x)
--- 				return x == ""
--- 			end),
--- 			wilder.history(),
--- 		},
--- 		wilder.python_search_pipeline({
--- 			pattern = wilder.python_fuzzy_pattern({
--- 				start_at_boundary = 0,
--- 			}),
--- 		})
--- 	),
--- }
--- wilder.set_option("pipeline", pipeline)
-
--- local popupmenu_renderer = wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
--- 	border = "rounded",
--- 	highlighter = {
--- 		wilder.lua_fzy_highlighter(),
--- 		wilder.basic_highlighter(),
--- 	},
--- 	highlights = {
--- 		accent = wilder.make_hl("WilderAccent", "Pmenu", { { a = 1 }, { a = 1 }, { foreground = "#f4468f" } }),
--- 	},
--- 	left = {
--- 		" ",
--- 		wilder.popupmenu_devicons(),
--- 		wilder.popupmenu_buffer_flags({
--- 			flags = " a + ",
--- 			icons = { ["+"] = "", a = "", h = "" },
--- 		}),
--- 	},
--- 	right = {
--- 		" ",
--- 		wilder.popupmenu_scrollbar(),
--- 	},
--- }))
-
--- wilder.set_option("renderer", popupmenu_renderer)
-
 -- reload current file with focus for frontends that support it
 -- https://github.com/neovim/neovim/issues/1936
 vim.cmd([[
@@ -177,12 +91,3 @@ au FocusGained * :checktime
 
 -- mouse
 vim.o.mouse = "a"
-
--- how many lines to keep below the current cursor
-vim.o.scrolloff = 3
-
-vim.o.errorbells = false
-
--- where do split windows open?
-vim.o.splitbelow = true
-vim.o.splitright = true
