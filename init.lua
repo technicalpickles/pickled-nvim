@@ -1,20 +1,21 @@
 require("plugins")
 
 require("pickled-nvim.basics")
+require("pickled-nvim.signs")
+require("pickled-nvim.ui")
 
 require("pickled-nvim.keybindings")
 
-require("pickled-nvim.signs")
+require("pickled-nvim.tabs")
+require("pickled-nvim.quickfix")
+require("pickled-nvim.sessions")
 
-require("pickled-nvim.ui")
 require("pickled-nvim.search")
 require("pickled-nvim.editor")
 require("pickled-nvim.tree")
 require("pickled-nvim.telescope")
 require("pickled-nvim.navigation")
-require("pickled-nvim.quickfix")
 require("pickled-nvim.terminal")
-require("pickled-nvim.sessions")
 
 require("pickled-nvim.treesitter")
 require("pickled-nvim.folds") -- requires treesitter first

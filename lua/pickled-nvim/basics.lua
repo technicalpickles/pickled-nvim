@@ -1,17 +1,23 @@
+local o = vim.o
+local g = vim.g
+
 -- Disable some in built plugins completely
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_2html_plugin = 1
-vim.g.loaded_getscriptPlugin = 1
-vim.g.loaded_logipat = 1
-vim.g.loaded_rrhelper = 1
-vim.g.loaded_vimballPlugin = 1
+g.loaded_netrwPlugin = 1
+g.loaded_2html_plugin = 1
+g.loaded_getscriptPlugin = 1
+g.loaded_logipat = 1
+g.loaded_rrhelper = 1
+g.loaded_vimballPlugin = 1
 
 CONFIG_PATH = vim.fn.stdpath("config")
 DATA_PATH = vim.fn.stdpath("data")
 CACHE_PATH = vim.fn.stdpath("cache")
 
-local opt = vim.o
 
-opt.swapfile = false
+o.swapfile = false
 
-opt.autoread = true -- reload changes from disk
+o.autoread = true -- reload changes from disk
+
+o.number = true
+o.relativenumber = true
+
