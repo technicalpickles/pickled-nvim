@@ -6,9 +6,9 @@ local luasnip = require("luasnip")
 require("luasnip.loaders.from_snipmate").lazy_load()
 
 lsp.preset("recommended")
--- lsp.nvim_workspace({
--- 	library = vim.api.nvim_get_runtime_file("", true),
--- })
+lsp.nvim_workspace({
+	library = vim.api.nvim_get_runtime_file("", true),
+})
 
 -- local cmp_sources = lsp.defaults.cmp_sources()
 local cmp_sources = {
