@@ -107,12 +107,6 @@ lspconfig.ruby_ls.setup({
 
 lsp.setup()
 
-vim.diagnostic.config({
-	signs = {
-		priority = vim.g.sign_priorities.diagnostic,
-	}
-})
-
 -- debug lsp
 vim.lsp.set_log_level("trace")
 if vim.fn.has("nvim-0.5.1") == 1 then
