@@ -180,13 +180,7 @@ return require("packer").startup(function(use)
 	use("folke/tokyonight.nvim")
 
 	-- quicfix and diagnostic type stuff
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("trouble").setup({})
-		end,
-	})
+	use({"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons"})
 	use("kevinhwang91/nvim-bqf")
 	use("romainl/vim-qf")
 

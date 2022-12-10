@@ -54,7 +54,7 @@ require("bqf").setup({
 	},
 	func_map = {
 		-- todo find keybindings for this that don't conflict with c-f and c-b
-		pscrollup = "",
-		pscrolldown = "",
+		pscrollup = "<C-u>",
+		pscrolldown = "<C-d>",
 	},
 })
