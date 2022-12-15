@@ -53,8 +53,21 @@ require("bqf").setup({
 		},
 	},
 	func_map = {
-		-- todo find keybindings for this that don't conflict with c-f and c-b
+		-- switch these so I can use C-f and C-b for paging in the quickfix
 		pscrollup = "<C-u>",
 		pscrolldown = "<C-d>",
 	},
 })
+
+-- quickfix
+local silent_noremap = { noremap = true, silent = true }
+vim.keymap.set("n", "<leader>qq", "<Plug>(qf_qf_toggle)", silent_noremap)
+vim.keymap.set("n", "<leader>qn", "<Plug>(qf_qf_next)", silent_noremap)
+vim.keymap.set("n", "<leader>qp", "<Plug>(qf_qf_previous)", silent_noremap)
+
+vim.api.nvim_set_keymap("n", "<leader>ql", "<Plug>(qf_loc_toggle)", silent_noremap)
+
+vim.keymap.set("n", "<leader>qN", "<Plug>(qf_next_file)", silent_noremap)
+vim.keymap.set("n", "<leader>qP", "<Plug>(qf_previous_file)", silent_noremap)
+
+vim.keymap.set("n", "<leader>qb", "<Cmd>BqfToggle<CR>", silent_noremap)

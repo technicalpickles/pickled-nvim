@@ -120,21 +120,28 @@ return require("packer").startup(function(use)
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({ "nvim-telescope/telescope-fzy-native.nvim", run = "make" })
 	use("natecraddock/telescope-zf-native.nvim")
-	use("nvim-telescope/telescope-ui-select.nvim")
 
 	-- keep telescope from changing directory when picking files
 	use("desdic/telescope-rooter.nvim")
 
 	use({
 		"nvim-telescope/telescope-frecency.nvim",
-		config = function() end,
-		requires = { "tami5/sqlite.lua" },
+		requires = { "kkharji/sqlite.lua" },
 	})
 
 	use({
 		"gfeiyou/command-center.nvim",
 		requires = { "nvim-telescope/telescope.nvim" },
 	})
+
+	use({
+		'mrjones2014/legendary.nvim',
+		-- sqlite is only needed if you want to use frecency sorting
+		requires = 'kkharji/sqlite.lua'
+	})
+
+    use {'stevearc/dressing.nvim'}
+
 
 	-- various things for editing and jumping around
 	use({

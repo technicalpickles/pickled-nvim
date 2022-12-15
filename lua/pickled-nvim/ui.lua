@@ -30,9 +30,6 @@ require("gui-font-resize").setup({
 	default_size = 16,
 })
 
--- hints for available commands
-require("which-key").setup({})
-
 -- identlines
 -- match these up with rainbow config for treesitter in language-support.lua
 vim.cmd([[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]])
@@ -91,3 +88,28 @@ au FocusGained * :checktime
 
 -- mouse
 vim.o.mouse = "a"
+
+
+require('dressing').setup({
+	input = {
+		default_prompt = '❯ '
+	},
+	select = {
+        get_config = function(opts)
+          opts = opts or {}
+          local cfg = {
+            telescope = {
+              layout_config = {
+                width = 120,
+                height = 25,
+              },
+            },
+          }
+          if opts.kind == 'legendary.nvim' then
+            cfg.telescope.sorter = require('telescope.sorters').fuzzy_with_index_bias({})
+          end
+          return cfg
+        end,
+	}
+})
+

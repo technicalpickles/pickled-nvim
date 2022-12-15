@@ -3,6 +3,7 @@ require("plugins")
 require("pickled-nvim.basics")
 require("pickled-nvim.signs")
 require("pickled-nvim.ui")
+require("pickled-nvim.legendary-which-key-palette")
 
 require("pickled-nvim.keybindings")
 

@@ -1,13 +1,19 @@
 require("telescope").setup({
+	defaults = {
+        prompt_prefix = '  ',
+		layout_strategy = 'horizontal',
+		layout_config = {
+			horizontal = {
+				preview_width = 0.5,
+			},
+		}
+	},
 	extensions = {
 		frecency = {
 			default_workspace = "CWD",
 			show_filter_column = false,
 			show_unindexed = false,
 			ignore_patterns = { "*.git/*", "*/tmp/*", "node_modules/*" },
-		},
-		["ui-select"] = {
-			require("telescope.themes").get_dropdown({}),
 		},
 		rooter = {
 			enable = true,
@@ -35,9 +41,6 @@ require("telescope").load_extension("zf-native")
 
 -- combine frequency and recency to give better results by default
 require("telescope").load_extension("frecency")
-
--- replace vim.ui with telescope
-require("telescope").load_extension("ui-select")
 
 -- prevent file pickers from changing the directory out from under you
 require("telescope").load_extension("rooter")

@@ -7,26 +7,6 @@ local silent = { silent = true }
 -- open browser, since we disabled netrw
 vim.keymap.set({ "v", "n" }, "gx", "<Plug>(openbrowser-smart-search)", silent_noremap)
 
--- quickfix
-vim.keymap.set("n", "<leader>qq", "<Plug>(qf_qf_toggle)", noremap)
-vim.keymap.set("n", "<leader>qn", "<Plug>(qf_qf_next)", noremap)
-vim.keymap.set("n", "<leader>qp", "<Plug>(qf_qf_previous)", noremap)
-
-vim.api.nvim_set_keymap("n", "<leader>ql", "<Plug>(qf_loc_toggle)", noremap)
-
-vim.keymap.set("n", "<leader>qN", "<Plug>(qf_next_file)", noremap)
-vim.keymap.set("n", "<leader>qP", "<Plug>(qf_previous_file)", noremap)
-
-vim.keymap.set("n", "<leader>qb", "<Cmd>BqfToggle<CR>", noremap)
-
--- trouble
-vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", silent_noremap)
-vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", silent_noremap)
-vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", silent_noremap)
-vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", silent_noremap)
-vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", silent_noremap)
-vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", silent_noremap)
-
 -- terminal mapping
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", silent_noremap)
 vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { buffer = 0 })
@@ -97,17 +77,6 @@ vim.keymap.set("i", "<D-[>", "<C-O><<", silent)
 -- folds
 vim.keymap.set("n", "<D-M-[>", "zf")
 vim.keymap.set("n", "<D-M-]>", "zo")
-
--- ⌘ 1 through ⌘ 0 to go to tab - shift identation righ
-vim.keymap.set("n", "<D-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", silent_noremap)
-vim.keymap.set("n", "<D-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", silent_noremap)
-vim.keymap.set("n", "<D-3>", "<Cmd>BufferLineGoToBuffer 3<CR>", silent_noremap)
-vim.keymap.set("n", "<D-4>", "<Cmd>BufferLineGoToBuffer 4<CR>", silent_noremap)
-vim.keymap.set("n", "<D-5>", "<Cmd>BufferLineGoToBuffer 5<CR>", silent_noremap)
-vim.keymap.set("n", "<D-6>", "<Cmd>BufferLineGoToBuffer 6<CR>", silent_noremap)
-vim.keymap.set("n", "<D-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", silent_noremap)
-vim.keymap.set("n", "<D-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", silent_noremap)
-vim.keymap.set("n", "<D-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", silent_noremap)
 
 -- ⌘ -/+ to increase/decrease font. ⌘ 0 to reset font
 vim.keymap.set("n", "<D-=>", "<cmd>:GUIFontSizeUp<CR>", silent_noremap)

@@ -1,4 +1,8 @@
-require("trouble").setup({})
+local silent_noremap = { noremap = true, silent = true }
+
+require("trouble").setup({
+	mode = "document_diagnostics",
+})
 
 vim.diagnostic.config({
 	signs = {
@@ -6,3 +10,9 @@ vim.diagnostic.config({
 	}
 })
 
+vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", silent_noremap)
+vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", silent_noremap)
+vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", silent_noremap)
+vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", silent_noremap)
+vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", silent_noremap)
+vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", silent_noremap)

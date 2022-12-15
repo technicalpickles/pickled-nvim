@@ -1,5 +1,8 @@
+
 vim.g.lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit,toggleterm,Trouble"
 
+-- disable to work around https://github.com/windwp/nvim-autopairs/issues/173
+vim.g.auto_session_enabled = false
 require("auto-session").setup({
 	-- log_level = "info",
 	log_level = "warning",
