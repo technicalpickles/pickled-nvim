@@ -25,3 +25,12 @@ require("nvim-tree").setup({
 
 -- close nvim-tree when it's the last thing in a window, ie the other buffer is closed
 vim.g.nvim_tree_auto_close = 1
+
+local silent_noremap = { noremap = true, silent = true }
+-- ⌘ b - toggle left hand tree
+local tree = "<CMD>NvimTreeToggle<CR>"
+-- local tree = "<CMD>Workspace ToggleLeftPanel<CR>"
+vim.api.nvim_set_keymap("n", "<D-b>", tree, silent_noremap)
+vim.api.nvim_set_keymap("n", "<D-/>", tree, silent_noremap)
+-- my legacy binding
+vim.api.nvim_set_keymap("n", "<leader>d", tree, silent_noremap)

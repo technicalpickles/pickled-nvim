@@ -1,4 +1,4 @@
--- from https://github.com/kevinhwang91/nvim-bqf
+--{ recommendations from from https://github.com/kevinhwang91/nvim-bqf }--
 local fn = vim.fn
 
 function _G.qftf(info)

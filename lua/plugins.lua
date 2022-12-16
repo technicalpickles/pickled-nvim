@@ -79,6 +79,7 @@ return require("packer").startup(function(use)
 	-- language and filetype specific
 	use("technicalpickles/procfile.vim")
 	use("gpanders/editorconfig.nvim")
+	use({"preservim/vim-markdown", requires = { "godlygeek/tabular" }})
 
 	-- treesitter, syntax, etc
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -246,4 +247,8 @@ return require("packer").startup(function(use)
 
 	-- folds
 	use({'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'})
+
+	use("ggandor/leap.nvim")
+
+	-- use("dhruvasagar/vim-table-mode")
 end)

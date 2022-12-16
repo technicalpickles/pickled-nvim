@@ -16,3 +16,8 @@ vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr
 vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", silent_noremap)
 vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", silent_noremap)
 vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", silent_noremap)
+
+-- ⌘ shift m - toggle quickfix (aka problems)
+vim.keymap.set("n", "<S-D-M>", ":TroubleToggle<CR>", silent_noremap)
+vim.keymap.set("n", "<leader>M", ":TroubleToggle<CR>", silent_noremap)
+

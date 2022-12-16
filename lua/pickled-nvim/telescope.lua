@@ -60,3 +60,18 @@ function _G.file_picker()
 
 	file_picker()
 end
+
+local silent_noremap = { noremap = true, silent = true }
+vim.keymap.set("n", "<D-f>", "<cmd>lua require('telescope.builtin').live_grep()<CR>", silent_noremap)
+vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<CR>", silent_noremap)
+vim.keymap.set("n", "<leader>m", "<cmd>Telescope marks<CR>", silent_noremap)
+
+-- ⌘ P - Command Palette
+vim.api.nvim_set_keymap("n", "<D-S-p>", "<cmd>Telescope command_center<CR>", silent_noremap)
+vim.keymap.set("n", "<leader>c", "<CMD>Telescope command_center<CR>", silent_noremap)
+
+-- ⌘ p - fuzzy find files
+local file_picker = "Telescope frecency"
+-- local file_picker = "lua file_picker()"
+vim.api.nvim_set_keymap("n", "<D-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap)
+vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap)

@@ -24,7 +24,6 @@ require("pickled-nvim.filetypes")
 require("pickled-nvim.pairs")
 require("pickled-nvim.language-support")
 
-require("pickled-nvim.command_palette")
 require("pickled-nvim.ide")
 
 require("pickled-nvim.custom-help")

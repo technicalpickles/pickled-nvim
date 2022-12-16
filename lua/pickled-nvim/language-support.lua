@@ -1,4 +1,4 @@
--- filetype
+-- { lsp + cmp }--
 local lsp = require("lsp-zero")
 local lspkind = require("lspkind")
 local cmp = require("cmp")
@@ -61,25 +61,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	end, { "i", "s" }),
 })
 
-lsp.setup_nvim_cmp({
-	formatting = {
-		format = lspkind.cmp_format({
-			mode = "symbol_text",
-			menu = {
-				buffer = "[Buffer]",
-				nvim_lsp = "[LSP]",
-				luasnip = "[Snippet]",
-				nvim_lua = "[Lua]",
-				latex_symbols = "[Latex]",
-			},
-		}),
-	},
-	mapping = cmp_mappings,
-	sources = cmp_sources,
-})
-
 local lspconfig = require("lspconfig")
-
 lspconfig.ruby_ls.setup({
 	cmd = { "bundle", "exec", "ruby-lsp" },
 	on_attach = function(client, bufnr)
@@ -113,7 +95,7 @@ if vim.fn.has("nvim-0.5.1") == 1 then
 	require("vim.lsp.log").set_format_func(vim.inspect)
 end
 
--- linters, formaters, etc
+--{ null-ls }--
 local null_ls = require("null-ls")
 
 local sources = {}
@@ -153,3 +135,59 @@ if vim.fn.filereadable(".eslinteslint_config") == 1 then
 end
 
 null_ls.setup({ sources = sources })
+
+--{ symbols-outline }--
+require("symbols-outline").setup({
+	-- https://github.com/simrat39/symbols-outline.nvim/issues/185
+	symbols = {
+		File = { hl = "@text.uri" },
+		Module = { hl = "@namespace" },
+		Namespace = { hl = "@namespace" },
+		Package = { hl = "@namespace" },
+		Class = { hl = "@type" },
+		Method = { hl = "@method" },
+		Property = { hl = "@method" },
+		Field = { hl = "@field" },
+		Constructor = { hl = "@constructor" },
+		Enum = { hl = "@type" },
+		Interface = { hl = "@type" },
+		Function = { hl = "@function" },
+		Variable = { hl = "@constant" },
+		Constant = { hl = "@constant" },
+		String = { hl = "@string" },
+		Number = { hl = "@number" },
+		Boolean = { hl = "@boolean" },
+		Array = { hl = "@constant" },
+		Object = { hl = "@type" },
+		Key = { hl = "@type" },
+		Null = { hl = "@type" },
+		EnumMember = { hl = "@field" },
+		Struct = { hl = "@type" },
+		Event = { hl = "@type" },
+		Operator = { hl = "@operator" },
+		TypeParameter = { hl = "@parameter" },
+	},
+
+	keymaps = {
+		show_help = "?",
+	},
+})
+local colors = require("tokyonight.colors").setup()
+
+-- tokyonight support for
+vim.api.nvim_set_hl(1, "FocusedSymbol", { fg = colors.blue, bold = true })
+-- Pmenu (already exists)
+-- SymbolsOutlineConnector (default seems fine)
+-- Comment (default seems fine)
+
+
+-- { keymaps }--
+local silent_noremap = { noremap = true, silent = true }
+-- TODO: lsp-zero should have set this up :thinking_face:
+vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { buffer = 0, noremap = true, silent = true })
+
+-- symbols outline
+local symbols_outline = "<CMD>SymbolsOutline<CR>"
+-- local symbols_outline = "<CMD>Workspace RightPanelToggle<CR>"
+vim.keymap.set("n", "<leader>s", symbols_outline, silent_noremap)
+vim.keymap.set("n", "<D-.>", symbols_outline, silent_noremap)

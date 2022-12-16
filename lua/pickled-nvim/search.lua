@@ -23,3 +23,12 @@ vim.cmd(([[
         au User Grepper ++nested %s
     aug END
 ]]):format([[call setqflist([], 'r', {'context': {'bqf': {'pattern_hl': '\%#' . getreg('/')}}})]]))
+
+local silent_noremap = { noremap = true, silent = true }
+-- ⌘ f - search current
+-- ⌘ shift f - search across project
+vim.keymap.set("n", "<leader>F", ":Grepper<CR>", silent_noremap)
+vim.keymap.set("n", "<D-F>", ":Grepper<CR> ", silent_noremap)
+
+-- toggle search highlight
+vim.keymap.set({ "n", "v" }, "<leader>nh", "<cmd>nohls<cr>", silent_noremap)
