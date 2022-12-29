@@ -1,3 +1,5 @@
+local g = vim.g
+
 local cmp = require("cmp")
 local Rule = require("nvim-autopairs.rule")
 local npairs = require("nvim-autopairs")
@@ -20,7 +22,7 @@ npairs.add_rules({
 
 npairs.setup({
 	check_ts = true,
-	disable_filetype = { "TelescopePrompt", "guihua", "guihua_rust", "clap_input" },
+	disable_filetype = g.filetype_plugin_config.autopairs.disable,
 })
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")

@@ -51,7 +51,7 @@ require("indent_blankline").setup({
 		"IndentBlanklineIndent5",
 		"IndentBlanklineIndent6",
 	},
-	filetype_exclude = { "markdown", "help", "log", "txt" },
+	filetype_exclude = g.filetype_plugin_config.indent_blankline.exclude,
 })
 
 -- cursorline

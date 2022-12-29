@@ -2,8 +2,8 @@ require("plugins")
 
 require("pickled-nvim.basics")
 require("pickled-nvim.signs")
+require("pickled-nvim.filetypes")
 require("pickled-nvim.ui")
-require("pickled-nvim.legendary-which-key-palette")
 
 require("pickled-nvim.keybindings")
 
@@ -20,13 +20,15 @@ require("pickled-nvim.terminal")
 
 require("pickled-nvim.treesitter")
 require("pickled-nvim.folds") -- requires treesitter first
-require("pickled-nvim.filetypes")
 require("pickled-nvim.pairs")
 require("pickled-nvim.language-support")
 
 require("pickled-nvim.ide")
+require("pickled-nvim.second-brain")
+require("pickled-nvim.chatgpt")
 
 require("pickled-nvim.custom-help")
+require("pickled-nvim.legendary-which-key-palette")
 
 -- require("project_nvim").setup({})
 

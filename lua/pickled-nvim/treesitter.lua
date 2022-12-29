@@ -1,4 +1,4 @@
-local opt = vim.opt
+local g = vim.g
 
 require("nvim-treesitter.configs").setup({
 	ensure_installed = "all",
@@ -95,7 +95,7 @@ require("nvim-treesitter.configs").setup({
 	-- https://github.com/p00f/nvim-ts-rainbow
 	rainbow = {
 		enable = true,
-		disable = { "help", "log" },
+		disable = g.filetype_plugin_config.rainbow.disable,
 		-- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
 		extended_mode = true,
 		colors = {

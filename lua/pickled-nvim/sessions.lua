@@ -1,7 +1,6 @@
 
 vim.g.lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit,toggleterm,Trouble"
 
--- disable to work around https://github.com/windwp/nvim-autopairs/issues/173
 vim.g.auto_session_enabled = false
 require("auto-session").setup({
 	-- log_level = "info",
@@ -14,10 +13,10 @@ require("auto-session").setup({
 	},
 
 	pre_save_cmds = {
-		'cclose', -- quickfix
-		'NvimTreeClose',
-		'SymbolsOutlineClose',
-		'TroubleClose',
+		'silent! cclose', -- quickfix
+		'silent! NvimTreeClose',
+		'silent! SymbolsOutlineClose',
+		'silent! TroubleClose',
 	},
 	-- only keep sessions for this directory
 	auto_session_allowed_dirs = { "~/workspace/*" },

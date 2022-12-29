@@ -1,4 +1,5 @@
 local opt = vim.o
+local g = vim.g
 
 -- formatting
 opt.ignorecase = true -- Case insensitive search
@@ -17,7 +18,7 @@ opt.undolevels = 1000 -- Maximum number of changes that can be undone
 opt.undoreload = 10000 -- Maximum number lines to save for undo on a buffer reload
 
 -- pasta, which helps correctly indent
-vim.g.pasta_disabled_filetypes = { "toggleterm" }
+g.pasta_disabled_filetypes = g.filetype_plugin_config.pasta.disable
 
 -- word wrap
 vim.o.wrap = false

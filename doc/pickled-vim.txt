@@ -267,4 +267,42 @@ Powered by |marks-nvim|
                 the cursor. Works across buffers.
 `dm=`             Delete the bookmark under the cursor.
 
+==============================================================================
+Tables                               *pickled-nvim-tables*
+
+See |table-mode-mappings|
+
+Text Objects
+`i|`              Inside table cell
+`a|`              Around table cell
+
+Motions
+`[|`              Move to previous cell
+`]|`              Move to next cell
+`{|`              Move to the cell above
+`}|`              Move to the cell below
+
+==============================================================================
+Matchup                              *pickled-nvim-matchup*
+
+See |matchup|
+
+Motions
+
+`g%`                      When on a recognized word, go backwards to [count]th
+                        previous matching word.  If at an open word, cycle
+                        around to the corresponding close word.  If the cursor
+                        is not on a word, seek forwards to one and then jump
+                        to its match.
+
+`[%`                      Go to [count]th previous outer open word.  Allows
+                        navigation to the start of blocks surrounding the
+                        cursor. This is similar to vim's built-in |[(| and |[{|
+                        and is an |exclusive| motion (|matchup-feat-exclusive|).
+
+`]%`                      Go to [count]th next outer close word.  Allows
+                        navigation to the end of blocks surrounding the
+                        cursor. This is similar to vim's built-in |])| and |]}|
+                        and is an |exclusive| motion (|matchup-feat-exclusive|).
+
 vim:tw=78:ts=8:ft=help:norl:ma:noreadonly

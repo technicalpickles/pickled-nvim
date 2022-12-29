@@ -56,10 +56,13 @@ return require("packer").startup(function(use)
 			-- this has a lot more stars, and a little less problematic in ruby
 			-- https://github.com/VonHeikemen/lsp-zero.nvim/issues/61
 			{ "honza/vim-snippets" },
+
+			-- use command output as LSP for places that don't have one yet
+			{ "jose-elias-alvarez/null-ls.nvim" },
+			{ "jose-elias-alvarez/null-ls.nvim" },
+			{ "jayp0521/mason-null-ls.nvim"},
 		},
 	})
-	-- use command output as LSP for places that don't have one yet
-	use("jose-elias-alvarez/null-ls.nvim")
 
 	-- nice icons
 	use("onsails/lspkind.nvim")
@@ -80,6 +83,8 @@ return require("packer").startup(function(use)
 	use("technicalpickles/procfile.vim")
 	use("gpanders/editorconfig.nvim")
 	use({"preservim/vim-markdown", requires = { "godlygeek/tabular" }})
+	use("dhruvasagar/vim-table-mode")
+	use("vim-ruby/vim-ruby")
 
 	-- treesitter, syntax, etc
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -250,5 +255,19 @@ return require("packer").startup(function(use)
 
 	use("ggandor/leap.nvim")
 
-	-- use("dhruvasagar/vim-table-mode")
+	use("epwalsh/obsidian.nvim")
+	use("renerocksai/telekasten.nvim")
+
+	use({
+		"jackMort/ChatGPT.nvim",
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim"
+		}
+	})
+
+	use("mattboehm/vim-unstack")
+
+	use("famiu/bufdelete.nvim")
 end)

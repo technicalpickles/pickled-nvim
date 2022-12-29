@@ -15,7 +15,7 @@ command_center.add({
 	-- @+ is the system clipboard
 	-- @" is the default register
 	-- so assign default register to system clipboard
-	{ desc = "Buffer: Close All", cmd = "<CMD>:bufdo bdelete<CR>" },
+	{ desc = "Buffer: Close All", cmd = "<CMD>:bufdo Bdelete<CR>" },
 	{ desc = "Buffer: Close Other", cmd = "<CMD>%bd|e#|bd#<CR>" },
 
 	{ desc = "Copy Default Register to System Clipboard", cmd = "<CMD>let @+=@" },
