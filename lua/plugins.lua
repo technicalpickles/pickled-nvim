@@ -97,6 +97,11 @@ return require("packer").startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	-- adding end automatically
 	use("RRethy/nvim-treesitter-endwise")
+	-- better indentation
+	use("yioneko/nvim-yati")
+
+	-- fallback for indentation
+	use("yioneko/vim-tmindent")
 
 	-- styling cursor, ident lines, etc
 	use("yamatsum/nvim-cursorline")
