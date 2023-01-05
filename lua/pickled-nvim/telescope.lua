@@ -45,6 +45,8 @@ require("telescope").load_extension("frecency")
 -- prevent file pickers from changing the directory out from under you
 require("telescope").load_extension("rooter")
 
+require("telescope").load_extension("toggleterm")
+
 -- use git picker for git based directories
 function _G.file_picker()
 	local file_picker_name

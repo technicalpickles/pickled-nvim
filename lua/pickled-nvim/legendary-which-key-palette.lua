@@ -89,6 +89,8 @@ command_center.add({
 	{ desc = "Telescope (LSP): Definitions", cmd = "<CMD>Telescope lsp_definitions<CR>" },
 	{ desc = "Telescope (LSP): Type Definitions", cmd = "<CMD>Telescope lsp_type_definitions<CR>" },
 
+	{ desc = "Telescope: Terminals", cmd = "<CMD>Telescope toggleterm<CR>" },
+
 	{ desc = "BufferLine: Toggle Pin", cmd = "<CMD>BufferLineTogglePin<CR>" },
 	{ desc = "BufferLine: Sort By Extension", cmd = "<CMD>BufferLineSortByExtension<CR>" },
 	{ desc = "BufferLine: Sort By Directory", cmd = "<CMD>BufferLineSortByDirectory<CR>" },

@@ -23,7 +23,7 @@ require("bufferline").setup({
 vim.o.showtabline = 2
 
 local silent_noremap = {noremap = true, silent = true}
--- ⌘ 1 through ⌘ 0 to go to tab - shift identation righ
+-- ⌘ 1 through ⌘ 0 to go to tab 
 vim.keymap.set("n", "<D-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", silent_noremap)
 vim.keymap.set("n", "<D-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", silent_noremap)
 vim.keymap.set("n", "<D-3>", "<Cmd>BufferLineGoToBuffer 3<CR>", silent_noremap)

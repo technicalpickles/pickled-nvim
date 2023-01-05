@@ -146,6 +146,16 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		"da-moon/telescope-toggleterm.nvim",
+		requires = {
+			"akinsho/toggleterm.nvim",
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/popup.nvim",
+			"nvim-lua/plenary.nvim",
+		},
+	})
+
+	use({
 		'mrjones2014/legendary.nvim',
 		-- sqlite is only needed if you want to use frecency sorting
 		requires = 'kkharji/sqlite.lua'

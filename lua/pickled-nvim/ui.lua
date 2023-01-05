@@ -19,9 +19,61 @@ g.tokyonight_style = "storm"
 vim.cmd([[colorscheme tokyonight]])
 
 -- statusline
+local function toggleterm_statusline_title()
+	local number = vim.b.toggle_number
+
+	return 'ToggleTerm #' .. number
+end
+
+local function toggleterm_statusline_directory()
+	local number = vim.b.toggle_number
+	return require("toggleterm.terminal").get(number).dir
+end
+
+local my_toggleterm = {
+	sections = {
+		lualine_a = {'mode'},
+		lualine_b = { toggleterm_statusline_title },
+		lualine_c = { toggleterm_statusline_directory },
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {toggleterm_statusline_title},
+		lualine_c = {toggleterm_statusline_directory},
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = {}
+	},
+	filetypes = {'toggleterm'},
+}
+
 require("lualine").setup({
-	extensions = { "quickfix", "nvim-tree", "toggleterm", "quickfix", "symbols-outline" },
-	theme = "tokyonight",
+	extensions = {
+		"fugitive",
+		"man",
+		"nvim-tree",
+		"quickfix",
+		"quickfix",
+		"symbols-outline",
+		my_toggleterm,
+	},
+	theme = "auto",
+	sections = {
+		lualine_a = {'mode'},
+		lualine_b = {'branch', 'diagnostics'},
+		lualine_c = {'filename'},
+		lualine_x = {'filetype'},
+		lualine_y = {'progress'},
+		lualine_z = {'location'}
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = {'filename'},
+		lualine_x = {'location'},
+		lualine_y = {},
+		lualine_z = {}
+	},
 })
 
 -- font
