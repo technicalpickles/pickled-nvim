@@ -70,15 +70,6 @@ dashboard.section.buttons.val = {
 }
 require("alpha").setup(dashboard.config)
 
--- git
-require("vgit").setup({
-	settings = {
-		signs = {
-			priority = vim.g.sign_priorities.git,
-		},
-	},
-})
-
 -- reload current file with focus for frontends that support it
 -- https://github.com/neovim/neovim/issues/1936
 vim.cmd([[
@@ -88,7 +79,6 @@ au FocusGained * :checktime
 
 -- mouse
 vim.o.mouse = "a"
-
 
 require('dressing').setup({
 	input = {

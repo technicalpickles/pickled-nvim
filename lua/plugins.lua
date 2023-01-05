@@ -187,9 +187,11 @@ return require("packer").startup(function(use)
 	})
 
 	-- git stuff
-	use({ "tanvirtin/vgit.nvim", requires = { "nvim-lua/plenary.nvim" } })
+	use({ "tanvirtin/vgit.nvim", requires = "nvim-lua/plenary.nvim" })
 	use("tpope/vim-fugitive")
 	use("tpope/vim-rhubarb")
+	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim"} )
+
 
 	-- colorschemes
 	use("ayu-theme/ayu-vim")

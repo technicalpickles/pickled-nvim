@@ -4,6 +4,7 @@ require("pickled-nvim.basics")
 require("pickled-nvim.signs")
 require("pickled-nvim.filetypes")
 require("pickled-nvim.ui")
+require("pickled-nvim.git")
 
 require("pickled-nvim.keybindings")
 
