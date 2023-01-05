@@ -9,7 +9,7 @@ local openai_api_key = chatgpt_config["authorization"]
 -- set OPENAI_API_KEY API from authorization key in JSON
 if openai_api_key then
 	vim.env.OPENAI_API_KEY = openai_api_key
+	require("chatgpt").setup({
+	})
 end
 
-require("chatgpt").setup({
-})
