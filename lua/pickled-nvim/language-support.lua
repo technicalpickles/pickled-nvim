@@ -87,6 +87,15 @@ lspconfig.ruby_ls.setup({
 	end,
 })
 
+-- disable except for actual latex
+lspconfig.ltex.setup({
+	filetypes = {
+		"bib",
+		"plaintex",
+		"tex",
+	}
+})
+
 lsp.setup()
 
 -- debug lsp

@@ -1,8 +1,9 @@
-vim.g.mapleader = ","
-
 local noremap = { noremap = true }
 local silent_noremap = { noremap = true, silent = true }
 local silent = { silent = true }
+
+vim.g.mapleader = " "
+vim.keymap.set({"v", "n"}, ",", "<leader>", silent_noremap)
 
 -- open browser, since we disabled netrw
 vim.keymap.set({ "v", "n" }, "gx", "<Plug>(openbrowser-smart-search)", silent_noremap)
