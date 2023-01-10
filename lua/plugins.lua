@@ -75,6 +75,7 @@ return require("packer").startup(function(use)
 	use("tpope/vim-bundler")
 	use("tpope/vim-rake")
 	use("tpope/vim-rails")
+	use("vim-ruby/vim-ruby")
 
 	-- lua
 	use("bfredl/nvim-luadev")
@@ -84,7 +85,7 @@ return require("packer").startup(function(use)
 	use("gpanders/editorconfig.nvim")
 	use({"preservim/vim-markdown", requires = { "godlygeek/tabular" }})
 	use("dhruvasagar/vim-table-mode")
-	use("vim-ruby/vim-ruby")
+	use("kblin/vim-fountain")
 
 	-- treesitter, syntax, etc
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
