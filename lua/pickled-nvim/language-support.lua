@@ -61,8 +61,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	end, { "i", "s" }),
 })
 
-local lspconfig = require("lspconfig")
-lspconfig.ruby_ls.setup({
+lsp.configure('ruby_ls', {
 	cmd = { "bundle", "exec", "ruby-lsp" },
 	on_attach = function(client, bufnr)
 		vim.api.nvim_create_autocmd({ "BufReadPre", "BufEnter", "BufWritePre", "CursorHold" }, {
@@ -88,13 +87,42 @@ lspconfig.ruby_ls.setup({
 })
 
 -- disable except for actual latex
-lspconfig.ltex.setup({
+lsp.configure('ltex', {
 	filetypes = {
 		"bib",
 		"plaintex",
 		"tex",
 	}
 })
+
+lsp.setup_nvim_cmp({
+	sources = cmp_sources,
+	mappings = cmp_mappings,
+})
+
+lsp.set_preferences({
+	-- don't use defaults... will end up with the same mostly, but want to control desc, etc
+	set_lsp_keymaps = false
+})
+
+
+lsp.on_attach(function() -- client, bufnr
+	-- from lsp-zero 
+	vim.keymap.set('n', 'K', '<CMD>lua PeekOrHover<CR>') -- defined in folds.lua
+	vim.keymap.set('n', 'gd', '<CMD>lua vim.lsp.buf.definition<CR>')
+	vim.keymap.set('n', 'gD', '<CMD>lua vim.lsp.buf.declaration<CR>')
+	vim.keymap.set('n', 'gi', '<CMD>lua vim.lsp.buf.implementation<CR>')
+	vim.keymap.set('n', 'go', '<CMD>lua vim.lsp.buf.type_definition<CR>')
+	vim.keymap.set('n', 'gr', '<CMD>lua vim.lsp.buf.references<CR>')
+	vim.keymap.set('n', '<C-k>', '<CMD>lua vim.lsp.buf.signature_help<CR>')
+	vim.keymap.set('n', '<F2>', '<CMD>lua vim.lsp.buf.rename<CR>')
+	vim.keymap.set('n', '<F4>', '<CMD>lua vim.lsp.buf.code_action<CR>')
+	vim.keymap.set('x', '<F4>', '<CMD>lua vim.lsp.buf.range_code_action<CR>')
+	vim.keymap.set('n', '<C-k>', '<CMD>lua vim.lsp.buf.signature_help<CR>')
+	vim.keymap.set('n', 'gl', '<CMD>lua vim.diagnostic.open_float<CR>')
+	vim.keymap.set('n', '[d', '<CMD>lua vim.diagnostic.goto_prev<CR>')
+	vim.keymap.set('n', ']d', '<CMD>lua vim.diagnostic.goto_next<CR>')
+end)
 
 lsp.setup()
 
@@ -192,11 +220,11 @@ vim.api.nvim_set_hl(1, "FocusedSymbol", { fg = colors.blue, bold = true })
 
 -- { keymaps }--
 local silent_noremap = { noremap = true, silent = true }
--- TODO: lsp-zero should have set this up :thinking_face:
-vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { buffer = 0, noremap = true, silent = true })
+-- NOTE: hover binding in folds.lua
 
--- symbols outline
+-- symbols outline 
 local symbols_outline = "<CMD>SymbolsOutline<CR>"
--- local symbols_outline = "<CMD>Workspace RightPanelToggle<CR>"
+-- local symbols_outline = "<CMD>Workspace RightPanelToggle<CR>" 
 vim.keymap.set("n", "<leader>s", symbols_outline, silent_noremap)
 vim.keymap.set("n", "<D-.>", symbols_outline, silent_noremap)
+ 

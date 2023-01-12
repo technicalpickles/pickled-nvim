@@ -276,13 +276,18 @@ return require("packer").startup(function(use)
 	use("epwalsh/obsidian.nvim")
 	use("renerocksai/telekasten.nvim")
 
+	-- use({
+	-- 	"jackMort/ChatGPT.nvim",
+	-- 	requires = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-telescope/telescope.nvim"
+	-- 	}
+	-- })
+
 	use({
-		"jackMort/ChatGPT.nvim",
-		requires = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim"
-		}
+		'terror/chatgpt.nvim',
+		run = 'pip3 install -r requirements.txt'
 	})
 
 	use("mattboehm/vim-unstack")

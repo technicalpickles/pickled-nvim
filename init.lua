@@ -20,9 +20,9 @@ require("pickled-nvim.navigation")
 require("pickled-nvim.terminal")
 
 require("pickled-nvim.treesitter")
-require("pickled-nvim.folds") -- requires treesitter first
 require("pickled-nvim.pairs")
-require("pickled-nvim.language-support")
+require("pickled-nvim.folds") -- requires treesitter first
+require("pickled-nvim.language-support") -- requires folds
 
 require("pickled-nvim.ide")
 require("pickled-nvim.second-brain")

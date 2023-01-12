@@ -30,6 +30,7 @@ local function toggleterm_statusline_directory()
 	return require("toggleterm.terminal").get(number).dir
 end
 
+-- customize toggleterm to have less stuff in it
 local my_toggleterm = {
 	sections = {
 		lualine_a = {'mode'},

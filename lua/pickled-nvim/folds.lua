@@ -1,8 +1,59 @@
 -- from nvim-ufo
-vim.o.foldcolumn = '5'
+vim.o.foldcolumn = '0'
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
+--
+-- https://github.com/neovim/neovim/pull/17446#issuecomment-1377543620
+--
+-- vim.o.statuscolumn = '%=%l%s%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "▼" : "⏵") : " " }'
+-- vim.o.statuscolumn = '%=%l%s%#FoldColumn#%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "" : " " }%*'
+----- statuscolumn specific
+-- %l	line number of currently drawn line
+-- %r	relative line number of currently drawn line
+-- %s	sign column for currently drawn line
+-- %C	fold column for currently drawn line
+----- statusline 
+-- %=   Separation point between alignment sections. Each section will be separated by an equal number of spaces. No width fields allowed.
+-- %#   Set highlight group.  The name must follow and then a # again. Thus use %#HLname# for highlight group HLname.  The same highlighting is used, also for the statusline of non-current
+-- windows.
+-- %{   Evaluate expression between "%{" and "}" and substitute result.
+-- 	    Note that there is no "%" before the closing "}".  The
+-- 	    expression cannot contain a "}" character, call a function to
+-- 	    work around that.  See |stl-%{| below.
+--
+-- customize statuscolumn to show a single open/close w/o any numbers for nested folds
+-- depends on HEAD. places to track:
+-- - https://github.com/kevinhwang91/nvim-ufo/issues/4
+-- - https://github.com/neovim/neovim/pull/17446
+-- - https://github.com/neovim/neovim/pull/20621
+--
+-- vim.o.statuscolumn = '%=%l%s%#FoldColumn#%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " " } %*'
+
+vim.o.statuscolumn = '%= '
+  .. '%s' -- sign column FIXME: figure out how to put on the other side without having to do a lot of shifting
+  .. '%{%' -- evaluate this, and then evaluate what it returns
+    .. '&number ?'
+      .. '(v:relnum ?'
+	    .. 'printf("%"..len(line("$")).."s", v:relnum)' -- when showing relative numbers, make sure to pad so things don't shift as you move the cursor
+      .. ':'
+		.. 'v:lnum'
+      .. ')'
+	.. ':'
+      .. '""'
+	.. ' ' -- space between lines and fold
+  .. '%}'
+  .. '%= '
+  .. '%#FoldColumn#' -- highlight group for fold
+  .. '%{' -- expression for showing fold expand/colapse
+    .. 'foldlevel(v:lnum) > foldlevel(v:lnum - 1)' -- any folds?
+      .. '? (foldclosed(v:lnum) == -1' -- currently open?
+        .. '? ""' -- point down
+        .. ':  ""' -- point to right
+  	.. ')'
+  	.. ': " "' -- blank for no fold, or inside fold
+  .. '}'
+  .. '%= ' -- spacing between end of column and start of text
 
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
@@ -14,9 +65,24 @@ require('ufo').setup({
     end
 })
 
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+function PeekOrHover()
+	local current_window = 0
+	local current_line, _ = unpack(vim.api.nvim_win_get_cursor(current_window))
+
+	if require('ufo.utils').foldClosed(current_window, current_line) > 0 then
+		require('ufo').peekFoldedLinesUnderCursor()
+	else
+		vim.lsp.buf.hover()
+	end
+end
+
+local silent_noremap = {noremap = true, silent = true }
+vim.keymap.set("n", "K", PeekOrHover, { buffer = 0, noremap = false, silent = true })
+vim.keymap.set("n", "K", PeekOrHover, { buffer = 0, noremap = false, silent = true })
+
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds, silent_noremap)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, silent_noremap)
 
 -- VS Code-like
-vim.keymap.set("n", "<D-M-[>", "zf")
-vim.keymap.set("n", "<D-M-]>", "zo")
+vim.keymap.set("n", "<D-M-[>", "zf", silent_noremap)
+vim.keymap.set("n", "<D-M-]>", "zo", silent_noremap)

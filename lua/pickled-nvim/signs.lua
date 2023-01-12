@@ -1,4 +1,5 @@
-vim.o.signcolumn = "yes:2"
+vim.o.signcolumn = "yes:1"
+-- vim.o.signcolumn = "auto:2"
 
 vim.g.sign_priorities = {
 	-- TODO: can we also change fold?
