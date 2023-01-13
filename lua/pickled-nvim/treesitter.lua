@@ -136,5 +136,5 @@ require("nvim-treesitter.configs").setup({
 	 },
 
 	 -- https://github.com/RRethy/nvim-treesitter-endwise
-	 { endwise = { enable = true } },
+	 -- { endwise = { enable = true } },
 })
