@@ -19,6 +19,9 @@ npairs.add_rules({
 	Rule("__", "__", "markdown"):with_pair(not_inside_code_block),
 	Rule("**", "**", "markdown"):with_pair(not_inside_code_block),
 })
+npairs.add_rules(require('nvim-autopairs.rules.endwise-elixir'))
+npairs.add_rules(require('nvim-autopairs.rules.endwise-lua'))
+npairs.add_rules(require('nvim-autopairs.rules.endwise-ruby'))
 
 npairs.setup({
 	check_ts = true,

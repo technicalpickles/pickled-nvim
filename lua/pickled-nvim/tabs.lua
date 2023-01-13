@@ -1,7 +1,9 @@
 -- see barbar in plugin.lua
 require("bufferline").setup({
 	options = {
+		separator_style = "thick",
 		close_icon = "✕",
+		close_command = "Bdelete %d",
 		buffer_close_icon = "✕",
 		offsets = {
 			{
@@ -22,7 +24,12 @@ require("bufferline").setup({
 -- always show tab line, even if there is only 1 item
 vim.o.showtabline = 2
 
+
+
 local silent_noremap = {noremap = true, silent = true}
+vim.keymap.set("n", "gb", "<CMD>:BufferLinePick<CR>", silent_noremap)
+vim.keymap.set("n", "gB", "<CMD>:BufferLinePickClose<CR>", silent_noremap)
+
 -- ⌘ 1 through ⌘ 0 to go to tab 
 vim.keymap.set("n", "<D-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", silent_noremap)
 vim.keymap.set("n", "<D-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", silent_noremap)
