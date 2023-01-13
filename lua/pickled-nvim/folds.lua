@@ -1,5 +1,5 @@
 -- from nvim-ufo
-vim.o.foldcolumn = '1'
+vim.o.foldcolumn = '0'
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
@@ -88,12 +88,14 @@ vim.o.statuscolumn = '%= '
         .. '? ""' -- point down
         .. ': ""' -- point to right
   	  .. ')'
-  	.. ': ""' -- blank for no fold, or inside fold
+  	.. ': " "' -- blank for no fold, or inside fold
   .. '}'
   .. '%= ' -- spacing between end of column and start of text
 
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
+-- Only depend on `nvim-treesitter/queries/filetype/folds.scm`,
+-- performance and stability are better than `foldmethod=nvim_treesitter#foldexpr()`
 require('ufo').setup({
     provider_selector = function()
         return {'treesitter', 'indent'}
