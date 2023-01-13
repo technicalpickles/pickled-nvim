@@ -99,21 +99,21 @@ require("nvim-treesitter.configs").setup({
 	 },
 
 	 -- https://github.com/p00f/nvim-ts-rainbow
-	 rainbow = {
-	 	enable = true,
-	 	disable = g.filetype_plugin_config.rainbow.disable,
-	 	-- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-	 	extended_mode = true,
-	 	colors = {
-	 		-- Line up with indent_blankline colors in ui.lua
-	 		"#E06C75",
-	 		"#E5C07B",
-	 		"#98C379",
-	 		"#56B6C2",
-	 		"#61AFEF",
-	 		"#C678DD",
-	 	},
-	 },
+	 -- rainbow = {
+	 -- 	enable = true,
+	 -- 	disable = g.filetype_plugin_config.rainbow.disable,
+	 -- 	-- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+	 -- 	extended_mode = true,
+	 -- 	colors = {
+	 -- 		-- Line up with indent_blankline colors in ui.lua
+	 -- 		"#E06C75",
+	 -- 		"#E5C07B",
+	 -- 		"#98C379",
+	 -- 		"#56B6C2",
+	 -- 		"#61AFEF",
+	 -- 		"#C678DD",
+	 -- 	},
+	 -- },
 	 -- https://github.com/nvim-treesitter/nvim-treesitter-refactor
 	 refactor = {
 	 	highlight_current_scope = { enable = true },

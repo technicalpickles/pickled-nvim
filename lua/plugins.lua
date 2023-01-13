@@ -106,8 +106,8 @@ return require("packer").startup(function(use)
 
 	-- styling cursor, ident lines, etc
 	use("yamatsum/nvim-cursorline")
-	use("lukas-reineke/indent-blankline.nvim")
-	use("p00f/nvim-ts-rainbow")
+	-- use("lukas-reineke/indent-blankline.nvim")
+	-- use("p00f/nvim-ts-rainbow")
 
 	-- popups for suggestions when starting shortcuts
 	use("folke/which-key.nvim")
