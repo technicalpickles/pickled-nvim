@@ -1,40 +1,47 @@
 local M = {}
 
-M.close_types = {
-	'NvimTree',
-	'Outline',
-	'Trouble',
-	'qf',
+M.close_for_type = {
+	NvimTree = 'NvimTreeClose',
+	Outline = 'SymbolsOutlineClose',
+	Trouble = 'TroubleClose',
+	qf = 'cclose',
 }
 
-M.superesc = function ()
-	print("hi?")
-	if M.buffer_is_close_type(vim.bo.filetype) then
-		M.close(vim.bo.filetype)
+M.close_panel = function()
+	local command = M.close_for_type[vim.bo.filetype]
+	if command then
+		vim.cmd(command)
+		return true
+	end
+	return false
+end
+
+M.close_split = function()
+	local split_wins = {}
+	for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+		local bufnr = vim.api.nvim_win_get_buf(winid)
+		local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+
+		if not M.close_for_type[ft] then
+			table.insert(split_wins, winid)
+		end
+	end
+
+	if  #split_wins > 1 then
+		vim.cmd("close")
+	else
+		vim.cmd("Bdelete")
 	end
 end
 
-M.close = function(ft)
-	print(ft)
-	if ft == 'qf' then
-		vim.cmd('cclose')
-	elseif ft == 'Outline' then
-		vim.cmd('SymbolsOutlineClose')
-	elseif ft == 'Trouble' then
-		vim.cmd('TroubleClose')
-	elseif ft == 'NvimTree' then
-		vim.cmd('NvimTreeClose')
+M.close = function()
+	-- try to close panel first
+	if M.close_panel() then
+		return
 	end
-end
 
-M.buffer_is_close_type = function(filetype)
-  for _, value in ipairs(M.close_types) do
-	  print("value: "..value)
-	  if value == filetype then
-	  	return true
-	  end
-  end
-  return false
+	M.close_split()
+	-- special window, ie bottom or side pane
 end
 
 return M

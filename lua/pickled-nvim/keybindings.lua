@@ -27,8 +27,10 @@ vim.api.nvim_set_keymap("n", "<C-S>", ":%s/", silent_noremap)
 vim.keymap.set("n", "<D-a>", "ggVG", silent)
 
 -- Delete a buffer when asking for a "window close"
-vim.keymap.set("", "<D-w>", "<cmd>Bdelete<cr>", silent)
-vim.keymap.set("i", "<D-w>", "<cmd>Bdelete<cr>", silent)
+-- local close_command = 'Bdelete'
+local close_command = "lua require('superesc').close()"
+vim.keymap.set("", "<D-w>", "<cmd>"..close_command.."<cr>", silent)
+vim.keymap.set("i", "<D-w>", "<cmd>"..close_command.."<cr>", silent)
 
 -- Create new tab with Command-T
 vim.keymap.set("", "<D-t>", "<cmd>tabnew<cr>", silent_noremap)
