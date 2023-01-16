@@ -77,7 +77,15 @@ g.filetype_plugin_config = {
 	},
 	pasta = {
 		disable = {
-			"toggleterm"
+			"coffeescript",
+			"markdown",
+			"python",
+			"toggleterm",
+			"yaml",
 		}
 	},
 }
+
+-- pasta, which helps correctly indent
+g.pasta_disabled_filetypes = g.filetype_plugin_config.pasta.disable
+

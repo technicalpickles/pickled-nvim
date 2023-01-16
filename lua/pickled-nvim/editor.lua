@@ -17,9 +17,6 @@ opt.undodir = CACHE_PATH .. "/undo" -- set an undo directory
 opt.undolevels = 1000 -- Maximum number of changes that can be undone
 opt.undoreload = 10000 -- Maximum number lines to save for undo on a buffer reload
 
--- pasta, which helps correctly indent
-g.pasta_disabled_filetypes = g.filetype_plugin_config.pasta.disable
-
 -- word wrap
 vim.o.wrap = false
 
