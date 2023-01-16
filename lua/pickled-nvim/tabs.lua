@@ -21,9 +21,14 @@ require("bufferline").setup({
 		},
 	},
 })
--- always show tab line, even if there is only 1 item
-vim.o.showtabline = 2
 
+-- for frontends
+if vim.g.neovide then
+	-- always show tab line, even if there is only 1 item
+	vim.o.showtabline = 2
+else
+	vim.o.showtabline = 1
+end
 
 
 local silent_noremap = {noremap = true, silent = true}
