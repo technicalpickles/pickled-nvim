@@ -1,4 +1,5 @@
 -- { lsp + cmp }--
+local silent_noremap = { noremap = true, silent = true }
 local lsp = require("lsp-zero")
 local lspkind = require("lspkind")
 local cmp = require("cmp")
@@ -98,6 +99,20 @@ lsp.configure('ltex', {
 lsp.setup_nvim_cmp({
 	sources = cmp_sources,
 	mappings = cmp_mappings,
+	formatting = {
+		format = lspkind.cmp_format({
+			mode = 'symbol_text', -- show only symbol annotations
+			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+
+			-- The function below will be called before any actual modifications from lspkind
+			-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+			before = function (entry, vim_item)
+				-- ...
+				return vim_item
+			end
+		})
+	}
 })
 
 lsp.set_preferences({
@@ -105,23 +120,31 @@ lsp.set_preferences({
 	set_lsp_keymaps = false
 })
 
+lsp.ensure_installed({
+  'eslint',
+  'sumneko_lua',
+  'marksman',
+  'dockerls',
+  'jsonls',
+})
 
+-- disabled lspzero's keymaps, so make them ourselves
 lsp.on_attach(function() -- client, bufnr
-	-- from lsp-zero 
+	-- copied from lsp-zero with modifications
 	vim.keymap.set('n', 'K', '<CMD>lua PeekOrHover<CR>') -- defined in folds.lua
-	vim.keymap.set('n', 'gd', '<CMD>lua vim.lsp.buf.definition<CR>')
-	vim.keymap.set('n', 'gD', '<CMD>lua vim.lsp.buf.declaration<CR>')
-	vim.keymap.set('n', 'gi', '<CMD>lua vim.lsp.buf.implementation<CR>')
-	vim.keymap.set('n', 'go', '<CMD>lua vim.lsp.buf.type_definition<CR>')
-	vim.keymap.set('n', 'gr', '<CMD>lua vim.lsp.buf.references<CR>')
-	vim.keymap.set('n', '<C-k>', '<CMD>lua vim.lsp.buf.signature_help<CR>')
-	vim.keymap.set('n', '<F2>', '<CMD>lua vim.lsp.buf.rename<CR>')
-	vim.keymap.set('n', '<F4>', '<CMD>lua vim.lsp.buf.code_action<CR>')
-	vim.keymap.set('x', '<F4>', '<CMD>lua vim.lsp.buf.range_code_action<CR>')
-	vim.keymap.set('n', '<C-k>', '<CMD>lua vim.lsp.buf.signature_help<CR>')
-	vim.keymap.set('n', 'gl', '<CMD>lua vim.diagnostic.open_float<CR>')
-	vim.keymap.set('n', '[d', '<CMD>lua vim.diagnostic.goto_prev<CR>')
-	vim.keymap.set('n', ']d', '<CMD>lua vim.diagnostic.goto_next<CR>')
+	vim.keymap.set('n', 'gd', '<CMD>lua vim.lsp.buf.definition()<CR>')
+	vim.keymap.set('n', 'gD', '<CMD>lua vim.lsp.buf.declaration()<CR>')
+	vim.keymap.set('n', 'gi', '<CMD>lua vim.lsp.buf.implementation()<CR>')
+	vim.keymap.set('n', 'go', '<CMD>lua vim.lsp.buf.type_definition()<CR>')
+	vim.keymap.set('n', 'gr', '<CMD>lua vim.lsp.buf.references()<CR>')
+	vim.keymap.set('n', '<C-k>', '<CMD>lua vim.lsp.buf.signature_help()<CR>')
+	vim.keymap.set('n', '<F2>', '<CMD>lua vim.lsp.buf.rename()<CR>')
+	vim.keymap.set('n', '<F4>', '<CMD>lua vim.lsp.buf.code_action()<CR>')
+	vim.keymap.set('x', '<F4>', '<CMD>lua vim.lsp.buf.range_code_action()<CR>')
+	vim.keymap.set('n', '<C-k>', '<CMD>lua vim.lsp.buf.signature_help()<CR>')
+	vim.keymap.set('n', 'gl', '<CMD>lua vim.diagnostic.open_float()<CR>')
+	vim.keymap.set('n', '[d', '<CMD>lua vim.diagnostic.goto_prev()<CR>')
+	vim.keymap.set('n', ']d', '<CMD>lua vim.diagnostic.goto_next()<CR>')
 end)
 
 lsp.setup()
@@ -219,7 +242,6 @@ vim.api.nvim_set_hl(1, "FocusedSymbol", { fg = colors.blue, bold = true })
 
 
 -- { keymaps }--
-local silent_noremap = { noremap = true, silent = true }
 -- NOTE: hover binding in folds.lua
 
 -- symbols outline 
