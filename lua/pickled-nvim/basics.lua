@@ -22,15 +22,17 @@ o.autoread = true -- reload changes from disk
 o.number = true
 o.relativenumber = true
 
-
 o.showmode = false
 
 -- where do split windows open?
 o.splitbelow = true
 o.splitright = true
 
-
 -- Minumum lines to keep above and below cursor
 o.scrolloff = 5
 -- show title
 o.title = true
+
+-- nerd fronts for fold open/close
+-- don't show anything for eob (default ~)
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]

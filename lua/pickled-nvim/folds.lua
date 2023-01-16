@@ -91,10 +91,6 @@ end
 --   	.. ': " "' -- blank for no fold, or inside fold
 --   .. '}'
 --   .. '%= ' -- spacing between end of column and start of text
-
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-
--- Only depend on `nvim-treesitter/queries/filetype/folds.scm`,
 -- performance and stability are better than `foldmethod=nvim_treesitter#foldexpr()`
 require('ufo').setup({
     provider_selector = function()
