@@ -24,7 +24,6 @@ end
 
 local silent_noremap = {noremap = true, silent = true }
 vim.keymap.set("n", "K", PeekOrHover, { buffer = 0, noremap = false, silent = true })
-vim.keymap.set("n", "K", PeekOrHover, { buffer = 0, noremap = false, silent = true })
 
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds, silent_noremap)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, silent_noremap)
