@@ -16,7 +16,9 @@ require("nvim-treesitter.configs").setup({
 	},
 
 	 -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
-	 context_commentstring = { enable = true },
+	 context_commentstring = {
+		 enable = true,
+	 },
 
 	 -- https://github.com/andymass/vim-matchup
 	 matchup = {
