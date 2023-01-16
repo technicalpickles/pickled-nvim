@@ -1,7 +1,7 @@
 local api = vim.api
 local g = vim.g
 
--- images
+--{ images }--
 require("chafa").setup({
 	min_padding = 0,
 	show_label = false,
@@ -30,28 +30,6 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 --{ markdown  }--
-api.nvim_create_autocmd("FileType", {
-	pattern = { "markdown" },
-	callback = function ()
-		-- conceal italics, bold, links, etc via vim-markdown
-		vim.cmd("set conceallevel=2")
-		-- word wrap
-		vim.cmd("set wrap")
-		-- map editing file to gf to work like other plugins
-		vim.keymap.set("n", "gf", "<Plug>Markdown_EditUrlUnderCursor", {noremap = true, silent = true})
-
-		vim.keymap.set("n", "<leader>mt", "<CMD>Toch<CR>", {noremap = true, silent = true, desc = "Show Markdown Table of Contents"})
-		vim.keymap.set("n", "<leader>m-", "<CMD>HeaderDecrease<CR>", {noremap = true, silent = true, desc = "Decrease Markdown header"})
-		vim.keymap.set("n", "<leader>m+", "<CMD>HeaderIncrease<CR>", {noremap = true, silent = true, desc = "Increase Markdown header"})
-		vim.keymap.set("n", "<leader>mi", "<CMD>InsertToc<CR>", {noremap = true, silent = true, desc = "Insert Markdown Table of Contents at current line"})
-	end
-})
-
-api.nvim_create_autocmd("FileType", {
-	pattern = {"markdown"},
-	command = "set conceallevel=2"
-})
-
 g.vim_markdown_edit_url_in = 'current'
 g.vim_markdown_strikethrough = 1
 g.vim_markdown_frontmatter = 1
@@ -66,6 +44,7 @@ g.vim_markdown_new_list_item_indent = 0
 -- ufo / lsp folding is more accurate than vim-markdown
 g.vim_markdown_folding_disabled = 1
 
+--{ global filetype-related settings in one place for re-use }--
 g.filetype_plugin_config = {
 	rainbow = {
 		disable = {
