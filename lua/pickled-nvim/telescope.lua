@@ -68,6 +68,8 @@ vim.keymap.set("n", "<D-f>", "<cmd>lua require('telescope.builtin').live_grep()<
 vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<CR>", silent_noremap)
 vim.keymap.set("n", "<leader>m", "<cmd>Telescope marks<CR>", silent_noremap)
 
+vim.keymap.set("n", "<D-k>", "<cmd>Telescope buffers", silent_noremap)
+
 -- ⌘ P - Command Palette
 vim.api.nvim_set_keymap("n", "<D-S-p>", "<cmd>Telescope command_center<CR>", silent_noremap)
 vim.keymap.set("n", "<leader>c", "<CMD>Telescope command_center<CR>", silent_noremap)
