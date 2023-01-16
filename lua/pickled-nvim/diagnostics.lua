@@ -2,6 +2,14 @@ local silent_noremap = { noremap = true, silent = true }
 
 require("trouble").setup({
 	mode = "document_diagnostics",
+
+	action_keys = {
+		close = "<esc>",
+		cancel = nil,
+	},
+
+	auto_open = true,
+	auto_close = true,
 })
 
 vim.diagnostic.config({
