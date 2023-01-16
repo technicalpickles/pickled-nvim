@@ -1,6 +1,12 @@
 local api = vim.api
 local g = vim.g
 
+-- images
+require("chafa").setup({
+	min_padding = 0,
+	show_label = false,
+})
+
 --{ ruby }--
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = {

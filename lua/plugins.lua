@@ -86,6 +86,13 @@ return require("packer").startup(function(use)
 	use({"preservim/vim-markdown", requires = { "godlygeek/tabular" }})
 	use("dhruvasagar/vim-table-mode")
 	use("kblin/vim-fountain")
+	use ({
+		"princejoogie/chafa.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"m00qek/baleia.nvim"
+		},
+	})
 
 	-- treesitter, syntax, etc
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
