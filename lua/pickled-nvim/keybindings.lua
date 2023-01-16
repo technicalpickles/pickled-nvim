@@ -26,7 +26,7 @@ vim.api.nvim_set_keymap("n", "<C-S>", ":%s/", silent_noremap)
 -- ⌘ a - select all
 vim.keymap.set("n", "<D-a>", "ggVG", silent)
 
--- Delete a buffer when asking for a "window close"
+-- ⌘ / - close current window
 -- local close_command = 'Bdelete'
 local close_command = "lua require('superesc').close()"
 vim.keymap.set("", "<D-w>", "<cmd>"..close_command.."<cr>", silent)
