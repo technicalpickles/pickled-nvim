@@ -7,22 +7,6 @@ require("chafa").setup({
 	show_label = false,
 })
 
---{ ruby }--
-api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = {
-		"Dangerfile",
-		"Brewfile",
-		"*.Brewfile",
-		"Capfile",
-		"Thorfile",
-		"*.god",
-		"*.ru",
-		".caprc",
-		"*.rbi",
-	},
-	command = "set filetype=ruby",
-})
-
 --{ docker  }--
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = { ".dockerignore" },
