@@ -60,6 +60,7 @@ g.filetype_plugin_config = {
 			"python",
 			"toggleterm",
 			"yaml",
+			"Trouble", -- prevents preview keybinding from working
 		}
 	},
 }
