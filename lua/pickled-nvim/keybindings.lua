@@ -11,6 +11,10 @@ vim.keymap.set({ "v", "n" }, "gx", "<Plug>(openbrowser-smart-search)", silent_no
 -- terminal mapping
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", silent_noremap)
 
+-- hashrocket, textmate style
+-- TODO make it smarter about leading/trailing space
+vim.keymap.set("n", "<C-l>", "=>", silent)
+
 -- { macOS convenience keybinds }--
 -- Cut/Copy/Paste to/from system clipboard
 vim.keymap.set("v", "<D-c>", '"+y')
