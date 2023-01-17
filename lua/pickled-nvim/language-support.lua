@@ -71,26 +71,32 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 
 lsp.configure('ruby_ls', {
+	-- TODO detect if Gemfile/Gemfile.lock exists and contains ruby-lsp... maybe detect directory changes too?
 	cmd = { "bundle", "exec", "ruby-lsp" },
 	on_attach = function(client, bufnr)
-		vim.api.nvim_create_autocmd({ "BufReadPre", "BufEnter", "BufWritePre", "CursorHold" }, {
+		local callback = function()
+			local params = vim.lsp.util.make_text_document_params(bufnr)
+
+			client.request(
+			'textDocument/diagnostic',
+			{ textDocument = params },
+			function(err, result)
+				if err then return end
+
+				vim.lsp.diagnostic.on_publish_diagnostics(
+				nil,
+				vim.tbl_extend('keep', params, { diagnostics = result.items }),
+				{ client_id = client.id }
+				)
+			end
+			)
+		end
+
+		callback() -- call on attach
+
+		vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePre', 'BufReadPost', 'InsertLeave', 'TextChanged' }, {
 			buffer = bufnr,
-
-			callback = function()
-				local params = vim.lsp.util.make_text_document_params(bufnr)
-
-				client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
-					if err then
-						return
-					end
-
-					vim.lsp.diagnostic.on_publish_diagnostics(
-						nil,
-						vim.tbl_extend("keep", params, { diagnostics = result.items }),
-						{ client_id = client.id }
-					)
-				end)
-			end,
+			callback = callback,
 		})
 	end,
 })
