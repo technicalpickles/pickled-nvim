@@ -68,8 +68,7 @@ return require("packer").startup(function(use)
 
 	-- ide like features
 	use({
-		"ldelossa/nvim-ide",
-		branch = "no-cursor-restore"
+		"ldelossa/nvim-ide"
 	})
 	use({ "simrat39/symbols-outline.nvim" })
 
