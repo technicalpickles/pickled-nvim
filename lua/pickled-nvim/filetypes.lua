@@ -63,6 +63,30 @@ g.filetype_plugin_config = {
 			"Trouble", -- prevents preview keybinding from working
 		}
 	},
+
+	autosession = {
+		bypass_autosave = {
+			'qf',
+			'NvimTree',
+			'Trouble',
+			'Outline',
+		}
+	},
+
+	copilot = {
+		disable = {
+			'Nvim',
+			'Outline',
+			'Trouble',
+			'qf',
+			'toggleterm',
+			"help",
+			"log",
+			"markdown",
+			"text",
+		}
+	}
+
 }
 
 -- pasta, which helps correctly indent

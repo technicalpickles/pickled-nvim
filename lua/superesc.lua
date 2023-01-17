@@ -20,13 +20,26 @@ M.close_panel = function()
 	return false
 end
 
+M.close_panels = function()
+	for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+		local command = M.window_close_cmd_for_win(winid)
+		if command then
+			vim.cmd(command)
+		end
+	end
+end
+
+M.window_close_cmd_for_win = function(winid)
+	local bufnr = vim.api.nvim_win_get_buf(winid)
+	local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+
+	return M.config.close_for_type[ft]
+end
+
 M.close_split = function()
 	local split_wins = {}
 	for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-		local bufnr = vim.api.nvim_win_get_buf(winid)
-		local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
-
-		if not M.config.close_for_type[ft] then
+		if not M.window_close_cmd_for_win(winid) then
 			table.insert(split_wins, winid)
 		end
 	end

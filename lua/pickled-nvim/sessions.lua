@@ -5,21 +5,20 @@ vim.g.auto_session_enabled = false
 require("auto-session").setup({
 	-- log_level = "info",
 	log_level = "warning",
-	bypass_session_save_file_types = {
-		'qf',
-		'NvimTree',
-		'Trouble',
-		'Outline',
-	},
+
+	-- list of files that don't shouldn't be considered part of a session if the are the last thing open
+	bypass_session_save_file_types = vim.g.filetype_plugin_config.autosession.bypass_autosave,
 
 	pre_save_cmds = {
-		'silent! cclose', -- quickfix
-		'silent! NvimTreeClose',
-		'silent! SymbolsOutlineClose',
-		'silent! TroubleClose',
+		'lua require("superesc").close_panels()'
 	},
+
+
 	-- only keep sessions for this directory
 	auto_session_allowed_dirs = { "~/workspace/*" },
+
+	-- key by branch
+	auto_session_use_git_branch = true,
 })
 
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
