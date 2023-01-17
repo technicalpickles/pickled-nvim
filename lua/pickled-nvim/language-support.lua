@@ -1,4 +1,12 @@
--- { lsp + cmp }--
+--{ copilot }--
+-- FIXME default node neovide sees is /opt/homebrew/bin/node, which is the latest 18.x ... but there are issues on Apple Silicon
+-- see various issues on community ie https://github.com/community/community/discussions/16298
+vim.g.copilot_node_command = "/opt/homebrew/opt/node@16/bin/node"
+
+-- NOTE: require('copilot').setup in plugins.lua w/ deferred loading
+-- NOTE: require('copilot-cmp').setup in plugins.lua w/ deferred loading
+
+--{ lsp + cmp }--
 local silent_noremap = { noremap = true, silent = true }
 local lsp = require("lsp-zero")
 local lspkind = require("lspkind")
@@ -104,10 +112,12 @@ lsp.setup_nvim_cmp({
 			mode = 'symbol_text', -- show only symbol annotations
 			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 			ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-
+			symbol_map = {
+				Copilot = "",
+			},
 			-- The function below will be called before any actual modifications from lspkind
 			-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-			before = function (entry, vim_item)
+			before = function (_, vim_item) -- entry, vim_item
 				-- ...
 				return vim_item
 			end
@@ -249,4 +259,3 @@ local symbols_outline = "<CMD>SymbolsOutline<CR>"
 -- local symbols_outline = "<CMD>Workspace RightPanelToggle<CR>" 
 vim.keymap.set("n", "<leader>s", symbols_outline, silent_noremap)
 vim.keymap.set("n", "<D-.>", symbols_outline, silent_noremap)
- 

@@ -59,7 +59,6 @@ return require("packer").startup(function(use)
 
 			-- use command output as LSP for places that don't have one yet
 			{ "jose-elias-alvarez/null-ls.nvim" },
-			{ "jose-elias-alvarez/null-ls.nvim" },
 			{ "jayp0521/mason-null-ls.nvim"},
 		},
 	})
@@ -258,7 +257,13 @@ return require("packer").startup(function(use)
 		event = 'VimEnter',
 		config = function()
 			vim.defer_fn(function()
-				require('copilot').setup()
+				require("copilot").setup({
+					ft_disable = vim.g.filetype_plugin_config.copilot.disable,
+
+					-- suggested to disable these when using with cmp
+					suggestion = { enabled = false },
+					panel = { enabled = false },
+				})
 			end, 100)
 		end,
 	}
@@ -267,7 +272,14 @@ return require("packer").startup(function(use)
 		'zbirenbaum/copilot-cmp',
 		after = {'copilot.lua'},
 		config = function ()
-			require('copilot_cmp').setup()
+			require("copilot_cmp").setup {
+				method = "getCompletionsCycling",
+				formatters = {
+					label = require("copilot_cmp.format").format_label_text,
+					insert_text = require("copilot_cmp.format").format_insert_text,
+					preview = require("copilot_cmp.format").deindent,
+				},
+			}
 		end
 	}
 
