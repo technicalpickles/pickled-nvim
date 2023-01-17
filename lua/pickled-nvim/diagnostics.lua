@@ -8,7 +8,8 @@ require("trouble").setup({
 		cancel = nil,
 	},
 
-	auto_open = true,
+	-- FIXME opening toggleterm kinda messes with this a lot
+	-- auto_open = true,
 	auto_close = true,
 })
 
