@@ -44,6 +44,12 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 	["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 
+	-- https://github.com/zbirenbaum/copilot-cmp#clear_after_cursor
+	["<CR>"] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = false,
+    }),
+
 	-- super tab like behavior w/ luasnip
 	-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
 	["<Tab>"] = cmp.mapping(function(fallback)
@@ -164,6 +170,14 @@ lsp.on_attach(function() -- client, bufnr
 end)
 
 lsp.setup()
+
+-- for cmp + autopairs: https://github.com/windwp/nvim-autopairs#mapping-cr
+-- and it needs to come after lsp-zero is configured: https://github.com/VonHeikemen/lsp-zero.nvim/discussions/119
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 
 -- debug lsp
 vim.lsp.set_log_level("trace")
