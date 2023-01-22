@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 local ui = require("pickled-nvim.ui")
 local telescope = require("pickled-nvim.telescope")
 local terminal = require("pickled-nvim.terminal")
+local folds = require("pickled-nvim.folds")
 
 local plugins = {
 	-- per project alternate setup
@@ -51,6 +52,9 @@ local plugins = {
 			{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 			{ "mtoohey31/cmp-fish" },
 
+			-- nice icons
+			{ "onsails/lspkind.nvim" },
+
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" },
 			-- { "rafamadriz/friendly-snippets" },
@@ -64,9 +68,6 @@ local plugins = {
 			{ "jayp0521/mason-null-ls.nvim"},
 		},
 	},
-
-	-- nice icons
-	{ "onsails/lspkind.nvim" },
 
 	-- ide like features
 	{ "ldelossa/nvim-ide" },
@@ -324,7 +325,13 @@ local plugins = {
 	{ "tyru/open-browser.vim" },
 
 	-- folds
-	{'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'},
+	{
+		'kevinhwang91/nvim-ufo',
+		opts = folds.opts.ufo,
+		keys = folds.keys.ufo,
+		event = "BufRead",
+		dependencies = 'kevinhwang91/promise-async',
+	},
 
 	{ "ggandor/leap.nvim" },
 
