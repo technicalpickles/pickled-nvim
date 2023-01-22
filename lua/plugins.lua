@@ -15,6 +15,7 @@ local ui = require("pickled-nvim.ui")
 local telescope = require("pickled-nvim.telescope")
 local terminal = require("pickled-nvim.terminal")
 local folds = require("pickled-nvim.folds")
+local language_support = require("pickled-nvim.language-support")
 
 local plugins = {
 	-- per project alternate setup
@@ -36,6 +37,7 @@ local plugins = {
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		event = "InsertEnter",
+		config = language_support.config.lsp_zero,
 		dependencies = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" },
@@ -51,6 +53,7 @@ local plugins = {
 			{ "hrsh7th/cmp-nvim-lua" },
 			{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 			{ "mtoohey31/cmp-fish" },
+			{'zbirenbaum/copilot-cmp'},
 
 			-- nice icons
 			{ "onsails/lspkind.nvim" },
@@ -69,11 +72,18 @@ local plugins = {
 		},
 	},
 
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		config = language_support.config.null_ls,
+	},
+
 	-- ide like features
 	{ "ldelossa/nvim-ide" },
 	{
 		"simrat39/symbols-outline.nvim",
 		cmd = "SymbolsOutline",
+		opts = language_support.opts.symbols_outline,
+		keys = language_support.keys.symbols_outline,
 	},
 
 	-- ruby
