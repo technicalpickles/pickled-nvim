@@ -27,5 +27,4 @@ require('session-lens').setup({
 	theme_conf = { winblend = nil }
 })
 
-
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

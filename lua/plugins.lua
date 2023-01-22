@@ -1,39 +1,45 @@
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile | PackerInstall
-  augroup end
-]])
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-return require("packer").startup(function(use)
+require("lazy").setup({
 	-- package manager
-	use({"wbthomason/packer.nvim"})
+	{"wbthomason/packer.nvim"},
 
 	-- Speed up loading Lua modules in Neovim to improve startup time.
 	-- Load before any other lua plugins
-	use({
+	{
 		"lewis6991/impatient.nvim",
 		config = function()
 			require("impatient")
 		end,
-	})
+	},
 
 	-- per project alternate setup
-	use({ "tpope/vim-projectionist" })
+	{ "tpope/vim-projectionist" },
 
 	-- lots of handy shortcuts
-	use({ "tpope/vim-unimpaired" })
+	{ "tpope/vim-unimpaired" },
 
 	-- toggling comments
-	use({ "tpope/vim-commentary" })
+	{ "tpope/vim-commentary" },
 
 	-- make . work in more places
-	use({ "tpope/vim-repeat" })
+	{ "tpope/vim-repeat" },
 
 	-- lsp, linters, formatters, etc
-	use({
+	{
 		"VonHeikemen/lsp-zero.nvim",
-		requires = {
+		dependencies = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" },
 			{ "williamboman/mason.nvim" },
@@ -61,202 +67,197 @@ return require("packer").startup(function(use)
 			{ "jose-elias-alvarez/null-ls.nvim" },
 			{ "jayp0521/mason-null-ls.nvim"},
 		},
-	})
+	},
 
 	-- nice icons
-	use({ "onsails/lspkind.nvim" })
+	{ "onsails/lspkind.nvim" },
 
 	-- ide like features
-	use({
+	{
 		"ldelossa/nvim-ide"
-	})
-	use({ "simrat39/symbols-outline.nvim" })
+	},
+	{ "simrat39/symbols-outline.nvim" },
 
 	-- ruby
-	use({ "tpope/vim-bundler" })
-	use({ "tpope/vim-rake" })
-	use({ "tpope/vim-rails" })
-	use({ "vim-ruby/vim-ruby" })
+	{ "tpope/vim-bundler" },
+	{ "tpope/vim-rake" },
+	{ "tpope/vim-rails" },
+	{ "vim-ruby/vim-ruby" },
 
 	-- lua
-	use({ "bfredl/nvim-luadev" })
+	{ "bfredl/nvim-luadev" },
 
 	-- language and filetype specific
-	use({ "technicalpickles/procfile.vim" })
-	use({ "gpanders/editorconfig.nvim" })
-	use({"preservim/vim-markdown", requires = { "godlygeek/tabular" }})
-	use({ "dhruvasagar/vim-table-mode" })
-	use({ "kblin/vim-fountain" })
-	use ({
+	{ "technicalpickles/procfile.vim" },
+	{ "gpanders/editorconfig.nvim" },
+	{"preservim/vim-markdown", dependencies = { "godlygeek/tabular" }},
+	{ "dhruvasagar/vim-table-mode" },
+	{ "kblin/vim-fountain" },
+	{
 		"princejoogie/chafa.nvim",
-		requires = {
+		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"m00qek/baleia.nvim"
 		},
-	})
+	},
 
 	-- treesitter, syntax, etc
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	{ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
 	-- debug info
-	use({ "nvim-treesitter/playground" })
-	use({ "nvim-treesitter/nvim-treesitter-textobjects" })
-	use({ "RRethy/nvim-treesitter-textsubjects" })
-	use({ "nvim-treesitter/nvim-treesitter-refactor" })
+	{ "nvim-treesitter/playground" },
+	{ "nvim-treesitter/nvim-treesitter-textobjects" },
+	{ "RRethy/nvim-treesitter-textsubjects" },
+	{ "nvim-treesitter/nvim-treesitter-refactor" },
 	-- determine what type of comments to use in multi-syntax files, ie css in html... use with commentary
-	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
+	{ "JoosepAlviste/nvim-ts-context-commentstring" },
 	-- adding end automatically
-	use({ "RRethy/nvim-treesitter-endwise" })
+	{ "RRethy/nvim-treesitter-endwise" },
 	-- better indentation
-	use({ "yioneko/nvim-yati" })
+	{ "yioneko/nvim-yati" },
 
 	-- fallback for indentation
-	use({ "yioneko/vim-tmindent" })
+	{ "yioneko/vim-tmindent" },
 
 	-- styling cursor, ident lines, etc
-	use({ "yamatsum/nvim-cursorline" })
-	-- use("lukas-reineke/indent-blankline.nvim")
-	-- use("p00f/nvim-ts-rainbow")
+	{ "yamatsum/nvim-cursorline" },
+	-- "lukas-reineke/indent-blankline.nvim")
+	-- "p00f/nvim-ts-rainbow")
 
 	-- popups for suggestions when starting shortcuts
-	use({ "folke/which-key.nvim" })
+	{ "folke/which-key.nvim" },
 
 	-- dashboard when starting à la startify
-	use({ "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } })
+	{ "goolord/alpha-nvim", dependencies = { "kyazdani42/nvim-web-devicons" } },
 
 	-- customizable statusline with nice defaults
-	use({
+	{
 		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
+		dependencies = { "kyazdani42/nvim-web-devicons", opt = true },
+	},
 
 	-- Find, Filter, Preview, Pick. All lua, all the time.
-	use({
+	{
 		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
+		dependencies = { { "nvim-lua/plenary.nvim" } },
+	},
 
-	use({"romgrk/fzy-lua-native", run = "make", on = "CmdlineEnter" })
+	{"romgrk/fzy-lua-native", run = "make", on = "CmdlineEnter" },
 
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use({ "nvim-telescope/telescope-fzy-native.nvim", run = "make" })
-	use({ "natecraddock/telescope-zf-native.nvim" })
+	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+	{ "nvim-telescope/telescope-fzy-native.nvim", run = "make" },
+	{ "natecraddock/telescope-zf-native.nvim" },
 
 	-- keep telescope from changing directory when picking files
-	use({ "desdic/telescope-rooter.nvim" })
+	{ "desdic/telescope-rooter.nvim" },
 
-	use({
+	{
 		"nvim-telescope/telescope-frecency.nvim",
-		requires = { "kkharji/sqlite.lua" },
-	})
+		dependencies = { "kkharji/sqlite.lua" },
+	},
 
-	use({
+	{
 		"gfeiyou/command-center.nvim",
-		requires = { "nvim-telescope/telescope.nvim" },
-	})
+		dependencies = { "nvim-telescope/telescope.nvim" },
+	},
 
-	use({
+	{
 		"da-moon/telescope-toggleterm.nvim",
-		requires = {
+		dependencies = {
 			"akinsho/toggleterm.nvim",
 			"nvim-telescope/telescope.nvim",
 			"nvim-lua/popup.nvim",
 			"nvim-lua/plenary.nvim",
 		},
-	})
+	},
 
-	use({
+	{
 		'mrjones2014/legendary.nvim',
 		-- sqlite is only needed if you want to use frecency sorting
-		requires = 'kkharji/sqlite.lua'
-	})
+		dependencies = 'kkharji/sqlite.lua'
+	},
 
-    use {'stevearc/dressing.nvim'}
-
+    {'stevearc/dressing.nvim'},
 
 	-- various things for editing and jumping around
-	use({
+	{
 		"Wansmer/sibling-swap.nvim",
-		requires = { "nvim-treesitter" },
-	})
-	use({ "sickill/vim-pasta" })
-	use({ "chentoast/marks.nvim" })
+		dependencies = { "nvim-treesitter" },
+	},
+	{ "sickill/vim-pasta" },
+	{ "chentoast/marks.nvim" },
 	-- multi-cursor
-	use({ "mg979/vim-visual-multi" })
-	use({ "ktunprasert/gui-font-resize.nvim" })
+	{ "mg979/vim-visual-multi" },
+	{ "ktunprasert/gui-font-resize.nvim" },
 
-	use({ "windwp/nvim-autopairs" })
-	use({ "ur4ltz/surround.nvim" })
+	{ "windwp/nvim-autopairs" },
+	{ "ur4ltz/surround.nvim" },
 
-	use({ "AndrewRadev/splitjoin.vim" })
+	{ "AndrewRadev/splitjoin.vim" },
 	-- better support for % to bounce between sets of matching text, ie parens, etc
 	-- drop in replacement for matchit.vim
-	use({ "andymass/vim-matchup" })
+	{ "andymass/vim-matchup" },
 
 	-- tree explorer
-	use({
+	{
 		"kyazdani42/nvim-tree.lua",
-		requires = { "kyazdani42/nvim-web-devicons" },
-	})
+		dependencies = { "kyazdani42/nvim-web-devicons" },
+	},
 
 	-- for tabs and stuff
-	use({
-		"akinsho/bufferline.nvim",
-		tag = "v2.*",
-		requires = "kyazdani42/nvim-web-devicons",
-	})
+	{'akinsho/bufferline.nvim', dependencies = 'nvim-tree/nvim-web-devicons'},
 
 	-- git stuff
-	use({ "tanvirtin/vgit.nvim", requires = "nvim-lua/plenary.nvim" })
-	use({ "tpope/vim-fugitive" })
-	use({ "tpope/vim-rhubarb" })
-	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim"} )
+	{ "tanvirtin/vgit.nvim", dependencies = "nvim-lua/plenary.nvim" },
+	{ "tpope/vim-fugitive" },
+	{ "tpope/vim-rhubarb" },
+	{ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim"} ,
 
 
 	-- colorschemes
-	use({ "ayu-theme/ayu-vim" })
-	use({ "averak/laserwave.vim" })
-	use({ "rafamadriz/neon" })
-	use({ "folke/tokyonight.nvim" })
+	{ "ayu-theme/ayu-vim" },
+	{ "averak/laserwave.vim" },
+	{ "rafamadriz/neon" },
+	{ "folke/tokyonight.nvim" },
 
 	-- quicfix and diagnostic type stuff
-	use({"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons"})
-	use({ "kevinhwang91/nvim-bqf" })
-	use({ "romainl/vim-qf" })
+	{"folke/trouble.nvim", dependencies = "kyazdani42/nvim-web-devicons"},
+	{ "kevinhwang91/nvim-bqf" },
+	{ "romainl/vim-qf" },
 
 	-- search!
-	use({ "mhinz/vim-grepper", cmd = "Grepper" })
-	use({
+	{ "mhinz/vim-grepper", cmd = "Grepper" },
+	{
 		"junegunn/fzf",
 		run = function()
 			vim.fn["fzf#install"]()
 		end,
-	})
+	},
 
 	-- terminal
-	use({ "akinsho/toggleterm.nvim", tag = "*" })
+	{ "akinsho/toggleterm.nvim"},
 	-- so you can can vim in the terimal
-	use({ "samjwill/nvim-unception" })
+	{ "samjwill/nvim-unception" },
 
 	-- session, remembering where we were
-	use({ "farmergreg/vim-lastplace" })
-	use({ "rmagatti/auto-session" })
+	{ "farmergreg/vim-lastplace" },
+	{ "rmagatti/auto-session" },
 
-	use({
+	{
 		'rmagatti/session-lens',
-		requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
-	})
+		dependencies = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+	},
 
-	use({ "tpope/vim-characterize" })
+	{ "tpope/vim-characterize" },
 
-	use({ "gelguy/wilder.nvim" })
-	use({ "raghur/fruzzy" }, { cmd = "fruzzy#install()" })
+	{ "gelguy/wilder.nvim" },
+	{ "raghur/fruzzy" }, { cmd = "fruzzy#install()" },
 
-	use({
+	{
 		"roxma/nvim-yarp",
 		run = "pip install -r requirements.txt",
-	})
+	},
 
-	use {
+	{
 		'zbirenbaum/copilot.lua',
 		event = 'VimEnter',
 		config = function()
@@ -270,9 +271,9 @@ return require("packer").startup(function(use)
 				})
 			end, 100)
 		end,
-	}
+	},
 
-	use({
+	{
 		'zbirenbaum/copilot-cmp',
 		after = {'copilot.lua'},
 		config = function ()
@@ -285,24 +286,24 @@ return require("packer").startup(function(use)
 				},
 			}
 		end
-	})
+	},
 
 	-- directory specific path, etc
-	use({ "direnv/direnv.vim" })
-	use({ "tpope/vim-rbenv" })
+	{ "direnv/direnv.vim" },
+	{ "tpope/vim-rbenv" },
 
 	-- replace gx for URLs when netrw is disabled
-	use({ "tyru/open-browser.vim" })
+	{ "tyru/open-browser.vim" },
 
 	-- folds
-	use({'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'})
+	{'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'},
 
-	use({ "ggandor/leap.nvim" })
+	{ "ggandor/leap.nvim" },
 
-	use({ "epwalsh/obsidian.nvim" })
-	use({ "renerocksai/telekasten.nvim" })
+	{ "epwalsh/obsidian.nvim" },
+	{ "renerocksai/telekasten.nvim" },
 
-	use({ "mattboehm/vim-unstack" })
+	{ "mattboehm/vim-unstack" },
 
-	use({ "famiu/bufdelete.nvim" })
-end)
+	{ "famiu/bufdelete.nvim" },
+})
