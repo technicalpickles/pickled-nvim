@@ -13,12 +13,19 @@ require("auto-session").setup({
 		'lua require("superesc").close_panels()'
 	},
 
-
 	-- only keep sessions for this directory
 	auto_session_allowed_dirs = { "~/workspace/*" },
 
 	-- key by branch
 	auto_session_use_git_branch = true,
 })
+
+require('session-lens').setup({
+	path_display = {'shorten'},
+	previewer = true,
+	-- no transparency
+	theme_conf = { winblend = nil }
+})
+
 
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

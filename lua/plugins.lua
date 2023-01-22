@@ -241,6 +241,11 @@ return require("packer").startup(function(use)
 	use({ "farmergreg/vim-lastplace" })
 	use({ "rmagatti/auto-session" })
 
+	use({
+		'rmagatti/session-lens',
+		requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+	})
+
 	use({ "tpope/vim-characterize" })
 
 	use({ "gelguy/wilder.nvim" })
@@ -267,7 +272,7 @@ return require("packer").startup(function(use)
 		end,
 	}
 
-	use {
+	use({
 		'zbirenbaum/copilot-cmp',
 		after = {'copilot.lua'},
 		config = function ()
@@ -280,7 +285,7 @@ return require("packer").startup(function(use)
 				},
 			}
 		end
-	}
+	})
 
 	-- directory specific path, etc
 	use({ "direnv/direnv.vim" })
