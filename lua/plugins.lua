@@ -13,6 +13,8 @@ vim.opt.rtp:prepend(lazypath)
 
 local ui = require("pickled-nvim.ui")
 local telescope = require("pickled-nvim.telescope")
+local terminal = require("pickled-nvim.terminal")
+
 local plugins = {
 	-- per project alternate setup
 	{ "tpope/vim-projectionist" },
@@ -257,6 +259,9 @@ local plugins = {
 	-- terminal
 	{
 		"akinsho/toggleterm.nvim",
+		opts = terminal.opts.toggleterm,
+		command = terminal.command.toggleterm,
+		keys = terminal.command.keys,
 	},
 	-- so you can can vim in the terimal
 	{ "samjwill/nvim-unception" },
