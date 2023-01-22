@@ -11,19 +11,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-	-- package manager
-	{"wbthomason/packer.nvim"},
-
-	-- Speed up loading Lua modules in Neovim to improve startup time.
-	-- Load before any other lua plugins
-	{
-		"lewis6991/impatient.nvim",
-		config = function()
-			require("impatient")
-		end,
-	},
-
+local ui = require("pickled-nvim.ui")
+local plugins = {
 	-- per project alternate setup
 	{ "tpope/vim-projectionist" },
 
@@ -34,11 +23,15 @@ require("lazy").setup({
 	{ "tpope/vim-commentary" },
 
 	-- make . work in more places
-	{ "tpope/vim-repeat" },
+	{
+		"tpope/vim-repeat",
+		event = "InsertEnter"
+	},
 
 	-- lsp, linters, formatters, etc
 	{
 		"VonHeikemen/lsp-zero.nvim",
+		event = "InsertEnter",
 		dependencies = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" },
@@ -73,10 +66,11 @@ require("lazy").setup({
 	{ "onsails/lspkind.nvim" },
 
 	-- ide like features
+	{ "ldelossa/nvim-ide" },
 	{
-		"ldelossa/nvim-ide"
+		"simrat39/symbols-outline.nvim",
+		cmd = "SymbolsOutline",
 	},
-	{ "simrat39/symbols-outline.nvim" },
 
 	-- ruby
 	{ "tpope/vim-bundler" },
@@ -90,11 +84,20 @@ require("lazy").setup({
 	-- language and filetype specific
 	{ "technicalpickles/procfile.vim" },
 	{ "gpanders/editorconfig.nvim" },
-	{"preservim/vim-markdown", dependencies = { "godlygeek/tabular" }},
-	{ "dhruvasagar/vim-table-mode" },
+	{
+		"preservim/vim-markdown",
+		ft = "markdown",
+		dependencies = { "godlygeek/tabular" },
+	},
+	{
+		"dhruvasagar/vim-table-mode",
+		ft = "markdown",
+	},
 	{ "kblin/vim-fountain" },
 	{
 		"princejoogie/chafa.nvim",
+		opts = require('pickled-nvim.filetypes').opts.chafa,
+		event = "BufReadPre",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"m00qek/baleia.nvim"
@@ -102,7 +105,7 @@ require("lazy").setup({
 	},
 
 	-- treesitter, syntax, etc
-	{ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	-- debug info
 	{ "nvim-treesitter/playground" },
 	{ "nvim-treesitter/nvim-treesitter-textobjects" },
@@ -119,7 +122,12 @@ require("lazy").setup({
 	{ "yioneko/vim-tmindent" },
 
 	-- styling cursor, ident lines, etc
-	{ "yamatsum/nvim-cursorline" },
+	{
+		"yamatsum/nvim-cursorline",
+		opts = ui.opts.cursorline,
+		event = "BufRead"
+	},
+
 	-- "lukas-reineke/indent-blankline.nvim")
 	-- "p00f/nvim-ts-rainbow")
 
@@ -127,24 +135,26 @@ require("lazy").setup({
 	{ "folke/which-key.nvim" },
 
 	-- dashboard when starting à la startify
-	{ "goolord/alpha-nvim", dependencies = { "kyazdani42/nvim-web-devicons" } },
+	{ "goolord/alpha-nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
 
 	-- customizable statusline with nice defaults
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "kyazdani42/nvim-web-devicons", opt = true },
+		config = require("pickled-nvim.ui").config.lualine,
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
 	-- Find, Filter, Preview, Pick. All lua, all the time.
 	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = { { "nvim-lua/plenary.nvim" } },
+		dependencies = { "nvim-lua/plenary.nvim" },
+		command = "Telescope",
 	},
 
-	{"romgrk/fzy-lua-native", run = "make", on = "CmdlineEnter" },
+	{"romgrk/fzy-lua-native", build = "make", event = "CmdlineEnter" },
 
-	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-	{ "nvim-telescope/telescope-fzy-native.nvim", run = "make" },
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	{ "nvim-telescope/telescope-fzy-native.nvim", build = "make" },
 	{ "natecraddock/telescope-zf-native.nvim" },
 
 	-- keep telescope from changing directory when picking files
@@ -176,7 +186,11 @@ require("lazy").setup({
 		dependencies = 'kkharji/sqlite.lua'
 	},
 
-    {'stevearc/dressing.nvim'},
+	{
+		'stevearc/dressing.nvim',
+		event = "VeryLazy",
+		opts = require("pickled-nvim.ui").opts.dressing
+	},
 
 	-- various things for editing and jumping around
 	{
@@ -199,8 +213,8 @@ require("lazy").setup({
 
 	-- tree explorer
 	{
-		"kyazdani42/nvim-tree.lua",
-		dependencies = { "kyazdani42/nvim-web-devicons" },
+		"nvim-tree/nvim-tree.lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
 	-- for tabs and stuff
@@ -217,10 +231,15 @@ require("lazy").setup({
 	{ "ayu-theme/ayu-vim" },
 	{ "averak/laserwave.vim" },
 	{ "rafamadriz/neon" },
-	{ "folke/tokyonight.nvim" },
+	{
+		"folke/tokyonight.nvim",
+		-- make sure it's first to avoid flicker
+		lazy = false,
+		priority = 1000
+	},
 
 	-- quicfix and diagnostic type stuff
-	{"folke/trouble.nvim", dependencies = "kyazdani42/nvim-web-devicons"},
+	{"folke/trouble.nvim", dependencies = "nvim-tree/nvim-web-devicons"},
 	{ "kevinhwang91/nvim-bqf" },
 	{ "romainl/vim-qf" },
 
@@ -228,13 +247,15 @@ require("lazy").setup({
 	{ "mhinz/vim-grepper", cmd = "Grepper" },
 	{
 		"junegunn/fzf",
-		run = function()
+		build = function()
 			vim.fn["fzf#install"]()
 		end,
 	},
 
 	-- terminal
-	{ "akinsho/toggleterm.nvim"},
+	{
+		"akinsho/toggleterm.nvim",
+	},
 	-- so you can can vim in the terimal
 	{ "samjwill/nvim-unception" },
 
@@ -250,11 +271,11 @@ require("lazy").setup({
 	{ "tpope/vim-characterize" },
 
 	{ "gelguy/wilder.nvim" },
-	{ "raghur/fruzzy" }, { cmd = "fruzzy#install()" },
+	{ 'amirrezaask/fuzzy.nvim', depends={'nvim-lua/plenary.nvim'}},
 
 	{
 		"roxma/nvim-yarp",
-		run = "pip install -r requirements.txt",
+		build = "pip install -r requirements.txt",
 	},
 
 	{
@@ -275,7 +296,7 @@ require("lazy").setup({
 
 	{
 		'zbirenbaum/copilot-cmp',
-		after = {'copilot.lua'},
+		dependencies = {'copilot.lua'},
 		config = function ()
 			require("copilot_cmp").setup {
 				method = "getCompletionsCycling",
@@ -306,4 +327,6 @@ require("lazy").setup({
 	{ "mattboehm/vim-unstack" },
 
 	{ "famiu/bufdelete.nvim" },
-})
+}
+
+require("lazy").setup(plugins)
