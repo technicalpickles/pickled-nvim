@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local ui = require("pickled-nvim.ui")
+local telescope = require("pickled-nvim.telescope")
 local plugins = {
 	-- per project alternate setup
 	{ "tpope/vim-projectionist" },
@@ -148,6 +149,7 @@ local plugins = {
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
+		keys = telescope.keys.telescope,
 		command = "Telescope",
 	},
 
