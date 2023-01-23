@@ -16,6 +16,30 @@ local telescope = require("pickled-nvim.telescope")
 local terminal = require("pickled-nvim.terminal")
 local folds = require("pickled-nvim.folds")
 local language_support = require("pickled-nvim.language-support")
+local diagnostics = require("pickled-nvim.diagnostics")
+
+local function keys_for(file, package)
+	local module
+	if type(file) == "string" then
+		module = assert(require, "pickled-nvim"..file, "")
+		assert(module.keys, "no keys in "..module)
+	else
+		module = file
+		assert(module.keys, "no keys in given module")
+	end
+
+
+	local keys = assert(module.keys[package], "no keys for "..package )
+	assert(type(keys) == "table", "keys for "..package.." is not a table")
+
+	for index, mapping in ipairs(keys) do
+		assert(#mapping >= 3, "expected at least 3 values for mapping i="..index..", got "..#mapping)
+	end
+
+	return keys
+end
+
+local silent_noremap = { noremap = true, silent = true }
 
 local plugins = {
 	-- per project alternate setup
@@ -28,15 +52,12 @@ local plugins = {
 	{ "tpope/vim-commentary" },
 
 	-- make . work in more places
-	{
-		"tpope/vim-repeat",
-		event = "InsertEnter"
-	},
+	{ "tpope/vim-repeat", },
 
 	-- lsp, linters, formatters, etc
 	{
 		"VonHeikemen/lsp-zero.nvim",
-		event = "InsertEnter",
+		event = "VimEnter",
 		config = language_support.config.lsp_zero,
 		dependencies = {
 			-- LSP Support
@@ -66,7 +87,7 @@ local plugins = {
 			-- https://github.com/VonHeikemen/lsp-zero.nvim/issues/61
 			{ "honza/vim-snippets" },
 
-			-- use command output as LSP for places that don't have one yet
+			-- use `command` output as LSP for places that don't have one yet
 			{ "jose-elias-alvarez/null-ls.nvim" },
 			{ "jayp0521/mason-null-ls.nvim"},
 		},
@@ -93,7 +114,10 @@ local plugins = {
 	{ "vim-ruby/vim-ruby" },
 
 	-- lua
-	{ "bfredl/nvim-luadev" },
+	{
+		"bfredl/nvim-luadev",
+		ft = "lua",
+	},
 
 	-- language and filetype specific
 	{ "technicalpickles/procfile.vim" },
@@ -121,7 +145,10 @@ local plugins = {
 	-- treesitter, syntax, etc
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	-- debug info
-	{ "nvim-treesitter/playground" },
+	{
+		"nvim-treesitter/playground",
+		command = "TSPlaygroundToggle",
+	},
 	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 	{ "RRethy/nvim-treesitter-textsubjects" },
 	{ "nvim-treesitter/nvim-treesitter-refactor" },
@@ -218,10 +245,19 @@ local plugins = {
 	{ "mg979/vim-visual-multi" },
 	{ "ktunprasert/gui-font-resize.nvim" },
 
-	{ "windwp/nvim-autopairs" },
-	{ "ur4ltz/surround.nvim" },
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+	},
+	{
+		"ur4ltz/surround.nvim",
+		event = "InsertEnter",
+	},
 
-	{ "AndrewRadev/splitjoin.vim" },
+	{
+		"AndrewRadev/splitjoin.vim",
+		event = "InsertEnter",
+	},
 	-- better support for % to bounce between sets of matching text, ie parens, etc
 	-- drop in replacement for matchit.vim
 	{ "andymass/vim-matchup" },
@@ -243,9 +279,9 @@ local plugins = {
 
 
 	-- colorschemes
-	{ "ayu-theme/ayu-vim" },
-	{ "averak/laserwave.vim" },
-	{ "rafamadriz/neon" },
+	{ "ayu-theme/ayu-vim", lazy = true },
+	{ "averak/laserwave.vim", lazy = true },
+	{ "rafamadriz/neon", lazy = true },
 	{
 		"folke/tokyonight.nvim",
 		-- make sure it's first to avoid flicker
@@ -253,13 +289,32 @@ local plugins = {
 		priority = 1000
 	},
 
-	-- quicfix and diagnostic type stuff
-	{"folke/trouble.nvim", dependencies = "nvim-tree/nvim-web-devicons"},
+	-- quickfix and diagnostic type stuff
+	{
+		"folke/trouble.nvim",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		cmd = { "TroubleToggle", "Trouble" },
+		-- cmd = diagnostics.cmd.trouble,
+		keys = {
+			{"<leader>xx", "<CMD>TroubleToggle<CR>", silent_noremap},
+			{"<leader>xw", "<CMD>Trouble workspace_diagnostics<CR>", silent_noremap},
+			{"<leader>xd", "<CMD>Trouble document_diagnostics<CR>", silent_noremap},
+			{"<leader>xl", "<CMD>Trouble loclist<CR>", silent_noremap},
+			{"<leader>xq", "<CMD>Trouble quickfix<CR>", silent_noremap},
+			{"gR", "<CMD>Trouble lsp_references<CR>", silent_noremap},
+
+			-- ⌘-shift-m - toggle quickfix (aka problems)
+			{"<S-D-M>", "<cmd>TroubleToggle<CR>", silent_noremap},
+			{"<leader>M", "<cmd>TroubleToggle<CR>", silent_noremap},
+		},
+		-- keys = keys_for(diagnostics, 'trouble'),
+	},
 	{ "kevinhwang91/nvim-bqf" },
 	{ "romainl/vim-qf" },
 
 	-- search!
 	{ "mhinz/vim-grepper", cmd = "Grepper" },
+
 	{
 		"junegunn/fzf",
 		build = function()
@@ -271,22 +326,31 @@ local plugins = {
 	{
 		"akinsho/toggleterm.nvim",
 		opts = terminal.opts.toggleterm,
-		command = terminal.command.toggleterm,
-		keys = terminal.command.keys,
+		cmd = terminal.command.toggleterm,
+		keys = terminal.keys.toggleterm,
 	},
 	-- so you can can vim in the terimal
 	{ "samjwill/nvim-unception" },
 
 	-- session, remembering where we were
 	{ "farmergreg/vim-lastplace" },
-	{ "rmagatti/auto-session" },
+	{
+		"rmagatti/auto-session",
+		event = "VimEnter",
+	},
 
 	{
 		'rmagatti/session-lens',
 		dependencies = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+		cmd = "SearchSession"
 	},
 
-	{ "tpope/vim-characterize" },
+	{
+		"tpope/vim-characterize",
+		keys = {
+			{"ga", "<Plug>(characterize)", "Print the unicode value of character in decimal, hex, and octal, HTML entity, Emoji, etc"}
+		}
+	},
 
 	{ "gelguy/wilder.nvim" },
 	{ 'amirrezaask/fuzzy.nvim', depends={'nvim-lua/plenary.nvim'}},
@@ -315,6 +379,7 @@ local plugins = {
 	{
 		'zbirenbaum/copilot-cmp',
 		dependencies = {'copilot.lua'},
+		lazy = true,
 		config = function ()
 			require("copilot_cmp").setup {
 				method = "getCompletionsCycling",
