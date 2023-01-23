@@ -18,25 +18,25 @@ local folds = require("pickled-nvim.folds")
 local language_support = require("pickled-nvim.language-support")
 local diagnostics = require("pickled-nvim.diagnostics")
 
-local function keys_for(file, package)
+local function config_for(file, section, package)
 	local module
 	if type(file) == "string" then
 		module = assert(require, "pickled-nvim"..file, "")
-		assert(module.keys, "no keys in "..module)
+		assert(module[section], "no "..section.." in "..module)
 	else
 		module = file
-		assert(module.keys, "no keys in given module")
+		assert(module[section], "no "..section.." in given module")
 	end
 
 
-	local keys = assert(module.keys[package], "no keys for "..package )
-	assert(type(keys) == "table", "keys for "..package.." is not a table")
+	local config = assert(module[section][package], "no "..section.." for "..package )
+	-- assert(type(keys) == "table", "keys for "..package.." is not a table")
 
-	for index, mapping in ipairs(keys) do
-		assert(#mapping >= 3, "expected at least 3 values for mapping i="..index..", got "..#mapping)
-	end
+	-- for index, mapping in ipairs(keys) do
+	-- 	assert(#mapping >= 3, "expected at least 3 values for mapping i="..index..", got "..#mapping)
+	-- end
 
-	return keys
+	return config
 end
 
 local silent_noremap = { noremap = true, silent = true }
@@ -294,6 +294,20 @@ local plugins = {
 		"folke/trouble.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		cmd = { "TroubleToggle", "Trouble" },
+		opts = {
+			mode = "document_diagnostics",
+
+			action_keys = {
+				close = "<esc>",
+				cancel = nil,
+			},
+
+			-- FIXME opening toggleterm kinda messes with this a lot
+			-- auto_open = true,
+			auto_close = true,
+		},
+
+		-- opts = diagnostics.opts.trouble,
 		-- cmd = diagnostics.cmd.trouble,
 		keys = {
 			{"<leader>xx", "<CMD>TroubleToggle<CR>", silent_noremap},

@@ -71,6 +71,22 @@ M.keys = {
 	}
 }
 
+function M.file_picker()
+	local file_picker_name
+
+	-- prefer git ls-files when available because it's a ton faster
+	if vim.fn.empty(vim.fn.FugitiveGitDir()) == 0 then
+		file_picker_name = "git_files"
+	else
+		file_picker_name = "find_files"
+	end
+
+	local picker_function = loadstring("require('telescope.builtin')." .. file_picker_name .. "()")
+	assert(picker_function, "file picker not found: " .. file_picker_name)
+
+	picker_function()
+end
+
 M.setup = function ()
 	-- -- combine frequency and recency to give better results by default
 	-- require("telescope").load_extension("frecency")
@@ -81,20 +97,6 @@ M.setup = function ()
 	-- require("telescope").load_extension("toggleterm")
 
 	-- use git picker for git based directories
-	function _G.file_picker()
-		local file_picker_name
-
-		-- prefer git ls-files when available because it's a ton faster
-		if vim.fn.empty(vim.fn.FugitiveGitDir()) == 0 then
-			file_picker_name = "git_files"
-		else
-			file_picker_name = "find_files"
-		end
-
-		local file_picker = loadstring("require('telescope.builtin')." .. file_picker_name .. "()")
-
-		file_picker()
-	end
 
 end
 

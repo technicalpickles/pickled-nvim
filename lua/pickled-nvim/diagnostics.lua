@@ -23,6 +23,21 @@ M.setup = function()
 	})
 end
 
+M.opts = {
+	trouble = {
+		mode = "document_diagnostics",
+
+		action_keys = {
+			close = "<esc>",
+			cancel = nil,
+		},
+
+		-- FIXME opening toggleterm kinda messes with this a lot
+		-- auto_open = true,
+		auto_close = true,
+	}
+}
+
 M.cmd = {
 	trouble = { "TroubleToggle", "Trouble" },
 }
