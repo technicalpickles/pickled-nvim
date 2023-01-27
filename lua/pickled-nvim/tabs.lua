@@ -1,10 +1,13 @@
 -- see barbar in plugin.lua
 require("bufferline").setup({
 	options = {
+		mode = "tabs",
+
 		separator_style = "thick",
 		close_icon = "✕",
 		close_command = "Bdelete %d",
 		buffer_close_icon = "✕",
+
 		offsets = {
 			{
 				filetype = "NvimTree",
@@ -23,12 +26,7 @@ require("bufferline").setup({
 })
 
 -- for frontends
-if vim.g.neovide then
-	-- always show tab line, even if there is only 1 item
-	vim.o.showtabline = 2
-else
-	vim.o.showtabline = 1
-end
+vim.o.showtabline = 1
 
 
 local silent_noremap = {noremap = true, silent = true}
