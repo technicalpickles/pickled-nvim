@@ -140,3 +140,11 @@ require("nvim-treesitter.configs").setup({
 	 -- https://github.com/RRethy/nvim-treesitter-endwise
 	 -- { endwise = { enable = true } },
 })
+
+require("treesitter-context").setup({
+	patterns = {
+		ruby = {
+			'block'
+		}
+	}
+})

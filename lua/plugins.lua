@@ -106,6 +106,7 @@ return require("packer").startup(function(use)
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
 	-- adding end automatically
 	use({ "RRethy/nvim-treesitter-endwise" })
+	use({"nvim-treesitter/nvim-treesitter-context"})
 	-- better indentation
 	use({ "yioneko/nvim-yati" })
 
