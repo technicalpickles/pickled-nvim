@@ -39,19 +39,20 @@ M.opts = {
 
 M.config = {
 	telescope = function ()
-		require("telescope").setup(opts.telescope)
+		require("telescope").setup(M.opts.telescope)
 		--
 		-- faster native picker & sorter implementations
 		-- zf seems the fastest, and has
 		-- require("telescope").load_extension("fzf")
 		-- require('telescope').load_extension('fzy_native')
 		require("telescope").load_extension("zf-native")
+
+		require("telescope").load_extension("frecency")
 	end
 }
 
 
 -- ⌘ P - Command Palette
-
 -- ⌘ p - fuzzy find files
 local file_picker = "Telescope frecency"
 -- local file_picker = "lua file_picker()"

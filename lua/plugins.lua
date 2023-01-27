@@ -190,6 +190,7 @@ local plugins = {
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		keys = telescope.keys.telescope,
+		config = telescope.config.telescope,
 		command = "Telescope",
 	},
 
