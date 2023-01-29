@@ -5,8 +5,6 @@ local folds = require("pickled-nvim.folds")
 local language_support = require("pickled-nvim.language-support")
 local diagnostics = require("pickled-nvim.diagnostics")
 local editor = require("pickled-nvim.editor")
-local treesitter = require("pickled-nvim.treesitter")
-local git = require("pickled-nvim.git")
 local tabs = require("pickled-nvim.tabs")
 
 return {
@@ -68,6 +66,7 @@ return {
 
 	-- ide like features
 	{ "ldelossa/nvim-ide" },
+
 	{
 		"simrat39/symbols-outline.nvim",
 		cmd = "SymbolsOutline",
@@ -111,44 +110,6 @@ return {
 			"nvim-lua/plenary.nvim",
 			"m00qek/baleia.nvim"
 		},
-	},
-
-	-- treesitter, syntax, etc
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		on = "BufReadPost",
-		config = treesitter.config.treesitter,
-		opts = treesitter.opts.treesitter,
-		dependencies = {
-			"playground",
-			"nvim-treesitter-textsubjects",
-			"nvim-ts-context-commentstring",
-			"vim-matchup"
-		}
-	},
-
-	{
-		"nvim-treesitter/nvim-treesitter-context",
-		dependencies = {"nvim-treesitter"},
-		opts = treesitter.opts.treesitter_context,
-	},
-
-	-- better support for % to bounce between sets of matching text, ie parens, etc
-	-- drop in replacement for matchit.vim
-	{ "andymass/vim-matchup" },
-	-- debug info
-	{
-		"nvim-treesitter/playground",
-		command = "TSPlaygroundToggle",
-	},
-
-	{
-		"RRethy/nvim-treesitter-textsubjects",
-	},
-	-- determine what type of comments to use in multi-syntax files, ie css in html... use with commentary
-	{
-		"JoosepAlviste/nvim-ts-context-commentstring",
 	},
 
 	-- styling cursor, ident lines, etc
@@ -272,22 +233,6 @@ return {
 		opts = tabs.opts.bufferline,
 		keys = tabs.keys.bufferline,
 	},
-
-	-- git stuff
-	{
-		"tanvirtin/vgit.nvim",
-		dependencies = "nvim-lua/plenary.nvim",
-		opts = git.opts.vgit,
-		on = "VeryLazy",
-	},
-	{
-		"sindrets/diffview.nvim",
-		dependencies = "nvim-lua/plenary.nvim",
-		opts = git.opts.diffview,
-		cmd = git.cmds.diffview,
-	} ,
-	{ "tpope/vim-fugitive" },
-	{ "tpope/vim-rhubarb" },
 
 
 	-- colorschemes
