@@ -33,6 +33,8 @@ o.scrolloff = 5
 -- show title
 o.title = true
 
+vim.o.showtabline = 1
+
 -- nerd fronts for fold open/close
 -- don't show anything for eob (default ~)
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]

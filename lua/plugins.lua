@@ -20,6 +20,7 @@ local diagnostics = require("pickled-nvim.diagnostics")
 local editor = require("pickled-nvim.editor")
 local treesitter = require("pickled-nvim.treesitter")
 local git = require("pickled-nvim.git")
+local tabs = require("pickled-nvim.tabs")
 
 local silent_noremap = { noremap = true, silent = true }
 
@@ -274,7 +275,16 @@ local plugins = {
 	},
 
 	-- for tabs and stuff
-	{'akinsho/bufferline.nvim', dependencies = 'nvim-tree/nvim-web-devicons'},
+	{
+		'akinsho/bufferline.nvim',
+		dependencies = {
+			'nvim-web-devicons',
+		},
+		-- FIXME: find a way to not require, cmds undefined otherwise
+		lazy = false,
+		opts = tabs.opts.bufferline,
+		keys = tabs.keys.bufferline,
+	},
 
 	-- git stuff
 	{
