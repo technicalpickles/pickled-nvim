@@ -1,9 +1,6 @@
 local api = vim.api
 local g = vim.g
 
---{ images }--
-require("chafa").setup()
-
 local M = {}
 
 M.opts = {
