@@ -19,6 +19,7 @@ local language_support = require("pickled-nvim.language-support")
 local diagnostics = require("pickled-nvim.diagnostics")
 local editor = require("pickled-nvim.editor")
 local treesitter = require("pickled-nvim.treesitter")
+local git = require("pickled-nvim.git")
 
 local silent_noremap = { noremap = true, silent = true }
 
@@ -276,10 +277,20 @@ local plugins = {
 	{'akinsho/bufferline.nvim', dependencies = 'nvim-tree/nvim-web-devicons'},
 
 	-- git stuff
-	{ "tanvirtin/vgit.nvim", dependencies = "nvim-lua/plenary.nvim" },
+	{
+		"tanvirtin/vgit.nvim",
+		dependencies = "nvim-lua/plenary.nvim",
+		opts = git.opts.vgit,
+		on = "VeryLazy",
+	},
+	{
+		"sindrets/diffview.nvim",
+		dependencies = "nvim-lua/plenary.nvim",
+		opts = git.opts.diffview,
+		cmd = git.cmds.diffview,
+	} ,
 	{ "tpope/vim-fugitive" },
 	{ "tpope/vim-rhubarb" },
-	{ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim"} ,
 
 
 	-- colorschemes

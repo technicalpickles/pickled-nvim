@@ -20,7 +20,7 @@ M.setup = function()
 
 	vim.diagnostic.config({
 		signs = {
-			priority = vim.g.sign_priorities.diagnostic,
+			priority = require("pickled-nvim").sign_priorities.diagnostic,
 		}
 	})
 end

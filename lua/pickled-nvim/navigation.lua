@@ -1,5 +1,5 @@
 require("marks").setup({
-	sign_priority = vim.g.sign_priorities.mark,
+	sign_priority = require("pickled-nvim").sign_priorities.mark,
 })
 
 require('leap').add_default_mappings()

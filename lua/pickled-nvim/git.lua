@@ -1,10 +1,26 @@
-require("vgit").setup({
-	settings = {
-		signs = {
-			priority = vim.g.sign_priorities.git,
+local M = {}
+
+M.opts = {
+	vgit = {
+		settings = {
+			signs = {
+				priority = require("pickled-nvim").sign_priorities.git,
+			},
 		},
 	},
-})
 
-require("diffview").setup({
-})
+	diffview = true,
+}
+
+M.cmds = {
+	diffview = {
+		'DiffviewOpen',
+		'DiffviewClose',
+		'DiffviewToggleFiles',
+		'DiffviewFocusFiles',
+		'DiffviewRefresh',
+		'DiffviewFileHistory',
+	}
+}
+
+return M
