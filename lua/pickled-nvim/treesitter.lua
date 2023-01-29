@@ -33,6 +33,18 @@ M.opts = {
 				["i;"] = "textsubjects-container-inner",
 			},
 		},
+	},
+	treesitter_context = {
+		patterns = {
+			-- remove when/if https://github.com/nvim-treesitter/nvim-treesitter-context/pull/201 lands
+			ruby = {
+				'block'
+			},
+			lua = {
+				'table_constructor'
+			},
+
+		}
 	}
 }
 

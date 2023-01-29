@@ -140,6 +140,13 @@ local plugins = {
 			"vim-matchup"
 		}
 	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		dependencies = {"nvim-treesitter"},
+		opts = treesitter.opts.treesitter_context,
+	},
+
 	-- better support for % to bounce between sets of matching text, ie parens, etc
 	-- drop in replacement for matchit.vim
 	{ "andymass/vim-matchup" },
