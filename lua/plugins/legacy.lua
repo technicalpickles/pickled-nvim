@@ -1,16 +1,3 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
 local ui = require("pickled-nvim.ui")
 local telescope = require("pickled-nvim.telescope")
 local terminal = require("pickled-nvim.terminal")
@@ -22,9 +9,7 @@ local treesitter = require("pickled-nvim.treesitter")
 local git = require("pickled-nvim.git")
 local tabs = require("pickled-nvim.tabs")
 
-local silent_noremap = { noremap = true, silent = true }
-
-local plugins = {
+return {
 	-- per project alternate setup
 	{ "tpope/vim-projectionist" },
 
@@ -271,14 +256,16 @@ local plugins = {
 	-- tree explorer
 	{
 		"nvim-tree/nvim-tree.lua",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = {
+			"nvim-web-devicons",
+		},
 	},
 
 	-- for tabs and stuff
 	{
 		'akinsho/bufferline.nvim',
 		dependencies = {
-			'nvim-web-devicons',
+			"nvim-web-devicons",
 		},
 		-- FIXME: find a way to not require, cmds undefined otherwise
 		lazy = false,
@@ -434,5 +421,3 @@ local plugins = {
 
 	{ "famiu/bufdelete.nvim" },
 }
-
-require("lazy").setup(plugins)
