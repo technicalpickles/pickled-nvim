@@ -22,6 +22,7 @@ require("pickled-nvim.treesitter")
 require("pickled-nvim.pairs")
 require("pickled-nvim.folds").setup() -- requires treesitter first
 require("pickled-nvim.language-support").setup() -- requires folds
+require("pickled-nvim.diagnostics").setup()
 
 require("pickled-nvim.ide")
 require("pickled-nvim.second-brain")
