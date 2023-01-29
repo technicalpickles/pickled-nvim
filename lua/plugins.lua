@@ -18,6 +18,7 @@ local folds = require("pickled-nvim.folds")
 local language_support = require("pickled-nvim.language-support")
 local diagnostics = require("pickled-nvim.diagnostics")
 local editor = require("pickled-nvim.editor")
+local treesitter = require("pickled-nvim.treesitter")
 
 local silent_noremap = { noremap = true, silent = true }
 
@@ -101,7 +102,10 @@ local plugins = {
 
 	-- language and filetype specific
 	{ "technicalpickles/procfile.vim" },
-	{ "gpanders/editorconfig.nvim" },
+	{
+		"gpanders/editorconfig.nvim",
+		on = "BufRead"
+	},
 	{
 		"preservim/vim-markdown",
 		ft = "markdown",
@@ -123,24 +127,35 @@ local plugins = {
 	},
 
 	-- treesitter, syntax, etc
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		on = "BufReadPost",
+		config = treesitter.config.treesitter,
+		opts = treesitter.opts.treesitter,
+		dependencies = {
+			"playground",
+			"nvim-treesitter-textsubjects",
+			"nvim-ts-context-commentstring",
+			"vim-matchup"
+		}
+	},
+	-- better support for % to bounce between sets of matching text, ie parens, etc
+	-- drop in replacement for matchit.vim
+	{ "andymass/vim-matchup" },
 	-- debug info
 	{
 		"nvim-treesitter/playground",
 		command = "TSPlaygroundToggle",
 	},
-	{ "nvim-treesitter/nvim-treesitter-textobjects" },
-	{ "RRethy/nvim-treesitter-textsubjects" },
-	{ "nvim-treesitter/nvim-treesitter-refactor" },
-	-- determine what type of comments to use in multi-syntax files, ie css in html... use with commentary
-	{ "JoosepAlviste/nvim-ts-context-commentstring" },
-	-- adding end automatically
-	{ "RRethy/nvim-treesitter-endwise" },
-	-- better indentation
-	{ "yioneko/nvim-yati" },
 
-	-- fallback for indentation
-	{ "yioneko/vim-tmindent" },
+	{
+		"RRethy/nvim-treesitter-textsubjects",
+	},
+	-- determine what type of comments to use in multi-syntax files, ie css in html... use with commentary
+	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+	},
 
 	-- styling cursor, ident lines, etc
 	{
@@ -243,9 +258,6 @@ local plugins = {
 		"AndrewRadev/splitjoin.vim",
 		event = "BufRead",
 	},
-	-- better support for % to bounce between sets of matching text, ie parens, etc
-	-- drop in replacement for matchit.vim
-	{ "andymass/vim-matchup" },
 
 	-- tree explorer
 	{
