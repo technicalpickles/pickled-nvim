@@ -17,27 +17,7 @@ local terminal = require("pickled-nvim.terminal")
 local folds = require("pickled-nvim.folds")
 local language_support = require("pickled-nvim.language-support")
 local diagnostics = require("pickled-nvim.diagnostics")
-
-local function config_for(file, section, package)
-	local module
-	if type(file) == "string" then
-		module = assert(require, "pickled-nvim"..file, "")
-		assert(module[section], "no "..section.." in "..module)
-	else
-		module = file
-		assert(module[section], "no "..section.." in given module")
-	end
-
-
-	local config = assert(module[section][package], "no "..section.." for "..package )
-	-- assert(type(keys) == "table", "keys for "..package.." is not a table")
-
-	-- for index, mapping in ipairs(keys) do
-	-- 	assert(#mapping >= 3, "expected at least 3 values for mapping i="..index..", got "..#mapping)
-	-- end
-
-	return config
-end
+local editor = require("pickled-nvim.editor")
 
 local silent_noremap = { noremap = true, silent = true }
 
@@ -239,7 +219,11 @@ local plugins = {
 	{
 		"Wansmer/sibling-swap.nvim",
 		dependencies = { "nvim-treesitter" },
+		event = "BufRead",
+		opts = editor.opts.sibling_swap,
+		keys = editor.keys.sibling_swap,
 	},
+
 	{ "sickill/vim-pasta" },
 	{ "chentoast/marks.nvim" },
 	-- multi-cursor
@@ -252,12 +236,12 @@ local plugins = {
 	},
 	{
 		"ur4ltz/surround.nvim",
-		event = "InsertEnter",
+		event = "BufRead",
 	},
 
 	{
 		"AndrewRadev/splitjoin.vim",
-		event = "InsertEnter",
+		event = "BufRead",
 	},
 	-- better support for % to bounce between sets of matching text, ie parens, etc
 	-- drop in replacement for matchit.vim

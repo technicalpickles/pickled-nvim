@@ -14,7 +14,7 @@ require("pickled-nvim.quickfix")
 require("pickled-nvim.sessions")
 
 require("pickled-nvim.search")
-require("pickled-nvim.editor")
+require("pickled-nvim.editor").setup()
 require("pickled-nvim.tree")
 require("pickled-nvim.navigation")
 
