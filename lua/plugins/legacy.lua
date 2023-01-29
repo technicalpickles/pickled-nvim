@@ -1,9 +1,7 @@
 local ui = require("pickled-nvim.ui")
 local telescope = require("pickled-nvim.telescope")
 local terminal = require("pickled-nvim.terminal")
-local folds = require("pickled-nvim.folds")
 local language_support = require("pickled-nvim.language-support")
-local diagnostics = require("pickled-nvim.diagnostics")
 local editor = require("pickled-nvim.editor")
 local tabs = require("pickled-nvim.tabs")
 
@@ -126,7 +124,10 @@ return {
 	{ "folke/which-key.nvim" },
 
 	-- dashboard when starting à la startify
-	{ "goolord/alpha-nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
+	{
+		"goolord/alpha-nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
 
 	-- customizable statusline with nice defaults
 	{
@@ -247,15 +248,6 @@ return {
 	},
 
 	-- quickfix and diagnostic type stuff
-	{
-		"folke/trouble.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		-- FIXME explicitly setting up in pickled-nvim.diagnostics's setup
-		on = "VimEnter",
-		opts = diagnostics.opts.trouble,
-		cmd = diagnostics.cmd.trouble,
-		keys = diagnostics.keys.trouble,
-	},
 	{ "kevinhwang91/nvim-bqf" },
 	{ "romainl/vim-qf" },
 
@@ -346,14 +338,6 @@ return {
 	-- replace gx for URLs when netrw is disabled
 	{ "tyru/open-browser.vim" },
 
-	-- folds
-	{
-		'kevinhwang91/nvim-ufo',
-		opts = folds.opts.ufo,
-		keys = folds.keys.ufo,
-		event = "BufRead",
-		dependencies = 'kevinhwang91/promise-async',
-	},
 
 	{
 		"ggandor/leap.nvim",

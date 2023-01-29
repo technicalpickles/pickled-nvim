@@ -18,8 +18,6 @@ require("lazy").setup("plugins")
 require("pickled-nvim.filetypes").setup()
 require("pickled-nvim.ui").setup()
 
-require("pickled-nvim.git")
-
 require("pickled-nvim.keybindings")
 
 require("pickled-nvim.tabs")
@@ -31,11 +29,8 @@ require("pickled-nvim.editor").setup()
 require("pickled-nvim.tree")
 require("pickled-nvim.navigation")
 
-require("pickled-nvim.treesitter")
 require("pickled-nvim.pairs")
-require("pickled-nvim.folds").setup() -- requires treesitter first
 require("pickled-nvim.language-support").setup() -- requires folds
-require("pickled-nvim.diagnostics").setup()
 
 require("pickled-nvim.ide")
 require("pickled-nvim.second-brain")
