@@ -20,7 +20,6 @@ require("pickled-nvim.ui").setup()
 
 require("pickled-nvim.keybindings")
 
-require("pickled-nvim.tabs")
 require("pickled-nvim.quickfix")
 
 require("pickled-nvim.search")

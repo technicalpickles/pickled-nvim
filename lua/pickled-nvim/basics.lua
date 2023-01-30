@@ -33,7 +33,8 @@ o.scrolloff = 5
 -- show title
 o.title = true
 
-vim.o.showtabline = 1
+-- FIXME something is overriding this
+o.showtabline = 1
 
 -- nerd fronts for fold open/close
 -- don't show anything for eob (default ~)

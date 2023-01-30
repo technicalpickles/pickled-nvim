@@ -1,7 +1,6 @@
 local ui = require("pickled-nvim.ui")
 local telescope = require("pickled-nvim.telescope")
 local editor = require("pickled-nvim.editor")
-local tabs = require("pickled-nvim.tabs")
 
 return {
 	-- per project alternate setup
@@ -128,7 +127,6 @@ return {
 	{ "chentoast/marks.nvim" },
 	-- multi-cursor
 	{ "mg979/vim-visual-multi" },
-	{ "ktunprasert/gui-font-resize.nvim" },
 
 	{
 		"windwp/nvim-autopairs",
@@ -152,22 +150,6 @@ return {
 		},
 	},
 
-	-- for tabs and stuff
-	{
-		'akinsho/bufferline.nvim',
-		dependencies = {
-			"nvim-web-devicons",
-		},
-		-- FIXME: find a way to not require, cmds undefined otherwise
-		lazy = false,
-		opts = tabs.opts.bufferline,
-		keys = tabs.keys.bufferline,
-	},
-
-	-- quickfix and diagnostic type stuff
-	{ "kevinhwang91/nvim-bqf" },
-	{ "romainl/vim-qf" },
-
 	-- search!
 	{ "mhinz/vim-grepper", cmd = "Grepper" },
 
@@ -179,17 +161,6 @@ return {
 	},
 
 	-- session, remembering where we were
-	{ "farmergreg/vim-lastplace" },
-	{
-		"rmagatti/auto-session",
-		event = "VimEnter",
-	},
-
-	{
-		'rmagatti/session-lens',
-		dependencies = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
-		cmd = "SearchSession"
-	},
 
 	{
 		"tpope/vim-characterize",
@@ -197,15 +168,6 @@ return {
 			{"ga", "<Plug>(characterize)", "Print the unicode value of character in decimal, hex, and octal, HTML entity, Emoji, etc"}
 		}
 	},
-
-	{ "gelguy/wilder.nvim" },
-	{ 'amirrezaask/fuzzy.nvim', depends={'nvim-lua/plenary.nvim'}},
-
-	{
-		"roxma/nvim-yarp",
-		build = "pip install -r requirements.txt",
-	},
-
 
 	-- directory specific path, etc
 	{ "direnv/direnv.vim" },
