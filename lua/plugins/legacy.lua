@@ -129,13 +129,6 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
-	-- customizable statusline with nice defaults
-	{
-		"nvim-lualine/lualine.nvim",
-		config = require("pickled-nvim.ui").config.lualine,
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-	},
-
 	-- Find, Filter, Preview, Pick. All lua, all the time.
 	{
 		"nvim-telescope/telescope.nvim",
