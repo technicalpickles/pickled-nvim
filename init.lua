@@ -22,7 +22,6 @@ require("pickled-nvim.keybindings")
 
 require("pickled-nvim.tabs")
 require("pickled-nvim.quickfix")
-require("pickled-nvim.sessions")
 
 require("pickled-nvim.search")
 require("pickled-nvim.editor").setup()

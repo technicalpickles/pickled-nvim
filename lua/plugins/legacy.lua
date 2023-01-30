@@ -20,11 +20,6 @@ return {
 	{ "ldelossa/nvim-ide" },
 
 	-- ruby
-	{ "tpope/vim-bundler" },
-	{ "tpope/vim-rake" },
-	{ "tpope/vim-rails" },
-	{ "vim-ruby/vim-ruby" },
-
 	-- lua
 	{
 		"bfredl/nvim-luadev",
@@ -214,7 +209,6 @@ return {
 
 	-- directory specific path, etc
 	{ "direnv/direnv.vim" },
-	{ "tpope/vim-rbenv" },
 
 	-- replace gx for URLs when netrw is disabled
 	{ "tyru/open-browser.vim" },
