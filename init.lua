@@ -29,7 +29,6 @@ require("pickled-nvim.tree")
 require("pickled-nvim.navigation")
 
 require("pickled-nvim.pairs")
-require("pickled-nvim.language-support").setup() -- requires folds
 
 require("pickled-nvim.custom-help")
 require("pickled-nvim.legendary-which-key-palette")
