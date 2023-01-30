@@ -80,7 +80,7 @@ M.setup = function()
 	-- 		"IndentBlanklineIndent5",
 	-- 		"IndentBlanklineIndent6",
 	-- 	},
-	-- 	filetype_exclude = g.filetype_plugin_config.indent_blankline.exclude,
+	-- 	filetype_exclude = require("pickled-nvim").filetype_config.indent_blankline.exclude,
 	-- })
 
 	-- startup screen

@@ -5,7 +5,7 @@ return {
 		config = function()
 			vim.defer_fn(function()
 				require("copilot").setup({
-					ft_disable = vim.g.filetype_plugin_config.copilot.disable,
+					ft_disable = require("pickled-nvim").filetype_config.copilot.disable,
 
 					-- suggested to disable these when using with cmp
 					suggestion = { enabled = false },

@@ -25,7 +25,7 @@ npairs.add_rules(require('nvim-autopairs.rules.endwise-ruby'))
 
 npairs.setup({
 	check_ts = true,
-	disable_filetype = g.filetype_plugin_config.autopairs.disable,
+	disable_filetype = require("pickled-nvim").filetype_config.autopairs.disable,
 })
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")

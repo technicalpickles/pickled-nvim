@@ -32,69 +32,9 @@ M.setup = function()
 	-- ufo / lsp folding is more accurate than vim-markdown
 	g.vim_markdown_folding_disabled = 1
 
-	--{ global filetype-related settings in one place for re-use }--
-	g.filetype_plugin_config = {
-		rainbow = {
-			disable = {
-				"help",
-				"log",
-				"text",
-			}
-		},
-		indent_blankline = {
-			exclude = {
-				"help",
-				"log",
-				"markdown",
-				"text",
-			}
-		},
-		autopairs = {
-			disable = {
-				"TelescopePrompt",
-				"clap_input",
-				"guihua",
-				"guihua_rust",
-			}
-		},
-		pasta = {
-			disable = {
-				"coffeescript",
-				"markdown",
-				"python",
-				"toggleterm",
-				"yaml",
-				"Trouble", -- prevents preview keybinding from working
-			}
-		},
-
-		autosession = {
-			bypass_autosave = {
-				'qf',
-				'NvimTree',
-				'Trouble',
-				'Outline',
-			}
-		},
-
-		copilot = {
-			disable = {
-				'Nvim',
-				'Outline',
-				'Trouble',
-				'qf',
-				'toggleterm',
-				"help",
-				"log",
-				"markdown",
-				"text",
-			}
-		}
-
-	}
 
 	-- pasta, which helps correctly indent
-	g.pasta_disabled_filetypes = g.filetype_plugin_config.pasta.disable
+	g.pasta_disabled_filetypes = require("pickled-nvim").filetype_config.pasta.disable
 end
 
 return M

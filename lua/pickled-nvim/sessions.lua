@@ -7,7 +7,7 @@ require("auto-session").setup({
 	log_level = "warning",
 
 	-- list of files that don't shouldn't be considered part of a session if the are the last thing open
-	bypass_session_save_file_types = vim.g.filetype_plugin_config.autosession.bypass_autosave,
+	bypass_session_save_file_types = require("pickled-nvim").filetype_config.autosession.bypass_autosave,
 
 	pre_save_cmds = {
 		'lua require("superesc").close_panels()'
