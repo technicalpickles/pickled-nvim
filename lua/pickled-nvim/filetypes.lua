@@ -5,8 +5,10 @@ local M = {}
 
 M.opts = {
 	chafa = {
-		min_padding = 0,
-		show_label = false,
+		render = {
+			min_padding = 0,
+			show_label = false,
+		}
 	}
 }
 

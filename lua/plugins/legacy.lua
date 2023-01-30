@@ -1,5 +1,4 @@
 local ui = require("pickled-nvim.ui")
-local telescope = require("pickled-nvim.telescope")
 local editor = require("pickled-nvim.editor")
 
 return {
@@ -7,18 +6,24 @@ return {
 	{ "tpope/vim-projectionist" },
 
 	-- lots of handy shortcuts
-	{ "tpope/vim-unimpaired" },
+	{
+		"tpope/vim-unimpaired",
+		on = "VeryLazy",
+	},
 
 	-- toggling comments
-	{ "tpope/vim-commentary" },
+	{
+		"tpope/vim-commentary",
+		on = "VeryLazy"
+	},
 
 	-- make . work in more places
-	{ "tpope/vim-repeat", },
+	{
+		"tpope/vim-repeat",
+		on = "VeryLazy"
+	},
 
-	-- ide like features
-	{ "ldelossa/nvim-ide" },
 
-	-- ruby
 	-- lua
 	{
 		"bfredl/nvim-luadev",
@@ -26,30 +31,20 @@ return {
 	},
 
 	-- language and filetype specific
-	{ "technicalpickles/procfile.vim" },
 	{
-		"gpanders/editorconfig.nvim",
-		on = "BufRead"
+		"technicalpickles/procfile.vim",
 	},
 	{ "kblin/vim-fountain" },
-
 	{
-		"princejoogie/chafa.nvim",
-		opts = require('pickled-nvim.filetypes').opts.chafa,
-		event = "BufReadPre",
-		dependencies = {
-			"plenary.nvim",
-			"baleia.nvim"
-		},
+		"gpanders/editorconfig.nvim",
+		on = "VeryLazy"
 	},
-
-	{"m00qek/baleia.nvim"},
 
 	-- styling cursor, ident lines, etc
 	{
 		"yamatsum/nvim-cursorline",
 		opts = ui.opts.cursorline,
-		event = "BufRead"
+		event = "VeryLazy"
 	},
 
 	-- "lukas-reineke/indent-blankline.nvim")
@@ -65,33 +60,6 @@ return {
 	},
 
 	-- Find, Filter, Preview, Pick. All lua, all the time.
-	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = { "plenary.nvim" },
-		keys = telescope.keys.telescope,
-		config = telescope.config.telescope,
-		command = "Telescope",
-	},
-
-	{"romgrk/fzy-lua-native", build = "make", event = "CmdlineEnter" },
-
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	{ "nvim-telescope/telescope-fzy-native.nvim", build = "make" },
-	{ "natecraddock/telescope-zf-native.nvim" },
-
-	-- keep telescope from changing directory when picking files
-	{ "desdic/telescope-rooter.nvim" },
-
-	{
-		"nvim-telescope/telescope-frecency.nvim",
-		dependencies = { "sqlite.lua" },
-	},
-
-	{
-		"gfeiyou/command-center.nvim",
-		dependencies = { "telescope.nvim" },
-	},
-
 	{
 		'mrjones2014/legendary.nvim',
 		-- sqlite is only needed if you want to use frecency sorting
@@ -113,10 +81,19 @@ return {
 		keys = editor.keys.sibling_swap,
 	},
 
-	{ "sickill/vim-pasta" },
-	{ "chentoast/marks.nvim" },
+	{
+		"sickill/vim-pasta",
+		on = "VeryLazy"
+	},
+	{
+		"chentoast/marks.nvim",
+		on = "VeryLazy"
+	},
 	-- multi-cursor
-	{ "mg979/vim-visual-multi" },
+	{
+		"mg979/vim-visual-multi",
+		on = "VeryLazy"
+	},
 
 	{
 		"windwp/nvim-autopairs",
@@ -170,7 +147,10 @@ return {
 		on = "BufRead",
 	},
 
-	{ "epwalsh/obsidian.nvim" },
+	{
+		"epwalsh/obsidian.nvim",
+		on = "VeryLazy",
+	},
 
 	{ "mattboehm/vim-unstack" },
 

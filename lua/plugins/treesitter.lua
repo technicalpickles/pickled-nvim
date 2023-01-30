@@ -45,7 +45,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		dependencies = {"nvim-treesitter"},
-		on = "VeryLazy",
+		on = "BufReadPost",
 		opts = {
 		patterns = {
 			-- remove when/if https://github.com/nvim-treesitter/nvim-treesitter-context/pull/201 lands

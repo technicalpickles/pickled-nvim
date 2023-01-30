@@ -43,6 +43,7 @@ return {
 			"nvim-lua/popup.nvim",
 			"plenary.nvim",
 		},
+		lazy = true,
 	},
 
 }
