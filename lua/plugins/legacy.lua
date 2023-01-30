@@ -44,10 +44,12 @@ return {
 		opts = require('pickled-nvim.filetypes').opts.chafa,
 		event = "BufReadPre",
 		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"m00qek/baleia.nvim"
+			"plenary.nvim",
+			"baleia.nvim"
 		},
 	},
+
+	{"m00qek/baleia.nvim"},
 
 	-- styling cursor, ident lines, etc
 	{
@@ -65,13 +67,13 @@ return {
 	-- dashboard when starting à la startify
 	{
 		"goolord/alpha-nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = { "nvim-web-devicons" },
 	},
 
 	-- Find, Filter, Preview, Pick. All lua, all the time.
 	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "plenary.nvim" },
 		keys = telescope.keys.telescope,
 		config = telescope.config.telescope,
 		command = "Telescope",
@@ -88,12 +90,12 @@ return {
 
 	{
 		"nvim-telescope/telescope-frecency.nvim",
-		dependencies = { "kkharji/sqlite.lua" },
+		dependencies = { "sqlite.lua" },
 	},
 
 	{
 		"gfeiyou/command-center.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
+		dependencies = { "telescope.nvim" },
 	},
 
 	{
