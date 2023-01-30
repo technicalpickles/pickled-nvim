@@ -5,8 +5,7 @@ return {
 		dependencies = {
 			"nvim-web-devicons",
 		},
-		-- FIXME: find a way to not require, cmds undefined otherwise
-		lazy = false,
+		on = "VimEnter",
 		opts = {
 			options = {
 				mode = "tabs",
@@ -53,7 +52,7 @@ return {
 			{"<D-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", silent_noremap},
 			{"<D-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", silent_noremap},
 		},
-		cmds = {
+		cmd = {
 			'BufferLineGroupClose',
 			'BufferLineGroupToggle',
 			'BufferLineTogglePin',
