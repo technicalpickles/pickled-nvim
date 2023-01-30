@@ -51,9 +51,3 @@ vim.keymap.set("i", "<D-]>", "<C-O>>>", silent)
 vim.keymap.set("n", "<D-[>", "<<", silent)
 vim.keymap.set("v", "<D-[>", "<", silent)
 vim.keymap.set("i", "<D-[>", "<C-O><<", silent)
-
--- ⌘ -/+ to increase/decrease font. ⌘ 0 to reset font
-vim.keymap.set("n", "<D-=>", "<cmd>:GUIFontSizeUp<CR>", silent_noremap)
-vim.keymap.set("n", "<D-->", "<cmd>:GUIFontSizeDown<CR>", silent_noremap)
-vim.keymap.set("n", "<D-0>", "<cmd>:GUIFontSizeSet<CR>", silent_noremap)
-
