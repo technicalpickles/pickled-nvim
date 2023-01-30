@@ -47,23 +47,24 @@ return {
 		dependencies = {"nvim-treesitter"},
 		on = "BufReadPost",
 		opts = {
-		patterns = {
-			-- remove when/if https://github.com/nvim-treesitter/nvim-treesitter-context/pull/201 lands
-			ruby = {
-				'block'
-			},
-			lua = {
-				'table_constructor'
-			},
+			patterns = {
+				-- remove when/if https://github.com/nvim-treesitter/nvim-treesitter-context/pull/201 lands
+				ruby = {
+					'block'
+				},
+				lua = {
+					'table_constructor'
+				},
 
+			}
 		}
-	}
-},
+	},
 
 	-- better support for % to bounce between sets of matching text, ie parens, etc
 	-- drop in replacement for matchit.vim
 	{
 		"andymass/vim-matchup",
+		lazy = true,
 	},
 	-- debug info
 	{

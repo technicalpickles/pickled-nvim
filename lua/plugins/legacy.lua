@@ -149,7 +149,7 @@ return {
 
 	{
 		"epwalsh/obsidian.nvim",
-		on = "VeryLazy",
+		lazy = true,
 	},
 
 	{ "mattboehm/vim-unstack" },

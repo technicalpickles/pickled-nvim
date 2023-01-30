@@ -204,8 +204,8 @@ return {
 			-- and it needs to come after lsp-zero is configured: https://github.com/VonHeikemen/lsp-zero.nvim/discussions/119
 			local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 			cmp.event:on(
-			'confirm_done',
-			cmp_autopairs.on_confirm_done()
+				'confirm_done',
+				cmp_autopairs.on_confirm_done()
 			)
 
 			-- debug lsp

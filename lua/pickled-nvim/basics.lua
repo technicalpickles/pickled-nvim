@@ -2,12 +2,14 @@ local o = vim.o
 local g = vim.g
 
 -- Disable some in built plugins completely
-g.loaded_netrwPlugin = 1
+g.loaded_netrwPlugin = 1 -- nvim-tree
 g.loaded_2html_plugin = 1
 g.loaded_getscriptPlugin = 1
 g.loaded_logipat = 1
 g.loaded_rrhelper = 1
 g.loaded_vimballPlugin = 1
+
+g.loaded_matchit = 1 -- vim-matchup
 
 CONFIG_PATH = vim.fn.stdpath("config")
 DATA_PATH = vim.fn.stdpath("data")

@@ -66,4 +66,18 @@ M.filetype_config = {
 	}
 }
 
+M.find_obsidian_vault = function()
+	if vim.fn.isdirectory(vim.fn.expand("~/workspace/pickled-knowledge/")) == 1 then
+		return vim.fn.expand("~/workspace/pickled-knowledge")
+	elseif vim.fn.directory(vim.fn.expand("~/workspace/obsidian/")) == 1 then
+		return vim.fn.isdirectory("~/Documents/pickled-knowledge")
+	end
+	return false
+end
+
+M.in_obsidian_vault = function()
+	local vault = M.find_obsidian_vault()
+	return vault and vim.fn.getcwd() == vault
+end
+
 return M
