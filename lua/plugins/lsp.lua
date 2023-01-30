@@ -3,7 +3,7 @@ local symbols_outline = "<CMD>SymbolsOutline<CR>"
 return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
-		event = "VimEnter",
+		event = "BufReadPre",
 		dependencies = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" },
@@ -218,6 +218,7 @@ return {
 
 	{
 		"jose-elias-alvarez/null-ls.nvim",
+		on = "BufReadPre",
 		config = function()
 			local null_ls = require("null-ls")
 			local sources = {}

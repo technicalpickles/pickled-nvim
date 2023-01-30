@@ -93,16 +93,6 @@ return {
 	},
 
 	{
-		"da-moon/telescope-toggleterm.nvim",
-		dependencies = {
-			"akinsho/toggleterm.nvim",
-			"nvim-telescope/telescope.nvim",
-			"nvim-lua/popup.nvim",
-			"nvim-lua/plenary.nvim",
-		},
-	},
-
-	{
 		'mrjones2014/legendary.nvim',
 		-- sqlite is only needed if you want to use frecency sorting
 		dependencies = 'kkharji/sqlite.lua'
@@ -134,7 +124,7 @@ return {
 	},
 	{
 		"ur4ltz/surround.nvim",
-		event = "BufRead",
+		event = "VeryLazy",
 	},
 
 	{

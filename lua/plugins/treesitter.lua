@@ -40,17 +40,12 @@ return {
 				},
 			},
 		},
-		dependencies = {
-			"playground",
-			"nvim-treesitter-textsubjects",
-			"nvim-ts-context-commentstring",
-			"vim-matchup"
-		}
 	},
 
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		dependencies = {"nvim-treesitter"},
+		on = "VeryLazy",
 		opts = {
 		patterns = {
 			-- remove when/if https://github.com/nvim-treesitter/nvim-treesitter-context/pull/201 lands
@@ -67,7 +62,9 @@ return {
 
 	-- better support for % to bounce between sets of matching text, ie parens, etc
 	-- drop in replacement for matchit.vim
-	{ "andymass/vim-matchup" },
+	{
+		"andymass/vim-matchup",
+	},
 	-- debug info
 	{
 		"nvim-treesitter/playground",
@@ -76,10 +73,12 @@ return {
 
 	{
 		"RRethy/nvim-treesitter-textsubjects",
+		on = "VeryLazy",
 	},
 	-- determine what type of comments to use in multi-syntax files, ie css in html... use with commentary
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
+		on = "VeryLazy",
 	},
 
 

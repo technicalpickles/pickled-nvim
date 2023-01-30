@@ -1,7 +1,7 @@
 return {
 	{
 		'zbirenbaum/copilot.lua',
-		event = 'VimEnter',
+		lazy = true,
 		opts = {
 			ft_disable = require("pickled-nvim").filetype_config.copilot.disable,
 
@@ -15,16 +15,14 @@ return {
 
 		},
 		config = function(_, opts)
-			vim.defer_fn(function()
 				require("copilot").setup(opts)
-			end, 100)
 		end,
 	},
 
 	{
 		'zbirenbaum/copilot-cmp',
-		dependencies = {'copilot.lua'},
 		lazy = true,
+		dependencies = {'copilot.lua'},
 		config = function ()
 			require("copilot_cmp").setup {
 				method = "getCompletionsCycling",

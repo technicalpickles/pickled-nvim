@@ -35,4 +35,14 @@ return {
 	-- so you can can vim in the terimal
 	{ "samjwill/nvim-unception" },
 
+	{
+		"da-moon/telescope-toggleterm.nvim",
+		dependencies = {
+			"toggleterm.nvim",
+			"telescope.nvim",
+			"nvim-lua/popup.nvim",
+			"plenary.nvim",
+		},
+	},
+
 }

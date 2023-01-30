@@ -5,7 +5,7 @@ return {
 		dependencies = {
 			"nvim-web-devicons",
 		},
-		on = "VimEnter",
+		on = "VeryLazy",
 		opts = {
 			options = {
 				mode = "tabs",
