@@ -228,18 +228,6 @@ return {
 		keys = tabs.keys.bufferline,
 	},
 
-
-	-- colorschemes
-	{ "ayu-theme/ayu-vim", lazy = true },
-	{ "averak/laserwave.vim", lazy = true },
-	{ "rafamadriz/neon", lazy = true },
-	{
-		"folke/tokyonight.nvim",
-		-- make sure it's first to avoid flicker
-		lazy = false,
-		priority = 1000
-	},
-
 	-- quickfix and diagnostic type stuff
 	{ "kevinhwang91/nvim-bqf" },
 	{ "romainl/vim-qf" },
@@ -292,37 +280,6 @@ return {
 		build = "pip install -r requirements.txt",
 	},
 
-	{
-		'zbirenbaum/copilot.lua',
-		event = 'VimEnter',
-		config = function()
-			vim.defer_fn(function()
-				require("copilot").setup({
-					ft_disable = vim.g.filetype_plugin_config.copilot.disable,
-
-					-- suggested to disable these when using with cmp
-					suggestion = { enabled = false },
-					panel = { enabled = false },
-				})
-			end, 100)
-		end,
-	},
-
-	{
-		'zbirenbaum/copilot-cmp',
-		dependencies = {'copilot.lua'},
-		lazy = true,
-		config = function ()
-			require("copilot_cmp").setup {
-				method = "getCompletionsCycling",
-				formatters = {
-					label = require("copilot_cmp.format").format_label_text,
-					insert_text = require("copilot_cmp.format").format_insert_text,
-					preview = require("copilot_cmp.format").deindent,
-				},
-			}
-		end
-	},
 
 	-- directory specific path, etc
 	{ "direnv/direnv.vim" },
@@ -330,7 +287,6 @@ return {
 
 	-- replace gx for URLs when netrw is disabled
 	{ "tyru/open-browser.vim" },
-
 
 	{
 		"ggandor/leap.nvim",
