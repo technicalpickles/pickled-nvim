@@ -44,30 +44,3 @@ function _G.qftf(info)
 end
 
 vim.o.qftf = "{info -> v:lua._G.qftf(info)}"
-
--- Adapt fzf's delimiter in nvim-bqf
-require("bqf").setup({
-	filter = {
-		fzf = {
-			extra_opts = { "--bind", "ctrl-o:toggle-all", "--delimiter", "│" },
-		},
-	},
-	func_map = {
-		-- switch these so I can use C-f and C-b for paging in the quickfix
-		pscrollup = "<C-u>",
-		pscrolldown = "<C-d>",
-	},
-})
-
--- quickfix
-local silent_noremap = { noremap = true, silent = true }
-vim.keymap.set("n", "<leader>qq", "<Plug>(qf_qf_toggle)", silent_noremap)
-vim.keymap.set("n", "<leader>qn", "<Plug>(qf_qf_next)", silent_noremap)
-vim.keymap.set("n", "<leader>qp", "<Plug>(qf_qf_previous)", silent_noremap)
-
-vim.api.nvim_set_keymap("n", "<leader>ql", "<Plug>(qf_loc_toggle)", silent_noremap)
-
-vim.keymap.set("n", "<leader>qN", "<Plug>(qf_next_file)", silent_noremap)
-vim.keymap.set("n", "<leader>qP", "<Plug>(qf_previous_file)", silent_noremap)
-
-vim.keymap.set("n", "<leader>qb", "<Cmd>BqfToggle<CR>", silent_noremap)

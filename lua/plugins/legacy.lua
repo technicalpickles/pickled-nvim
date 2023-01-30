@@ -192,7 +192,6 @@ return {
 	{ "chentoast/marks.nvim" },
 	-- multi-cursor
 	{ "mg979/vim-visual-multi" },
-	{ "ktunprasert/gui-font-resize.nvim" },
 
 	{
 		"windwp/nvim-autopairs",
@@ -241,8 +240,6 @@ return {
 	},
 
 	-- quickfix and diagnostic type stuff
-	{ "kevinhwang91/nvim-bqf" },
-	{ "romainl/vim-qf" },
 
 	-- search!
 	{ "mhinz/vim-grepper", cmd = "Grepper" },
