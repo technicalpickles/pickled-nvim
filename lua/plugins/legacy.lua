@@ -37,16 +37,8 @@ return {
 		"gpanders/editorconfig.nvim",
 		on = "BufRead"
 	},
-	{
-		"preservim/vim-markdown",
-		ft = "markdown",
-		dependencies = { "godlygeek/tabular" },
-	},
-	{
-		"dhruvasagar/vim-table-mode",
-		ft = "markdown",
-	},
 	{ "kblin/vim-fountain" },
+
 	{
 		"princejoogie/chafa.nvim",
 		opts = require('pickled-nvim.filetypes').opts.chafa,
