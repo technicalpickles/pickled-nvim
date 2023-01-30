@@ -1,6 +1,5 @@
 local ui = require("pickled-nvim.ui")
 local telescope = require("pickled-nvim.telescope")
-local terminal = require("pickled-nvim.terminal")
 local language_support = require("pickled-nvim.language-support")
 local editor = require("pickled-nvim.editor")
 local tabs = require("pickled-nvim.tabs")
@@ -241,16 +240,6 @@ return {
 			vim.fn["fzf#install"]()
 		end,
 	},
-
-	-- terminal
-	{
-		"akinsho/toggleterm.nvim",
-		opts = terminal.opts.toggleterm,
-		cmd = terminal.command.toggleterm,
-		keys = terminal.keys.toggleterm,
-	},
-	-- so you can can vim in the terimal
-	{ "samjwill/nvim-unception" },
 
 	-- session, remembering where we were
 	{ "farmergreg/vim-lastplace" },
