@@ -63,6 +63,12 @@ M.filetype_config = {
 			"markdown",
 			"text",
 		}
+	},
+	lualine = {
+		disabled = {
+			statusline = {"dashboard", "lazy", "alpha" },
+			winbar = {}
+		}
 	}
 }
 

@@ -31,10 +31,17 @@ return {
 					lualine_y = {},
 					lualine_z = {}
 				},
-				filetypes = {'toggleterm'},
+				filetypes = {
+					'toggleterm',
+				},
 			}
 
 			require("lualine").setup({
+				options = {
+					theme = 'auto',
+					globalstatus = true,
+					disabled_filetypes = require("pickled-nvim").filetype_config.disabled,
+				},
 				extensions = {
 					"fugitive",
 					"man",
@@ -44,7 +51,6 @@ return {
 					"symbols-outline",
 					my_toggleterm,
 				},
-				theme = "auto",
 				sections = {
 					lualine_a = {'mode'},
 					lualine_b = {'branch', 'diagnostics'},
