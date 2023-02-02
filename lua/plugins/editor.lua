@@ -28,16 +28,21 @@ return {
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		dependencies = {},
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"hrsh7th/nvim-cmp",
+		},
 		opts = {
 			check_ts = true,
 			disable_filetype = require("pickled-nvim").filetype_config.autopairs.disable,
 		},
 
 		config = function(_, opts)
+			local npairs = require("nvim-autopairs")
+			npairs.setup(opts)
+
 			local cmp = require("cmp")
 			local Rule = require("nvim-autopairs.rule")
-			local npairs = require("nvim-autopairs")
 			local ts_conds = require("nvim-autopairs.ts-conds")
 
 			-- local not_string_or_comment = ts_conds.is_not_ts_node({ "string", "comment" })
