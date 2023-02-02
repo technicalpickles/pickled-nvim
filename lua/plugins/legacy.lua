@@ -147,11 +147,6 @@ return {
 		on = "BufRead",
 	},
 
-	{
-		"epwalsh/obsidian.nvim",
-		lazy = true,
-	},
-
 	{ "mattboehm/vim-unstack" },
 
 	{ "famiu/bufdelete.nvim" },

@@ -1,21 +1,24 @@
 local file_picker = "Telescope frecency"
 -- local file_picker = "lua file_picker()"
 local silent_noremap = { noremap = true, silent = true }
+local silent_noremap_both_modes = vim.tbl_deep_extend("keep", silent_noremap, {mode = {"n", "i"}})
 return {
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "plenary.nvim" },
 		keys = {
-			{"<D-S-p>", "<cmd>Telescope command_center<CR>", silent_noremap},
-			{"<leader>c", "<CMD>Telescope command_center<CR>", silent_noremap},
-			{"<D-f>", "<cmd>lua require('telescope.builtin').live_grep()<CR>", silent_noremap},
-			{"<leader>b", "<cmd>Telescope buffers<CR>", silent_noremap},
-			{"<leader>m", "<cmd>Telescope marks<CR>", silent_noremap},
+			{"<D-S-p>", "<cmd>Telescope command_center<CR>", silent_noremap_both_modes},
+			{"<leader>c", "<CMD>Telescope command_center<CR>", silent_noremap_both_modes},
+			{"<D-f>", "<cmd>lua require('telescope.builtin').live_grep()<CR>", silent_noremap_both_modes},
+			{"<leader>b", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes},
+			{"<leader>m", "<cmd>Telescope marks<CR>", silent_noremap_both_modes},
 
-			{"<D-k>", "<cmd>Telescope buffers<CR>", silent_noremap},
+			{"<D-k>", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes},
 
-			{"<D-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap},
-			{"<C-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap},
+			{"<D-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap_both_modes},
+			{"<C-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap_both_modes},
+
+			{"<D-g>", "<cmd>Telescope git_files<CR>", silent_noremap_both_modes},
 		},
 		opts = {
 			defaults = {
@@ -25,7 +28,11 @@ return {
 					horizontal = {
 						preview_width = 0.5,
 					},
-				}
+				},
+				mappings = {
+					n = {},
+					i = {},
+				},
 			},
 			extensions = {
 				frecency = {
@@ -41,23 +48,26 @@ return {
 				},
 			},
 			pickers = {
+				command_center = {
+				},
 				find_files = {
-					theme = "dropdown",
+					-- theme = "dropdown",
 					-- customize by adding --hidden, so we can get files that start with . which turns out to be a lot
 					find_command = { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" },
 				},
 				git_files = {
-					theme = "dropdown",
+					-- theme = "dropdown",
+				},
+				frecency = {
 				},
 			},
 		},
 		command = "Telescope",
 		config = function (_, opts)
 			local  telescope = require("telescope")
-			telescope.setup(opts) -- FIXME why is this a warning? thinks it takes 0 args
+			telescope.setup(opts)
 			--
-			-- faster native picker & sorter implementations
-			-- zf seems the fastest, and has
+			-- faster native picker & sorter implementations. zf seems the fastest
 			-- telescope.load_extension("fzf")
 			-- telescope.load_extension('fzy_native')
 			telescope.load_extension("zf-native")
@@ -70,10 +80,15 @@ return {
 		end
 	},
 
-	{"romgrk/fzy-lua-native", build = "make", event = "CmdlineEnter" },
-
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
-	{ "nvim-telescope/telescope-fzy-native.nvim", build = "make", lazy = true },
+	-- faster native picker & sorter implementations. zf seems the fastest
+	-- {"romgrk/fzy-lua-native", build = "make", event = "CmdlineEnter" },
+	-- { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+	-- {
+	-- 	"nvim-telescope/telescope-fzy-native.nvim",
+	-- 	build = "make",
+	-- 	dependencies = {"nvim-telescope/telescope-fzf-native.nvim"},
+	-- 	lazy = true,
+	-- },
 	{ "natecraddock/telescope-zf-native.nvim", lazy = true},
 
 	-- keep telescope from changing directory when picking files

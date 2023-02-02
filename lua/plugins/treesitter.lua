@@ -64,7 +64,7 @@ return {
 	-- drop in replacement for matchit.vim
 	{
 		"andymass/vim-matchup",
-		lazy = true,
+		on = "BufReadPost",
 	},
 	-- debug info
 	{
