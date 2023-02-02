@@ -1,5 +1,3 @@
-local editor = require("pickled-nvim.editor")
-
 return {
 	-- per project alternate setup
 	{ "tpope/vim-projectionist" },
@@ -8,12 +6,6 @@ return {
 	{
 		"tpope/vim-unimpaired",
 		on = "VeryLazy",
-	},
-
-	-- toggling comments
-	{
-		"tpope/vim-commentary",
-		on = "VeryLazy"
 	},
 
 	-- make . work in more places
@@ -53,43 +45,6 @@ return {
 		'mrjones2014/legendary.nvim',
 		-- sqlite is only needed if you want to use frecency sorting
 		dependencies = 'kkharji/sqlite.lua'
-	},
-
-	-- various things for editing and jumping around
-	{
-		"Wansmer/sibling-swap.nvim",
-		dependencies = { "nvim-treesitter" },
-		event = "BufRead",
-		opts = editor.opts.sibling_swap,
-		keys = editor.keys.sibling_swap,
-	},
-
-	{
-		"sickill/vim-pasta",
-		on = "VeryLazy"
-	},
-	{
-		"chentoast/marks.nvim",
-		on = "VeryLazy"
-	},
-	-- multi-cursor
-	{
-		"mg979/vim-visual-multi",
-		on = "VeryLazy"
-	},
-
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-	},
-	{
-		"ur4ltz/surround.nvim",
-		event = "VeryLazy",
-	},
-
-	{
-		"AndrewRadev/splitjoin.vim",
-		event = "BufRead",
 	},
 
 	-- tree explorer

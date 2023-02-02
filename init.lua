@@ -23,11 +23,8 @@ require("pickled-nvim.keybindings")
 require("pickled-nvim.quickfix")
 
 require("pickled-nvim.search")
-require("pickled-nvim.editor").setup()
 require("pickled-nvim.tree")
 require("pickled-nvim.navigation")
-
-require("pickled-nvim.pairs")
 
 require("pickled-nvim.custom-help")
 require("pickled-nvim.legendary-which-key-palette")

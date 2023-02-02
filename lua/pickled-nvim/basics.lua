@@ -40,7 +40,7 @@ o.showtabline = 1
 
 -- nerd fronts for fold open/close
 -- don't show anything for eob (default ~)
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 g.mapleader = " "
 
@@ -48,7 +48,27 @@ o.signcolumn = "yes:1"
 -- o.signcolumn = "auto:2"
 
 -- for nvim-ufo
-vim.o.foldcolumn = '1'
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
+o.foldcolumn = '1'
+o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+o.foldlevelstart = 99
+o.foldenable = true
+
+
+-- formatting
+o.ignorecase = true -- Case insensitive search
+o.smartcase = true -- ... but case sensitive when uc present
+
+-- indentation
+o.expandtab = true
+o.tabstop = 2
+o.shiftwidth = 2
+o.numberwidth = 4
+
+-- Undo
+o.undofile = true -- Persistent undo
+o.undodir = CACHE_PATH .. "/undo" -- set an undo directory
+o.undolevels = 1000 -- Maximum number of changes that can be undone
+o.undoreload = 10000 -- Maximum number lines to save for undo on a buffer reload
+
+-- word wrap
+o.wrap = false
