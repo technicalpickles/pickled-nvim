@@ -1,4 +1,3 @@
-local ui = require("pickled-nvim.ui")
 local editor = require("pickled-nvim.editor")
 
 return {
@@ -40,12 +39,6 @@ return {
 		on = "VeryLazy"
 	},
 
-	-- styling cursor, ident lines, etc
-	{
-		"yamatsum/nvim-cursorline",
-		opts = ui.opts.cursorline,
-		event = "VeryLazy"
-	},
 
 	-- "lukas-reineke/indent-blankline.nvim")
 	-- "p00f/nvim-ts-rainbow")
@@ -54,22 +47,12 @@ return {
 	{ "folke/which-key.nvim" },
 
 	-- dashboard when starting à la startify
-	{
-		"goolord/alpha-nvim",
-		dependencies = { "nvim-web-devicons" },
-	},
 
 	-- Find, Filter, Preview, Pick. All lua, all the time.
 	{
 		'mrjones2014/legendary.nvim',
 		-- sqlite is only needed if you want to use frecency sorting
 		dependencies = 'kkharji/sqlite.lua'
-	},
-
-	{
-		'stevearc/dressing.nvim',
-		event = "VeryLazy",
-		opts = require("pickled-nvim.ui").opts.dressing
 	},
 
 	-- various things for editing and jumping around

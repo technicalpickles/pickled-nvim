@@ -1,36 +1,5 @@
 local M = {}
 
-M.opts = {
-	dressing = {
-		input = {
-			default_prompt = '❯ '
-		},
-		select = {
-			get_config = function(opts)
-			  opts = opts or {}
-			  local cfg = {
-				telescope = {
-				  layout_config = {
-					width = 120,
-					height = 25,
-				  },
-				},
-			  }
-			  if opts.kind == 'legendary.nvim' then
-				cfg.telescope.sorter = require('telescope.sorters').fuzzy_with_index_bias({})
-			  end
-			  return cfg
-			end,
-		}
-	},
-
-	-- FIXME: not loading
-	nvim_cursorline = {
-		cursorline = { enable = true, timeout = 1000, number = false },
-		cursorword = { enable = true, min_length = 3, hl = { underline = true } },
-	},
-}
-
 M.setup = function()
 	local o = vim.o
 	local g = vim.g
@@ -55,9 +24,6 @@ M.setup = function()
 
 	-- font
 	vim.o.guifont = "DankMono Nerd Font:h16"
-	require("gui-font-resize").setup({
-		default_size = 16,
-	})
 
 	-- identlines
 	-- match these up with rainbow config for treesitter in language-support.lua
@@ -82,16 +48,6 @@ M.setup = function()
 	-- 	},
 	-- 	filetype_exclude = require("pickled-nvim").filetype_config.indent_blankline.exclude,
 	-- })
-
-	-- startup screen
-	local dashboard = require("alpha.themes.dashboard")
-	dashboard.section.buttons.val = {
-		dashboard.button("r", "  Restore session", "<Cmd>RestoreSession<CR>"),
-		dashboard.button("e", "  New file", ":ene<CR>"),
-		dashboard.button("p", "  Open Project", "<Cmd>Telescope projects<CR>"),
-		dashboard.button("q", "  Quit NVIM", ":qa<CR>"),
-	}
-	require("alpha").setup(dashboard.config)
 
 	-- reload current file with focus for frontends that support it
 	-- https://github.com/neovim/neovim/issues/1936

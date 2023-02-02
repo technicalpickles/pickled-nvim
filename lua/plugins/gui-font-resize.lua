@@ -13,6 +13,9 @@ return {
 			"GUISetFontSizeUp",
 			"GUISetFontSizeDown",
 			"GUISetFontSizeSet",
+		},
+		opts = {
+			default_size = 16
 		}
 	},
 }
