@@ -1,3 +1,4 @@
+local g = vim.g
 return {
 	{
 		"chentoast/marks.nvim",
@@ -10,6 +11,9 @@ return {
 	{
 		"sickill/vim-pasta",
 		on = "VeryLazy",
+		config = function ()
+			g.pasta_disabled_filetypes = require("pickled-nvim").filetype_config.pasta.disable
+		end
 	},
 
 	{

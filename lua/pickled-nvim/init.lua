@@ -86,4 +86,30 @@ M.in_obsidian_vault = function()
 	return vault and vim.fn.getcwd() == vault
 end
 
+function M.file_picker()
+	local file_picker_name
+
+	-- prefer git ls-files when available because it's a ton faster
+	if vim.fn.empty(vim.fn.FugitiveGitDir()) == 0 then
+		file_picker_name = "git_files"
+	else
+		file_picker_name = "find_files"
+	end
+
+	local picker_function = loadstring("require('telescope.builtin')." .. file_picker_name .. "()")
+	assert(picker_function, "file picker not found: " .. file_picker_name)
+
+	picker_function()
+end
+
+function M.setup()
+	-- make it easier for changes to local docs to be updated
+	vim.cmd([[
+	  augroup custom_help
+		autocmd!
+		autocmd BufWritePost doc/pickled-vim.txt helptags ~/.config/nvim/doc
+	  augroup end
+	]])
+end
+
 return M

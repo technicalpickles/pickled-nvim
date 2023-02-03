@@ -77,3 +77,25 @@ o.wrap = false
 o.incsearch = true
 o.hlsearch = true
 o.grepprg = "rg --vimgrep"
+
+
+-- for UI frontends
+o.termguicolors = true
+g.neovide_input_use_logo = true -- Ensure we can pass the command key
+g.neovide_confirm_quit = true -- Prevent exit on unsaved buffer on window close
+g.neovide_cursor_vfx_mode = "railgun"
+g.neovide_remember_window_size = true
+
+-- font
+vim.o.guifont = "DankMono Nerd Font:h16"
+
+-- mouse
+vim.o.mouse = "a"
+
+-- reload current file with focus for frontends that support it
+-- https://github.com/neovim/neovim/issues/1936
+vim.cmd([[
+set autoread
+au FocusGained * :checktime
+]])
+

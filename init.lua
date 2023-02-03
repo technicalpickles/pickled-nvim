@@ -15,10 +15,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 
-require("pickled-nvim.filetypes").setup()
-require("pickled-nvim.ui").setup()
+require("pickled-nvim").setup()
 
 require("pickled-nvim.keybindings")
 
-require("pickled-nvim.custom-help")
 require("pickled-nvim.legendary-which-key-palette")
