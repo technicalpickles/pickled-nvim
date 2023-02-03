@@ -1,11 +1,6 @@
 local silent_noremap = { noremap = true, silent = true }
 local silent = { silent = true }
 
-vim.keymap.set({"v", "n"}, ",", "<leader>", silent_noremap)
-
--- open browser, since we disabled netrw
-vim.keymap.set({ "v", "n" }, "gx", "<Plug>(openbrowser-smart-search)", silent_noremap)
-
 -- terminal mapping
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", silent_noremap)
 

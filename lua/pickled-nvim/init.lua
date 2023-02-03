@@ -17,8 +17,16 @@ M.filetype_config = {
 	},
 	indent_blankline = {
 		exclude = {
+			"",
+			"Trouble",
+			"alpha",
+			"checkhealth",
+			"dashboard",
 			"help",
+			"lazy",
 			"log",
+			"lspinfo",
+			"man",
 			"markdown",
 			"text",
 		}

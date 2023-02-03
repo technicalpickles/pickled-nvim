@@ -37,7 +37,6 @@ return {
 			{"<D-b>", tree_cmd, silent_noremap},
 			{"<D-/>", tree_cmd, silent_noremap},
 			{"<leader>d", tree_cmd, silent_noremap},
-
 		}
 	}
 }
