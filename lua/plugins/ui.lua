@@ -20,6 +20,11 @@ return {
 				return math.floor(vim.o.columns * 0.75)
 			end,
 		},
+		config = function (_, opts)
+			local notify = require("notify")
+			notify.setup(opts)
+			vim.notify = notify
+		end
 	},
 
 	{
@@ -61,6 +66,7 @@ return {
 			end
 		end,
 	},
+
 	-- styling cursor, ident lines, etc
 	{
 		"yamatsum/nvim-cursorline",
@@ -70,7 +76,6 @@ return {
 			cursorword = { enable = true, min_length = 3, hl = { underline = true } },
 		}
 	},
-
 
 	{
 		"goolord/alpha-nvim",

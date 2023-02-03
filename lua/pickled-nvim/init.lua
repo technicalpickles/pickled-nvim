@@ -77,7 +77,11 @@ M.filetype_config = {
 			statusline = {"dashboard", "lazy", "alpha" },
 			winbar = {}
 		}
-	}
+	},
+	statuscol = {
+		ignore = nil,
+	},
+
 }
 
 M.find_obsidian_vault = function()
