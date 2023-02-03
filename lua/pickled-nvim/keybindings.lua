@@ -51,3 +51,7 @@ vim.keymap.set("i", "<D-]>", "<C-O>>>", silent)
 vim.keymap.set("n", "<D-[>", "<<", silent)
 vim.keymap.set("v", "<D-[>", "<", silent)
 vim.keymap.set("i", "<D-[>", "<C-O><<", silent)
+
+
+-- toggle search highlight
+vim.keymap.set({ "n", "v" }, "<leader>nh", "<cmd>nohls<cr>", silent_noremap)

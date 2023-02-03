@@ -72,3 +72,8 @@ o.undoreload = 10000 -- Maximum number lines to save for undo on a buffer reload
 
 -- word wrap
 o.wrap = false
+
+-- search
+o.incsearch = true
+o.hlsearch = true
+o.grepprg = "rg --vimgrep"
