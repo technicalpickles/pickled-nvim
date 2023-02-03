@@ -3,15 +3,6 @@ local g = vim.g
 
 local M = {}
 
-M.opts = {
-	chafa = {
-		render = {
-			min_padding = 0,
-			show_label = false,
-		}
-	}
-}
-
 M.setup = function()
 	--{ docker  }--
 	api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
