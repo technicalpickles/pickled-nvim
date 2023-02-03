@@ -1,15 +1,8 @@
-local api = vim.api
 local g = vim.g
 
 local M = {}
 
 M.setup = function()
-	--{ docker  }--
-	api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-		pattern = { ".dockerignore" },
-		command = "set filetype=gitignore",
-	})
-
 	--{ markdown  }--
 	g.vim_markdown_edit_url_in = 'current'
 	g.vim_markdown_strikethrough = 1
@@ -24,7 +17,6 @@ M.setup = function()
 
 	-- ufo / lsp folding is more accurate than vim-markdown
 	g.vim_markdown_folding_disabled = 1
-
 
 	-- pasta, which helps correctly indent
 	g.pasta_disabled_filetypes = require("pickled-nvim").filetype_config.pasta.disable
