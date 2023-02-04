@@ -109,17 +109,6 @@ return {
 		on = "VeryLazy"
 	},
 
-	-- popups for suggestions when starting shortcuts
-	{ "folke/which-key.nvim" },
-
-
-	-- Find, Filter, Preview, Pick. All lua, all the time.
-	{
-		'mrjones2014/legendary.nvim',
-		-- sqlite is only needed if you want to use frecency sorting
-		dependencies = 'kkharji/sqlite.lua'
-	},
-
 	{
 		"ggandor/leap.nvim",
 		on = "BufRead",

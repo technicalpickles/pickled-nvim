@@ -18,5 +18,3 @@ require("lazy").setup("plugins")
 require("pickled-nvim").setup()
 
 require("pickled-nvim.keybindings")
-
-require("pickled-nvim.legendary-which-key-palette")

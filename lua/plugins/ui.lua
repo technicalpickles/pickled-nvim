@@ -147,4 +147,27 @@ return {
 		},
 	},
 
+
+	-- popups for suggestions when starting shortcuts
+	{
+		"folke/which-key.nvim",
+		opts = true,
+		event = "VeryLazy"
+	},
+
+
+	-- Find, Filter, Preview, Pick. All lua, all the time.
+	{
+		'mrjones2014/legendary.nvim',
+		-- sqlite is only needed if you want to use frecency sorting
+		dependencies = {
+			'kkharji/sqlite.lua',
+			"folke/which-key.nvim",
+		},
+		event = "VeryLazy",
+		opts ={
+			which_key = { auto_register = true },
+		},
+	},
+
 }
