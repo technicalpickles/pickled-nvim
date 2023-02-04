@@ -25,7 +25,14 @@ return {
 			'DiffviewFileHistory',
 		}
 	},
-	{ "tpope/vim-fugitive" },
-	{ "tpope/vim-rhubarb" },
+	{
+		"tpope/vim-fugitive",
+		event = "VeryLazy",
+	},
+	{
+		"tpope/vim-rhubarb",
+		event = "VeryLazy",
+		dependencies = {"tpope/vim-fugitive"},
+	},
 
 }

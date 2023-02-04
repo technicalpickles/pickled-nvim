@@ -66,6 +66,7 @@ return {
 		"andymass/vim-matchup",
 		event = "BufReadPost",
 	},
+
 	-- debug info
 	{
 		"nvim-treesitter/playground",
