@@ -9,7 +9,7 @@ return {
 			'telescope.nvim',
 		},
 		lazy = not enabled,
-		on = "VeryLazy",
+		event = "VeryLazy",
 		opts = {
 			dir = vault,
 			completion = {

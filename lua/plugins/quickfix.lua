@@ -5,7 +5,7 @@ return {
 		opts = true,
 		-- FIXME find a place to hook this so it's ready by the time something pops open quickfix
 		ft = "qf",
-		on = "VeryLazy",
+		event = "VeryLazy",
 	},
 
 	{

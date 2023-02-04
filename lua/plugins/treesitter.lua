@@ -3,7 +3,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		on = "BufReadPost",
+		event = "BufReadPost",
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
 		end,
@@ -45,7 +45,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		dependencies = {"nvim-treesitter"},
-		on = "BufReadPost",
+		event = "VeryLazy",
 		opts = {
 			patterns = {
 				-- remove when/if https://github.com/nvim-treesitter/nvim-treesitter-context/pull/201 lands
@@ -64,7 +64,7 @@ return {
 	-- drop in replacement for matchit.vim
 	{
 		"andymass/vim-matchup",
-		on = "BufReadPost",
+		event = "BufReadPost",
 	},
 	-- debug info
 	{
@@ -74,13 +74,11 @@ return {
 
 	{
 		"RRethy/nvim-treesitter-textsubjects",
-		on = "VeryLazy",
+		event = "VeryLazy",
 	},
 	-- determine what type of comments to use in multi-syntax files, ie css in html... use with commentary
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
-		on = "VeryLazy",
+		event = "VeryLazy",
 	},
-
-
 }

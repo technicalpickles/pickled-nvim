@@ -2,7 +2,7 @@ local g = vim.g
 return {
 	{
 		"chentoast/marks.nvim",
-		on = "VeryLazy",
+		event = "VeryLazy",
 		opts = {
 			sign_priority = require("pickled-nvim").sign_priorities.mark,
 		}
@@ -10,7 +10,7 @@ return {
 
 	{
 		"sickill/vim-pasta",
-		on = "VeryLazy",
+		event = "VeryLazy",
 		config = function ()
 			g.pasta_disabled_filetypes = require("pickled-nvim").filetype_config.pasta.disable
 		end
@@ -18,7 +18,7 @@ return {
 
 	{
 		"mg979/vim-visual-multi",
-		on = "VeryLazy",
+		event = "VeryLazy",
 		config = function()
 			require('leap').add_default_mappings()
 		end
@@ -99,18 +99,19 @@ return {
 	-- toggling comments
 	{
 		"tpope/vim-commentary",
-		on = "VeryLazy"
+		event = "BufRead"
+		-- TODO add keys
 	},
 
 
 	-- make . work in more places
 	{
 		"tpope/vim-repeat",
-		on = "VeryLazy"
+		event = "BufRead"
 	},
 
 	{
 		"ggandor/leap.nvim",
-		on = "BufRead",
+		event = "BufRead",
 	},
 }

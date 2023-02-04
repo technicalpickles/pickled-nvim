@@ -12,6 +12,6 @@ return {
 	{ "kblin/vim-fountain" },
 	{
 		"gpanders/editorconfig.nvim",
-		on = "VeryLazy"
+		event = "BufEnter"
 	},
 }

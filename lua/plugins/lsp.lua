@@ -218,7 +218,7 @@ return {
 
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		on = "BufReadPre",
+		event = "BufReadPre",
 		config = function()
 			local null_ls = require("null-ls")
 			local sources = {}

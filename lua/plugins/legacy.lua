@@ -6,7 +6,7 @@ return {
 	-- lots of handy shortcuts
 	{
 		"tpope/vim-unimpaired",
-		on = "VeryLazy",
+		event = "BufRead",
 	},
 
 

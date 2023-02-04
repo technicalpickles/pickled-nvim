@@ -5,7 +5,7 @@ return {
 		dependencies = {
 			"nvim-web-devicons",
 		},
-		on = "VeryLazy",
+		event = "VeryLazy",
 		opts = {
 			options = {
 				mode = "tabs",

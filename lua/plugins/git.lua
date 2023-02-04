@@ -10,7 +10,7 @@ return {
 				},
 			},
 		},
-		on = "VeryLazy",
+		event = "VeryLazy",
 	},
 	{
 		"sindrets/diffview.nvim",
