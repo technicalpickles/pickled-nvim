@@ -7,6 +7,7 @@ vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", silent_noremap)
 -- recenter when paginating
 local paginating_motions = { "<C-f>", "<C-d>", "<C-u>", "<C-b>" }
 for _, motion in ipairs(paginating_motions) do
+	-- TODO can we keep the relative position we are in in the window?
 	vim.api.nvim_set_keymap("n", motion, motion.."zz", silent_noremap)
 end
 
