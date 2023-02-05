@@ -5,7 +5,8 @@ return {
 		config = function()
 			-- FIXME use filetype_config
 			vim.g.lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit,toggleterm,Trouble"
-		end
+		end,
+		event = "BufEnter",
 	},
 
 	{

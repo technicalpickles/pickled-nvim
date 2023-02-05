@@ -27,7 +27,17 @@ return {
 	},
 	{
 		"tpope/vim-fugitive",
-		event = "VeryLazy",
+		cmd = {
+			"Git",
+			"G",
+			"Gdiffsplit",
+			"Gread",
+			"Ggrep",
+			"Gwrite",
+			"GMove",
+			"GDelete",
+			"GBrowse",
+		}
 	},
 	{
 		"tpope/vim-rhubarb",

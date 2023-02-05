@@ -62,7 +62,7 @@ return {
 				},
 			},
 		},
-		command = "Telescope",
+		cmd = "Telescope",
 		config = function (_, opts)
 			local  telescope = require("telescope")
 			telescope.setup(opts)

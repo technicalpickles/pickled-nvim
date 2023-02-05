@@ -1,17 +1,21 @@
 local g = vim.g
 return {
 	-- per project alternate setup
-	{ "tpope/vim-projectionist" },
+	{
+		"tpope/vim-projectionist",
+		event = "VeryLazy",
+	},
 
 	-- lots of handy shortcuts
 	{
 		"tpope/vim-unimpaired",
-		event = "BufRead",
+		event = "VeryLazy",
 	},
-
 
 	{
 		"junegunn/fzf",
+		-- TODO confirm this isn't needed, or make lazy
+		enabled = false,
 		build = function()
 			vim.fn["fzf#install"]()
 		end,
@@ -54,5 +58,8 @@ return {
 		end
 	},
 
-	{ "famiu/bufdelete.nvim" },
+	{
+		"famiu/bufdelete.nvim",
+		cmd = "BDelete"
+	},
 }

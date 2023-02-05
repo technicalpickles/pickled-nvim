@@ -41,35 +41,39 @@ M.filetype_config = {
 	},
 	pasta = {
 		disable = {
+			"Trouble", -- prevents preview keybinding from working
 			"coffeescript",
 			"markdown",
 			"python",
 			"toggleterm",
 			"yaml",
-			"Trouble", -- prevents preview keybinding from working
 		}
 	},
 
 	autosession = {
 		bypass_autosave = {
-			'qf',
 			'NvimTree',
-			'Trouble',
 			'Outline',
+			'Trouble',
+			'alpha',
+			'lazy',
+			'qf',
 		}
 	},
 
 	copilot = {
 		disable = {
+			"alpha",
+			"help",
+			"lazy",
+			"log",
+			"markdown",
+			"text",
 			'Nvim',
 			'Outline',
 			'Trouble',
 			'qf',
 			'toggleterm',
-			"help",
-			"log",
-			"markdown",
-			"text",
 		}
 	},
 	lualine = {

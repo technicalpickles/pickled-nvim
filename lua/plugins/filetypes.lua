@@ -8,8 +8,13 @@ return {
 	-- language and filetype specific
 	{
 		"technicalpickles/procfile.vim",
+		event = "BufRead",
 	},
-	{ "kblin/vim-fountain" },
+
+	{
+		"kblin/vim-fountain",
+		event = "BufRead",
+	},
 	{
 		"gpanders/editorconfig.nvim",
 		event = "BufEnter"

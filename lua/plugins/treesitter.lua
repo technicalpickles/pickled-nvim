@@ -70,7 +70,7 @@ return {
 	-- debug info
 	{
 		"nvim-treesitter/playground",
-		command = "TSPlaygroundToggle",
+		cmd = "TSPlaygroundToggle",
 	},
 
 	{
