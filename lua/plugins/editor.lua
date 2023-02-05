@@ -19,9 +19,6 @@ return {
 	{
 		"mg979/vim-visual-multi",
 		event = "VeryLazy",
-		config = function()
-			require('leap').add_default_mappings()
-		end
 	},
 
 	{
@@ -113,5 +110,8 @@ return {
 	{
 		"ggandor/leap.nvim",
 		event = "BufRead",
+		config = function()
+			require('leap').add_default_mappings()
+		end
 	},
 }
