@@ -4,6 +4,12 @@ local silent = { silent = true }
 -- terminal mapping
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", silent_noremap)
 
+-- recenter when paginating
+local paginating_motions = { "<C-f>", "<C-d>", "<C-u>", "<C-b>" }
+for _, motion in ipairs(paginating_motions) do
+	vim.api.nvim_set_keymap("n", motion, motion.."zz", silent_noremap)
+end
+
 -- hashrocket, textmate style
 -- TODO make it smarter about leading/trailing space
 vim.keymap.set("n", "<C-l>", "=>", silent)
