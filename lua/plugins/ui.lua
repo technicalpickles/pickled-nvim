@@ -99,7 +99,18 @@ return {
 				button.opts.hl_shortcut = "AlphaShortcut"
 			end
 			dashboard.section.footer.opts.hl = "Type"
+
+			-- from https://codeberg.org/cruzin/dotfiles/src/branch/main/.config/nvim/lua/plugin/alpha.lua
+			dashboard.section.header.val = {
+				[[                                        ]],
+				[[ ██████████████████████████████████████ ]],
+				[[ █▄ ▀█▄ ▄█▄ ▄▄ █ ▄▄ █▄ █ ▄█▄ ▄█▄ ▀█▀ ▄█ ]],
+				[[ ██ █▄▀ ███ ▄█▀█ ██ ██▄▀▄███ ███ █▄█ ██ ]],
+				[[ ▀▄▄▄▀▀▄▄▀▄▄▄▄▄▀▄▄▄▄▀▀▀▄▀▀▀▄▄▄▀▄▄▄▀▄▄▄▀ ]],
+				[[                                        ]],
+			}
 			dashboard.section.header.opts.hl = "AlphaHeader"
+
 			dashboard.section.buttons.opts.hl = "AlphaButtons"
 			dashboard.opts.layout[1].val = 8
 			return dashboard
