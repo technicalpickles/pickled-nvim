@@ -1,4 +1,3 @@
-local silent_noremap = {noremap = true, silent = true}
 return {
 	{
 		'akinsho/bufferline.nvim',
@@ -33,25 +32,25 @@ return {
 		config = function(_, opts)
 			require("bufferline").setup(opts)
 
-
-			-- make sure it's only 1
+			-- make sure it's only 1... but something else seems to change it after this, sooo
 			vim.o.showtabline = 1
 		end,
-		keys = {
-			{"gb", "<CMD>:BufferLinePick<CR>", silent_noremap},
-			{"gB", "<CMD>:BufferLinePickClose<CR>", silent_noremap},
+		-- NOTE: only need these when using mode = "buffer"
+		-- keys = {
+		-- 	{"gb", "<CMD>:BufferLinePick<CR>", silent_noremap},
+		-- 	{"gB", "<CMD>:BufferLinePickClose<CR>", silent_noremap},
 
-			-- Go go to tab 
-			{"<D-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", silent_noremap},
-			{"<D-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", silent_noremap},
-			{"<D-3>", "<Cmd>BufferLineGoToBuffer 3<CR>", silent_noremap},
-			{"<D-4>", "<Cmd>BufferLineGoToBuffer 4<CR>", silent_noremap},
-			{"<D-5>", "<Cmd>BufferLineGoToBuffer 5<CR>", silent_noremap},
-			{"<D-6>", "<Cmd>BufferLineGoToBuffer 6<CR>", silent_noremap},
-			{"<D-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", silent_noremap},
-			{"<D-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", silent_noremap},
-			{"<D-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", silent_noremap},
-		},
+		-- 	-- Go go to tab 
+		-- 	{"<D-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", silent_noremap},
+		-- 	{"<D-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", silent_noremap},
+		-- 	{"<D-3>", "<Cmd>BufferLineGoToBuffer 3<CR>", silent_noremap},
+		-- 	{"<D-4>", "<Cmd>BufferLineGoToBuffer 4<CR>", silent_noremap},
+		-- 	{"<D-5>", "<Cmd>BufferLineGoToBuffer 5<CR>", silent_noremap},
+		-- 	{"<D-6>", "<Cmd>BufferLineGoToBuffer 6<CR>", silent_noremap},
+		-- 	{"<D-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", silent_noremap},
+		-- 	{"<D-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", silent_noremap},
+		-- 	{"<D-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", silent_noremap},
+		-- },
 		cmd = {
 			'BufferLineGroupClose',
 			'BufferLineGroupToggle',
