@@ -1,15 +1,15 @@
-local noremap = { noremap = true }
 local silent_noremap = { noremap = true, silent = true }
 local silent = { silent = true }
 
-vim.g.mapleader = " "
-vim.keymap.set({"v", "n"}, ",", "<leader>", silent_noremap)
-
--- open browser, since we disabled netrw
-vim.keymap.set({ "v", "n" }, "gx", "<Plug>(openbrowser-smart-search)", silent_noremap)
-
 -- terminal mapping
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", silent_noremap)
+
+-- recenter when paginating
+local paginating_motions = { "<C-f>", "<C-d>", "<C-u>", "<C-b>" }
+for _, motion in ipairs(paginating_motions) do
+	-- TODO can we keep the relative position we are in in the window?
+	vim.api.nvim_set_keymap("n", motion, motion.."zz", silent_noremap)
+end
 
 -- hashrocket, textmate style
 -- TODO make it smarter about leading/trailing space
@@ -54,8 +54,6 @@ vim.keymap.set("n", "<D-[>", "<<", silent)
 vim.keymap.set("v", "<D-[>", "<", silent)
 vim.keymap.set("i", "<D-[>", "<C-O><<", silent)
 
--- ⌘ -/+ to increase/decrease font. ⌘ 0 to reset font
-vim.keymap.set("n", "<D-=>", "<cmd>:GUIFontSizeUp<CR>", silent_noremap)
-vim.keymap.set("n", "<D-->", "<cmd>:GUIFontSizeDown<CR>", silent_noremap)
-vim.keymap.set("n", "<D-0>", "<cmd>:GUIFontSizeSet<CR>", silent_noremap)
 
+-- toggle search highlight
+vim.keymap.set({ "n", "v" }, "<leader>nh", "<cmd>nohls<cr>", silent_noremap)

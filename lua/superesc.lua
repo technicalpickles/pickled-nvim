@@ -44,10 +44,14 @@ M.close_split = function()
 		end
 	end
 
-	if  #split_wins > 1 then
+	if #split_wins > 1 then
 		vim.cmd("close")
 	else
-		vim.cmd("Bdelete")
+		if M.config.last_window_behavior == 'delete' then
+			vim.cmd("Bdelete")
+		elseif M.config.last_window_behavior == 'scratch' then
+			vim.cmd("enew | setlocal buftype=nofile bufhidden=hide noswapfile nobuflisted nomodifiable")
+		end
 	end
 end
 

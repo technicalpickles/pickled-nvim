@@ -305,4 +305,20 @@ Motions
                         cursor. This is similar to vim's built-in |])| and |]}|
                         and is an |exclusive| motion (|matchup-feat-exclusive|).
 
+
+==============================================================================
+Text Subjects                              *pickled-nvim-textsubjects*
+
+powered by |nvim-treesitter-textsubjects|
+
+Visual motions
+
+`.`                     Smart selection
+
+`,`                     Previous Smart selection
+
+`;.`                    Select container 
+
+`i;`                    Select inside container
+
 vim:tw=78:ts=8:ft=help:norl:ma:noreadonly
