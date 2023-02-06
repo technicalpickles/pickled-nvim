@@ -22,8 +22,14 @@ return {
 	},
 
 	{
-		"AndrewRadev/splitjoin.vim",
-		event = "BufRead",
+		"Wansmer/treesj",
+		opts = {
+			use_default_keymaps = false,
+		},
+		keys = {
+			{ "gS", "<CMD>TSJSplit<CR>" },
+			{ "gJ", "<CMD>TSJJoin<CR>" },
+		}
 	},
 
 	{

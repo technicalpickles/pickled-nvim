@@ -8,6 +8,8 @@ Index                                                  *pickled-nvim-index*
 - |pickled-nvim-lsp-config|
 - |pickled-nvim-symbols-outline|
 - |pickled-nvim-tree|
+- |pickled-nvim-textsubjects|
+- |pickled-nvim-unimpaired|
 
 ==============================================================================
 Autocomplete                                           *pickled-nvim-autocomplete*
@@ -320,5 +322,45 @@ Visual motions
 `;.`                    Select container 
 
 `i;`                    Select inside container
+
+
+==============================================================================
+Unimpaired aka bracket mappings                               *pickled-nvim-unimpaired*
+
+powered by |unimpaired|
+
+
+Convenience aliases for Ex commands
+- `[q`: `:cprevious`, ie jump to previous item in quickfix
+- `]q`: `:cnext`, ie jump to next item in quickfix
+- `[a` `:previous` ie edit previous file
+- `]a` `:next`, ie edit next file 
+- `[A`     |:first|
+- `]A`     |:last|
+
+- `[b`: is `:bprevious`
+- `]b`: is `:next`
+
+ 
+
+Line-wise mappings:
+- `[<Spaces>` and `]<Space>`: add newlines before and after the cursor line
+- `[e` and `]e`: exchange the current line with the one above or below it.
+
+
+Option toggling:
+`[os`, `]os`, and `yos`:  `:set spell`, `:set nospell`, and `:set invspell`, respectively.
+
+There's also l (list), n (number), w (wrap), x (cursorline cursorcolumn), and several others, plus mappings to help alleviate the set paste dance. Consult the documentation.
+
+
+Encoding and decoding:
+- `[x` and `]x`: encode and decode XML (and HTML)
+- `[u` and `]u`: encode and decode URLs
+- `[y` and `]y`: C String style escaping.
+
+Misc:
+- `[f` and `]f`: the next/previous file in the directory
+- `[n` and `]n`: jump between SCM conflict markers.
 
 vim:tw=78:ts=8:ft=help:norl:ma:noreadonly
