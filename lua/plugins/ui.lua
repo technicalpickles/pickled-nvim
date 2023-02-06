@@ -27,8 +27,7 @@ return {
 		end
 	},
 
-	{
-		'stevearc/dressing.nvim',
+	{ 'stevearc/dressing.nvim',
 		event = "VeryLazy",
 		opts = {
 			input = {
@@ -68,8 +67,7 @@ return {
 	},
 
 	-- styling cursor, ident lines, etc
-	{
-		"yamatsum/nvim-cursorline",
+	{ "yamatsum/nvim-cursorline",
 		event = "VeryLazy",
 		opts = {
 			cursorline = { enable = true, timeout = 1000, number = false },
@@ -77,8 +75,7 @@ return {
 		}
 	},
 
-	{
-		"goolord/alpha-nvim",
+	{ "goolord/alpha-nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		-- taken largely from lazyvim
 		opts = function()
@@ -141,8 +138,7 @@ return {
 		end
 	},
 
-	{
-		"lukas-reineke/indent-blankline.nvim",
+	{ "lukas-reineke/indent-blankline.nvim",
 		event = "VeryLazy",
 		opts = {
 			char = "│",
@@ -161,8 +157,7 @@ return {
 
 
 	-- popups for suggestions when starting shortcuts
-	{
-		"folke/which-key.nvim",
+	{ "folke/which-key.nvim",
 		opts = true,
 		event = "VeryLazy"
 	},
@@ -182,4 +177,29 @@ return {
 		},
 	},
 
+	{ "folke/noice.nvim",
+		-- https://github.com/neovide/neovide/issues/1751
+		-- https://github.com/folke/noice.nvim/issues/17
+		enabled = false,
+		dependencies = {"MunifTanjim/nui.nvim", "rcarriga/nvim-notify"},
+			opts = {
+			lsp = {
+				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true,
+				},
+			},
+			-- you can enable a preset for easier configuration
+			presets = {
+				bottom_search = true, -- use a classic bottom cmdline for search
+				command_palette = true, -- position the cmdline and popupmenu together
+				long_message_to_split = true, -- long messages will be sent to a split
+				inc_rename = false, -- enables an input dialog for inc-rename.nvim
+				lsp_doc_border = false, -- add a border to hover docs and signature help
+			},
+		},
+		event = "VeryLazy",
+	},
 }

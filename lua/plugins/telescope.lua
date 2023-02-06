@@ -60,6 +60,10 @@ return {
 				},
 				frecency = {
 				},
+
+				notify = {
+					theme = "ivy"
+				},
 			},
 		},
 		cmd = "Telescope",
@@ -78,6 +82,7 @@ return {
 			telescope.load_extension("frecency")
 			telescope.load_extension("toggleterm")
 			telescope.load_extension("command_center")
+			telescope.load_extension("notify")
 		end
 	},
 

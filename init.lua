@@ -1,5 +1,7 @@
+-- barebones config (mostly vim.g and vim.o)
 require("pickled-nvim.basics")
 
+-- setup lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -14,7 +16,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
-
+-- post-lazy config
 require("pickled-nvim").setup()
 require("pickled-nvim.keybindings")
 require("superesc").setup({

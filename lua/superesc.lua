@@ -6,6 +6,7 @@ M.default_config = {
 		Outline = 'SymbolsOutlineClose',
 		Trouble = 'TroubleClose',
 		qf = 'cclose',
+		-- notify = 'lua require("nvim-notify").dismiss()"',
 	}
 }
 

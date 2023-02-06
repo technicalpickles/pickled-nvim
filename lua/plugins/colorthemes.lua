@@ -21,4 +21,5 @@ return {
 	{ "ayu-theme/ayu-vim", lazy = true },
 	{ "averak/laserwave.vim", lazy = true },
 	{ "rafamadriz/neon", lazy = true },
+	{ "nyoom-engineering/oxocarbon.nvim", lazy = true}
 }
