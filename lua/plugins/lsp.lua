@@ -19,7 +19,7 @@ return {
 			{ "hrsh7th/cmp-nvim-lua" },
 			{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 			{ "mtoohey31/cmp-fish" },
-			{'zbirenbaum/copilot-cmp'},
+			-- {'zbirenbaum/copilot-cmp'},
 
 			-- nice icons
 			{ "onsails/lspkind.nvim" },
@@ -51,7 +51,7 @@ return {
 			-- local cmp_sources = lsp.defaults.cmp_sources()
 			local cmp_sources = {
 				-- This one provides the data from copilot.
-				{name = 'copilot'},
+				-- {name = 'copilot'},
 
 				{name = "nvim_lsp_signature_help"},
 				{name = "fish", keyword_length = 2},

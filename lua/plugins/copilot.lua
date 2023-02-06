@@ -1,6 +1,8 @@
 return {
 	{
 		'zbirenbaum/copilot.lua',
+		-- TODO renable after figuring out per directory enable/disable
+		enabled = false,
 		lazy = true,
 		opts = {
 			ft_disable = require("pickled-nvim").filetype_config.copilot.disable,
@@ -21,6 +23,8 @@ return {
 
 	{
 		'zbirenbaum/copilot-cmp',
+		-- TODO renable after figuring out per directory enable/disable
+		enabled = false,
 		lazy = true,
 		dependencies = {'copilot.lua'},
 		config = function ()

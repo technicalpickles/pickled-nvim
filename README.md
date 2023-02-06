@@ -97,15 +97,6 @@ Misc:
 * `ga`: show info about the character under cursor as decimal, octal, and hex (_powered by vim-characterize_)
 
 
-### Copilot
-
-`<C-]>`: Dismiss the current suggestion.
-
-`<M-]>`: Cycle to the next suggestion, if one is available.
-<Plug>(copilot-next)
-
-`<M-[>`: Cycle to the previous suggestion.
-
 ### Auto-closing
 
 - single quotes
