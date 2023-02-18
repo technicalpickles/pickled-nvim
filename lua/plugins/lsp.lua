@@ -175,7 +175,7 @@ return {
 
 			lsp.ensure_installed({
 				'eslint',
-				'sumneko_lua',
+				'lua_ls',
 				'marksman',
 				'dockerls',
 				'jsonls',
