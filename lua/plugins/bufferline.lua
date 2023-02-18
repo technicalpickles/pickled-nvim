@@ -11,7 +11,7 @@ return {
 
 				separator_style = "thick",
 				close_icon = "✕",
-				close_command = "Bdelete %d",
+				close_command = "bdelete %d",
 				buffer_close_icon = "✕",
 				offsets = {
 					{

@@ -60,6 +60,6 @@ return {
 
 	{
 		"famiu/bufdelete.nvim",
-		cmd = "BDelete"
+		cmd = "Bdelete"
 	},
 }
