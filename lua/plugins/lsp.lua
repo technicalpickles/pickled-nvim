@@ -9,6 +9,7 @@ return {
 			{ "neovim/nvim-lspconfig" },
 			{ "williamboman/mason.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
+			{ "mihyaeru21/nvim-lspconfig-bundler" },
 
 			-- Autocompletion
 			{ "hrsh7th/nvim-cmp" },
@@ -105,9 +106,10 @@ return {
 				end, { "i", "s" }),
 			})
 
+			-- require('lspconfig-bundler').setup()
+
 			lsp.configure('ruby_ls', {
-				-- TODO detect if Gemfile/Gemfile.lock exists and contains ruby-lsp... maybe detect directory changes too?
-				cmd = { "bundle", "exec", "ruby-lsp" },
+				cmd = {"bundle", "exec", "ruby-lsp"},
 				on_attach = function(client, bufnr)
 					local callback = function()
 						local params = vim.lsp.util.make_text_document_params(bufnr)
