@@ -5,3 +5,8 @@ repos:
   rev: v0.14.2
   hooks:
     - id: stylua-system
+- repo: https://github.com/jumanjihouse/pre-commit-hooks
+  rev: 3.0.0
+  hooks:
+    - id: shellcheck
+      args: ["--severity=warning"]  # only show errors and warnings
