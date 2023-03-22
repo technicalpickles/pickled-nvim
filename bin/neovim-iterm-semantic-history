@@ -8,7 +8,7 @@ log() {
   echo "$@" >> ~/.local/state/pickled-nvim/semantic-history.log
 }
 
-if ! command -q brew; then 
+if ! which brew >/dev/null 2>&1; then
   log "Missing brew, locating now"
   possible_brews="/opt/homebrew/bin/brew /usr/local/bin/brew"
   for possible_brew in $possible_brews; do
@@ -28,6 +28,26 @@ fi
 
 pwd="$1"
 file="$2"
+
+# example output:
+#   MacVim
+#   /Applications/MacVim.app
+#   org.vim.MacVim
+file_handler=$(duti -x "$file" | sed '1,2d')
+case "$file_handler" in
+  # no-op for vim-like things
+  com.neovide.neovide) true ;;
+  org.vim.MacVim) true ;;
+  "")
+    echo "Unexpectedly couldn't find handler for $file, got blank string" >&2
+    duti -x "$file" >&2
+    exit 1
+    ;;
+  *)
+    log "$file not handled by a vim app. Falling back to default handler: $file_handler"
+    exec open "$file"
+    ;;
+esac
 
 cd "$pwd"
 log "PATH=$PATH"
