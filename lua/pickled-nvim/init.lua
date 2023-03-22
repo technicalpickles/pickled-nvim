@@ -125,6 +125,8 @@ function M.setup()
 		autocmd BufWritePost doc/pickled-vim.txt helptags ~/.config/nvim/doc
 	  augroup end
 	]])
+
+	require("pickled-nvim.servername").save_servername()
 end
 
 return M
