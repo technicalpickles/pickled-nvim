@@ -1,6 +1,6 @@
 return {
 	{
-		'akinsho/bufferline.nvim',
+		"akinsho/bufferline.nvim",
 		dependencies = {
 			"nvim-web-devicons",
 		},
@@ -40,7 +40,7 @@ return {
 		-- 	{"gb", "<CMD>:BufferLinePick<CR>", silent_noremap},
 		-- 	{"gB", "<CMD>:BufferLinePickClose<CR>", silent_noremap},
 
-		-- 	-- Go go to tab 
+		-- 	-- Go go to tab
 		-- 	{"<D-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", silent_noremap},
 		-- 	{"<D-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", silent_noremap},
 		-- 	{"<D-3>", "<Cmd>BufferLineGoToBuffer 3<CR>", silent_noremap},
@@ -52,20 +52,18 @@ return {
 		-- 	{"<D-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", silent_noremap},
 		-- },
 		cmd = {
-			'BufferLineGroupClose',
-			'BufferLineGroupToggle',
-			'BufferLineTogglePin',
-			'BufferLineSortByExtension',
-			'BufferLineSortByDirectory',
-			'BufferLineSortByTabs',
-			'BufferLinePick',
-			'BufferLinePickClose',
-			'BufferLineCycleNext',
-			'BufferLineCyclePrev',
-			'BufferLineMoveNext',
-			'BufferLineMovePrev',
-		}
+			"BufferLineGroupClose",
+			"BufferLineGroupToggle",
+			"BufferLineTogglePin",
+			"BufferLineSortByExtension",
+			"BufferLineSortByDirectory",
+			"BufferLineSortByTabs",
+			"BufferLinePick",
+			"BufferLinePickClose",
+			"BufferLineCycleNext",
+			"BufferLineCyclePrev",
+			"BufferLineMoveNext",
+			"BufferLineMovePrev",
+		},
 	},
-
 }
-

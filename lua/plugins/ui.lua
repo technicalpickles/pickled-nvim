@@ -20,18 +20,19 @@ return {
 				return math.floor(vim.o.columns * 0.75)
 			end,
 		},
-		config = function (_, opts)
+		config = function(_, opts)
 			local notify = require("notify")
 			notify.setup(opts)
 			vim.notify = notify
-		end
+		end,
 	},
 
-	{ 'stevearc/dressing.nvim',
+	{
+		"stevearc/dressing.nvim",
 		event = "VeryLazy",
 		opts = {
 			input = {
-				default_prompt = '❯ '
+				default_prompt = "❯ ",
 			},
 			select = {
 				get_config = function(opts)
@@ -44,12 +45,12 @@ return {
 							},
 						},
 					}
-					if opts.kind == 'legendary.nvim' then
-						cfg.telescope.sorter = require('telescope.sorters').fuzzy_with_index_bias({})
+					if opts.kind == "legendary.nvim" then
+						cfg.telescope.sorter = require("telescope.sorters").fuzzy_with_index_bias({})
 					end
 					return cfg
 				end,
-			}
+			},
 		},
 		lazy = true,
 		init = function()
@@ -67,15 +68,17 @@ return {
 	},
 
 	-- styling cursor, ident lines, etc
-	{ "yamatsum/nvim-cursorline",
+	{
+		"yamatsum/nvim-cursorline",
 		event = "VeryLazy",
 		opts = {
 			cursorline = { enable = true, timeout = 1000, number = false },
 			cursorword = { enable = true, min_length = 3, hl = { underline = true } },
-		}
+		},
 	},
 
-	{ "goolord/alpha-nvim",
+	{
+		"goolord/alpha-nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		-- taken largely from lazyvim
 		opts = function()
@@ -135,10 +138,11 @@ return {
 					pcall(vim.cmd.AlphaRedraw)
 				end,
 			})
-		end
+		end,
 	},
 
-	{ "lukas-reineke/indent-blankline.nvim",
+	{
+		"lukas-reineke/indent-blankline.nvim",
 		event = "VeryLazy",
 		opts = {
 			char = "│",
@@ -155,34 +159,30 @@ return {
 		},
 	},
 
-
 	-- popups for suggestions when starting shortcuts
-	{ "folke/which-key.nvim",
-		opts = true,
-		event = "VeryLazy"
-	},
-
+	{ "folke/which-key.nvim", opts = true, event = "VeryLazy" },
 
 	-- Find, Filter, Preview, Pick. All lua, all the time.
 	{
-		'mrjones2014/legendary.nvim',
+		"mrjones2014/legendary.nvim",
 		-- sqlite is only needed if you want to use frecency sorting
 		dependencies = {
-			'kkharji/sqlite.lua',
+			"kkharji/sqlite.lua",
 			"folke/which-key.nvim",
 		},
 		event = "VeryLazy",
-		opts ={
+		opts = {
 			which_key = { auto_register = true },
 		},
 	},
 
-	{ "folke/noice.nvim",
+	{
+		"folke/noice.nvim",
 		-- https://github.com/neovide/neovide/issues/1751
 		-- https://github.com/folke/noice.nvim/issues/17
 		enabled = false,
-		dependencies = {"MunifTanjim/nui.nvim", "rcarriga/nvim-notify"},
-			opts = {
+		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+		opts = {
 			lsp = {
 				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 				override = {

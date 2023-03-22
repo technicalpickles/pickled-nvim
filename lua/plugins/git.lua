@@ -17,13 +17,13 @@ return {
 		dependencies = "nvim-lua/plenary.nvim",
 		opts = true,
 		cmd = {
-			'DiffviewOpen',
-			'DiffviewClose',
-			'DiffviewToggleFiles',
-			'DiffviewFocusFiles',
-			'DiffviewRefresh',
-			'DiffviewFileHistory',
-		}
+			"DiffviewOpen",
+			"DiffviewClose",
+			"DiffviewToggleFiles",
+			"DiffviewFocusFiles",
+			"DiffviewRefresh",
+			"DiffviewFileHistory",
+		},
 	},
 	{
 		"tpope/vim-fugitive",
@@ -37,12 +37,11 @@ return {
 			"GMove",
 			"GDelete",
 			"GBrowse",
-		}
+		},
 	},
 	{
 		"tpope/vim-rhubarb",
 		event = "VeryLazy",
-		dependencies = {"tpope/vim-fugitive"},
+		dependencies = { "tpope/vim-fugitive" },
 	},
-
 }

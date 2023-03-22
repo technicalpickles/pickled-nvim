@@ -6,7 +6,7 @@ return {
 		-- make sure it's first to avoid flicker
 		lazy = false,
 		priority = 1000,
-		config = function ()
+		config = function()
 			-- theme
 			g.tokyodark_transparent_background = false
 			g.tokyodark_enable_italic_comment = true
@@ -16,10 +16,10 @@ return {
 			-- g.tokyonight_style = "night"
 			-- g.tokyonight_style = "day"
 			vim.cmd([[colorscheme tokyonight]])
-		end
+		end,
 	},
 	{ "ayu-theme/ayu-vim", lazy = true },
 	{ "averak/laserwave.vim", lazy = true },
 	{ "rafamadriz/neon", lazy = true },
-	{ "nyoom-engineering/oxocarbon.nvim", lazy = true}
+	{ "nyoom-engineering/oxocarbon.nvim", lazy = true },
 }

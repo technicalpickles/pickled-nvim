@@ -13,7 +13,7 @@ M.filetype_config = {
 			"help",
 			"log",
 			"text",
-		}
+		},
 	},
 	indent_blankline = {
 		exclude = {
@@ -29,7 +29,7 @@ M.filetype_config = {
 			"man",
 			"markdown",
 			"text",
-		}
+		},
 	},
 	autopairs = {
 		disable = {
@@ -37,7 +37,7 @@ M.filetype_config = {
 			"clap_input",
 			"guihua",
 			"guihua_rust",
-		}
+		},
 	},
 	pasta = {
 		disable = {
@@ -47,18 +47,18 @@ M.filetype_config = {
 			"python",
 			"toggleterm",
 			"yaml",
-		}
+		},
 	},
 
 	autosession = {
 		bypass_autosave = {
-			'NvimTree',
-			'Outline',
-			'Trouble',
-			'alpha',
-			'lazy',
-			'qf',
-		}
+			"NvimTree",
+			"Outline",
+			"Trouble",
+			"alpha",
+			"lazy",
+			"qf",
+		},
 	},
 
 	copilot = {
@@ -69,23 +69,22 @@ M.filetype_config = {
 			"log",
 			"markdown",
 			"text",
-			'Nvim',
-			'Outline',
-			'Trouble',
-			'qf',
-			'toggleterm',
-		}
+			"Nvim",
+			"Outline",
+			"Trouble",
+			"qf",
+			"toggleterm",
+		},
 	},
 	lualine = {
 		disabled = {
-			statusline = {"dashboard", "lazy", "alpha" },
-			winbar = {}
-		}
+			statusline = { "dashboard", "lazy", "alpha" },
+			winbar = {},
+		},
 	},
 	statuscol = {
 		ignore = nil,
 	},
-
 }
 
 M.find_obsidian_vault = function()

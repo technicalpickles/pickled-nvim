@@ -4,8 +4,8 @@ return {
 		"mhinz/vim-grepper",
 		cmd = "Grepper",
 		keys = {
-			{"<leader>F", ":Grepper<CR>", silent_noremap},
-			{"<D-F>", ":Grepper<CR> ", silent_noremap},
+			{ "<leader>F", ":Grepper<CR>", silent_noremap },
+			{ "<D-F>", ":Grepper<CR> ", silent_noremap },
 		},
 		config = function()
 			vim.g.grepper = {
@@ -18,6 +18,6 @@ return {
 					grepprg = 'rg -H --no-heading --vimgrep --hidden --glob "!.git" --glob "!node_modules"',
 				},
 			}
-		end
+		end,
 	},
 }

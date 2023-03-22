@@ -24,8 +24,12 @@ return {
 	{
 		"tpope/vim-characterize",
 		keys = {
-			{"ga", "<Plug>(characterize)", "Print the unicode value of character in decimal, hex, and octal, HTML entity, Emoji, etc"}
-		}
+			{
+				"ga",
+				"<Plug>(characterize)",
+				"Print the unicode value of character in decimal, hex, and octal, HTML entity, Emoji, etc",
+			},
+		},
 	},
 
 	-- directory specific path, etc
@@ -36,12 +40,12 @@ return {
 		"tyru/open-browser.vim",
 		keys = {
 			-- open browser, since we disabled netrw
-			{"gx", "<Plug>(openbrowser-smart-search)", {mode = { "v", "n" }}}
+			{ "gx", "<Plug>(openbrowser-smart-search)", { mode = { "v", "n" } } },
 		},
 		cmd = {
 			"OpenBrowser",
 			"OpenBrowserSearch",
-		}
+		},
 	},
 
 	{
@@ -55,11 +59,11 @@ return {
 		config = function()
 			g.unstack_mapkey = ""
 			g.unstack_populate_quickfix = 1
-		end
+		end,
 	},
 
 	{
 		"famiu/bufdelete.nvim",
-		cmd = "Bdelete"
+		cmd = "Bdelete",
 	},
 }

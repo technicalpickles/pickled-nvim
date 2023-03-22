@@ -8,7 +8,7 @@ vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", silent_noremap)
 local paginating_motions = { "<C-f>", "<C-d>", "<C-u>", "<C-b>" }
 for _, motion in ipairs(paginating_motions) do
 	-- TODO can we keep the relative position we are in in the window?
-	vim.api.nvim_set_keymap("n", motion, motion.."zz", silent_noremap)
+	vim.api.nvim_set_keymap("n", motion, motion .. "zz", silent_noremap)
 end
 
 -- hashrocket, textmate style
@@ -33,8 +33,8 @@ vim.keymap.set("n", "<D-a>", "ggVG", silent)
 -- ⌘ / - close current window
 -- local close_command = 'Bdelete'
 local close_command = "lua require('superesc').close()"
-vim.keymap.set("", "<D-w>", "<cmd>"..close_command.."<cr>", silent)
-vim.keymap.set("i", "<D-w>", "<cmd>"..close_command.."<cr>", silent)
+vim.keymap.set("", "<D-w>", "<cmd>" .. close_command .. "<cr>", silent)
+vim.keymap.set("i", "<D-w>", "<cmd>" .. close_command .. "<cr>", silent)
 
 -- Create new tab with Command-T
 vim.keymap.set("", "<D-t>", "<cmd>tabnew<cr>", silent_noremap)
@@ -53,7 +53,6 @@ vim.keymap.set("i", "<D-]>", "<C-O>>>", silent)
 vim.keymap.set("n", "<D-[>", "<<", silent)
 vim.keymap.set("v", "<D-[>", "<", silent)
 vim.keymap.set("i", "<D-[>", "<C-O><<", silent)
-
 
 -- toggle search highlight
 vim.keymap.set({ "n", "v" }, "<leader>nh", "<cmd>nohls<cr>", silent_noremap)

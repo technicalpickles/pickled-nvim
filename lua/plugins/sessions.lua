@@ -23,7 +23,7 @@ return {
 			bypass_session_save_file_types = require("pickled-nvim").filetype_config.autosession.bypass_autosave,
 
 			pre_save_cmds = {
-				'lua require("superesc").close_panels()'
+				'lua require("superesc").close_panels()',
 			},
 
 			-- only keep sessions for this directory
@@ -35,23 +35,21 @@ return {
 		config = function(_, opts)
 			require("auto-session").setup(opts)
 			vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-		end
-
+		end,
 	},
 
 	{
-		'rmagatti/session-lens',
+		"rmagatti/session-lens",
 		dependencies = {
-			'auto-session',
-			'telescope.nvim',
+			"auto-session",
+			"telescope.nvim",
 		},
 		cmd = "SearchSession",
 		opts = {
-			path_display = {'shorten'},
+			path_display = { "shorten" },
 			previewer = true,
 			-- no transparency
-			theme_conf = { winblend = nil }
-		}
+			theme_conf = { winblend = nil },
+		},
 	},
-
 }

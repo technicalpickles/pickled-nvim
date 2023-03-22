@@ -35,7 +35,7 @@ return {
 
 			-- use `command` output as LSP for places that don't have one yet
 			{ "jose-elias-alvarez/null-ls.nvim" },
-			{ "jayp0521/mason-null-ls.nvim"},
+			{ "jayp0521/mason-null-ls.nvim" },
 		},
 		config = function()
 			local lsp = require("lsp-zero")
@@ -54,19 +54,20 @@ return {
 				-- This one provides the data from copilot.
 				-- {name = 'copilot'},
 
-				{name = "nvim_lsp_signature_help"},
-				{name = "fish", keyword_length = 2},
+				{ name = "nvim_lsp_signature_help" },
+				{ name = "fish", keyword_length = 2 },
 
 				--- These are the default sources for lsp-zero
-				{name = 'path'},
-				{name = 'nvim_lsp', keyword_length = 3},
-				{name = 'buffer', keyword_length = 3},
-				{name = 'luasnip', keyword_length = 2},
+				{ name = "path" },
+				{ name = "nvim_lsp", keyword_length = 3 },
+				{ name = "buffer", keyword_length = 3 },
+				{ name = "luasnip", keyword_length = 2 },
 			}
 
 			local has_words_before = function()
 				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-				return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+				return col ~= 0
+					and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 			end
 
 			local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -108,16 +109,16 @@ return {
 
 			-- require('lspconfig-bundler').setup()
 
-			lsp.configure('solargraph', {
-				cmd = {"bundle", "exec", "solargraph", "stdio"},
+			lsp.configure("solargraph", {
+				cmd = { "bundle", "exec", "solargraph", "stdio" },
 				on_attach = function(client, _)
 					-- prefer ruby_ls
 					client.resolved_capabilities.document_formatting = false
 				end,
 			})
 
-			lsp.configure('sorbet', {
-				cmd = { 'bundle', 'exec', 'srb', 'tc', '--lsp' },
+			lsp.configure("sorbet", {
+				cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
 
 				on_attach = function(client, _)
 					-- prefer ruby_ls
@@ -125,43 +126,44 @@ return {
 				end,
 			})
 
-			lsp.configure('ruby_ls', {
-				cmd = {"bundle", "exec", "ruby-lsp"},
+			lsp.configure("ruby_ls", {
+				cmd = { "bundle", "exec", "ruby-lsp" },
 				on_attach = function(client, bufnr)
 					local callback = function()
 						local params = vim.lsp.util.make_text_document_params(bufnr)
 
-						client.request(
-						'textDocument/diagnostic',
-						{ textDocument = params },
-						function(err, result)
-							if err then return end
+						client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
+							if err then
+								return
+							end
 
 							vim.lsp.diagnostic.on_publish_diagnostics(
-							nil,
-							vim.tbl_extend('keep', params, { diagnostics = result.items }),
-							{ client_id = client.id }
+								nil,
+								vim.tbl_extend("keep", params, { diagnostics = result.items }),
+								{ client_id = client.id }
 							)
-						end
-						)
+						end)
 					end
 
 					callback() -- call on attach
 
-					vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePre', 'BufReadPost', 'InsertLeave', 'TextChanged' }, {
-						buffer = bufnr,
-						callback = callback,
-					})
+					vim.api.nvim_create_autocmd(
+						{ "BufEnter", "BufWritePre", "BufReadPost", "InsertLeave", "TextChanged" },
+						{
+							buffer = bufnr,
+							callback = callback,
+						}
+					)
 				end,
 			})
 
 			-- disable except for actual latex
-			lsp.configure('ltex', {
+			lsp.configure("ltex", {
 				filetypes = {
 					"bib",
 					"plaintex",
 					"tex",
-				}
+				},
 			})
 
 			lsp.setup_nvim_cmp({
@@ -169,63 +171,60 @@ return {
 				mappings = cmp_mappings,
 				formatting = {
 					format = lspkind.cmp_format({
-						mode = 'symbol_text', -- show only symbol annotations
+						mode = "symbol_text", -- show only symbol annotations
 						maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-						ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+						ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 						symbol_map = {
 							Copilot = "",
 						},
 						-- The function below will be called before any actual modifications from lspkind
 						-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-						before = function (_, vim_item) -- entry, vim_item
+						before = function(_, vim_item) -- entry, vim_item
 							-- ...
 							return vim_item
-						end
-					})
-				}
+						end,
+					}),
+				},
 			})
 
 			lsp.set_preferences({
 				-- don't use defaults... will end up with the same mostly, but want to control desc, etc
-				set_lsp_keymaps = false
+				set_lsp_keymaps = false,
 			})
 
 			lsp.ensure_installed({
-				'eslint',
-				'lua_ls',
-				'marksman',
-				'dockerls',
-				'jsonls',
+				"eslint",
+				"lua_ls",
+				"marksman",
+				"dockerls",
+				"jsonls",
 			})
 
 			-- disabled lspzero's keymaps, so make them ourselves
 			lsp.on_attach(function() -- client, bufnr
 				-- copied from lsp-zero with modifications
-				vim.keymap.set('n', 'K', '<CMD>lua PeekOrHover<CR>') -- defined in folds.lua
-				vim.keymap.set('n', 'gd', '<CMD>lua vim.lsp.buf.definition()<CR>')
-				vim.keymap.set('n', 'gD', '<CMD>lua vim.lsp.buf.declaration()<CR>')
-				vim.keymap.set('n', 'gi', '<CMD>lua vim.lsp.buf.implementation()<CR>')
-				vim.keymap.set('n', 'go', '<CMD>lua vim.lsp.buf.type_definition()<CR>')
-				vim.keymap.set('n', 'gr', '<CMD>lua vim.lsp.buf.references()<CR>')
-				vim.keymap.set('n', '<C-k>', '<CMD>lua vim.lsp.buf.signature_help()<CR>')
-				vim.keymap.set('n', '<F2>', '<CMD>lua vim.lsp.buf.rename()<CR>')
-				vim.keymap.set('n', '<F4>', '<CMD>lua vim.lsp.buf.code_action()<CR>')
-				vim.keymap.set('x', '<F4>', '<CMD>lua vim.lsp.buf.range_code_action()<CR>')
-				vim.keymap.set('n', '<C-k>', '<CMD>lua vim.lsp.buf.signature_help()<CR>')
-				vim.keymap.set('n', 'gl', '<CMD>lua vim.diagnostic.open_float()<CR>')
-				vim.keymap.set('n', '[d', '<CMD>lua vim.diagnostic.goto_prev()<CR>')
-				vim.keymap.set('n', ']d', '<CMD>lua vim.diagnostic.goto_next()<CR>')
+				vim.keymap.set("n", "K", "<CMD>lua PeekOrHover<CR>") -- defined in folds.lua
+				vim.keymap.set("n", "gd", "<CMD>lua vim.lsp.buf.definition()<CR>")
+				vim.keymap.set("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>")
+				vim.keymap.set("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>")
+				vim.keymap.set("n", "go", "<CMD>lua vim.lsp.buf.type_definition()<CR>")
+				vim.keymap.set("n", "gr", "<CMD>lua vim.lsp.buf.references()<CR>")
+				vim.keymap.set("n", "<C-k>", "<CMD>lua vim.lsp.buf.signature_help()<CR>")
+				vim.keymap.set("n", "<F2>", "<CMD>lua vim.lsp.buf.rename()<CR>")
+				vim.keymap.set("n", "<F4>", "<CMD>lua vim.lsp.buf.code_action()<CR>")
+				vim.keymap.set("x", "<F4>", "<CMD>lua vim.lsp.buf.range_code_action()<CR>")
+				vim.keymap.set("n", "<C-k>", "<CMD>lua vim.lsp.buf.signature_help()<CR>")
+				vim.keymap.set("n", "gl", "<CMD>lua vim.diagnostic.open_float()<CR>")
+				vim.keymap.set("n", "[d", "<CMD>lua vim.diagnostic.goto_prev()<CR>")
+				vim.keymap.set("n", "]d", "<CMD>lua vim.diagnostic.goto_next()<CR>")
 			end)
 
 			lsp.setup()
 
 			-- for cmp + autopairs: https://github.com/windwp/nvim-autopairs#mapping-cr
 			-- and it needs to come after lsp-zero is configured: https://github.com/VonHeikemen/lsp-zero.nvim/discussions/119
-			local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-			cmp.event:on(
-				'confirm_done',
-				cmp_autopairs.on_confirm_done()
-			)
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 			-- debug lsp
 			-- vim.lsp.set_log_level("trace")
@@ -277,7 +276,7 @@ return {
 			end
 
 			null_ls.setup({ sources = sources })
-		end
+		end,
 	},
 
 	{
@@ -319,8 +318,8 @@ return {
 			},
 		},
 		keys = {
-			{"<leader>s", symbols_outline, silent_noremap},
-			{"<D-.>", symbols_outline, silent_noremap},
+			{ "<leader>s", symbols_outline, silent_noremap },
+			{ "<D-.>", symbols_outline, silent_noremap },
 		},
 	},
 }

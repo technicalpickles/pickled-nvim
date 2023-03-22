@@ -2,15 +2,15 @@ local M = {}
 
 M.default_config = {
 	close_for_type = {
-		NvimTree = 'NvimTreeClose',
-		Outline = 'SymbolsOutlineClose',
-		Trouble = 'TroubleClose',
-		qf = 'cclose',
+		NvimTree = "NvimTreeClose",
+		Outline = "SymbolsOutlineClose",
+		Trouble = "TroubleClose",
+		qf = "cclose",
 		-- notify = 'lua require("nvim-notify").dismiss()"',
-	}
+	},
 }
 
-M.config =  vim.tbl_extend('keep', M.default_config, {})
+M.config = vim.tbl_extend("keep", M.default_config, {})
 
 M.close_panel = function()
 	local command = M.config.close_for_type[vim.bo.filetype]
@@ -32,7 +32,7 @@ end
 
 M.window_close_cmd_for_win = function(winid)
 	local bufnr = vim.api.nvim_win_get_buf(winid)
-	local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+	local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
 
 	return M.config.close_for_type[ft]
 end
@@ -48,9 +48,9 @@ M.close_split = function()
 	if #split_wins > 1 then
 		vim.cmd("close")
 	else
-		if M.config.last_window_behavior == 'delete' then
+		if M.config.last_window_behavior == "delete" then
 			vim.cmd("bdelete")
-		elseif M.config.last_window_behavior == 'scratch' then
+		elseif M.config.last_window_behavior == "scratch" then
 			vim.cmd("enew | setlocal buftype=nofile bufhidden=hide noswapfile nobuflisted nomodifiable")
 		end
 	end
@@ -68,7 +68,7 @@ M.close = function()
 end
 
 M.setup = function(config)
-    M.config = vim.tbl_extend("force", M.config, config or {})
+	M.config = vim.tbl_extend("force", M.config, config or {})
 
 	vim.keymap.set("n", "<Esc>", "<CMD>lua require('superesc').close_panel()<CR>")
 end

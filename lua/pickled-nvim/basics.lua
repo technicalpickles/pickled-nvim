@@ -48,11 +48,10 @@ o.signcolumn = "yes:1"
 -- o.signcolumn = "auto:2"
 
 -- for nvim-ufo
-o.foldcolumn = '1'
+o.foldcolumn = "1"
 o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 o.foldlevelstart = 99
 o.foldenable = true
-
 
 -- formatting
 o.ignorecase = true -- Case insensitive search
@@ -78,7 +77,6 @@ o.incsearch = true
 o.hlsearch = true
 o.grepprg = "rg --vimgrep"
 
-
 -- for UI frontends
 o.termguicolors = true
 g.neovide_input_use_logo = true -- Ensure we can pass the command key
@@ -98,4 +96,3 @@ vim.cmd([[
 set autoread
 au FocusGained * :checktime
 ]])
-

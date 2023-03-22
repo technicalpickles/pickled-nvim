@@ -4,4 +4,3 @@ vim.filetype.add({
 		[".dockerignore"] = "gitignore",
 	},
 })
-

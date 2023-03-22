@@ -5,8 +5,8 @@ return {
 	{
 		"epwalsh/obsidian.nvim",
 		dependencies = {
-			'nvim-cmp',
-			'telescope.nvim',
+			"nvim-cmp",
+			"telescope.nvim",
 		},
 		lazy = not enabled,
 		event = "VeryLazy",
@@ -14,19 +14,19 @@ return {
 			dir = vault,
 			completion = {
 				nvim_cmp = true,
-			}
+			},
 		},
 		cmd = {
-			'ObsidianBacklinks',
-			'ObsidianToday',
-			'ObsidianYesterday',
-			'ObsidianOpen',
-			'ObsidianNew',
-			'ObsidianSearch',
-			'ObsidianQuickSwitch',
-			'ObsidianLink',
-			'ObsidianLinkNew',
-			'ObsidianFollowLink',
-		}
+			"ObsidianBacklinks",
+			"ObsidianToday",
+			"ObsidianYesterday",
+			"ObsidianOpen",
+			"ObsidianNew",
+			"ObsidianSearch",
+			"ObsidianQuickSwitch",
+			"ObsidianLink",
+			"ObsidianLinkNew",
+			"ObsidianFollowLink",
+		},
 	},
 }

@@ -44,20 +44,19 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		dependencies = {"nvim-treesitter"},
+		dependencies = { "nvim-treesitter" },
 		event = "VeryLazy",
 		opts = {
 			patterns = {
 				-- remove when/if https://github.com/nvim-treesitter/nvim-treesitter-context/pull/201 lands
 				ruby = {
-					'block'
+					"block",
 				},
 				lua = {
-					'table_constructor'
+					"table_constructor",
 				},
-
-			}
-		}
+			},
+		},
 	},
 
 	-- better support for % to bounce between sets of matching text, ie parens, etc

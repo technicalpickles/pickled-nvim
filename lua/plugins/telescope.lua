@@ -1,29 +1,29 @@
 local file_picker = "Telescope frecency"
 -- local file_picker = "lua file_picker()"
 local silent_noremap = { noremap = true, silent = true }
-local silent_noremap_both_modes = vim.tbl_deep_extend("keep", silent_noremap, {mode = {"n", "i"}})
+local silent_noremap_both_modes = vim.tbl_deep_extend("keep", silent_noremap, { mode = { "n", "i" } })
 return {
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "plenary.nvim" },
 		keys = {
-			{"<D-S-p>", "<cmd>Telescope command_center<CR>", silent_noremap_both_modes},
-			{"<leader>c", "<CMD>Telescope command_center<CR>", silent_noremap_both_modes},
-			{"<D-f>", "<cmd>lua require('telescope.builtin').live_grep()<CR>", silent_noremap_both_modes},
-			{"<leader>b", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes},
-			{"<leader>m", "<cmd>Telescope marks<CR>", silent_noremap_both_modes},
+			{ "<D-S-p>", "<cmd>Telescope command_center<CR>", silent_noremap_both_modes },
+			{ "<leader>c", "<CMD>Telescope command_center<CR>", silent_noremap_both_modes },
+			{ "<D-f>", "<cmd>lua require('telescope.builtin').live_grep()<CR>", silent_noremap_both_modes },
+			{ "<leader>b", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes },
+			{ "<leader>m", "<cmd>Telescope marks<CR>", silent_noremap_both_modes },
 
-			{"<D-k>", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes},
+			{ "<D-k>", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes },
 
-			{"<D-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap_both_modes},
-			{"<C-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap_both_modes},
+			{ "<D-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap_both_modes },
+			{ "<C-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap_both_modes },
 
-			{"<D-g>", "<cmd>Telescope git_files<CR>", silent_noremap_both_modes},
+			{ "<D-g>", "<cmd>Telescope git_files<CR>", silent_noremap_both_modes },
 		},
 		opts = {
 			defaults = {
-				prompt_prefix = '  ',
-				layout_strategy = 'horizontal',
+				prompt_prefix = "  ",
+				layout_strategy = "horizontal",
 				layout_config = {
 					horizontal = {
 						preview_width = 0.5,
@@ -48,8 +48,7 @@ return {
 				},
 			},
 			pickers = {
-				command_center = {
-				},
+				command_center = {},
 				find_files = {
 					-- theme = "dropdown",
 					-- customize by adding --hidden, so we can get files that start with . which turns out to be a lot
@@ -58,17 +57,16 @@ return {
 				git_files = {
 					-- theme = "dropdown",
 				},
-				frecency = {
-				},
+				frecency = {},
 
 				notify = {
-					theme = "ivy"
+					theme = "ivy",
 				},
 			},
 		},
 		cmd = "Telescope",
-		config = function (_, opts)
-			local  telescope = require("telescope")
+		config = function(_, opts)
+			local telescope = require("telescope")
 			telescope.setup(opts)
 			--
 			-- faster native picker & sorter implementations. zf seems the fastest
@@ -83,7 +81,7 @@ return {
 			telescope.load_extension("toggleterm")
 			telescope.load_extension("command_center")
 			telescope.load_extension("notify")
-		end
+		end,
 	},
 
 	-- faster native picker & sorter implementations. zf seems the fastest
@@ -95,7 +93,7 @@ return {
 	-- 	dependencies = {"nvim-telescope/telescope-fzf-native.nvim"},
 	-- 	lazy = true,
 	-- },
-	{ "natecraddock/telescope-zf-native.nvim", lazy = true},
+	{ "natecraddock/telescope-zf-native.nvim", lazy = true },
 
 	-- keep telescope from changing directory when picking files
 	{
@@ -112,7 +110,7 @@ return {
 	{
 		"gfeiyou/command-center.nvim",
 		lazy = true,
-		config = function ()
+		config = function()
 			local command_center = require("command_center")
 			command_center.add({
 				{ desc = "Toggle Word Wrap", cmd = "<CMD>set wrap!<CR>" },
@@ -256,11 +254,9 @@ return {
 				{ desc = "Marks: Delete All on Current Line", cmd = "dm-" },
 				{ desc = "Marks: Delete All in Current Buffer", cmd = "dm " },
 
-				{ desc = "Copilot: Status", cmd = "<CMD>Copilot<CR>"},
-				{ desc = "Copilot: Show Solutions", cmd = "<CMD>Copilot<CR>"},
+				{ desc = "Copilot: Status", cmd = "<CMD>Copilot<CR>" },
+				{ desc = "Copilot: Show Solutions", cmd = "<CMD>Copilot<CR>" },
 			})
-		end
+		end,
 	},
-
-
 }
