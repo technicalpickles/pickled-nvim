@@ -5,6 +5,7 @@ vim.filetype.add({
 	},
 	filename = {
 		["Dangerfile"] = "ruby",
+		["Brewfile"] = "ruby",
 		[".pryrc"] = "ruby",
 	},
 })
