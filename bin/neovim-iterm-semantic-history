@@ -28,6 +28,17 @@ fi
 
 pwd="$1"
 file="$2"
+line="$3"
+
+# open directories
+if [[ -d "$file" ]]; then
+  exec open "$file"
+fi
+
+if [[ -t "$file" ]]; then
+  echo "File not found: $file" >&2
+  exit 1
+fi
 
 # example output:
 #   MacVim
@@ -38,28 +49,48 @@ case "$file_handler" in
   # no-op for vim-like things
   com.neovide.neovide) true ;;
   org.vim.MacVim) true ;;
-  "")
-    echo "Unexpectedly couldn't find handler for $file, got blank string" >&2
-    duti -x "$file" >&2
-    exit 1
-    ;;
   *)
-    log "$file not handled by a vim app. Falling back to default handler: $file_handler"
-    exec open "$file"
+    # ex:
+    #   init.lua: text/plain; charset=us-ascii
+    mime=$(file -I "$file" | sed -e 's/.*: //' -e 's/;.*//')
+    case "$mime" in
+      text/plain) true ;;
+      *)
+        if [[ "$file_handler" == "" ]]; then
+          echo "Couldn't figure out how to open a $mime file: no default handler, and not sure if vim can open $mime" >&2
+          exit 1
+        else
+          log "$file not handled by a vim app, and not a mimetype we think we can open ($mime). Falling back to default handler ($file_handler)."
+          exec open "$file"
+        fi
+    esac
     ;;
 esac
 
-cd "$pwd"
-log "PATH=$PATH"
+# if called from iterm, pwd will be populated. if not, assume we are already in the right place
+if [[ -n "$pwd" ]]; then
+  cd "$pwd"
+fi
 
-log "$(pwd): ""$*"
+log "$(pwd): ""$*" # log directory and arguments
+
 if [[ -f tmp/neovim.pid && -f tmp/neovim.servername ]]; then
   pid=$(< tmp/neovim.pid)
   servername=$(< tmp/neovim.servername)
 
   log "pid=$pid"
   log "servername=$servername"
-  nvr --servername "$servername" --remote "$file"
+  nvr_args=(
+    --servername "$servername"
+    --remote "$file"
+  )
+
+  echo "$ nvr ${nvr_args[*]}"
+
+  if [[ -n "$line" ]]; then
+    nvr_args+=("+$line")
+  fi
+  nvr  "${nvr_args[@]}"
 
   neovide_pids=$(pgrep neovide)
   log "neovide pids: $neovide_pids"
