@@ -7,6 +7,7 @@ mkdir -p ~/.local/state/pickled-nvim
 log() {
   echo "$@" >> ~/.local/state/pickled-nvim/semantic-history.log
 }
+log "shell=$SHELL"
 
 if ! which brew >/dev/null 2>&1; then
   log "Missing brew, locating now"
@@ -32,7 +33,8 @@ line="$3"
 
 # open directories
 if [[ -d "$file" ]]; then
-  exec open "$file"
+  echo "cd $file"
+  exit
 fi
 
 if [[ -t "$file" ]]; then
@@ -85,7 +87,7 @@ if [[ -f tmp/neovim.pid && -f tmp/neovim.servername ]]; then
     --remote "$file"
   )
 
-  echo "$ nvr ${nvr_args[*]}"
+log "$ nvr ${nvr_args[*]}"
 
   if [[ -n "$line" ]]; then
     nvr_args+=("+$line")
