@@ -9,7 +9,16 @@ return {
 		keys = {
 			{ "<D-S-p>", "<cmd>Telescope command_center<CR>", silent_noremap_both_modes },
 			{ "<leader>c", "<CMD>Telescope command_center<CR>", silent_noremap_both_modes },
-			{ "<D-f>", "<cmd>lua require('telescope.builtin').live_grep()<CR>", silent_noremap_both_modes },
+			{
+				"<D-f>",
+				"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+				silent_noremap_both_modes,
+			},
+			{
+				"<D-S-f>",
+				"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+				silent_noremap_both_modes,
+			},
 			{ "<leader>b", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes },
 			{ "<leader>m", "<cmd>Telescope marks<CR>", silent_noremap_both_modes },
 
@@ -24,14 +33,16 @@ return {
 			defaults = {
 				prompt_prefix = "  ",
 				layout_strategy = "horizontal",
-				layout_config = {
-					horizontal = {
-						preview_width = 0.5,
-					},
-				},
+				layout_config = {},
 				mappings = {
-					n = {},
-					i = {},
+					n = {
+						["<C-a>"] = { "<HOME>", type = "command" },
+						["<C-e>"] = { "<END>", type = "command" },
+					},
+					i = {
+						["<C-a>"] = { "<HOME>", type = "command" },
+						["<C-e>"] = { "<END>", type = "command" },
+					},
 				},
 			},
 			extensions = {
@@ -46,6 +57,8 @@ return {
 					patterns = { ".git" },
 					debug = false,
 				},
+				-- live_grep_args also has mappings `config`
+				live_grep_args = {},
 			},
 			pickers = {
 				command_center = {},
@@ -62,12 +75,38 @@ return {
 				notify = {
 					theme = "ivy",
 				},
+				live_grep_args = {
+					layout_config = {
+						-- (almost) full screen
+						height = 0.99,
+						width = 0.99,
+					},
+				},
+				live_grep = {
+					layout_config = {
+						-- (almost) full screen
+						height = 0.99,
+						width = 0.99,
+					},
+				},
 			},
 		},
 		cmd = "Telescope",
 		config = function(_, opts)
+			local lga_actions = require("telescope-live-grep-args.actions")
+
+			opts.extensions.live_grep_args.mappings = {
+				i = {
+					["<C-k>"] = lga_actions.quote_prompt(),
+					["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+					["<C-g>"] = lga_actions.quote_prompt({ postfix = " --glob " }),
+					["<C-t>"] = lga_actions.quote_prompt({ postfix = " --type " }),
+				},
+			}
+
 			local telescope = require("telescope")
 			telescope.setup(opts)
+
 			--
 			-- faster native picker & sorter implementations. zf seems the fastest
 			-- telescope.load_extension("fzf")
@@ -81,6 +120,7 @@ return {
 			telescope.load_extension("toggleterm")
 			telescope.load_extension("command_center")
 			telescope.load_extension("notify")
+			telescope.load_extension("live_grep_args")
 		end,
 	},
 
@@ -104,6 +144,12 @@ return {
 	{
 		"nvim-telescope/telescope-frecency.nvim",
 		dependencies = { "sqlite.lua" },
+		lazy = true,
+	},
+
+	{
+		"nvim-telescope/telescope-live-grep-args.nvim",
+		dependencies = { "plenary.nvim" },
 		lazy = true,
 	},
 
