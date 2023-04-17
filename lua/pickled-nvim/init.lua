@@ -126,7 +126,7 @@ function M.setup()
 	  augroup end
 	]])
 
-	require("pickled-nvim.servername").save_servername()
+	-- require("pickled-nvim.servername").save_servername()
 end
 
 return M
