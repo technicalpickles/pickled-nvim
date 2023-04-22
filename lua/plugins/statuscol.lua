@@ -1,19 +1,19 @@
 return {
 	{
 		"luukvbaal/statuscol.nvim",
-		opts = {
-			-- order of the fold, sign, line number and separator segments
-			-- F - fold
-			-- N - line number
-			-- S - sign
-			-- s - separator
-			order = "NSFs",
-			relculright = true,
-			separator = " ",
-			foldfunc = "builtin",
-			setopt = true,
-			ft_ignore = require("pickled-nvim").filetype_config.statuscol.ignore,
-		},
-		event = "VeryLazy",
+		config = function()
+			local builtin = require("statuscol.builtin")
+
+			require("statuscol").setup({
+				setopt = true,
+				relculright = true,
+				segments = {
+					{ text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+					{ text = { "%s" }, click = "v:lua.ScSa" },
+					{ text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+				},
+				ft_ignore = require("pickled-nvim").filetype_config.statuscol.ignore,
+			})
+		end,
 	},
 }
