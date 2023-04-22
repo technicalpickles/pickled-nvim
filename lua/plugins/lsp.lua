@@ -109,22 +109,25 @@ return {
 
 			-- require('lspconfig-bundler').setup()
 
-			lsp.configure("solargraph", {
-				cmd = { "bundle", "exec", "solargraph", "stdio" },
-				on_attach = function(client, _)
-					-- prefer ruby_ls
-					client.resolved_capabilities.document_formatting = false
-				end,
-			})
+			-- lsp.configure("solargraph", {
+			-- 	cmd = { "bundle", "exec", "solargraph", "stdio" },
+			-- 	on_attach = function(client, _)
+			-- 		-- prefer ruby_ls
+			-- 		client.resolved_capabilities.document_formatting = false
+			-- 	end,
+			-- })
 
-			lsp.configure("sorbet", {
-				cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
+			-- lsp.configure("sorbet", {
+			-- 	cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
 
-				on_attach = function(client, _)
-					-- prefer ruby_ls
-					client.resolved_capabilities.document_formatting = false
-				end,
-			})
+			-- 	on_attach = function(client, _)
+			-- 		-- prefer ruby_ls
+			-- 		client.resolved_capabilities.document_formatting = false
+			-- 	end,
+			-- })
+
+			-- don't try to set these up, so ruby_ls can be preferred
+			lsp.skip_server_setup({ "sorbet", "solargraph" })
 
 			lsp.configure("ruby_ls", {
 				cmd = { "bundle", "exec", "ruby-lsp" },
