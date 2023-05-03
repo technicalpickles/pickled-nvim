@@ -19,10 +19,18 @@ return {
 				"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
 				silent_noremap_both_modes,
 			},
-			{ "<leader>b", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes },
+			{
+				"<leader>b",
+				"<cmd>Telescope buffers sort_lastused=true sort_mru=true ignore_current_buffer=true<CR>",
+				silent_noremap_both_modes,
+			},
 			{ "<leader>m", "<cmd>Telescope marks<CR>", silent_noremap_both_modes },
 
-			{ "<D-k>", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes },
+			{
+				"<D-k>",
+				"<cmd>Telescope buffers sort_lastused=true sort_mru=true ignore_current_buffer=true<CR>",
+				silent_noremap_both_modes,
+			},
 
 			{ "<D-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap_both_modes },
 			{ "<C-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap_both_modes },
