@@ -16,6 +16,7 @@ return {
 			sign_priority = require("pickled-nvim").sign_priorities.git,
 		},
 		event = "VeryLazy",
+		cmd = "Gitsigns",
 		config = function(_, plugin_opts)
 			local gs = require("gitsigns")
 
