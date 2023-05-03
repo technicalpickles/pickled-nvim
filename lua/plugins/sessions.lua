@@ -14,6 +14,7 @@ return {
 		lazy = false,
 		opts = {
 			-- use sesssion manager
+			auto_save_enabled = true,
 			auto_restore_enabled = false,
 
 			-- log_level = "info",
@@ -31,6 +32,13 @@ return {
 
 			-- key by branch
 			auto_session_use_git_branch = true,
+		},
+		cmd = {
+			"Autosession",
+			"SessionDelete",
+			"SessionRestore",
+			"SessionRestoreFromFile",
+			"SessionSave",
 		},
 		config = function(_, opts)
 			require("auto-session").setup(opts)

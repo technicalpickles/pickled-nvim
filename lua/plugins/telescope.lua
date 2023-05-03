@@ -121,6 +121,7 @@ return {
 			telescope.load_extension("command_center")
 			telescope.load_extension("notify")
 			telescope.load_extension("live_grep_args")
+			telescope.load_extension("session-lens")
 		end,
 	},
 
