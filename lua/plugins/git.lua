@@ -2,6 +2,9 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
+			-- color for line numbers
+			linehl = true,
+			current_line_blame = true,
 			signs = {
 				add = { text = "│" },
 				change = { text = "│" },

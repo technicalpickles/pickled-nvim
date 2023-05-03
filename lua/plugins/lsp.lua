@@ -45,11 +45,8 @@ return {
 			require("luasnip.loaders.from_snipmate").lazy_load()
 
 			lsp.preset("recommended")
-			lsp.nvim_workspace({
-				-- library = vim.api.nvim_get_runtime_file("", true),
-			})
+			lsp.nvim_workspace({})
 
-			-- local cmp_sources = lsp.defaults.cmp_sources()
 			local cmp_sources = {
 				-- This one provides the data from copilot.
 				-- {name = 'copilot'},
@@ -107,30 +104,20 @@ return {
 				end, { "i", "s" }),
 			})
 
-			-- require('lspconfig-bundler').setup()
+			require("lspconfig-bundler").setup()
 
-			-- lsp.configure("solargraph", {
-			-- 	cmd = { "bundle", "exec", "solargraph", "stdio" },
-			-- 	on_attach = function(client, _)
-			-- 		-- prefer ruby_ls
-			-- 		client.resolved_capabilities.document_formatting = false
-			-- 	end,
-			-- })
+			lsp.configure("solargraph", {
+				autostart = false,
+			})
 
-			-- lsp.configure("sorbet", {
-			-- 	cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
-
-			-- 	on_attach = function(client, _)
-			-- 		-- prefer ruby_ls
-			-- 		client.resolved_capabilities.document_formatting = false
-			-- 	end,
-			-- })
+			lsp.configure("sorbet", {
+				autostart = false,
+			})
 
 			-- don't try to set these up, so ruby_ls can be preferred
-			lsp.skip_server_setup({ "sorbet", "solargraph" })
+			-- lsp.skip_server_setup({ "sorbet", "solargraph" })
 
 			lsp.configure("ruby_ls", {
-				cmd = { "bundle", "exec", "ruby-lsp" },
 				on_attach = function(client, bufnr)
 					local callback = function()
 						local params = vim.lsp.util.make_text_document_params(bufnr)
@@ -196,6 +183,7 @@ return {
 			})
 
 			lsp.ensure_installed({
+				"ruby_ls",
 				"eslint",
 				"lua_ls",
 				"marksman",
