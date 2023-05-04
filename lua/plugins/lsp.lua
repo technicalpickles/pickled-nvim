@@ -3,7 +3,7 @@ local symbols_outline = "<CMD>SymbolsOutline<CR>"
 return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
-		event = "BufReadPre",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" },
