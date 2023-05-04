@@ -106,46 +106,65 @@ return {
 
 			require("lspconfig-bundler").setup()
 
-			lsp.configure("solargraph", {
-				autostart = false,
-			})
+			if vim.fn.filereadable(".solargraph.yml") == 1 then
+				-- make sure solargraph is installed if we detect it's configs
+				lsp.ensure_installed("solargraph")
+			else
+				-- don't try to start it up otherwise; it needs some config to work
+				lsp.skip_server_setup("solargraph")
+			end
 
-			lsp.configure("sorbet", {
-				autostart = false,
-			})
+			-- FIXME not quite working, doesn't show up as configured
+			if vim.fn.filereadable(".standard.yml") == 1 then
+				-- make sure solargraph is installed if we detect it's configs
+				lsp.ensure_installed("standardrb")
+			else
+				-- don't try to start it up otherwise; it needs some config to work
+				lsp.skip_server_setup("standardrb")
+			end
 
-			-- don't try to set these up, so ruby_ls can be preferred
-			-- lsp.skip_server_setup({ "sorbet", "solargraph" })
+			if vim.fn.isdirectory("sorbet") == 1 then
+				lsp.ensure_installed("sorbet")
+			else
+				lsp.skip_server_setup("sorbet")
+			end
 
-			lsp.configure("ruby_ls", {
-				on_attach = function(client, bufnr)
-					local callback = function()
-						local params = vim.lsp.util.make_text_document_params(bufnr)
+			-- TODO; smarter enabling of ruby_ls, and only disable features when rubocop isn't detected
+			if vim.fn.filereadable(".rubocop.yml") == 1 then
+				lsp.configure("ruby_ls", {
+					on_attach = function(client, bufnr)
+						local callback = function()
+							local params = vim.lsp.util.make_text_document_params(bufnr)
 
-						client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
-							if err then
-								return
-							end
+							client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
+								if err then
+									return
+								end
 
-							vim.lsp.diagnostic.on_publish_diagnostics(
-								nil,
-								vim.tbl_extend("keep", params, { diagnostics = result.items }),
-								{ client_id = client.id }
-							)
-						end)
-					end
+								vim.lsp.diagnostic.on_publish_diagnostics(
+									nil,
+									vim.tbl_extend("keep", params, { diagnostics = result.items }),
+									{ client_id = client.id }
+								)
+							end)
+						end
 
-					callback() -- call on attach
+						callback() -- call on attach
 
-					vim.api.nvim_create_autocmd(
-						{ "BufEnter", "BufWritePre", "BufReadPost", "InsertLeave", "TextChanged" },
-						{
-							buffer = bufnr,
-							callback = callback,
-						}
-					)
-				end,
-			})
+						vim.api.nvim_create_autocmd(
+							{ "BufEnter", "BufWritePre", "BufReadPost", "InsertLeave", "TextChanged" },
+							{
+								buffer = bufnr,
+								callback = callback,
+							}
+						)
+					end,
+				})
+
+				lsp.ensure_installed("ruby_ls")
+			else
+				lsp.skip_server_setup("ruby_ls")
+			end
 
 			-- disable except for actual latex
 			lsp.configure("ltex", {
@@ -183,7 +202,6 @@ return {
 			})
 
 			lsp.ensure_installed({
-				"ruby_ls",
 				"eslint",
 				"lua_ls",
 				"marksman",
