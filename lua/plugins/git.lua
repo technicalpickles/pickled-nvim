@@ -2,17 +2,8 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
-			-- color for line numbers
 			linehl = true,
 			current_line_blame = true,
-			signs = {
-				add = { text = "│" },
-				change = { text = "│" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-				untracked = { text = "┆" },
-			},
 			sign_priority = require("pickled-nvim").sign_priorities.git,
 		},
 		event = "VeryLazy",
