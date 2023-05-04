@@ -212,7 +212,7 @@ return {
 			-- disabled lspzero's keymaps, so make them ourselves
 			lsp.on_attach(function() -- client, bufnr
 				-- copied from lsp-zero with modifications
-				vim.keymap.set("n", "K", "<CMD>lua PeekOrHover<CR>") -- defined in folds.lua
+				vim.keymap.set("n", "K", "<CMD>lua require('pickled-nvim.folds').peekOrHover()<CR>")
 				vim.keymap.set("n", "gd", "<CMD>lua vim.lsp.buf.definition()<CR>")
 				vim.keymap.set("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>")
 				vim.keymap.set("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>")
