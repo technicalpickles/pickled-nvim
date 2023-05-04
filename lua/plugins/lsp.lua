@@ -250,38 +250,10 @@ return {
 			local null_ls = require("null-ls")
 			local sources = {}
 
-			-- fish
-			if vim.fn.executable("fish") == 1 then
-				table.insert(sources, null_ls.builtins.diagnostics.fish)
-			end
-
-			-- lua
-			if vim.fn.executable("lua-format") == 1 and vim.fn.filereadable(".lua-check") == 1 then
-				table.insert(sources, null_ls.builtins.formatting.lua_format)
-			end
-
-			-- if vim.fn.executable("stylua") and vim.fn.filereadable(".styluaignore") then
-			-- 	table.insert(sources, null_ls.builtins.formatting.stylelua)
-			-- end
-
-			-- ruby
-			-- local rubocop_options = { prefer_local = "bin" }
-			-- if vim.fn.filereadable(".rubocop_yml") == 1 then
-			-- 	table.insert(sources, null_ls.builtins.diagnostics.rubocop.with(rubocop_options))
-			-- 	table.insert(sources, null_ls.builtins.formatting.rubocop.with(rubocop_options))
-			-- end
-
 			-- erb
 			if vim.fn.filereadable(".erb-lint.yml") == 1 then
 				table.insert(sources, null_ls.builtins.diagnostics.erb_lint)
 				table.insert(sources, null_ls.builtins.formatting.erb_lint)
-			end
-
-			-- javascript
-			local node_options = { prefer_local = "node_modules/.bin" }
-			if vim.fn.filereadable(".eslinteslint_config") == 1 then
-				table.insert(sources, null_ls.builtins.diagnostics.eslint.with(node_options))
-				table.insert(sources, null_ls.builtins.formatting.eslint.with(node_options))
 			end
 
 			null_ls.setup({ sources = sources })
