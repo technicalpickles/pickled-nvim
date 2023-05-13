@@ -1,0 +1,136 @@
+#!/usr/bin/env bash
+# Command runs when you activate Semantic History on any filename. Use \1 for filename, \2 for line number, \3 for text before click, \4 for text after click, \5 for pwd. You can also use interpolated string syntax. Learn more
+
+set -e
+
+mkdir -p ~/.local/state/pickled-nvim
+log() {
+  echo "$@" >> ~/.local/state/pickled-nvim/semantic-history.log
+}
+log "shell=$SHELL"
+
+if ! which brew >/dev/null 2>&1; then
+  log "Missing brew, locating now"
+  possible_brews="/opt/homebrew/bin/brew /usr/local/bin/brew"
+  for possible_brew in $possible_brews; do
+    if test -x "${possible_brew}"; then
+      brew="${possible_brew}"
+      break
+    fi
+  done
+  
+  if test -z "$brew"; then
+    echo "Couldn't find brew to load" >&2
+    exit 1
+  fi
+
+  eval "$($brew shellenv)"
+fi
+
+pwd="$1"
+file="$2"
+line="$3"
+
+# open directories
+if [[ -d "$file" ]]; then
+  echo "cd $file"
+  exit
+fi
+
+if [[ -t "$file" ]]; then
+  echo "File not found: $file" >&2
+  exit 1
+fi
+
+# example output:
+#   MacVim
+#   /Applications/MacVim.app
+#   org.vim.MacVim
+file_handler=$(duti -x "$file" | sed '1,2d')
+case "$file_handler" in
+  # no-op for vim-like things
+  com.neovide.neovide) true ;;
+  org.vim.MacVim) true ;;
+  *)
+    # ex:
+    #   init.lua: text/plain; charset=us-ascii
+    mime=$(file -I "$file" | sed -e 's/.*: //' -e 's/;.*//')
+    case "$mime" in
+      text/plain) true ;;
+      *)
+        if [[ "$file_handler" == "" ]]; then
+          echo "Couldn't figure out how to open a $mime file: no default handler, and not sure if vim can open $mime" >&2
+          exit 1
+        else
+          log "$file not handled by a vim app, and not a mimetype we think we can open ($mime). Falling back to default handler ($file_handler)."
+          exec open "$file"
+        fi
+    esac
+    ;;
+esac
+
+# if called from iterm, pwd will be populated. if not, assume we are already in the right place
+if [[ -n "$pwd" ]]; then
+  cd "$pwd"
+fi
+
+log "$(pwd): ""$*" # log directory and arguments
+
+if [[ -f tmp/neovim.pid && -f tmp/neovim.servername ]]; then
+  pid=$(< tmp/neovim.pid)
+  servername=$(< tmp/neovim.servername)
+
+  log "pid=$pid"
+  log "servername=$servername"
+  nvr_args=(
+    --servername "$servername"
+    --remote "$file"
+  )
+
+log "$ nvr ${nvr_args[*]}"
+
+  if [[ -n "$line" ]]; then
+    nvr_args+=("+$line")
+  fi
+  nvr  "${nvr_args[@]}"
+
+  neovide_pids=$(pgrep neovide)
+  log "neovide pids: $neovide_pids"
+  current_neovide_pid=
+  for neovide_pid in $neovide_pids; do 
+    # https://unix.stackexchange.com/a/614548/353948
+    lsof_args=(
+      #  Tell lsof to join using AND instead of OR for the -p and -d options below
+      -a
+      # pid to use
+      -p "$neovide_pid"
+      # only the 'cwd' file descriptor
+      -d cwd
+      # fields to output (file name, comment, Internet address in this case)
+      -F n
+    )
+    neovide_pwd=$(
+      lsof "${lsof_args[@]}" | tail -1 | cut -c2-
+    )
+    log "$neovide_pid: $neovide_pwd"
+    if [[ "$neovide_pwd" == "$PWD" ]]; then
+      current_neovide_pid=$neovide_pid
+      log "Found neovide $pid"
+      break
+    fi
+  done
+
+
+  if [[ -n "$current_neovide_pid" ]]; then
+    export neovide_pid # export so we can use it from system attribute below
+    osascript <<- "EOF"
+      set neovide_pid to system attribute "neovide_pid"
+
+      tell application "System Events"
+        set frontmost of every process whose unix id is neovide_pid to true
+      end tell
+EOF
+  fi
+else
+  log "No existing neovim running already"
+fi

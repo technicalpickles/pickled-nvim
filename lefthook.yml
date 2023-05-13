@@ -1,0 +1,14 @@
+pre-commit:
+  parallel: true
+  commands:
+    stylua:
+      glob: "*.lua"
+      run: stylua {staged_files}
+      stage_fixed: true
+    shellcheck:
+      glob: "bin/neovim-iterm-semantic-history"
+      run: shellcheck --severity=warning --color=always {staged_files}
+      stage_fixed: true
+    yamllint:
+      glob: "{*.yaml,*.yml,.yamllint}"
+      run: yamllint --strict --format colored {staged_files}

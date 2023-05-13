@@ -1,6 +1,8 @@
 # pickled-nvim
 
-forked from [quick.nvim](https://github.com/albingroen/quick.nvim), with heavy modifications :grin:
+forked from [quick.nvim](https://github.com/albingroen/quick.nvim) originally... now with heavy modifications :grin:
+
+see `:h pickled-nvim` for quick reference of plugins, keymaps, etc
 
 ## Features
 
@@ -37,74 +39,11 @@ Text objects:
 
 [text object examples](https://github.com/andymass/vim-matchup#line-wise-operatortext-object-combinations)
 
-### Textobjects
-
-_powered by nvim-treesitter-textobjects and nvim-treesitter-textsubjects__
-
-Method/function Arguments/paremeters:
-
-- `<leader>a`
-- `<leader>A`
-
-
-While in visual mode:
-
-- `.`: Depending on your location it may select comments, function calls/definitions, loops, if statements, arguments, return values.
-- `;`: Depending on your location it may select classes, structs, functions, methods.
-- `i;`: Depending on your location it may select inside classes, structs, functions, methods.
-- `,`: go back to previous selection
-
-
-### Bracket keymapings 
-
-_powered by vim-unimpaired_ 
-
-Convenience aliases for Ex commands
-- `]q`: `:cnext`, ie jump to next item in quickfix
-- `[q`: `:cprevious`, ie jump to previous item in quickfix
-- `]a` `:next`, ie edit next file 
-- `[a` `:previous` ie edit previous file
-- `]A`
-
-
-- `[A`     |:first|
-- `]A`     |:last|
-
-- `[b` is :bprevious. See the documentation for the full set of 20 mappings and mnemonics. All of them take a count.
-
-Line-wise mappings:
-- `[&lt;Spaces&gt;` and `]&lt;Space&gt;`: add newlines before and after the cursor line
-- `[e` and `]e`: exchange the current line with the one above or below it.
-
-
-Option toggling:
-`[os`, `]os`, and `yos`:  `:set spell`, `:set nospell`, and `:set invspell`, respectively
-. There's also l (list), n (number), w (wrap), x (cursorline cursorcolumn), and several others, plus mappings to help alleviate the set paste dance. Consult the documentation.
-
-
-Encoding and decoding:
-- `[x` and `]x`: encode and decode XML (and HTML)
-- `[u` and `]u`: encode and decode URLs
-- `[y` and `]y`: C String style escaping.
-
-
-Misc:
-- `[f` and `]f`: the next/previous file in the directory
-- `[n` and `]n`: jump between SCM conflict markers.
 
 ### Misc:
 
 * `ga`: show info about the character under cursor as decimal, octal, and hex (_powered by vim-characterize_)
 
-
-### Copilot
-
-`<C-]>`: Dismiss the current suggestion.
-
-`<M-]>`: Cycle to the next suggestion, if one is available.
-<Plug>(copilot-next)
-
-`<M-[>`: Cycle to the previous suggestion.
 
 ### Auto-closing
 

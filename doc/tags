@@ -9,6 +9,8 @@ pickled-nvim-matchup	pickled-vim.txt	/*pickled-nvim-matchup*
 pickled-nvim-multiple-cursors	pickled-vim.txt	/*pickled-nvim-multiple-cursors*
 pickled-nvim-symbols-outline	pickled-vim.txt	/*pickled-nvim-symbols-outline*
 pickled-nvim-tables	pickled-vim.txt	/*pickled-nvim-tables*
+pickled-nvim-textsubjects	pickled-vim.txt	/*pickled-nvim-textsubjects*
 pickled-nvim-tree	pickled-vim.txt	/*pickled-nvim-tree*
 pickled-nvim-tree-keybindings	pickled-vim.txt	/*pickled-nvim-tree-keybindings*
+pickled-nvim-unimpaired	pickled-vim.txt	/*pickled-nvim-unimpaired*
 picklednvim-lsp-keybindings	pickled-vim.txt	/*picklednvim-lsp-keybindings*
