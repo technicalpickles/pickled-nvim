@@ -22,13 +22,21 @@ return {
 				highlight_opened_files = "icon",
 			},
 
-			view = {
-				mappings = {
-					list = {
-						{ key = { "?" }, action = "toggle_help" },
-					},
-				},
-			},
+			on_attach = function(bufnr)
+				local api = require("nvim-tree.api")
+				local function opts(desc)
+					return {
+						desc = "nvim-tree: " .. desc,
+						buffer = bufnr,
+						noremap = true,
+						silent = true,
+						nowait = true,
+					}
+				end
+				api.config.mappings.default_on_attach(bufnr)
+
+				vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
+			end,
 		},
 
 		cmd = "NvimTreeToggle",
