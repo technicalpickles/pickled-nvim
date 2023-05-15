@@ -33,7 +33,7 @@ The default configuration declares the following keybindings.
       Scroll up in the item's documentation.
 
   <Ctrl-f>:  
-      Scroll down in the item's documentation.
+ 
 
   <Ctrl-e>:  
       Toggles the completion.
@@ -52,6 +52,32 @@ The default configuration declares the following keybindings.
       When the completion menu is visible navigate to the previous
       item in the list.
 
+==============================================================================
+Folds
+
+Powered by |ufo|
+
+
+  zc:
+      Close fold on current line
+  zo:
+      Open fold on current line
+  
+  za:
+      Toggle fold on current line
+
+  K:
+      "Peek" into the fold on the current line
+
+  zR:
+      Open all folds (*R*educe the number of folded)
+
+  zM:
+      Close all Folds
+
+
+Folds can also be opened by using (some) motions to navigate right (ie: `k` or
+`$`)
 
 ==============================================================================
 LSP                                                     *pickled-nvim-lsp-config*
@@ -101,7 +127,8 @@ so you can get more details using the `:help` command.
       Selects a code action available at the current cursor position.
       See |vim.lsp.buf.code_action()|.
 
-                                             *pickled-nvim-diagnostic-keybindings*
+==============================================================================
+Diagnostics                                  *pickled-nvim-diagnostic-keybindings*
 
   gl:  
       Show diagnostic in a floating window. See |vim.diagnostic.open_float()|.
@@ -114,8 +141,7 @@ so you can get more details using the `:help` command.
       Move to the next diagnostic. See |vim.diagnostic.goto_next()|.
 
 ==============================================================================
-Symbols Outline
-*pickled-nvim-symbols-outline*
+Symbols Outline                             *pickled-nvim-symbols-outline*
 
 Powered by |symbols-outline|
 
