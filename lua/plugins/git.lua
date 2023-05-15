@@ -2,7 +2,8 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
-			linehl = true,
+			linehl = false,
+			numhl = true,
 			current_line_blame = true,
 			sign_priority = require("pickled-nvim").sign_priorities.git,
 		},
