@@ -1,5 +1,6 @@
-local vault = require("pickled-nvim").find_obsidian_vault()
-local enabled = require("pickled-nvim").in_obsidian_vault()
+-- local vault = require("pickled-nvim").find_obsidian_vault()
+-- local enabled = require("pickled-nvim").in_obsidian_vault()
+local enabled = false
 
 return {
 	{
