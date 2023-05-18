@@ -19,6 +19,7 @@
   "editorconfig.nvim": { "branch": "master", "commit": "5b9e303e1d6f7abfe616ce4cc8d3fffc554790bf" },
   "gitsigns.nvim": { "branch": "main", "commit": "814158f6c4b1724c039fcefe79b0be72c9131c2d" },
   "gui-font-resize.nvim": { "branch": "main", "commit": "ece6e5dfdb3caf7567681dbea80a37d838f60447" },
+  "hbac.nvim": { "branch": "main", "commit": "a004f2b695c7e77ed6cb9365e99f9b57fa40b528" },
   "indent-blankline.nvim": { "branch": "master", "commit": "018bd04d80c9a73d399c1061fa0c3b14a7614399" },
   "laserwave.vim": { "branch": "master", "commit": "123afe49bf9cd9589788cbb600d0f08aa4fb48d4" },
   "lazy.nvim": { "branch": "main", "commit": "652b6febf8d5c99eb8cf4a1cec63da6db62e77d2" },

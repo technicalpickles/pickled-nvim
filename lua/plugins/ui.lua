@@ -241,6 +241,19 @@ return {
 				},
 			}
 
+			local hbac_pinned = {
+				function()
+					local cur_buf = vim.api.nvim_get_current_buf()
+					return require("hbac.state").is_pinned(cur_buf) and "󰐃" or ""
+					-- tip: nerd fonts have pinned/unpinned icons!
+				end,
+				color = { fg = "#ef5f6b", gui = "bold" },
+			}
+
+			local function relative_filename()
+				return vim.fn.expand("%:~:.")
+			end
+
 			require("lualine").setup({
 				options = {
 					theme = "auto",
@@ -262,7 +275,7 @@ return {
 				sections = {
 					lualine_a = { "mode" },
 					lualine_b = { "branch", "diagnostics" },
-					lualine_c = { "filename" },
+					lualine_c = { relative_filename, hbac_pinned },
 					lualine_x = { "filetype" },
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
@@ -270,7 +283,7 @@ return {
 				inactive_sections = {
 					lualine_a = {},
 					lualine_b = {},
-					lualine_c = { "filename" },
+					lualine_c = { relative_filename, hbac_pinned },
 					lualine_x = { "location" },
 					lualine_y = {},
 					lualine_z = {},
