@@ -11,12 +11,12 @@ return {
 			{ "<leader>c", "<CMD>Telescope command_center<CR>", silent_noremap_both_modes },
 			{
 				"<D-f>",
-				"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+				"<cmd>Telescope live_grep_args theme=dropdown<CR>",
 				silent_noremap_both_modes,
 			},
 			{
 				"<D-S-f>",
-				"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+				"<cmd>Telescope live_grep_args theme=dropdown<CR>",
 				silent_noremap_both_modes,
 			},
 			{
@@ -71,12 +71,12 @@ return {
 			pickers = {
 				command_center = {},
 				find_files = {
-					-- theme = "dropdown",
+					theme = "dropdown",
 					-- customize by adding --hidden, so we can get files that start with . which turns out to be a lot
 					find_command = { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" },
 				},
 				git_files = {
-					-- theme = "dropdown",
+					theme = "dropdown",
 				},
 				frecency = {},
 
@@ -84,6 +84,7 @@ return {
 					theme = "ivy",
 				},
 				live_grep_args = {
+					theme = "dropdown",
 					layout_config = {
 						-- (almost) full screen
 						height = 0.99,
@@ -91,11 +92,12 @@ return {
 					},
 				},
 				live_grep = {
-					layout_config = {
-						-- (almost) full screen
-						height = 0.99,
-						width = 0.99,
-					},
+					theme = "dropdown",
+					-- layout_config = {
+					-- 	-- (almost) full screen
+					-- 	height = 0.99,
+					-- 	width = 0.99,
+					-- },
 				},
 			},
 		},
