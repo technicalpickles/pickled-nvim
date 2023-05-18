@@ -176,6 +176,9 @@ return {
 				-- so assign default register to system clipboard
 				{ desc = "Buffer: Close All", cmd = "<CMD>:bufdo bdelete<CR>" },
 				{ desc = "Buffer: Close Other", cmd = "<CMD>%bd|e#|bd#<CR>" },
+				{ desc = "Buffer: Toggle Pin", cmd = "<CMD>Hbac toggle_pin<CR>" },
+				{ desc = "Buffer: Close Unpinned", cmd = "<CMD>Hbac close_unpinned<CR>" },
+				{ desc = "Buffer: Toggle Autoclose", cmd = "<CMD>Hbac toggle_autoclose<CR>" },
 
 				{ desc = "Copy Default Register to System Clipboard", cmd = "<CMD>let @+=@" },
 				{ desc = "Copy Relative Filename", cmd = '<CMD>let @" = expand("%")"<CR>' },
