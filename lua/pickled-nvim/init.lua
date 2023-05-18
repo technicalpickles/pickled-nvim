@@ -129,4 +129,35 @@ function M.setup()
 	-- require("pickled-nvim.servername").save_servername()
 end
 
+-- borrowed from lspconfig-bundler
+
+function M.gemlock_contains(gem)
+	local lspconfig = require("lspconfig")
+	local path_util = lspconfig.util.path
+
+	if vim.fn.filereadable("Gemfile.lock") ~= 1 then
+		return
+	end
+
+	-- find Gemfile.lock in project
+	local current = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+	if #current == 0 then
+		current = vim.fn.getcwd()
+	end
+	local root_dir = lspconfig.util.root_pattern("Gemfile.lock")(path_util.sanitize(current))
+	if not root_dir then
+		return
+	end
+
+	local path = path_util.sanitize(path_util.join(root_dir, "Gemfile.lock"))
+	local gem_line = " " .. gem .. " ("
+
+	for line in io.lines(path) do
+		if string.find(line, gem_line, 1, true) then
+			return true
+		end
+	end
+	return false
+end
+
 return M
