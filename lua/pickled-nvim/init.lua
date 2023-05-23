@@ -172,4 +172,11 @@ function M.gemlock_contains(gem)
 	return false
 end
 
+function M.title()
+	local home = vim.fn.expand("$HOME")
+	local cwd = vim.fn.expand("%:p:h")
+	local cwd_short = string.gsub(cwd, home, "~")
+	return cwd_short .. " " .. vim.fn.expand("%t")
+end
+
 return M
