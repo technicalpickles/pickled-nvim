@@ -203,6 +203,38 @@ return {
 		event = "VeryLazy",
 	},
 
+	-- statuscol
+	{
+		"luukvbaal/statuscol.nvim",
+		config = function()
+			local builtin = require("statuscol.builtin")
+
+			require("statuscol").setup({
+				setopt = true,
+				relculright = true,
+				segments = {
+					{ text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
+					{
+						-- TODO figure out how to filter out git
+						text = { "%s" },
+						click = "v:lua.ScSa",
+					},
+					{ text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+					-- {
+					-- 	sign = {
+					-- 		name = { "GitSigns" },
+					-- 		maxwidth = 1,
+					-- 		colwidth = 1,
+					-- 		auto = false,
+					-- 	},
+					-- 	click = "v:lua.ScSa",
+					-- },
+				},
+				ft_ignore = require("pickled-nvim").filetype_config.statuscol.ignore,
+			})
+		end,
+	},
+
 	-- statusline
 	{
 		"nvim-lualine/lualine.nvim",
@@ -251,13 +283,25 @@ return {
 			}
 
 			local function relative_filename()
-				return vim.fn.expand("%:~:.")
+				local buffer_path = vim.fn.expand("%:p")
+				local cwd = vim.fn.getcwd()
+
+				-- Check if buffer_path starts with cwd
+				if string.find(buffer_path, cwd, 1, true) == 1 then
+					-- Remove cwd from buffer_path
+					local relative_path = string.sub(buffer_path, #cwd + 2) -- +2 to remove trailing slash
+
+					return relative_path
+				end
+
+				-- Return the full path if buffer is outside the cwd
+				return buffer_path
 			end
 
 			require("lualine").setup({
 				options = {
 					theme = "auto",
-					globalstatus = true,
+					globalstatus = false,
 					disabled_filetypes = require("pickled-nvim").filetype_config.disabled,
 				},
 				extensions = {
