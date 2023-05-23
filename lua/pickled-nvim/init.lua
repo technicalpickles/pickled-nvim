@@ -83,7 +83,19 @@ M.filetype_config = {
 		},
 	},
 	statuscol = {
-		ignore = nil,
+		ignore = {
+			"help",
+			"vim",
+			"alpha",
+			"dashboard",
+			"neo-tree",
+			"NvimTree",
+			"Trouble",
+			"noice",
+			"lazy",
+			"toggleterm",
+			"Outline",
+		},
 	},
 }
 
