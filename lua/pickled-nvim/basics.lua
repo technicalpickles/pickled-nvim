@@ -35,14 +35,13 @@ o.scrolloff = 5
 -- show title
 o.title = true
 
-function Custom_Title()
+function custom_title()
 	local home = vim.fn.expand("$HOME")
-	local cwd = vim.fn.expand("%:p:h")
-	local cwd_short = string.gsub(cwd, home, "~")
-	return cwd_short .. " " .. vim.fn.expand("%t")
+	local cwd = vim.fn.getcwd()
+	return string.gsub(cwd, home, "~")
 end
 
-o.titlestring = "%{v:lua.Custom_Title()}"
+o.titlestring = "%{v:lua.custom_title()}"
 
 -- FIXME something is overriding this
 o.showtabline = 1
