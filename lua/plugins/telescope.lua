@@ -316,6 +316,11 @@ return {
 
 				{ desc = "Copilot: Status", cmd = "<CMD>Copilot<CR>" },
 				{ desc = "Copilot: Show Solutions", cmd = "<CMD>Copilot<CR>" },
+
+				{
+					desc = "Line Number: Toggle Relative",
+					cmd = "<CMD>lua require('pickled-nvim').toggle_relative_numbers()<CR>",
+				},
 			})
 		end,
 	},

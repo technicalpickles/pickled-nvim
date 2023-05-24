@@ -179,4 +179,12 @@ function M.title()
 	return cwd_short .. " " .. vim.fn.expand("%t")
 end
 
+function M.toggle_relative_numbers()
+	if vim.wo.relativenumber then
+		vim.wo.relativenumber = false
+	else
+		vim.wo.relativenumber = true
+	end
+end
+
 return M
