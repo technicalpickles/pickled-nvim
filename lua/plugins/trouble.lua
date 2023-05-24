@@ -39,6 +39,28 @@ return {
 			-- ⌘-shift-m - toggle quickfix (aka problems)
 			{ "<S-D-M>", "<cmd>TroubleToggle<CR>", silent = true },
 			{ "<leader>M", "<cmd>TroubleToggle<CR>", silent = true },
+			{
+				"[,",
+				function()
+					if require("trouble").is_open() then
+						require("trouble").previous({ skip_groups = true, jump = true })
+					else
+						vim.diagnostic.goto_prev()
+					end
+				end,
+				desc = "Previous trouble",
+			},
+			{
+				"],",
+				function()
+					if require("trouble").is_open() then
+						require("trouble").next({ skip_groups = true, jump = true })
+					else
+						vim.diagnostic.goto_next()
+					end
+				end,
+				desc = "Next trouble",
+			},
 		},
 	},
 }
