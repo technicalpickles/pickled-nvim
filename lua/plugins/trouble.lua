@@ -6,6 +6,7 @@ return {
 		-- FIXME explicitly setting up in pickled-nvim.diagnostics's setup
 		cmd = { "TroubleToggle", "Trouble" },
 		opts = {
+			use_diagnostic_signs = true,
 			mode = "document_diagnostics",
 
 			action_keys = {
