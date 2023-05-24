@@ -213,22 +213,38 @@ return {
 				setopt = true,
 				relculright = true,
 				segments = {
-					{ text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
 					{
-						-- TODO figure out how to filter out git
-						text = { "%s" },
+						text = { builtin.lnumfunc, " " },
+						click = "v:lua.ScLa",
+					},
+					{
+						sign = {
+							-- update this with anything that isn't GitSigns
+							name = {
+								"Dap",
+								"neotest",
+								"Diagnostic", -- trouble
+								"Mark",
+							},
+							maxwidth = 1,
+							colwidth = 2,
+							auto = true,
+						},
 						click = "v:lua.ScSa",
 					},
-					{ text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
-					-- {
-					-- 	sign = {
-					-- 		name = { "GitSigns" },
-					-- 		maxwidth = 1,
-					-- 		colwidth = 1,
-					-- 		auto = false,
-					-- 	},
-					-- 	click = "v:lua.ScSa",
-					-- },
+					{
+						sign = {
+							name = { "GitSigns" },
+							maxwidth = 1,
+							colwidth = 1,
+							auto = false,
+						},
+						click = "v:lua.ScSa",
+					},
+					{
+						text = { builtin.foldfunc, " " },
+						click = "v:lua.ScFa",
+					},
 				},
 				ft_ignore = require("pickled-nvim").filetype_config.statuscol.ignore,
 			})
@@ -318,19 +334,43 @@ return {
 				},
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = { "branch", "diagnostics" },
-					lualine_c = { relative_filename, hbac_pinned },
-					lualine_x = { "filetype" },
+					lualine_b = { "branch" },
+					lualine_c = { "diagnostics" },
+					lualine_x = {},
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
 				},
 				inactive_sections = {
 					lualine_a = {},
 					lualine_b = {},
-					lualine_c = { relative_filename, hbac_pinned },
+					lualine_c = {},
 					lualine_x = { "location" },
 					lualine_y = {},
 					lualine_z = {},
+				},
+
+				winbar = {
+					lualine_a = {
+						{ "filetype", icon_only = true },
+					},
+					lualine_b = {},
+					lualine_c = {
+						{ relative_filename, align = "center" },
+					},
+					lualine_x = {},
+					lualine_y = {},
+					lualine_z = { hbac_pinned },
+				},
+
+				inactive_winbar = {
+					lualine_a = {
+						{ "filetype", icon_only = true },
+					},
+					lualine_b = {},
+					lualine_c = { { relative_filename, align = "center" } },
+					lualine_x = {},
+					lualine_y = {},
+					lualine_z = { hbac_pinned },
 				},
 			})
 		end,
