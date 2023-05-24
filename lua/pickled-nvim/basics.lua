@@ -52,8 +52,7 @@ o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 g.mapleader = " "
 
-o.signcolumn = "yes:1"
--- o.signcolumn = "auto:2"
+-- don't use o.signcolumn, as we'll use statuscol to manage it
 
 -- for nvim-ufo
 o.foldcolumn = "1"
