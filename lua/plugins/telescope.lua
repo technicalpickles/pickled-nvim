@@ -9,28 +9,12 @@ return {
 		keys = {
 			{ "<D-S-p>", "<cmd>Telescope command_center<CR>", silent_noremap_both_modes },
 			{ "<leader>c", "<CMD>Telescope command_center<CR>", silent_noremap_both_modes },
-			{
-				"<D-f>",
-				"<cmd>Telescope live_grep_args theme=dropdown<CR>",
-				silent_noremap_both_modes,
-			},
-			{
-				"<D-S-f>",
-				"<cmd>Telescope live_grep_args theme=dropdown<CR>",
-				silent_noremap_both_modes,
-			},
-			{
-				"<leader>b",
-				"<cmd>Telescope buffers sort_lastused=true sort_mru=true ignore_current_buffer=true<CR>",
-				silent_noremap_both_modes,
-			},
+			{ "<D-f>", "<cmd>Telescope live_grep_args<CR>", silent_noremap_both_modes },
+			{ "<D-S-f>", "<cmd>Telescope live_grep_args<CR>", silent_noremap_both_modes },
+			{ "<leader>b", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes },
 			{ "<leader>m", "<cmd>Telescope marks<CR>", silent_noremap_both_modes },
 
-			{
-				"<D-k>",
-				"<cmd>Telescope buffers sort_lastused=true sort_mru=true ignore_current_buffer=true<CR>",
-				silent_noremap_both_modes,
-			},
+			{ "<D-k>", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes },
 
 			{ "<D-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap_both_modes },
 			{ "<C-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap_both_modes },
@@ -39,6 +23,7 @@ return {
 		},
 		opts = {
 			defaults = {
+				theme = "dropdown",
 				prompt_prefix = "  ",
 				layout_strategy = "horizontal",
 				layout_config = {},
@@ -69,30 +54,24 @@ return {
 				live_grep_args = {},
 			},
 			pickers = {
+				buffers = {
+					sort_lastused = true,
+					sort_mru = true,
+					ignore_current_buffer = true,
+				},
 				command_center = {},
 				find_files = {
-					theme = "dropdown",
 					-- customize by adding --hidden, so we can get files that start with . which turns out to be a lot
 					find_command = { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" },
 				},
-				git_files = {
-					theme = "dropdown",
-				},
+				git_files = {},
 				frecency = {},
 
 				notify = {
 					theme = "ivy",
 				},
-				live_grep_args = {
-					theme = "dropdown",
-					layout_config = {
-						-- (almost) full screen
-						height = 0.99,
-						width = 0.99,
-					},
-				},
+				live_grep_args = {},
 				live_grep = {
-					theme = "dropdown",
 					-- layout_config = {
 					-- 	-- (almost) full screen
 					-- 	height = 0.99,
