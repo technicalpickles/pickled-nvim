@@ -13,6 +13,7 @@ return {
 		-- not really a dependency, but want it to be available by the time we toggle things
 		dependencies = { "nvim-pqf" },
 		keys = {
+			{ "<D-j>", "<Plug>(qf_qf_toggle)", silent_noremap },
 			{ "<leader>qq", "<Plug>(qf_qf_toggle)", silent_noremap },
 			{ "<leader>qn", "<Plug>(qf_qf_next)", silent_noremap },
 			{ "<leader>qp", "<Plug>(qf_qf_previous)", silent_noremap },

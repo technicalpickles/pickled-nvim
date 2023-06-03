@@ -14,8 +14,6 @@ return {
 			{ "<leader>b", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes },
 			{ "<leader>m", "<cmd>Telescope marks<CR>", silent_noremap_both_modes },
 
-			{ "<D-k>", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes },
-
 			{ "<D-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap_both_modes },
 			{ "<C-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap_both_modes },
 

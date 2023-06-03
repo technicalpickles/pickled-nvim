@@ -5,6 +5,10 @@ return {
 		ft = "markdown",
 		dependencies = { "godlygeek/tabular" },
 		config = function()
+			if vim.g.vscode then
+				vim.g.vim_markdown_conceal = 0
+			end
+
 			--{ markdown  }--
 			g.vim_markdown_edit_url_in = "current"
 			g.vim_markdown_strikethrough = 1
