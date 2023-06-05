@@ -5,6 +5,11 @@ return {
 		"axkirillov/hbac.nvim",
 		opts = {
 			threshold = 20,
+			telescope = {
+				pin_icons = {
+					unpinned = { "" },
+				},
+			},
 		},
 		cmd = "Hbac",
 		event = "VeryLazy",
