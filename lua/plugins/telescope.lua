@@ -235,10 +235,12 @@ return {
 				{ desc = "BufferLine: Pick", cmd = "<CMD>BufferLinePick<CR>", keys = { "n", "gb", silent_noremap } },
 				{ desc = "BufferLine: Pick to Close", cmd = "<CMD>BufferLinePickClose<CR>" },
 
-				{ desc = "Git: Toggle Diff Preference", cmd = "<CMD>VGit toggle_diff_preference<CR>" },
-				{ desc = "Git: Toggle Gutter", cmd = "<CMD>VGit toggle_live_gutter<CR>" },
-				{ desc = "Git: Toggle Blame", cmd = "<CMD>VGit toggle_live_blame<CR>" },
-				{ desc = "Git: Toggle Authorship Code Lens", cmd = "<CMD>VGit toggle_authorship_code_lens<CR>" },
+				{ desc = "Git: Toggle Gutter", cmd = "<CMD>Gitsigns toggle_signs<CR>" },
+				{ desc = "Git: Toggle Signs", cmd = "<CMD>Gitsigns toggle_numhl<CR>" },
+				{ desc = "Git: Toggle Line Number Highlights", cmd = "<CMD>Gitsigns toggle_numhl<CR>" },
+				{ desc = "Git: Toggle Line Text Highlights", cmd = "<CMD>Gitsigns toggle_linehl<CR>" },
+				{ desc = "Git: Toggle Line Blame", cmd = "<CMD>Gitsigns toggle_current_line_blame<CR>" },
+				{ desc = "Git: Toggle Word Diff", cmd = "<CMD>Gitsigns toggle_word_diff<CR>" },
 
 				-- { desc = "GitHub: Copy Permalink", cmd = "<leader>gy" },
 				{ desc = "GitHub: Open in Browser", cmd = "<CMD>GBrowse<CR>" },

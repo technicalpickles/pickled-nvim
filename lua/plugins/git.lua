@@ -4,7 +4,10 @@ return {
 		opts = {
 			linehl = false,
 			numhl = true,
-			current_line_blame = true,
+			current_line_blame = false,
+			current_line_blame_opts = {
+				virt_text_pos = "right_align",
+			},
 			sign_priority = require("pickled-nvim").sign_priorities.git,
 		},
 		event = "VeryLazy",
