@@ -21,6 +21,7 @@
   "gui-font-resize.nvim": { "branch": "main", "commit": "ece6e5dfdb3caf7567681dbea80a37d838f60447" },
   "hbac.nvim": { "branch": "main", "commit": "ef323b57af1bbd01865f1601a92947111ce2e0ba" },
   "indent-blankline.nvim": { "branch": "master", "commit": "7075d7861f7a6bbf0de0298c83f8a13195e6ec01" },
+  "jfind.nvim": { "branch": "main", "commit": "9ddbbaad343d05461eab5c973a0933a602540ca2" },
   "laserwave.vim": { "branch": "master", "commit": "123afe49bf9cd9589788cbb600d0f08aa4fb48d4" },
   "lazy.nvim": { "branch": "main", "commit": "e6bf3a0d9c4899dcf832270f79bb1cee8fbc506e" },
   "leap.nvim": { "branch": "main", "commit": "14b5a65190fe69388a8f59c695ed3394a10d6af8" },

@@ -14,9 +14,6 @@ return {
 			{ "<leader>b", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes },
 			{ "<leader>m", "<cmd>Telescope marks<CR>", silent_noremap_both_modes },
 
-			{ "<D-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap_both_modes },
-			{ "<C-p>", "<cmd>" .. file_picker .. "<CR>", silent_noremap_both_modes },
-
 			{ "<D-g>", "<cmd>Telescope git_files<CR>", silent_noremap_both_modes },
 		},
 		opts = {
@@ -300,5 +297,16 @@ return {
 				},
 			})
 		end,
+	},
+
+	-- not techncally telescope, but close
+	{
+		"jake-stewart/jfind.nvim",
+		opts = {
+			key = "<D-p>",
+		},
+		keys = {
+			{ "<D-p>" },
+		},
 	},
 }
