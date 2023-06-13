@@ -8,6 +8,7 @@ return {
 			telescope = {
 				pin_icons = {
 					unpinned = { "" },
+					pinned = { "󰐃", hl = "DiagnosticError" },
 				},
 			},
 		},

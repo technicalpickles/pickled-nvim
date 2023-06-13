@@ -291,7 +291,7 @@ return {
 			local hbac_pinned = {
 				function()
 					local cur_buf = vim.api.nvim_get_current_buf()
-					return require("hbac.state").is_pinned(cur_buf) and "󰐃" or ""
+					return require("hbac.state").is_pinned(cur_buf) and "󰐃" or "󰤱"
 					-- tip: nerd fonts have pinned/unpinned icons!
 				end,
 				color = { fg = "#ef5f6b", gui = "bold" },
