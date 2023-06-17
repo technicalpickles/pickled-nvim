@@ -20,7 +20,7 @@ return {
 			{ "hrsh7th/cmp-nvim-lua" },
 			{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 			{ "mtoohey31/cmp-fish" },
-			-- {'zbirenbaum/copilot-cmp'},
+			{ "zbirenbaum/copilot-cmp" },
 
 			-- nice icons
 			{ "onsails/lspkind.nvim" },
@@ -49,7 +49,7 @@ return {
 
 			local cmp_sources = {
 				-- This one provides the data from copilot.
-				-- {name = 'copilot'},
+				{ name = "copilot" },
 
 				{ name = "nvim_lsp_signature_help" },
 				{ name = "fish", keyword_length = 2 },
@@ -61,6 +61,7 @@ return {
 				{ name = "luasnip", keyword_length = 2 },
 			}
 
+			-- https://github.com/zbirenbaum/copilot-cmp#tab-completion-configuration-highly-recommended
 			local has_words_before = function()
 				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 				return col ~= 0
@@ -80,6 +81,7 @@ return {
 
 				-- super tab like behavior w/ luasnip
 				-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
+				-- https://github.com/zbirenbaum/copilot-cmp#tab-completion-configuration-highly-recommended
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
@@ -187,7 +189,7 @@ return {
 						maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 						ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 						symbol_map = {
-							Copilot = "",
+							Copilot = "󱜙",
 						},
 						-- The function below will be called before any actual modifications from lspkind
 						-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))

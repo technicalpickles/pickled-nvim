@@ -304,9 +304,13 @@ return {
 	-- not techncally telescope, but close
 	{
 		"jake-stewart/jfind.nvim",
-		opts = {
-			key = "<D-p>",
-		},
+		branch = "1.0",
+		config = function()
+			local jfind = require("jfind")
+			-- local key = require("jfind.key")
+			jfind.setup()
+			vim.keymap.set("n", "<D-p>", jfind.findFile)
+		end,
 		keys = {
 			{ "<D-p>" },
 		},
