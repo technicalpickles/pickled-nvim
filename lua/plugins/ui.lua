@@ -177,9 +177,6 @@ return {
 
 	{
 		"folke/noice.nvim",
-		-- https://github.com/neovide/neovide/issues/1751
-		-- https://github.com/folke/noice.nvim/issues/17
-		enabled = false,
 		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
 		opts = {
 			lsp = {
