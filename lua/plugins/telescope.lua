@@ -1,5 +1,3 @@
-local file_picker = "Telescope frecency"
--- local file_picker = "lua file_picker()"
 local silent_noremap = { noremap = true, silent = true }
 local silent_noremap_both_modes = vim.tbl_deep_extend("keep", silent_noremap, { mode = { "n", "i" } })
 return {
@@ -34,12 +32,6 @@ return {
 				},
 			},
 			extensions = {
-				frecency = {
-					default_workspace = "CWD",
-					show_filter_column = false,
-					show_unindexed = false,
-					ignore_patterns = { "*.git/*", "*/tmp/*", "node_modules/*" },
-				},
 				rooter = {
 					enable = true,
 					patterns = { ".git" },
@@ -60,7 +52,6 @@ return {
 					find_command = { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" },
 				},
 				git_files = {},
-				frecency = {},
 
 				notify = {
 					theme = "ivy",
@@ -100,7 +91,6 @@ return {
 			telescope.load_extension("rooter")
 
 			-- add other extensions here to be available when autocompleting
-			telescope.load_extension("frecency")
 			telescope.load_extension("toggleterm")
 			telescope.load_extension("command_center")
 			telescope.load_extension("notify")
@@ -123,12 +113,6 @@ return {
 	-- keep telescope from changing directory when picking files
 	{
 		"desdic/telescope-rooter.nvim",
-		lazy = true,
-	},
-
-	{
-		"nvim-telescope/telescope-frecency.nvim",
-		dependencies = { "sqlite.lua" },
 		lazy = true,
 	},
 
