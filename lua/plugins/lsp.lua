@@ -163,9 +163,6 @@ return {
 					end,
 				})
 
-				if require("pickled-nvim").gemlock_contains("rubocop") then
-					lsp.configure("ruby_ls", { cmd = { "bundle", "exec", "ruby-lsp" } })
-				end
 				lsp.ensure_installed("ruby_ls")
 			else
 				lsp.skip_server_setup("ruby_ls")
