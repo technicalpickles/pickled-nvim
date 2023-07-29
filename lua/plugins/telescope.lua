@@ -5,10 +5,10 @@ return {
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "plenary.nvim" },
 		keys = {
-			{ "<D-S-p>", "<cmd>Telescope command_center<CR>", silent_noremap_both_modes },
+			{ "<D-P>", "<cmd>Telescope command_center<CR>", silent_noremap_both_modes },
 			{ "<leader>c", "<CMD>Telescope command_center<CR>", silent_noremap_both_modes },
 			{ "<D-f>", "<cmd>Telescope live_grep_args<CR>", silent_noremap_both_modes },
-			{ "<D-S-f>", "<cmd>Telescope live_grep_args<CR>", silent_noremap_both_modes },
+			{ "<D-F>", "<cmd>Telescope live_grep_args<CR>", silent_noremap_both_modes },
 			{ "<leader>b", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes },
 			{ "<leader>m", "<cmd>Telescope marks<CR>", silent_noremap_both_modes },
 
