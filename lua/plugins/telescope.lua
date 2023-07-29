@@ -86,7 +86,7 @@ return {
 			-- faster native picker & sorter implementations. zf seems the fastest
 			-- telescope.load_extension("fzf")
 			-- telescope.load_extension('fzy_native')
-			telescope.load_extension("zf-native")
+			-- telescope.load_extension("zf-native")
 
 			-- telescope.load_extension("rooter")
 
@@ -101,7 +101,7 @@ return {
 
 	-- faster native picker & sorter implementations. zf seems the fastest
 	-- {"romgrk/fzy-lua-native", build = "make", event = "CmdlineEnter" },
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+	-- { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
 	-- {
 	-- 	"nvim-telescope/telescope-fzy-native.nvim",
 	-- 	build = "make",
@@ -286,14 +286,25 @@ return {
 	{
 		"jake-stewart/jfind.nvim",
 		branch = "1.0",
-		config = function()
-			local jfind = require("jfind")
-			-- local key = require("jfind.key")
-			jfind.setup()
-			vim.keymap.set("n", "<D-p>", jfind.findFile)
-		end,
+		config = true,
 		keys = {
-			{ "<D-p>" },
+			{
+				"<D-p>",
+				function()
+					local jfind = require("jfind")
+					local key = require("jfind.key")
+
+					jfind.findFile({
+						preview = true,
+						callback = {
+							[key.DEFAULT] = vim.cmd.edit,
+							[key.CTRL_S] = vim.cmd.split,
+							[key.CTRL_X] = vim.cmd.split,
+							[key.CTRL_V] = vim.cmd.vsplit,
+						},
+					})
+				end,
+			},
 		},
 	},
 }
