@@ -19,11 +19,6 @@ return {
 				return math.floor(vim.o.columns * 0.75)
 			end,
 		},
-		config = function(_, opts)
-			local notify = require("notify")
-			notify.setup(opts)
-			vim.notify = notify
-		end,
 	},
 
 	{
@@ -185,6 +180,16 @@ return {
 					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 					["vim.lsp.util.stylize_markdown"] = true,
 					["cmp.entry.get_documentation"] = true,
+				},
+
+				signature = {
+					-- FIXME track down what else handles textDocument/signatureHelp
+					enabled = false,
+				},
+
+				hover = {
+					-- FIXME track dwon what else handles textDocument/hover
+					enabled = false,
 				},
 			},
 			-- you can enable a preset for easier configuration
