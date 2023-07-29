@@ -88,7 +88,7 @@ return {
 			-- telescope.load_extension('fzy_native')
 			telescope.load_extension("zf-native")
 
-			telescope.load_extension("rooter")
+			-- telescope.load_extension("rooter")
 
 			-- add other extensions here to be available when autocompleting
 			telescope.load_extension("toggleterm")
@@ -101,19 +101,19 @@ return {
 
 	-- faster native picker & sorter implementations. zf seems the fastest
 	-- {"romgrk/fzy-lua-native", build = "make", event = "CmdlineEnter" },
-	-- { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
 	-- {
 	-- 	"nvim-telescope/telescope-fzy-native.nvim",
 	-- 	build = "make",
 	-- 	dependencies = {"nvim-telescope/telescope-fzf-native.nvim"},
 	-- 	lazy = true,
 	-- },
-	{ "natecraddock/telescope-zf-native.nvim", lazy = true },
 
 	-- keep telescope from changing directory when picking files
 	{
 		"desdic/telescope-rooter.nvim",
 		lazy = true,
+		enabled = false,
 	},
 
 	{
@@ -153,9 +153,6 @@ return {
 				{ desc = "Fold All", cmd = "zM" },
 				{ desc = "Unfold", cmd = "zo" },
 				{ desc = "Unfold All", cmd = "zM" },
-
-				{ desc = "Packer: Install", cmd = "<CMD>so ~/.config/nvim/lua/plugins.lua<CR><CMD>PackerInstall<CR>" },
-				{ desc = "Packer: Update", cmd = "<CMD>so ~/.config/nvim/lua/plugins.lua<CR><CMD>PackerUpdate<CR>" },
 
 				{ desc = "Comment: Toggle", cmd = "gcc" },
 
