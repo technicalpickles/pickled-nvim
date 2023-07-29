@@ -1,3 +1,4 @@
+local silent_noremap = { noremap = true, silent = true }
 return {
 	{
 		"akinsho/bufferline.nvim",
@@ -64,6 +65,15 @@ return {
 			"BufferLineCyclePrev",
 			"BufferLineMoveNext",
 			"BufferLineMovePrev",
+		},
+		command_center = {
+			{ desc = "BufferLine: Toggle Pin", cmd = "<CMD>BufferLineTogglePin<CR>" },
+			{ desc = "BufferLine: Sort By Extension", cmd = "<CMD>BufferLineSortByExtension<CR>" },
+			{ desc = "BufferLine: Sort By Directory", cmd = "<CMD>BufferLineSortByDirectory<CR>" },
+			{ desc = "BufferLine: Sort By Tabs", cmd = "<CMD>BufferLineSortByTabs<CR>" },
+
+			{ desc = "BufferLine: Pick", cmd = "<CMD>BufferLinePick<CR>", keys = { "n", "gb", silent_noremap } },
+			{ desc = "BufferLine: Pick to Close", cmd = "<CMD>BufferLinePickClose<CR>" },
 		},
 	},
 }

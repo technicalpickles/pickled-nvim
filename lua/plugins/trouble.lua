@@ -62,5 +62,18 @@ return {
 				desc = "Next trouble",
 			},
 		},
+
+		command_center = {
+			{ desc = "Trouble: Toggle", cmd = "<CMD>Trouble<CR>" },
+			{ desc = "Trouble: Document Diagnostics", cmd = "<CMD>Trouble document_diagnostics<CR>" },
+			{ desc = "Trouble: Workspace Diagnostics", cmd = "<CMD>Trouble workspace_diagnostics<CR>" },
+
+			{ desc = "Trouble: LSP References", cmd = "<CMD>Trouble lsp_references<CR>" },
+			{ desc = "Trouble: LSP Definitions", cmd = "<CMD>Trouble lsp_definitions<CR>" },
+			{ desc = "Trouble: LSP Type Definitions", cmd = "<CMD>Trouble lsp_type_definitions<CR>" },
+
+			{ desc = "Trouble: Quickfix", cmd = "<CMD>Trouble quickfix<CR>" },
+			{ desc = "Trouble: Location List", cmd = "<CMD>Trouble loclist<CR>" },
+		},
 	},
 }

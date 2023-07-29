@@ -17,5 +17,10 @@ return {
 		opts = {
 			default_size = 16,
 		},
+		command_center = {
+			{ desc = "GUI Font Size: Increase", cmd = "<CMD>GUIFontSizeUp<CR>" },
+			{ desc = "GUI Font Size: Decrease", cmd = "<CMD>GUIFontSizeDown<CR>" },
+			{ desc = "GUI Font Size: Reset", cmd = "<CMD>GUIFontSizeSet<CR>" },
+		},
 	},
 }

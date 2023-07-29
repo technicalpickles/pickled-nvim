@@ -17,5 +17,10 @@ return {
 		keys = {
 			{ "<D-k>", "<cmd>Hbac telescope<CR>", silent_noremap_both_modes },
 		},
+		command_center = {
+			{ desc = "Buffer: Toggle Pin", cmd = "<CMD>Hbac toggle_pin<CR>" },
+			{ desc = "Buffer: Close Unpinned", cmd = "<CMD>Hbac close_unpinned<CR>" },
+			{ desc = "Buffer: Toggle Autoclose", cmd = "<CMD>Hbac toggle_autoclose<CR>" },
+		},
 	},
 }

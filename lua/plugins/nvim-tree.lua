@@ -46,5 +46,14 @@ return {
 			{ "<D-/>", tree_cmd, silent_noremap },
 			{ "<leader>d", tree_cmd, silent_noremap },
 		},
+
+		command_center = {
+			{ desc = "Tree: Toggle", cmd = "<CMD>NvimTreeToggle<CR>" },
+			{ desc = "Tree: Focus on current file", cmd = "<CMD>NvimTreeFindFile<CR>" },
+			{ desc = "Tree: Toggle focusing on current file", cmd = "<CMD>NvimTreeFindFileToggle<CR>" },
+
+			{ desc = "File: Toggle tree view", cmd = "<CMD>NvimTreeToggle<CR>" },
+			{ desc = "File: Reveal current file in tree view", cmd = "<CMD>NvimTreeFindFile<CR>" },
+		},
 	},
 }

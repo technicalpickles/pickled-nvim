@@ -17,6 +17,17 @@ return {
 		config = function(_, opts)
 			require("copilot").setup(opts)
 		end,
+
+		command_center = {
+			{ desc = "Copilot: Setup", cmd = "<CMD>Copilot setup<CR>" },
+			{ desc = "Copilot: Signout", cmd = "<CMD>Copilot signout<CR>" },
+			{ desc = "Copilot: Disable", cmd = "<CMD>Copilot disable<CR>" },
+			{ desc = "Copilot: Enable", cmd = "<CMD>Copilot enable<CR>" },
+			{ desc = "Copilot: Status", cmd = "<CMD>Copilot status<CR>" },
+			{ desc = "Copilot: Panel", cmd = "<CMD>Copilot panel<CR>" },
+			{ desc = "Copilot: Version", cmd = "<CMD>Copilot version<CR>" },
+			{ desc = "Copilot: Feedback", cmd = "<CMD>Copilot feedback<CR>" },
+		},
 	},
 
 	{

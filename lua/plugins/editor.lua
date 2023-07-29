@@ -6,6 +6,10 @@ return {
 		opts = {
 			sign_priority = require("pickled-nvim").sign_priorities.mark,
 		},
+		command_center = {
+			{ desc = "Marks: List in Current Buffer", cmd = "<CMD>MarksListBuf<CR>" },
+			{ desc = "Marks: List Globally", cmd = "<CMD>MarksListGlobal<CR>" },
+		},
 	},
 
 	{
@@ -29,6 +33,10 @@ return {
 		keys = {
 			{ "gS", "<CMD>TSJSplit<CR>" },
 			{ "gJ", "<CMD>TSJJoin<CR>" },
+		},
+		command_center = {
+			{ desc = "SplitJoin: Split", cmd = "<CMD>TSJSplit<CR>" },
+			{ desc = "SplitJoin: Join", cmd = "<CMD>TSJJoin<CR>" },
 		},
 	},
 
@@ -112,7 +120,10 @@ return {
 	{
 		"tpope/vim-commentary",
 		event = "BufRead",
-		-- TODO add keys
+		keys = { "gcc" },
+		command_center = {
+			{ desc = "Comment: Toggle", cmd = "gcc" },
+		},
 	},
 
 	-- make . work in more places
@@ -122,10 +133,26 @@ return {
 	},
 
 	{
-		"ggandor/leap.nvim",
-		event = "BufRead",
-		config = function()
-			require("leap").add_default_mappings()
-		end,
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		---@type Flash.Config
+		opts = {},
+		-- stylua: ignore
+		keys = {
+			{ "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+			{ "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+			{ "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+			{ "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+			{ "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+		},
+
+		command_center = {
+			{
+				desc = "Flash: Toggle",
+				cmd = function()
+					require("flash").toggle()
+				end,
+			},
+		},
 	},
 }

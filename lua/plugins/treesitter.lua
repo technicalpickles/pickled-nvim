@@ -70,6 +70,9 @@ return {
 	{
 		"nvim-treesitter/playground",
 		cmd = "TSPlaygroundToggle",
+		command_center = {
+			{ desc = "Treesitter: Toggle Playground", cmd = "<CMD>TSPlaygroundToggle<CR>" },
+		},
 	},
 
 	{

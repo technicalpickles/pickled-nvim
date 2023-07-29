@@ -73,6 +73,15 @@ return {
 				end,
 			}))
 		end,
+
+		command_center = {
+			{ desc = "Git: Toggle Gutter", cmd = "<CMD>Gitsigns toggle_signs<CR>" },
+			{ desc = "Git: Toggle Signs", cmd = "<CMD>Gitsigns toggle_numhl<CR>" },
+			{ desc = "Git: Toggle Line Number Highlights", cmd = "<CMD>Gitsigns toggle_numhl<CR>" },
+			{ desc = "Git: Toggle Line Text Highlights", cmd = "<CMD>Gitsigns toggle_linehl<CR>" },
+			{ desc = "Git: Toggle Line olame", cmd = "<CMD>Gitsigns toggle_current_line_blame<CR>" },
+			{ desc = "Git: Toggle Word Diff", cmd = "<CMD>Gitsigns toggle_word_diff<CR>" },
+		},
 	},
 
 	{
@@ -100,6 +109,10 @@ return {
 			"GMove",
 			"GDelete",
 			"GBrowse",
+		},
+		command_center = {
+			-- { desc = "GitHub: Copy Permalink", cmd = "<leader>gy" },
+			{ desc = "GitHub: Open in Browser", cmd = "<CMD>GBrowse<CR>" },
 		},
 	},
 	{
