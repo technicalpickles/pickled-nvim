@@ -70,6 +70,7 @@
   "symbols-outline.nvim": { "branch": "master", "commit": "512791925d57a61c545bc303356e8a8f7869763c" },
   "tabular": { "branch": "master", "commit": "339091ac4dd1f17e225fe7d57b48aff55f99b23a" },
   "telescope-live-grep-args.nvim": { "branch": "master", "commit": "0f75ea809c46af8997c64f49c52e3c641d887885" },
+  "telescope-rooter.nvim": { "branch": "main", "commit": "69423216c75a5f1f1477bbf8faf6b0dc8af04099" },
   "telescope-toggleterm.nvim": { "branch": "master", "commit": "5c1402507f0ad01711196e5d27e9f0606f78b7d0" },
   "telescope.nvim": { "branch": "master", "commit": "22735947d84d78f29436c203f0a4b8dc15dda204" },
   "toggleterm.nvim": { "branch": "main", "commit": "00c13dccc78c09fa5da4c5edda990a363e75035e" },

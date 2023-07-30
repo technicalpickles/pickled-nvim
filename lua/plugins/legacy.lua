@@ -30,10 +30,19 @@ return {
 				"Print the unicode value of character in decimal, hex, and octal, HTML entity, Emoji, etc",
 			},
 		},
+		command_center = {
+			{ desc = "Characterize: Show unicode of character under cursor", cmd = "ga" },
+		},
 	},
 
 	-- directory specific path, etc
-	{ "direnv/direnv.vim" },
+	{
+		"direnv/direnv.vim",
+		command_center = {
+			{ desc = "Direnv: Edit .envrc", cmd = "<CMD>EditEnvrc<CR>" },
+			{ desc = "Direnv: Edit global settings", cmd = "<CMD>EditDirenvrc<CR>" },
+		},
+	},
 
 	-- replace gx for URLs when netrw is disabled
 	{

@@ -103,6 +103,7 @@ return {
 			{ desc = "Telescope: Buffers", cmd = "<CMD>Telescope buffers<CR>" },
 
 			{ desc = "Telescope: Live Grep", cmd = "<CMD>Telescope live_grep<CR>" },
+			{ desc = "Telescope: Live Grep with Args", cmd = "<CMD>Telescope live_grep_args<CR>" },
 			{ desc = "Telescope: Search History", cmd = "<CMD>Telescope search_history<CR>" },
 			{ desc = "Telescope: Highlights", cmd = "<CMD>Telescope highlights<CR>" },
 
@@ -156,7 +157,6 @@ return {
 	{
 		"desdic/telescope-rooter.nvim",
 		lazy = true,
-		enabled = false,
 	},
 
 	{
@@ -187,46 +187,42 @@ return {
 					end
 				end
 			end
-
-			command_center.add({
-				{ desc = "Toggle Word Wrap", cmd = "<CMD>set wrap!<CR>" },
-				-- @+ is the system clipboard
-				-- @" is the default register
-				-- so assign default register to system clipboard
-				{ desc = "Buffer: Close All", cmd = "<CMD>:bufdo bdelete<CR>" },
-				{ desc = "Buffer: Close Other", cmd = "<CMD>%bd|e#|bd#<CR>" },
-
-				{ desc = "Copy Default Register to System Clipboard", cmd = "<CMD>let @+=@" },
-				{ desc = "Copy Relative Filename", cmd = '<CMD>let @" = expand("%")"<CR>' },
-				{ desc = "Copy Absolute Filename", cmd = '<CMD>let @" = expand("%:p")"<CR>' },
-				{
-					desc = "Format Document",
-					cmd = function()
-						vim.lsp.buf.formatting_sync()
-					end,
-					keys = { "n", "<leader>f", silent_noremap },
-				},
-
-				{ desc = "Fold", cmd = "zf" },
-				{ desc = "Fold All", cmd = "zM" },
-				{ desc = "Unfold", cmd = "zo" },
-				{ desc = "Unfold All", cmd = "zM" },
-
-				{ desc = "Direnv: Edit .envrc", cmd = "<CMD>EditEnvrc<CR>" },
-				{ desc = "Direnv: Edit global settings", cmd = "<CMD>EditDirenvrc<CR>" },
-
-				{ desc = "Characterize: Show unicode of character under cursor", cmd = "ga" },
-
-				{ desc = "Marks: Toggle", cmd = "m;" },
-				{ desc = "Marks: Delete All on Current Line", cmd = "dm-" },
-				{ desc = "Marks: Delete All in Current Buffer", cmd = "dm " },
-
-				{
-					desc = "Line Number: Toggle Relative",
-					cmd = "<CMD>lua require('pickled-nvim').toggle_relative_numbers()<CR>",
-				},
-			})
 		end,
+
+		-- commands that don't map to an obvious, specific plugin
+		command_center = {
+			{ desc = "Toggle Word Wrap", cmd = "<CMD>set wrap!<CR>" },
+			-- @+ is the system clipboard
+			-- @" is the default register
+			-- so assign default register to system clipboard
+			{ desc = "Buffer: Close All", cmd = "<CMD>:bufdo bdelete<CR>" },
+			{ desc = "Buffer: Close Other", cmd = "<CMD>%bd|e#|bd#<CR>" },
+
+			{ desc = "Copy Default Register to System Clipboard", cmd = "<CMD>let @+=@" },
+			{ desc = "Copy Relative Filename", cmd = '<CMD>let @" = expand("%")"<CR>' },
+			{ desc = "Copy Absolute Filename", cmd = '<CMD>let @" = expand("%:p")"<CR>' },
+			{
+				desc = "Format Document",
+				cmd = function()
+					vim.lsp.buf.formatting_sync()
+				end,
+				keys = { "n", "<leader>f", silent_noremap },
+			},
+
+			{ desc = "Fold", cmd = "zf" },
+			{ desc = "Fold All", cmd = "zM" },
+			{ desc = "Unfold", cmd = "zo" },
+			{ desc = "Unfold All", cmd = "zM" },
+
+			{ desc = "Marks: Toggle", cmd = "m;" },
+			{ desc = "Marks: Delete All on Current Line", cmd = "dm-" },
+			{ desc = "Marks: Delete All in Current Buffer", cmd = "dm " },
+
+			{
+				desc = "Line Number: Toggle Relative",
+				cmd = "<CMD>lua require('pickled-nvim').toggle_relative_numbers()<CR>",
+			},
+		},
 	},
 
 	-- not techncally telescope, but close
