@@ -6,6 +6,8 @@ return {
 		dependencies = { "plenary.nvim" },
 		keys = {
 			{ "<D-P>", "<cmd>Telescope command_center<CR>", silent_noremap_both_modes },
+			{ "<C-S-p>", "<cmd>Telescope command_center<CR>", silent_noremap_both_modes },
+			{ "<C-S-P>", "<cmd>Telescope command_center<CR>", silent_noremap_both_modes },
 			{ "<leader>c", "<CMD>Telescope command_center<CR>", silent_noremap_both_modes },
 			{ "<D-f>", "<cmd>Telescope live_grep_args<CR>", silent_noremap_both_modes },
 			{ "<D-F>", "<cmd>Telescope live_grep_args<CR>", silent_noremap_both_modes },
@@ -233,6 +235,23 @@ return {
 		keys = {
 			{
 				"<D-p>",
+				function()
+					local jfind = require("jfind")
+					local key = require("jfind.key")
+
+					jfind.findFile({
+						preview = true,
+						callback = {
+							[key.DEFAULT] = vim.cmd.edit,
+							[key.CTRL_S] = vim.cmd.split,
+							[key.CTRL_X] = vim.cmd.split,
+							[key.CTRL_V] = vim.cmd.vsplit,
+						},
+					})
+				end,
+			},
+			{
+				"<C-p>",
 				function()
 					local jfind = require("jfind")
 					local key = require("jfind.key")
