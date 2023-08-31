@@ -118,12 +118,9 @@ return {
 
 	-- toggling comments
 	{
-		"tpope/vim-commentary",
+		"numToStr/Comment.nvim",
+		opts = {},
 		event = "BufRead",
-		keys = { "gcc" },
-		command_center = {
-			{ desc = "Comment: Toggle", cmd = "gcc" },
-		},
 	},
 
 	-- make . work in more places
