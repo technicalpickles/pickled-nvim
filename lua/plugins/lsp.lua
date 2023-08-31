@@ -34,8 +34,8 @@ return {
 			{ "honza/vim-snippets" },
 
 			-- use `command` output as LSP for places that don't have one yet
-			{ "jose-elias-alvarez/null-ls.nvim" },
-			{ "jayp0521/mason-null-ls.nvim" },
+			-- { "jose-elias-alvarez/null-ls.nvim" },
+			-- { "jayp0521/mason-null-ls.nvim" },
 		},
 		config = function()
 			local lsp = require("lsp-zero")
@@ -246,22 +246,22 @@ return {
 		end,
 	},
 
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			local null_ls = require("null-ls")
-			local sources = {}
-
-			-- erb
-			if vim.fn.filereadable(".erb-lint.yml") == 1 then
-				table.insert(sources, null_ls.builtins.diagnostics.erb_lint)
-				table.insert(sources, null_ls.builtins.formatting.erb_lint)
-			end
-
-			null_ls.setup({ sources = sources })
-		end,
-	},
+	-- {
+	-- 	"jose-elias-alvarez/null-ls.nvim",
+	-- 	event = { "BufReadPre", "BufNewFile" },
+	-- 	config = function()
+	-- 		local null_ls = require("null-ls")
+	-- 		local sources = {}
+	--
+	-- 		-- erb
+	-- 		if vim.fn.filereadable(".erb-lint.yml") == 1 then
+	-- 			table.insert(sources, null_ls.builtins.diagnostics.erb_lint)
+	-- 			table.insert(sources, null_ls.builtins.formatting.erb_lint)
+	-- 		end
+	--
+	-- 		null_ls.setup({ sources = sources })
+	-- 	end,
+	-- },
 
 	{
 		"simrat39/symbols-outline.nvim",
