@@ -22,6 +22,14 @@ return {
 				highlight_opened_files = "icon",
 			},
 
+			live_filter = {
+				always_show_folders = false,
+			},
+
+			update_focused_file = {
+				enable = true,
+			},
+
 			on_attach = function(bufnr)
 				local api = require("nvim-tree.api")
 				local function opts(desc)

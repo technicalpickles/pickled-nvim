@@ -2,17 +2,29 @@ local silent_noremap = { noremap = true, silent = true }
 local silent_noremap_both_modes = vim.tbl_deep_extend("keep", silent_noremap, { mode = { "n", "i" } })
 return {
 	{
-		"al-ce/hbac.nvim",
-		branch = "picker_opts",
-		opts = {
-			-- threshold = 40,
-			telescope = {
-				pin_icons = {
-					unpinned = { "" },
-					pinned = { "󰐃", hl = "DiagnosticError" },
+		"axkirillov/hbac.nvim",
+		config = function()
+			local actions = require("hbac.telescope.actions")
+
+			require("hbac").setup({
+				threshold = 40,
+				telescope = {
+					sort_mru = true,
+					sort_lastused = true,
+					selection_strategy = "row",
+					pin_icons = {
+						unpinned = { "" },
+						pinned = { "󰐃", hl = "DiagnosticError" },
+					},
+					mappings = {
+						i = {
+							["<C-u>"] = actions.toggle_selections,
+							["<C-w>"] = actions.delete_buffer,
+						},
+					},
 				},
-			},
-		},
+			})
+		end,
 		cmd = "Hbac",
 		event = "VeryLazy",
 		keys = {

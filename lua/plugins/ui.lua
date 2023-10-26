@@ -137,6 +137,8 @@ return {
 
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		-- TODO update to 3.x
+		tag = "v2.20.8",
 		event = "VeryLazy",
 		opts = {
 			char = "│",
@@ -175,6 +177,7 @@ return {
 
 	{
 		"folke/noice.nvim",
+		enabled = false,
 		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
 		opts = {
 			lsp = {

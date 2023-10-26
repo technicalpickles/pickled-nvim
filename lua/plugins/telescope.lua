@@ -5,10 +5,10 @@ return {
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "plenary.nvim" },
 		keys = {
-			{ "<D-P>", "<cmd>Telescope command_center<CR>", silent_noremap_both_modes },
-			{ "<C-S-p>", "<cmd>Telescope command_center<CR>", silent_noremap_both_modes },
-			{ "<C-S-P>", "<cmd>Telescope command_center<CR>", silent_noremap_both_modes },
-			{ "<leader>c", "<CMD>Telescope command_center<CR>", silent_noremap_both_modes },
+			{ "<D-P>", "<cmd>Telescope commander<CR>", silent_noremap_both_modes },
+			{ "<C-S-p>", "<cmd>Telescope commander<CR>", silent_noremap_both_modes },
+			{ "<C-S-P>", "<cmd>Telescope commander<CR>", silent_noremap_both_modes },
+			{ "<leader>c", "<CMD>Telescope commander<CR>", silent_noremap_both_modes },
 			{ "<D-f>", "<cmd>Telescope live_grep_args<CR>", silent_noremap_both_modes },
 			{ "<D-F>", "<cmd>Telescope live_grep_args<CR>", silent_noremap_both_modes },
 			{ "<leader>b", "<cmd>Telescope buffers<CR>", silent_noremap_both_modes },
@@ -48,7 +48,7 @@ return {
 					sort_mru = true,
 					ignore_current_buffer = true,
 				},
-				command_center = {},
+				commander = {},
 				find_files = {
 					-- customize by adding --hidden, so we can get files that start with . which turns out to be a lot
 					find_command = { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" },
@@ -94,13 +94,12 @@ return {
 
 			-- add other extensions here to be available when autocompleting
 			telescope.load_extension("toggleterm")
-			telescope.load_extension("command_center")
 			telescope.load_extension("notify")
 			telescope.load_extension("live_grep_args")
 			telescope.load_extension("session-lens")
 		end,
 
-		command_center = {
+		commander = {
 			{ desc = "Telescope: Files", cmd = "<CMD>Telescope find_files<CR>" },
 			{ desc = "Telescope: Buffers", cmd = "<CMD>Telescope buffers<CR>" },
 
@@ -170,29 +169,20 @@ return {
 
 	{
 		"gfeiyou/command-center.nvim",
-		lazy = true,
-		config = function()
-			local command_center = require("command_center")
-
-			local plugins = require("lazy").plugins()
-
-			for _, plugin in ipairs(plugins) do
-				if plugin.command_center then
-					-- only add for enabled plugins
-					-- copied from require('lazy.core.plugin').Spec:fix_disabled
-					local enabled = not (
-							plugin.enabled == false or (type(plugin.enabled) == "function" and not plugin.enabled())
-						)
-
-					if enabled then
-						command_center.add(plugin.command_center)
-					end
-				end
-			end
-		end,
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		opts = {
+			integration = {
+				telescope = {
+					enable = true,
+				},
+				lazy = {
+					enable = true,
+				},
+			},
+		},
 
 		-- commands that don't map to an obvious, specific plugin
-		command_center = {
+		commander = {
 			{ desc = "Toggle Word Wrap", cmd = "<CMD>set wrap!<CR>" },
 			-- @+ is the system clipboard
 			-- @" is the default register
