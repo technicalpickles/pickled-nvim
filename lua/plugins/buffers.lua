@@ -50,4 +50,81 @@ return {
 			{ desc = "Buffer: Toggle Autoclose", cmd = "<CMD>Hbac toggle_autoclose<CR>" },
 		},
 	},
+	{
+		"akinsho/bufferline.nvim",
+		enabled = false,
+		dependencies = {
+			"nvim-web-devicons",
+		},
+		event = "VeryLazy",
+		opts = {
+			options = {
+				mode = "tabs",
+
+				separator_style = "thick",
+				close_icon = "✕",
+				close_command = "bdelete %d",
+				buffer_close_icon = "✕",
+				offsets = {
+					{
+						filetype = "NvimTree",
+						text = "",
+						highlight = "Directory",
+						text_align = "left",
+					},
+					{
+						filetype = "filetree",
+						text = "",
+						highlight = "Explorer",
+						text_align = "left",
+					},
+				},
+			},
+		},
+		config = function(_, opts)
+			require("bufferline").setup(opts)
+
+			-- make sure it's only 1... but something else seems to change it after this, sooo
+			vim.o.showtabline = 1
+		end,
+		-- NOTE: only need these when using mode = "buffer"
+		-- keys = {
+		-- 	{"gb", "<CMD>:BufferLinePick<CR>", silent_noremap},
+		-- 	{"gB", "<CMD>:BufferLinePickClose<CR>", silent_noremap},
+
+		-- 	-- Go go to tab
+		-- 	{"<D-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", silent_noremap},
+		-- 	{"<D-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", silent_noremap},
+		-- 	{"<D-3>", "<Cmd>BufferLineGoToBuffer 3<CR>", silent_noremap},
+		-- 	{"<D-4>", "<Cmd>BufferLineGoToBuffer 4<CR>", silent_noremap},
+		-- 	{"<D-5>", "<Cmd>BufferLineGoToBuffer 5<CR>", silent_noremap},
+		-- 	{"<D-6>", "<Cmd>BufferLineGoToBuffer 6<CR>", silent_noremap},
+		-- 	{"<D-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", silent_noremap},
+		-- 	{"<D-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", silent_noremap},
+		-- 	{"<D-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", silent_noremap},
+		-- },
+		cmd = {
+			"BufferLineGroupClose",
+			"BufferLineGroupToggle",
+			"BufferLineTogglePin",
+			"BufferLineSortByExtension",
+			"BufferLineSortByDirectory",
+			"BufferLineSortByTabs",
+			"BufferLinePick",
+			"BufferLinePickClose",
+			"BufferLineCycleNext",
+			"BufferLineCyclePrev",
+			"BufferLineMoveNext",
+			"BufferLineMovePrev",
+		},
+		command_center = {
+			{ desc = "BufferLine: Toggle Pin", cmd = "<CMD>BufferLineTogglePin<CR>" },
+			{ desc = "BufferLine: Sort By Extension", cmd = "<CMD>BufferLineSortByExtension<CR>" },
+			{ desc = "BufferLine: Sort By Directory", cmd = "<CMD>BufferLineSortByDirectory<CR>" },
+			{ desc = "BufferLine: Sort By Tabs", cmd = "<CMD>BufferLineSortByTabs<CR>" },
+
+			{ desc = "BufferLine: Pick", cmd = "<CMD>BufferLinePick<CR>", keys = { "n", "gb", silent_noremap } },
+			{ desc = "BufferLine: Pick to Close", cmd = "<CMD>BufferLinePickClose<CR>" },
+		},
+	}
 }
