@@ -4,6 +4,8 @@ time.log
 
 /tmp
 
+neovide_backtraces.log
+
 # Added by cargo
 
 /target
