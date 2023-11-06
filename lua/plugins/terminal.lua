@@ -2,6 +2,7 @@ local silent_noremap = { noremap = true, silent = true }
 return {
 	{
 		"akinsho/toggleterm.nvim",
+		enabled = false,
 		opts = {
 			open_mapping = false, -- set below so we can do it lazily
 			insert_mapping = false,
@@ -41,10 +42,14 @@ return {
 	},
 
 	-- so you can can vim in the terimal
-	{ "samjwill/nvim-unception" },
+	{
+		"samjwill/nvim-unception",
+		enabled = false,
+	},
 
 	{
 		"da-moon/telescope-toggleterm.nvim",
+		enabled = false,
 		dependencies = {
 			"toggleterm.nvim",
 			"telescope.nvim",

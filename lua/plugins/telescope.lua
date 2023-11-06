@@ -2,6 +2,10 @@ local silent_noremap = { noremap = true, silent = true }
 local silent_noremap_both_modes = vim.tbl_deep_extend("keep", silent_noremap, { mode = { "n", "i" } })
 return {
 	{
+		"nvim-lua/plenary.nvim"
+	},
+
+	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "plenary.nvim" },
 		keys = {
@@ -70,16 +74,16 @@ return {
 		},
 		cmd = "Telescope",
 		config = function(_, opts)
-			local lga_actions = require("telescope-live-grep-args.actions")
-
-			opts.extensions.live_grep_args.mappings = {
-				i = {
-					["<C-k>"] = lga_actions.quote_prompt(),
-					["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-					["<C-g>"] = lga_actions.quote_prompt({ postfix = " --glob " }),
-					["<C-t>"] = lga_actions.quote_prompt({ postfix = " --type " }),
-				},
-			}
+			-- local lga_actions = require("telescope-live-grep-args.actions")
+			--
+			-- opts.extensions.live_grep_args.mappings = {
+			-- 	i = {
+			-- 		["<C-k>"] = lga_actions.quote_prompt(),
+			-- 		["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+			-- 		["<C-g>"] = lga_actions.quote_prompt({ postfix = " --glob " }),
+			-- 		["<C-t>"] = lga_actions.quote_prompt({ postfix = " --type " }),
+			-- 	},
+			-- }
 
 			local telescope = require("telescope")
 			telescope.setup(opts)
@@ -93,10 +97,10 @@ return {
 			-- telescope.load_extension("rooter")
 
 			-- add other extensions here to be available when autocompleting
-			telescope.load_extension("toggleterm")
-			telescope.load_extension("notify")
-			telescope.load_extension("live_grep_args")
-			telescope.load_extension("session-lens")
+			-- telescope.load_extension("toggleterm")
+			-- telescope.load_extension("notify")
+			-- telescope.load_extension("live_grep_args")
+			-- telescope.load_extension("session-lens")
 		end,
 
 		commander = {
@@ -162,6 +166,7 @@ return {
 
 	{
 		"nvim-telescope/telescope-live-grep-args.nvim",
+		enabled = false,
 		dependencies = { "plenary.nvim" },
 		lazy = true,
 		commands = {},
@@ -215,6 +220,11 @@ return {
 				cmd = "<CMD>lua require('pickled-nvim').toggle_relative_numbers()<CR>",
 			},
 		},
+	},
+
+	{
+		"FeiyouG/commander.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" }
 	},
 
 	-- not techncally telescope, but close

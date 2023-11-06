@@ -2,6 +2,7 @@ local g = vim.g
 return {
 	{
 		"chentoast/marks.nvim",
+		enabled = false,
 		event = "VeryLazy",
 		opts = {
 			sign_priority = require("pickled-nvim").sign_priorities.mark,
@@ -22,6 +23,7 @@ return {
 
 	{
 		"mg979/vim-visual-multi",
+		enabled = false,
 		event = "VeryLazy",
 	},
 
@@ -93,6 +95,7 @@ return {
 
 	{
 		"Wansmer/sibling-swap.nvim",
+		enabled = false,
 		dependencies = { "nvim-treesitter" },
 		event = "BufRead",
 		opts = {
@@ -131,6 +134,7 @@ return {
 
 	{
 		"folke/flash.nvim",
+		enabled = false,
 		event = "VeryLazy",
 		---@type Flash.Config
 		opts = {},

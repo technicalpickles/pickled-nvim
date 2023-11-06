@@ -44,6 +44,7 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter-context",
+		enabled = false,
 		dependencies = { "nvim-treesitter" },
 		event = "VeryLazy",
 		opts = {
@@ -69,6 +70,7 @@ return {
 	-- debug info
 	{
 		"nvim-treesitter/playground",
+		enabled = false,
 		cmd = "TSPlaygroundToggle",
 		command_center = {
 			{ desc = "Treesitter: Toggle Playground", cmd = "<CMD>TSPlaygroundToggle<CR>" },
@@ -77,6 +79,7 @@ return {
 
 	{
 		"RRethy/nvim-treesitter-textsubjects",
+		enabled = false,
 		event = "VeryLazy",
 	},
 	-- determine what type of comments to use in multi-syntax files, ie css in html... use with commentary

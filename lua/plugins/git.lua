@@ -86,6 +86,7 @@ return {
 
 	{
 		"sindrets/diffview.nvim",
+		enabled = false,
 		dependencies = "nvim-lua/plenary.nvim",
 		opts = true,
 		cmd = {
@@ -99,6 +100,7 @@ return {
 	},
 	{
 		"tpope/vim-fugitive",
+		enabled = false,
 		cmd = {
 			"Git",
 			"G",
@@ -115,8 +117,10 @@ return {
 			{ desc = "GitHub: Open in Browser", cmd = "<CMD>GBrowse<CR>" },
 		},
 	},
+
 	{
 		"tpope/vim-rhubarb",
+		enabled = false,
 		event = "VeryLazy",
 		dependencies = { "tpope/vim-fugitive" },
 	},

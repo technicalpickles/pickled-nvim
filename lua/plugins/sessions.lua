@@ -56,6 +56,7 @@ return {
 
 	{
 		"rmagatti/session-lens",
+		enabled = false,
 		dependencies = {
 			"auto-session",
 			"telescope.nvim",
