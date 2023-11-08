@@ -100,7 +100,6 @@ return {
 	},
 	{
 		"tpope/vim-fugitive",
-		enabled = false,
 		cmd = {
 			"Git",
 			"G",
@@ -120,7 +119,6 @@ return {
 
 	{
 		"tpope/vim-rhubarb",
-		enabled = false,
 		event = "VeryLazy",
 		dependencies = { "tpope/vim-fugitive" },
 	},
