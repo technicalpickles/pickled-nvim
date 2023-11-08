@@ -226,6 +226,7 @@ return {
 				setopt = true,
 				relculright = true,
 				segments = {
+					-- line number
 					{
 						text = { builtin.lnumfunc, " " },
 						click = "v:lua.ScLa",
@@ -254,6 +255,7 @@ return {
 						},
 						click = "v:lua.ScSa",
 					},
+					-- fold
 					{
 						text = { builtin.foldfunc, " " },
 						click = "v:lua.ScFa",
