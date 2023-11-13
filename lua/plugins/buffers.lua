@@ -39,7 +39,7 @@ return {
 						cwd_only = false,
 						cwd = nil,
 					}
-					require("hbac").telescope(default_opts)
+					require('telescope').extensions.hbac.buffers(default_opts)
 				end,
 				silent_noremap_both_modes,
 			},

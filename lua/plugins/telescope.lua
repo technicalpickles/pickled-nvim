@@ -7,7 +7,9 @@ return {
 
 	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = { "plenary.nvim" },
+		dependencies = {
+			"plenary.nvim",
+		},
 		keys = {
 			{ "<D-P>", "<cmd>Telescope commander<CR>", silent_noremap_both_modes },
 			{ "<C-S-p>", "<cmd>Telescope commander<CR>", silent_noremap_both_modes },
@@ -87,6 +89,8 @@ return {
 
 			local telescope = require("telescope")
 			telescope.setup(opts)
+
+			telescope.load_extension('hbac')
 
 			--
 			-- faster native picker & sorter implementations. zf seems the fastest
