@@ -223,6 +223,9 @@ return {
 				desc = "Line Number: Toggle Relative",
 				cmd = "<CMD>lua require('pickled-nvim').toggle_relative_numbers()<CR>",
 			},
+
+			{ desc = "Enable Conceal", cmd = "<CMD>lua require('pickled-nvim').enable_conceal()<CR>", },
+			{ desc = "Disable Conceal", cmd = "<CMD>lua require('pickled-nvim').disable_conceal()<CR>", },
 		},
 	},
 

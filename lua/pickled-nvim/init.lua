@@ -210,6 +210,14 @@ function M.gemlock_contains(gem)
 	return false
 end
 
+function M.enable_conceal()
+	vim.cmd("set conceallevel=2")
+end
+
+function M.disable_conceal()
+	vim.cmd("set conceallevel=0")
+end
+
 function M.title()
 	local home = vim.fn.expand("$HOME")
 	local cwd = vim.fn.expand("%:p:h")
