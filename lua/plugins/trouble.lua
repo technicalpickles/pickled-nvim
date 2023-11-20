@@ -2,6 +2,7 @@ local silent_noremap = { noremap = true, silent = true }
 return {
 	{
 		"folke/trouble.nvim",
+		enabled = require("pickled-nvim").enabled("folke/trouble.nvim"),
 		dependencies = "nvim-tree/nvim-web-devicons",
 		-- FIXME explicitly setting up in pickled-nvim.diagnostics's setup
 		cmd = { "TroubleToggle", "Trouble" },

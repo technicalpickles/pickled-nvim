@@ -1,4 +1,5 @@
 local g = vim.g
+local enabled = require("pickled-nvim").enabled
 return {
 	{
 		"chentoast/marks.nvim",
@@ -29,6 +30,7 @@ return {
 
 	{
 		"Wansmer/treesj",
+		enabled = enabled("Wansmer/treesj"),
 		opts = {
 			use_default_keymaps = false,
 		},
@@ -44,6 +46,7 @@ return {
 
 	{
 		"windwp/nvim-autopairs",
+		enabled = enabled("windwp/nvim-autopairs"),
 		event = "InsertEnter",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
@@ -87,6 +90,7 @@ return {
 
 	{
 		"ur4ltz/surround.nvim",
+		enabled = enabled("ur4ltz/surround.nvim"),
 		event = "VeryLazy",
 		opts = {
 			mappings_style = "surround",
@@ -122,6 +126,7 @@ return {
 	-- toggling comments
 	{
 		"numToStr/Comment.nvim",
+		enabled = enabled("numToStr/Comment.nvim"),
 		opts = {},
 		event = "BufRead",
 	},
@@ -129,6 +134,7 @@ return {
 	-- make . work in more places
 	{
 		"tpope/vim-repeat",
+		enabled = enabled("tpope/vim-repeat"),
 		event = "BufRead",
 	},
 

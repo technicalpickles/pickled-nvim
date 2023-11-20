@@ -1,4 +1,6 @@
 local g = vim.g
+local enabled = require("pickled-nvim").enabled
+
 return {
 	-- per project alternate setup
 	{
@@ -38,6 +40,7 @@ return {
 	-- directory specific path, etc
 	{
 		"direnv/direnv.vim",
+		enabled = enabled("direnv/direnv.vim"),
 		command_center = {
 			{ desc = "Direnv: Edit .envrc", cmd = "<CMD>EditEnvrc<CR>" },
 			{ desc = "Direnv: Edit global settings", cmd = "<CMD>EditDirenvrc<CR>" },
@@ -59,6 +62,7 @@ return {
 
 	{
 		"mattboehm/vim-unstack",
+		enabled = false,
 		cmd = {
 			"UnstackFromText",
 			"UnstackFromClipboard",
@@ -73,6 +77,7 @@ return {
 
 	{
 		"famiu/bufdelete.nvim",
+		enabled = enabled("famiu/bufdelete.nvim"),
 		cmd = "Bdelete",
 	},
 }

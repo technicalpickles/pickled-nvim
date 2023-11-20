@@ -225,4 +225,39 @@ function M.toggle_relative_numbers()
 	end
 end
 
+local vscode_plugins = {
+	["nvim-treesitter/nvim-treesitter"] = true,
+	["Wansmer/treesj"] = true,
+	["ur4ltz/surround.nvim"] = true,
+	["tpope/vim-repeat"] = true,
+
+	-- overlap vscode features/extensions
+	["lewis6991/gitsigns.nvim"] = false,
+	["tyru/open-browser.vim"] = false, -- command-click on stuff
+	["simrat39/symbols-outline.nvim"] = false, -- builtin sidebar
+	["nvim-tree/nvim-tree.lua"] = false, -- builtin sidebar
+}
+
+-- Example:
+--     local enabled = require("pickled-nvim").enabled
+--     ...
+--     return { 
+--	     {
+--	       "some/plugin",
+--         enabled = enabled("ur4ltz/surround.nvim"),
+--         -- rest of config
+--       }
+--     }
+function M.enabled(plugin)
+	if vim.g.vscode then
+		if vscode_plugins[plugin] then
+			return true
+		end
+
+		return false
+	end
+
+	return true
+end
+
 return M

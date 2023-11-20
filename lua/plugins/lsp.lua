@@ -1,8 +1,10 @@
 local silent_noremap = { noremap = true, silent = true }
 local symbols_outline = "<CMD>SymbolsOutline<CR>"
+local enabled = require("pickled-nvim").enabled
 return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
+		enabled = enabled("VonHeikemen/lsp-zero.nvim"),
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			-- LSP Support
@@ -132,11 +134,12 @@ return {
 				lsp.skip_server_setup("standardrb")
 			end
 
-			if vim.fn.isdirectory("sorbet") == 1 then
-				lsp.ensure_installed("sorbet")
-			else
-				lsp.skip_server_setup("sorbet")
-			end
+			-- if vim.fn.isdirectory("sorbet") == 1 then
+			-- 	lsp.ensure_installed("sorbet")
+			-- else
+			-- 	lsp.skip_server_setup("sorbet")
+			-- end
+			lsp.skip_server_setup("sorbet") -- disbale until I can figure out what is happening
 
 			-- TODO; smarter enabling of ruby_ls, and only disable features when rubocop isn't detected
 			if vim.fn.filereadable(".rubocop.yml") == 1 then
@@ -174,6 +177,7 @@ return {
 			else
 				lsp.skip_server_setup("ruby_ls")
 			end
+			lsp.skip_server_setup("rubocop")
 
 			-- disable except for actual latex
 			lsp.configure("ltex", {

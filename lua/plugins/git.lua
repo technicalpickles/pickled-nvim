@@ -1,6 +1,7 @@
 return {
 	{
 		"lewis6991/gitsigns.nvim",
+		enabled = require("pickled-nvim").enabled("lewis6991/gitsigns.nvim"),
 		opts = {
 			linehl = false,
 			numhl = true,

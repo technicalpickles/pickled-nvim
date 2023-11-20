@@ -10,6 +10,7 @@ end
 return {
 	{
 		"zbirenbaum/copilot.lua",
+		enabled = require("pickled-nvim").enabled("zbirenbaum/copilot.lua"),
 		event = "InsertEnter",
 		opts = {
 			ft_disable = require("pickled-nvim").filetype_config.copilot.disable,
@@ -39,6 +40,7 @@ return {
 
 	{
 		"zbirenbaum/copilot-cmp",
+		enabled = require("pickled-nvim").enabled("zbirenbaum/copilot-cmp"),
 		lazy = true,
 		dependencies = { "copilot.lua" },
 		config = function()

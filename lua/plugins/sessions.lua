@@ -2,6 +2,7 @@ return {
 
 	{
 		"farmergreg/vim-lastplace",
+		enabled = require("pickled-nvim").enabled("farmergreg/vim-lastplace"),
 		config = function()
 			-- FIXME use filetype_config
 			vim.g.lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit,toggleterm,Trouble"
@@ -11,6 +12,7 @@ return {
 
 	{
 		"rmagatti/auto-session",
+		enabled = require("pickled-nvim").enabled("rmagatti/auto-session"),
 		lazy = false,
 		opts = {
 			-- use sesssion manager

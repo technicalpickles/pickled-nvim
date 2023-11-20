@@ -1,5 +1,6 @@
 local silent_noremap = { noremap = true, silent = true }
 local silent_noremap_both_modes = vim.tbl_deep_extend("keep", silent_noremap, { mode = { "n", "i" } })
+local enabled = require("pickled-nvim").enabled
 return {
 	{
 		"nvim-lua/plenary.nvim"
@@ -7,6 +8,7 @@ return {
 
 	{
 		"nvim-telescope/telescope.nvim",
+		enabled = enabled("nvim-telescope/telescope.nvim"),
 		dependencies = {
 			"plenary.nvim",
 		},
@@ -90,6 +92,7 @@ return {
 			local telescope = require("telescope")
 			telescope.setup(opts)
 
+			enabled("axkirillov/hbac.nvim")
 			telescope.load_extension('hbac')
 
 			--
@@ -177,19 +180,9 @@ return {
 	},
 
 	{
-		"gfeiyou/command-center.nvim",
+		"FeiyouG/commander.nvim",
+		enabled = enabled("FeiyouG/commander.nvim"),
 		dependencies = { "nvim-telescope/telescope.nvim" },
-		opts = {
-			integration = {
-				telescope = {
-					enable = true,
-				},
-				lazy = {
-					enable = true,
-				},
-			},
-		},
-
 		-- commands that don't map to an obvious, specific plugin
 		commander = {
 			{ desc = "Toggle Word Wrap", cmd = "<CMD>set wrap!<CR>" },
@@ -226,14 +219,10 @@ return {
 		},
 	},
 
-	{
-		"FeiyouG/commander.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" }
-	},
-
 	-- not techncally telescope, but close
 	{
 		"jake-stewart/jfind.nvim",
+		enabled = enabled("jake-stewart/jfind.nvim"),
 		branch = "1.0",
 		config = true,
 		keys = {

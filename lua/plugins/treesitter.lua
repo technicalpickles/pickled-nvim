@@ -1,7 +1,10 @@
+local enabled = require("pickled-nvim").enabled
+
 return {
 	-- treesitter, syntax, etc
 	{
 		"nvim-treesitter/nvim-treesitter",
+		enabled = enabled("nvim-treesitter/nvim-treesitter"),
 		build = ":TSUpdate",
 		event = "BufReadPost",
 		config = function(_, opts)

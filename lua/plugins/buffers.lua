@@ -1,8 +1,11 @@
 local silent_noremap = { noremap = true, silent = true }
 local silent_noremap_both_modes = vim.tbl_deep_extend("keep", silent_noremap, { mode = { "n", "i" } })
+local enabled = require("pickled-nvim").enabled
+
 return {
 	{
 		"axkirillov/hbac.nvim",
+		enabled = enabled("axkirillov/hbac.nvim"),
 		config = function()
 			local actions = require("hbac.telescope.actions")
 

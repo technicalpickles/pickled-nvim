@@ -3,6 +3,7 @@ local g = vim.g
 return {
 	{
 		"folke/tokyonight.nvim",
+		enabled = require("pickled-nvim").enabled("folke/tokyonight.nvim"),
 		-- make sure it's first to avoid flicker
 		lazy = false,
 		priority = 1000,

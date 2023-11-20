@@ -24,6 +24,7 @@ return {
 
 	{
 		"stevearc/dressing.nvim",
+		enabled = require("pickled-nvim").enabled("stevearc/dressing.nvim"),
 		event = "VeryLazy",
 		opts = {
 			input = {
@@ -65,6 +66,7 @@ return {
 	-- styling cursor, ident lines, etc
 	{
 		"yamatsum/nvim-cursorline",
+		enabled = require("pickled-nvim").enabled("yamatsum/nvim-cursorline"),
 		event = "VeryLazy",
 		opts = {
 			cursorline = { enable = true, timeout = 1000, number = false },
@@ -74,6 +76,7 @@ return {
 
 	{
 		"goolord/alpha-nvim",
+		enabled = require("pickled-nvim").enabled("goolord/alpha-nvim"),
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		-- taken largely from lazyvim
 		opts = function()
@@ -138,6 +141,7 @@ return {
 
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		enabled = require("pickled-nvim").enabled("lukas-reineke/indent-blankline.nvim"),
 		-- TODO update to 3.x
 		tag = "v2.20.8",
 		event = "VeryLazy",
@@ -162,6 +166,7 @@ return {
 	-- popups for suggestions when starting shortcuts
 	{
 		"folke/which-key.nvim",
+		enabled = require("pickled-nvim").enabled("folke/which-key.nvim"),
 		opts = true,
 		event = "VeryLazy",
 	},
@@ -219,6 +224,7 @@ return {
 	-- statuscol
 	{
 		"luukvbaal/statuscol.nvim",
+		enabled = require("pickled-nvim").enabled("luukvbaal/statuscol.nvim"),
 		config = function()
 			local builtin = require("statuscol.builtin")
 
@@ -270,7 +276,8 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",
-		dependencies = { "nvim-web-devicons" },
+		enabled = require("pickled-nvim").enabled("nvim-lualine/lualine.nvim"),
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			-- statusline
 			local function toggleterm_statusline_title()

@@ -2,6 +2,7 @@ local silent_noremap = { noremap = true, silent = true }
 return {
 	{
 		url = "https://gitlab.com/yorickpeterse/nvim-pqf.git",
+		enabled = require("pickled-nvim").enabled("gitlab.com/yorickpeterse/nvim-pqf"),
 		opts = true,
 		-- FIXME find a place to hook this so it's ready by the time something pops open quickfix
 		ft = "qf",
@@ -10,6 +11,7 @@ return {
 
 	{
 		"romainl/vim-qf",
+		enabled = require("pickled-nvim").enabled("romainl/vim-qf"),
 		-- not really a dependency, but want it to be available by the time we toggle things
 		dependencies = { "nvim-pqf" },
 		keys = {

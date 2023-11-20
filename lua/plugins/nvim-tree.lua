@@ -3,6 +3,7 @@ local tree_cmd = "<CMD>NvimTreeToggle<CR>"
 return {
 	{
 		"nvim-tree/nvim-tree.lua",
+		enabled = require("pickled-nvim").enabled("nvim-tree/nvim-tree.lua"),
 		dependencies = {
 			"nvim-web-devicons",
 		},

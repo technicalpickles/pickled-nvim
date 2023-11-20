@@ -2,6 +2,7 @@ local silent_noremap = { noremap = true, silent = true }
 return {
 	{
 		"kyoh86/vim-ripgrep",
+		enabled = require("pickled-nvim").enabled("kyoh86/vim-ripgrep"),
 		cmd = "Rg",
 		config = function()
 			vim.cmd([[
@@ -13,6 +14,7 @@ return {
 			{ "<D-F>", ":Rg ", silent_noremap },
 		},
 	},
+
 	{
 		"mhinz/vim-grepper",
 		enabled = false,
