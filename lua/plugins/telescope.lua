@@ -3,7 +3,7 @@ local silent_noremap_both_modes = vim.tbl_deep_extend("keep", silent_noremap, { 
 local enabled = require("pickled-nvim").enabled
 return {
 	{
-		"nvim-lua/plenary.nvim"
+		"nvim-lua/plenary.nvim",
 	},
 
 	{
@@ -93,7 +93,7 @@ return {
 			telescope.setup(opts)
 
 			enabled("axkirillov/hbac.nvim")
-			telescope.load_extension('hbac')
+			telescope.load_extension("hbac")
 
 			--
 			-- faster native picker & sorter implementations. zf seems the fastest
@@ -183,6 +183,17 @@ return {
 		"FeiyouG/commander.nvim",
 		enabled = enabled("FeiyouG/commander.nvim"),
 		dependencies = { "nvim-telescope/telescope.nvim" },
+		config = function()
+			require("commander").setup({
+				integration = {
+					telescope = {
+						enable = true,
+						theme = require("telescope.themes").commander,
+					},
+					lazy = { enable = true },
+				},
+			})
+		end,
 		-- commands that don't map to an obvious, specific plugin
 		commander = {
 			{ desc = "Toggle Word Wrap", cmd = "<CMD>set wrap!<CR>" },
@@ -217,8 +228,8 @@ return {
 				cmd = "<CMD>lua require('pickled-nvim').toggle_relative_numbers()<CR>",
 			},
 
-			{ desc = "Enable Conceal", cmd = "<CMD>lua require('pickled-nvim').enable_conceal()<CR>", },
-			{ desc = "Disable Conceal", cmd = "<CMD>lua require('pickled-nvim').disable_conceal()<CR>", },
+			{ desc = "Enable Conceal", cmd = "<CMD>lua require('pickled-nvim').enable_conceal()<CR>" },
+			{ desc = "Disable Conceal", cmd = "<CMD>lua require('pickled-nvim').disable_conceal()<CR>" },
 		},
 	},
 
