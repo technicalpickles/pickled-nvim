@@ -91,6 +91,16 @@ g.neovide_confirm_quit = true -- Prevent exit on unsaved buffer on window close
 g.neovide_cursor_vfx_mode = "railgun"
 g.neovide_remember_window_size = true
 
+g.neovide_padding_top = 0
+g.neovide_padding_bottom = 0
+g.neovide_padding_right = 0
+g.neovide_padding_left = 0
+-- without this, winbar scrolls up when scrolling https://github.com/neovide/neovide/issues/1550
+g.neovide_scroll_animation_length = 0
+
+-- for some reason, windows end up tiny?
+g.neovide_remember_window_size = false
+
 -- font
 vim.o.guifont = "DankMono Nerd Font:h16"
 
