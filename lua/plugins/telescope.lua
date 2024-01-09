@@ -238,7 +238,25 @@ return {
 		"jake-stewart/jfind.nvim",
 		enabled = enabled("jake-stewart/jfind.nvim"),
 		branch = "1.0",
-		config = true,
+		opts = {
+			exclude = {
+				".git",
+				".idea",
+				".vscode",
+				".sass-cache",
+				".class",
+				"__pycache__",
+				"node_modules",
+				"target",
+				"build",
+				"tmp",
+				"assets",
+				"dist",
+				"public",
+				"*.iml",
+				"*.meta"
+			},
+		},
 		keys = {
 			{
 				"<D-p>",
