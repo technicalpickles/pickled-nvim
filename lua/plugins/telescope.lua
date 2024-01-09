@@ -215,9 +215,7 @@ return {
 			},
 
 			{ desc = "Fold", cmd = "zf" },
-			{ desc = "Fold All", cmd = "zM" },
 			{ desc = "Unfold", cmd = "zo" },
-			{ desc = "Unfold All", cmd = "zM" },
 
 			{ desc = "Marks: Toggle", cmd = "m;" },
 			{ desc = "Marks: Delete All on Current Line", cmd = "dm-" },

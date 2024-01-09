@@ -18,11 +18,11 @@ return {
 				{ buffer = 0, noremap = false, silent = true },
 			},
 
-			{ "zR", "<CMD>lua require('ufo').openAllFolds()<CR>", silent_noremap },
-			{ "zM", "<CMD>lua require('ufo').closeAllFolds()<CR>", silent_noremap },
+			{ "zR", "<CMD>lua require('ufo').openAllFolds()<CR>", desc = "Unfold All", silent_noremap },
+			{ "zM", "<CMD>lua require('ufo').closeAllFolds()<CR>", desc = "Fold All", silent_noremap },
 
-			{ "<D-M-[>", "zf", silent_noremap },
-			{ "<D-M-]>", "zo", silent_noremap },
+			{ "<D-M-[>", "zf", desc = "Create Fold", silent_noremap },
+			{ "<D-M-]>", "zo", desc = "Open Fold", silent_noremap },
 		},
 		event = "BufRead",
 		dependencies = "kevinhwang91/promise-async",
