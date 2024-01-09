@@ -44,6 +44,7 @@ return {
 					}
 					require('telescope').extensions.hbac.buffers(default_opts)
 				end,
+				desc = "Telescope: Buffers (via HBAC)",
 				silent_noremap_both_modes,
 			},
 		},
