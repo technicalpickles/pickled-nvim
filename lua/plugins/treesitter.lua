@@ -22,11 +22,6 @@ return {
 				additional_vim_regex_highlighting = true,
 			},
 
-			-- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
-			context_commentstring = {
-				enable = true,
-			},
-
 			-- https://github.com/andymass/vim-matchup
 			matchup = {
 				enable = true,
@@ -88,6 +83,7 @@ return {
 	-- determine what type of comments to use in multi-syntax files, ie css in html... use with commentary
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
-		event = "VeryLazy",
+		event = "BufReadPost",
+		config = true,
 	},
 }
