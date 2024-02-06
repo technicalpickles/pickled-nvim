@@ -40,27 +40,15 @@ return {
 			-- { "jayp0521/mason-null-ls.nvim" },
 		},
 		config = function()
-			local lsp = require("lsp-zero")
+			local lsp_zero = require("lsp-zero")
+			local lspconfig = require("lspconfig")
 			local lspkind = require("lspkind")
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
+
+			require("lspconfig.ui.windows").default_options.border = require("pickled-nvim").preferred_border
+
 			require("luasnip.loaders.from_snipmate").lazy_load()
-
-			lsp.preset("recommended")
-
-			local cmp_sources = {
-				-- This one provides the data from copilot.
-				{ name = "copilot" },
-
-				{ name = "nvim_lsp_signature_help" },
-				{ name = "fish", keyword_length = 2 },
-
-				--- These are the default sources for lsp-zero
-				{ name = "path" },
-				{ name = "nvim_lsp", keyword_length = 3 },
-				{ name = "buffer", keyword_length = 3 },
-				{ name = "luasnip", keyword_length = 2 },
-			}
 
 			-- https://github.com/zbirenbaum/copilot-cmp#tab-completion-configuration-highly-recommended
 			local has_words_before = function()
@@ -69,56 +57,10 @@ return {
 					and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 			end
 
-			local cmp_select = { behavior = cmp.SelectBehavior.Select }
-			local cmp_mappings = lsp.defaults.cmp_mappings({
-				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-
-				-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#safely-select-entries-with-cr
-				["<CR>"] = cmp.mapping({
-					i = function(fallback)
-						if cmp.visible() and cmp.get_active_entry() then
-							cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-						else
-							fallback()
-						end
-					end,
-					s = cmp.mapping.confirm({ select = true }),
-					c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-				}),
-
-				-- super tab like behavior w/ luasnip
-				-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
-				-- https://github.com/zbirenbaum/copilot-cmp#tab-completion-configuration-highly-recommended
-				["<Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_next_item()
-					elseif luasnip.expand_or_jumpable() then
-						luasnip.expand_or_jump()
-					elseif has_words_before() then
-						cmp.complete()
-					else
-						fallback()
-					end
-				end, { "i", "s" }),
-
-				-- super shift-tab like behavior w/ luasnip
-				["<S-Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_prev_item()
-					elseif luasnip.jumpable(-1) then
-						luasnip.jump(-1)
-					else
-						fallback()
-					end
-				end, { "i", "s" }),
-			})
-
 			-- require("lspconfig-bundler").setup()
 
-
 			-- disable except for actual latex
-			lsp.configure("ltex", {
+			lspconfig.ltex.setup({
 				filetypes = {
 					"bib",
 					"plaintex",
@@ -126,30 +68,82 @@ return {
 				},
 			})
 
-			local cmp_sorting =   {
-				priority_weight = 2,
-				comparators = {
-					require("copilot_cmp.comparators").prioritize,
-
-					-- Below is the default comparitor list and order for nvim-cmp
-					cmp.config.compare.offset,
-					-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-					cmp.config.compare.exact,
-					cmp.config.compare.score,
-					cmp.config.compare.recently_used,
-					cmp.config.compare.locality,
-					cmp.config.compare.kind,
-					cmp.config.compare.sort_text,
-					cmp.config.compare.length,
-					cmp.config.compare.order,
-				},
-			}
-
-
+			local cmp_select = { behavior = cmp.SelectBehavior.Select }
 			cmp.setup({
-				sources = cmp_sources,
-				mapping = cmp_mappings,
-				sorting = cmp_sorting,
+				sources = {
+					-- This one provides the data from copilot.
+					{ name = "copilot" },
+
+					{ name = "nvim_lsp_signature_help" },
+					{ name = "fish", keyword_length = 2 },
+
+					--- These are the default sources for lsp-zero
+					{ name = "path" },
+					{ name = "nvim_lsp", keyword_length = 3 },
+					{ name = "buffer", keyword_length = 3 },
+					{ name = "luasnip", keyword_length = 2 },
+				},
+				mapping = lsp_zero.defaults.cmp_mappings({
+					["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+					["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+
+					-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#safely-select-entries-with-cr
+					["<CR>"] = cmp.mapping({
+						i = function(fallback)
+							if cmp.visible() and cmp.get_active_entry() then
+								cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+							else
+								fallback()
+							end
+						end,
+						s = cmp.mapping.confirm({ select = true }),
+						c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+					}),
+
+					-- super tab like behavior w/ luasnip
+					-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
+					-- https://github.com/zbirenbaum/copilot-cmp#tab-completion-configuration-highly-recommended
+					["<Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						elseif luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
+						elseif has_words_before() then
+							cmp.complete()
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+
+					-- super shift-tab like behavior w/ luasnip
+					["<S-Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+				}),
+				sorting = {
+					priority_weight = 2,
+					comparators = {
+						require("copilot_cmp.comparators").prioritize,
+
+						-- Below is the default comparitor list and order for nvim-cmp
+						cmp.config.compare.offset,
+						-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+						cmp.config.compare.exact,
+						cmp.config.compare.score,
+						cmp.config.compare.recently_used,
+						cmp.config.compare.locality,
+						cmp.config.compare.kind,
+						cmp.config.compare.sort_text,
+						cmp.config.compare.length,
+						cmp.config.compare.order,
+					},
+				},
 				formatting = {
 					format = lspkind.cmp_format({
 						mode = "symbol_text", -- show only symbol annotations
@@ -168,30 +162,24 @@ return {
 				},
 			})
 
-			lsp.set_preferences({
-				-- don't use defaults... will end up with the same mostly, but want to control desc, etc
-				set_lsp_keymaps = false,
-			})
-
 			-- disabled lspzero's keymaps, so make them ourselves
-			lsp.on_attach(function() -- client, bufnr
+			lsp_zero.on_attach(function(client, bufnr)
 				-- copied from lsp-zero with modifications
-				vim.keymap.set("n", "K", "<CMD>lua require('pickled-nvim.folds').peekOrHover()<CR>")
-				vim.keymap.set("n", "gd", "<CMD>lua vim.lsp.buf.definition()<CR>")
-				vim.keymap.set("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>")
-				vim.keymap.set("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>")
-				vim.keymap.set("n", "go", "<CMD>lua vim.lsp.buf.type_definition()<CR>")
-				vim.keymap.set("n", "gr", "<CMD>lua vim.lsp.buf.references()<CR>")
-				vim.keymap.set("n", "<C-k>", "<CMD>lua vim.lsp.buf.signature_help()<CR>")
-				vim.keymap.set("n", "<F2>", "<CMD>lua vim.lsp.buf.rename()<CR>")
-				vim.keymap.set("n", "<F4>", "<CMD>lua vim.lsp.buf.code_action()<CR>")
-				vim.keymap.set("x", "<F4>", "<CMD>lua vim.lsp.buf.range_code_action()<CR>")
-				vim.keymap.set("n", "<C-k>", "<CMD>lua vim.lsp.buf.signature_help()<CR>")
-				vim.keymap.set("n", "gl", "<CMD>lua vim.diagnostic.open_float()<CR>")
-				vim.keymap.set("n", "[d", "<CMD>lua vim.diagnostic.goto_prev()<CR>")
-				vim.keymap.set("n", "]d", "<CMD>lua vim.diagnostic.goto_next()<CR>")
+				vim.keymap.set("n", "K", "<CMD>lua require('pickled-nvim.folds').peekOrHover()<CR>", { buffer = bufnr })
+				vim.keymap.set("n", "gd", "<CMD>lua vim.lsp.buf.definition()<CR>", { buffer = bufnr })
+				vim.keymap.set("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>", { buffer = bufnr })
+				vim.keymap.set("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>", { buffer = bufnr })
+				vim.keymap.set("n", "go", "<CMD>lua vim.lsp.buf.type_definition()<CR>", { buffer = bufnr })
+				vim.keymap.set("n", "gr", "<CMD>lua vim.lsp.buf.references()<CR>", { buffer = bufnr })
+				vim.keymap.set("n", "<C-k>", "<CMD>lua vim.lsp.buf.signature_help()<CR>", { buffer = bufnr })
+				vim.keymap.set("n", "<F2>", "<CMD>lua vim.lsp.buf.rename()<CR>", { buffer = bufnr })
+				vim.keymap.set("n", "<F4>", "<CMD>lua vim.lsp.buf.code_action()<CR>", { buffer = bufnr })
+				vim.keymap.set("x", "<F4>", "<CMD>lua vim.lsp.buf.range_code_action()<CR>", { buffer = bufnr })
+				vim.keymap.set("n", "<C-k>", "<CMD>lua vim.lsp.buf.signature_help()<CR>", { buffer = bufnr })
+				vim.keymap.set("n", "gl", "<CMD>lua vim.diagnostic.open_float()<CR>", { buffer = bufnr })
+				vim.keymap.set("n", "[d", "<CMD>lua vim.diagnostic.goto_prev()<CR>", { buffer = bufnr })
+				vim.keymap.set("n", "]d", "<CMD>lua vim.diagnostic.goto_next()<CR>", { buffer = bufnr })
 			end)
-
 
 			local ensure_installed = {
 				"eslint",
@@ -202,26 +190,26 @@ return {
 			}
 
 			local handlers = {
-				lsp.default_setup,
-				rubocop = lsp.noop -- we'll detect which to use, but ruby_ls is better than rubocop directly
+				lsp_zero.default_setup,
+				rubocop = lsp_zero.noop, -- we'll detect which to use, but ruby_ls is better than rubocop directly
 			}
 
 			if vim.fn.filereadable(".solargraph.yml") == 1 then
 				table.insert(ensure_installed, "solargraph")
 			else
-				handlers["solargraph"] = lsp.noop
+				handlers["solargraph"] = lsp_zero.noop
 			end
 
 			-- FIXME not quite working, doesn't show up as configured
 			if vim.fn.filereadable(".standard.yml") == 1 then
 				table.insert(ensure_installed, "standardrb")
 			else
-				handlers["standardrb"] = lsp.noop
+				handlers["standardrb"] = lsp_zero.noop
 			end
 
 			-- TODO; smarter enabling of ruby_ls, and only disable features when rubocop isn't detected
 			if vim.fn.filereadable(".rubocop.yml") == 1 then
-				lsp.configure("ruby_ls", {
+				lspconfig.ruby_ls.setup({
 					on_attach = function(client, bufnr)
 						local callback = function()
 							local params = vim.lsp.util.make_text_document_params(bufnr)
@@ -253,17 +241,16 @@ return {
 
 				table.insert(ensure_installed, "ruby_ls")
 			else
-				handlers["ruby_ls"] = lsp.noop
+				handlers["ruby_ls"] = lsp_zero.noop
 			end
 
-			require('mason').setup({})
-			require('mason-lspconfig').setup({
+			require("mason").setup({})
+			require("mason-lspconfig").setup({
 				ensure_installed = ensure_installed,
-				handlers = handlers
+				handlers = handlers,
 			})
 
-
-			lsp.setup()
+			lsp_zero.setup()
 
 			-- for cmp + autopairs: https://github.com/windwp/nvim-autopairs#mapping-cr
 			-- and it needs to come after lsp-zero is configured: https://github.com/VonHeikemen/lsp-zero.nvim/discussions/119
@@ -276,7 +263,6 @@ return {
 			if vim.fn.has("nvim-0.5.1") == 1 then
 				require("vim.lsp.log").set_format_func(vim.inspect)
 			end
-
 		end,
 	},
 

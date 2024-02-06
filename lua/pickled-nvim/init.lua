@@ -244,12 +244,13 @@ local vscode_plugins = {
 	["tyru/open-browser.vim"] = false, -- command-click on stuff
 	["simrat39/symbols-outline.nvim"] = false, -- builtin sidebar
 	["nvim-tree/nvim-tree.lua"] = false, -- builtin sidebar
+	["nvim-treesitter/nvim-treesitter-context"] = false, -- built in
 }
 
 -- Example:
 --     local enabled = require("pickled-nvim").enabled
 --     ...
---     return { 
+--     return {
 --	     {
 --	       "some/plugin",
 --         enabled = enabled("ur4ltz/surround.nvim"),

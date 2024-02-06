@@ -42,20 +42,10 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		enabled = false,
+		enabled = enabled("nvim-treesitter/nvim-treesitter-context"),
 		dependencies = { "nvim-treesitter" },
 		event = "VeryLazy",
-		opts = {
-			patterns = {
-				-- remove when/if https://github.com/nvim-treesitter/nvim-treesitter-context/pull/201 lands
-				ruby = {
-					"block",
-				},
-				lua = {
-					"table_constructor",
-				},
-			},
-		},
+		context = true,
 	},
 
 	-- better support for % to bounce between sets of matching text, ie parens, etc
@@ -83,7 +73,11 @@ return {
 	-- determine what type of comments to use in multi-syntax files, ie css in html... use with commentary
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
+		enabled = enabled("JoosepAlviste/nvim-ts-context-commentstring"),
 		event = "BufReadPost",
-		config = true,
+		opts = {
+			-- need to disable for comment.nvim integration
+			enable_autocmd = false,
+		},
 	},
 }
