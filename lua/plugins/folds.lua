@@ -1,6 +1,5 @@
 local silent_noremap = { noremap = true, silent = true }
 return {
-	-- folds
 	{
 		"kevinhwang91/nvim-ufo",
 		enable = require("pickled-nvim").enabled("kevinhwang91/nvim-ufo"),
