@@ -64,7 +64,7 @@ return {
 			},
 		},
 
-		command_center = {
+		commander = {
 			{ desc = "Trouble: Toggle", cmd = "<CMD>Trouble<CR>" },
 			{ desc = "Trouble: Document Diagnostics", cmd = "<CMD>Trouble document_diagnostics<CR>" },
 			{ desc = "Trouble: Workspace Diagnostics", cmd = "<CMD>Trouble workspace_diagnostics<CR>" },

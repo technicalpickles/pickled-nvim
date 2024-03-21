@@ -1,5 +1,5 @@
 local silent_noremap = { noremap = true, silent = true }
-local enabled = vim.g.neovide and vim.fn.has('macunix')
+local enabled = vim.g.neovide and vim.fn.has("macunix")
 return {
 	{
 		"ktunprasert/gui-font-resize.nvim",
@@ -18,7 +18,7 @@ return {
 		opts = {
 			default_size = 16,
 		},
-		command_center = {
+		commander = {
 			{ desc = "GUI Font Size: Increase", cmd = "<CMD>GUIFontSizeUp<CR>" },
 			{ desc = "GUI Font Size: Decrease", cmd = "<CMD>GUIFontSizeDown<CR>" },
 			{ desc = "GUI Font Size: Reset", cmd = "<CMD>GUIFontSizeSet<CR>" },

@@ -42,13 +42,13 @@ return {
 						cwd_only = false,
 						cwd = nil,
 					}
-					require('telescope').extensions.hbac.buffers(default_opts)
+					require("telescope").extensions.hbac.buffers(default_opts)
 				end,
 				desc = "Telescope: Buffers (via HBAC)",
 				silent_noremap_both_modes,
 			},
 		},
-		command_center = {
+		commander = {
 			{ desc = "Buffer: Toggle Pin", cmd = "<CMD>Hbac toggle_pin<CR>" },
 			{ desc = "Buffer: Close Unpinned", cmd = "<CMD>Hbac close_unpinned<CR>" },
 			{ desc = "Buffer: Toggle Autoclose", cmd = "<CMD>Hbac toggle_autoclose<CR>" },

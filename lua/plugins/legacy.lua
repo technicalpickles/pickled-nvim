@@ -32,7 +32,7 @@ return {
 				"Print the unicode value of character in decimal, hex, and octal, HTML entity, Emoji, etc",
 			},
 		},
-		command_center = {
+		commander = {
 			{ desc = "Characterize: Show unicode of character under cursor", cmd = "ga" },
 		},
 	},

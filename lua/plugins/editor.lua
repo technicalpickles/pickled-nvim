@@ -10,7 +10,7 @@ return {
 		opts = {
 			sign_priority = require("pickled-nvim").sign_priorities.mark,
 		},
-		command_center = {
+		commander = {
 			{ desc = "Marks: List in Current Buffer", cmd = "<CMD>MarksListBuf<CR>" },
 			{ desc = "Marks: List Globally", cmd = "<CMD>MarksListGlobal<CR>" },
 		},
@@ -40,7 +40,7 @@ return {
 			{ "gS", "<CMD>TSJSplit<CR>" },
 			{ "gJ", "<CMD>TSJJoin<CR>" },
 		},
-		command_center = {
+		commander = {
 			{ desc = "SplitJoin: Split", cmd = "<CMD>TSJSplit<CR>" },
 			{ desc = "SplitJoin: Join", cmd = "<CMD>TSJJoin<CR>" },
 		},
@@ -159,7 +159,7 @@ return {
 			{ "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
 		},
 
-		command_center = {
+		commander = {
 			{
 				desc = "Flash: Toggle",
 				cmd = function()

@@ -47,7 +47,7 @@ return {
 			vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 		end,
 
-		command_center = {
+		commander = {
 			{ desc = "Session: Save Current", cmd = "<CMD>SaveSession<CR>" },
 			{ desc = "Session: Restore", cmd = "<CMD>RestoreSession<CR>" },
 			{ desc = "Session: Delete Current", cmd = "<CMD>DeleteSession<CR>" },

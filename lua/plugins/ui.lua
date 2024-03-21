@@ -158,7 +158,7 @@ return {
 
 			filetype_exclude = require("pickled-nvim").filetype_config.indent_blankline.exclude,
 		},
-		command_center = {
+		commander = {
 			{ desc = "View: Toggle vertical guide lines", cmd = "<CMD>IndentBlanklineToggle<CR>" },
 		},
 	},

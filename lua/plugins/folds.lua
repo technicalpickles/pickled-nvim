@@ -2,7 +2,7 @@ local silent_noremap = { noremap = true, silent = true }
 return {
 	{
 		"kevinhwang91/nvim-ufo",
-		enable = require("pickled-nvim").enabled("kevinhwang91/nvim-ufo"),
+		enabled = require("pickled-nvim").enabled("kevinhwang91/nvim-ufo"),
 		opts = {
 			-- performance and stability are better than `foldmethod=nvim_treesitter#foldexpr()`
 			provider_selector = function()

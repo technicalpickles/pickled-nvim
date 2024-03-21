@@ -160,6 +160,9 @@ return {
 						end,
 					}),
 				},
+				experimental = {
+					ghost_text = true,
+				},
 			})
 
 			-- disabled lspzero's keymaps, so make them ourselves
@@ -232,11 +235,11 @@ return {
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 			-- debug lsp
-			vim.lsp.set_log_level("info")
+			-- vim.lsp.set_log_level("info")
 			-- vim.lsp.set_log_level("trace")
-			if vim.fn.has("nvim-0.5.1") == 1 then
-				require("vim.lsp.log").set_format_func(vim.inspect)
-			end
+			-- if vim.fn.has("nvim-0.5.1") == 1 then
+			-- 	require("vim.lsp.log").set_format_func(vim.inspect)
+			-- end
 		end,
 	},
 

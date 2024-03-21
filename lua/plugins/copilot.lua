@@ -19,14 +19,14 @@ return {
 			suggestion = { enabled = false },
 			panel = { enabled = false },
 
-			copilot_node_command = copilot_node_command
+			copilot_node_command = copilot_node_command,
 		},
 		cmd = "Copilot",
 		config = function(_, opts)
 			require("copilot").setup(opts)
 		end,
 
-		command_center = {
+		commander = {
 			{ desc = "Copilot: Setup", cmd = "<CMD>Copilot setup<CR>" },
 			{ desc = "Copilot: Signout", cmd = "<CMD>Copilot signout<CR>" },
 			{ desc = "Copilot: Disable", cmd = "<CMD>Copilot disable<CR>" },

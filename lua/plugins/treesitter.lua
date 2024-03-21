@@ -45,7 +45,6 @@ return {
 		enabled = enabled("nvim-treesitter/nvim-treesitter-context"),
 		dependencies = { "nvim-treesitter" },
 		event = "VeryLazy",
-		context = true,
 	},
 
 	-- better support for % to bounce between sets of matching text, ie parens, etc
@@ -60,7 +59,7 @@ return {
 		"nvim-treesitter/playground",
 		enabled = false,
 		cmd = "TSPlaygroundToggle",
-		command_center = {
+		commander = {
 			{ desc = "Treesitter: Toggle Playground", cmd = "<CMD>TSPlaygroundToggle<CR>" },
 		},
 	},

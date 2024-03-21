@@ -75,7 +75,7 @@ return {
 			}))
 		end,
 
-		command_center = {
+		commander = {
 			{ desc = "Git: Toggle Gutter", cmd = "<CMD>Gitsigns toggle_signs<CR>" },
 			{ desc = "Git: Toggle Signs", cmd = "<CMD>Gitsigns toggle_numhl<CR>" },
 			{ desc = "Git: Toggle Line Number Highlights", cmd = "<CMD>Gitsigns toggle_numhl<CR>" },
@@ -112,7 +112,7 @@ return {
 			"GDelete",
 			"GBrowse",
 		},
-		command_center = {
+		commander = {
 			-- { desc = "GitHub: Copy Permalink", cmd = "<leader>gy" },
 			{ desc = "GitHub: Open in Browser", cmd = "<CMD>GBrowse<CR>" },
 		},
