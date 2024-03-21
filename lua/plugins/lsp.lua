@@ -210,33 +210,7 @@ return {
 			-- TODO; smarter enabling of ruby_ls, and only disable features when rubocop isn't detected
 			if vim.fn.filereadable(".rubocop.yml") == 1 then
 				lspconfig.ruby_ls.setup({
-					on_attach = function(client, bufnr)
-						local callback = function()
-							local params = vim.lsp.util.make_text_document_params(bufnr)
-
-							client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
-								if err then
-									return
-								end
-
-								vim.lsp.diagnostic.on_publish_diagnostics(
-									nil,
-									vim.tbl_extend("keep", params, { diagnostics = result.items }),
-									{ client_id = client.id }
-								)
-							end)
-						end
-
-						callback() -- call on attach
-
-						vim.api.nvim_create_autocmd(
-							{ "BufEnter", "BufWritePre", "BufReadPost", "InsertLeave", "TextChanged" },
-							{
-								buffer = bufnr,
-								callback = callback,
-							}
-						)
-					end,
+					on_attach = require("pickled-nvim.ruby-lsp").on_attach,
 				})
 
 				table.insert(ensure_installed, "ruby_ls")
