@@ -176,7 +176,6 @@ return {
 		enabled = false,
 		dependencies = { "plenary.nvim" },
 		lazy = true,
-		commands = {},
 	},
 
 	{
@@ -252,7 +251,7 @@ return {
 				"dist",
 				"public",
 				"*.iml",
-				"*.meta"
+				"*.meta",
 			},
 		},
 		keys = {
