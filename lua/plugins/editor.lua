@@ -196,7 +196,9 @@ return {
 		},
 
 		config = function()
-			require("hlslens").setup({
+			-- require('hlslens').setup() is not required
+			require("scrollbar.handlers.search").setup({
+				-- hlslens config overrides
 				-- TODO customize override_lens to be a little more subtle
 			})
 		end,
