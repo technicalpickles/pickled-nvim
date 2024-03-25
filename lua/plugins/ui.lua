@@ -111,6 +111,19 @@ return {
 
 			dashboard.section.buttons.opts.hl = "AlphaButtons"
 			dashboard.opts.layout[1].val = 8
+
+			local configPulse = {
+				type = "text",
+				val = "",
+				opts = {
+					position = "center",
+					hl = "Number",
+				},
+			}
+
+			dashboard.section.configpulse = configPulse
+			table.insert(dashboard.config.layout, configPulse)
+
 			return dashboard
 		end,
 		config = function(_, dashboard)
@@ -133,10 +146,33 @@ return {
 					local stats = require("lazy").stats()
 					local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
 					dashboard.section.footer.val = "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+
+					local time = require("configpulse").get_time()
+					local configPulse
+					if time.days > 0 then
+						configPulse = string.format(
+							"Config last modified %d days, %d hours, %d minutes ago",
+							time.days,
+							time.hours,
+							time.minutes
+						)
+					elseif time.hours > 0 then
+						configPulse =
+							string.format("Config last modified %d hours, %d minutes ago", time.hours, time.minutes)
+					else
+						configPulse = string.format("Config last modified %d minutes ago", time.minutes)
+					end
+					dashboard.section.configpulse.val = configPulse
+
 					pcall(vim.cmd.AlphaRedraw)
 				end,
 			})
 		end,
+	},
+
+	{
+		"mrquantumcodes/configpulse",
+		cmd = "ConfigPulse",
 	},
 
 	{
@@ -397,6 +433,7 @@ return {
 			})
 		end,
 	},
+
 	{
 		"0xAdk/full_visual_line.nvim",
 		keys = "V",
