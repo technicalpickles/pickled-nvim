@@ -176,6 +176,7 @@ return {
 
 	{
 		"kevinhwang91/nvim-hlslens",
+		enabled = enabled("kevinhwang91/nvim-hlslens"),
 		event = { "BufReadPre", "BufNewFile" },
 		keys = {
 			{

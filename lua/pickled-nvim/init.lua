@@ -239,12 +239,22 @@ local vscode_plugins = {
 	["ur4ltz/surround.nvim"] = true,
 	["tpope/vim-repeat"] = true,
 
+	-- vim specific
+	["0xAdk/full_visual_line.nvim"] = false,
+	["goolord/alpha-nvim"] = false,
+	["folke/which-key.nvim"] = false,
+
 	-- overlap vscode features/extensions
 	["lewis6991/gitsigns.nvim"] = false,
 	["tyru/open-browser.vim"] = false, -- command-click on stuff
 	["simrat39/symbols-outline.nvim"] = false, -- builtin sidebar
 	["nvim-tree/nvim-tree.lua"] = false, -- builtin sidebar
 	["nvim-treesitter/nvim-treesitter-context"] = false, -- built in
+	["nvim-treesitter/nvim-treesitter-context"] = false, -- built in
+	["kevinhwang91/nvim-hlslens"] = false,
+	["petertriho/nvim-scrollbar"] = false,
+	["lukas-reineke/indent-blankline.nvim"] = false,
+	["nvim-lualine/lualine.nvim"] = false,
 }
 
 -- Example:
