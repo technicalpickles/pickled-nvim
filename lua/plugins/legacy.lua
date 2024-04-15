@@ -37,6 +37,14 @@ return {
 		},
 	},
 
+	{
+		-- there is overlap with direnv somewhat, but more interested in filetype
+		"tpope/vim-dotenv",
+		cmd = {
+			"Dotenv",
+		},
+	},
+
 	-- directory specific path, etc
 	{
 		"direnv/direnv.vim",
