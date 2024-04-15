@@ -199,8 +199,16 @@ return {
 		config = function()
 			-- require('hlslens').setup() is not required
 			require("scrollbar.handlers.search").setup({
-				-- hlslens config overrides
+				calm_down = true,
 				-- TODO customize override_lens to be a little more subtle
+				override_lens = function(render, plist, nearest, idx, r_idx)
+					local indicator = require("pickled-nvim.hlslens").indicator("", "", r_idx)
+
+					local lnum, col = unpack(plist[idx])
+					local text, chunks =
+						require("pickled-nvim.hlslens").text(plist, nearest, idx, indicator, "Identifier")
+					render.set_virt(0, lnum - 1, col - 1, chunks, nearest)
+				end,
 			})
 		end,
 	},
