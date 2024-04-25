@@ -18,24 +18,20 @@ return {
 	},
 
 	{
-		"mhinz/vim-grepper",
-		enabled = false,
-		cmd = "Grepper",
-		keys = {
-			{ "<leader>F", ":Grepper<CR>", silent_noremap },
-			{ "<D-F>", ":Grepper<CR> ", silent_noremap },
+		"mangelozzi/rgflow.nvim",
+		enabled = enabled("mangelozzi/rgflow.nvim"),
+		opts = {
+			-- Set the default rip grep flags and options for when running a search via
+			-- RgFlow. Once changed via the UI, the previous search flags are used for
+			-- each subsequent search (until Neovim restarts).
+			cmd_flags = "--smart-case --fixed-strings --ignore --max-columns 200",
+
+			-- Mappings to trigger RgFlow functions
+			default_trigger_mappings = true,
+			-- These mappings are only active when the RgFlow UI (panel) is open
+			default_ui_mappings = true,
+			-- QuickFix window only mapping
+			default_quickfix_mappings = true,
 		},
-		config = function()
-			vim.g.grepper = {
-				tools = { "rg", "ag", "pt", "git", "sift" },
-				highlight = 1,
-				prompt = 1,
-				prompt_text = " $t> ",
-				next_tool_mapping = "<tab>",
-				rg = {
-					grepprg = 'rg -H --no-heading --vimgrep --hidden --glob "!.git" --glob "!node_modules"',
-				},
-			}
-		end,
 	},
 }
