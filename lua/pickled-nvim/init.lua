@@ -254,6 +254,7 @@ local vscode_plugins = {
 	["kevinhwang91/nvim-hlslens"] = false,
 	["petertriho/nvim-scrollbar"] = false,
 	["lukas-reineke/indent-blankline.nvim"] = false,
+	["lukas-reineke/headlines.nvim"] = false,
 	["nvim-lualine/lualine.nvim"] = false,
 }
 
