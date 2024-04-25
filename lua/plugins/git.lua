@@ -123,4 +123,62 @@ return {
 		event = "VeryLazy",
 		dependencies = { "tpope/vim-fugitive" },
 	},
+
+	{
+		"rmagatti/igs.nvim",
+		opts = true,
+		commander = {
+			{
+				desc = "Interactive Git Status: Edit Modified",
+				cmd = function()
+					require("igs").edit_modified()
+				end,
+			},
+			{
+				desc = "Interactive Git Status: Edit Added",
+				cmd = function()
+					require("igs").edit_added()
+				end,
+			},
+			{
+				desc = "Interactive Git Status: Edit All",
+				cmd = function()
+					require("igs").edit_all()
+				end,
+			},
+
+			{
+				desc = "Interactive Git Status: Quickfix Modified",
+				cmd = function()
+					require("igs").qf_modified({ all_changes = true })
+				end,
+			},
+			{
+				desc = "Interactive Git Status: Quickfix Added",
+				cmd = function()
+					require("igs").qf_added({ all_changes = true })
+				end,
+			},
+			{
+				desc = "Interactive Git Status: Quickfix All",
+				cmd = function()
+					require("igs").qf_all({ all_changes = true })
+				end,
+			},
+
+			{
+				desc = "Interactive Git Status: Quickfix Diff Branch",
+				cmd = function()
+					require("igs").qf_diff_branch({ all_changes = true })
+				end,
+			},
+
+			{
+				desc = "Interactive Git Status: Quickfix Conflicts",
+				cmd = function()
+					require("igs").qf_conflicts()
+				end,
+			},
+		},
+	},
 }
