@@ -212,7 +212,7 @@ return {
 
 			-- TODO; smarter enabling of ruby_ls, and only disable features when rubocop isn't detected
 			if vim.fn.filereadable(".rubocop.yml") == 1 then
-				lspconfig.ruby_ls.setup({
+				lspconfig.ruby_lsp.setup({
 					on_attach = require("pickled-nvim.ruby-lsp").on_attach,
 				})
 
