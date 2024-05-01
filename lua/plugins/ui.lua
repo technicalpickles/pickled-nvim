@@ -30,6 +30,8 @@ return {
 		event = "VeryLazy",
 		opts = {
 			input = {
+				-- disabled because it seems to mess with COMMAND mode, where the wrong thing is selected when using tab completion
+				enabled = false,
 				default_prompt = "❯ ",
 			},
 			select = {
