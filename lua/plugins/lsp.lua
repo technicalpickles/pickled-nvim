@@ -227,6 +227,38 @@ return {
 				handlers = handlers,
 			})
 
+			local lsp_configurations = require("lspconfig.configs")
+			-- use ls to find a fuzzy command
+
+			if not lsp_configurations.fuzzy_ls then
+				lsp_configurations.fuzzy_ls = {
+					default_config = {
+						cmd = { "fuzzy" },
+						filetypes = { "ruby" },
+						root_dir = function(fname)
+							return lspconfig.util.find_git_ancestor(fname)
+						end,
+						settings = {},
+						init_options = {
+							allocationType = "ram",
+							indexGems = true,
+							reportDiagnostics = true,
+						},
+					},
+				}
+			end
+
+			fuzzy_path = vim.fn.trim(
+				vim.fn.system(
+					"echo ~/.vscode{-insiders,}/extensions/blinknlights.fuzzy-ruby-server-*/bin/fuzzy 2>/dev/null | head -n 1"
+				)
+			)
+			if fuzzy_path ~= "" and vim.fn.filereadable(fuzzy_path) == 1 then
+				lspconfig.fuzzy_ls.setup({
+					cmd = { fuzzy_path },
+				})
+			end
+
 			lsp_zero.setup()
 
 			-- for cmp + autopairs: https://github.com/windwp/nvim-autopairs#mapping-cr
