@@ -4,30 +4,11 @@ local enabled = require("pickled-nvim").enabled
 local kopts = { noremap = true, silent = true }
 return {
 	{
-		"chentoast/marks.nvim",
-		enabled = false,
-		event = "VeryLazy",
-		opts = {
-			sign_priority = require("pickled-nvim").sign_priorities.mark,
-		},
-		commander = {
-			{ desc = "Marks: List in Current Buffer", cmd = "<CMD>MarksListBuf<CR>" },
-			{ desc = "Marks: List Globally", cmd = "<CMD>MarksListGlobal<CR>" },
-		},
-	},
-
-	{
 		"sickill/vim-pasta",
 		event = "VeryLazy",
 		config = function()
 			g.pasta_disabled_filetypes = require("pickled-nvim").filetype_config.pasta.disable
 		end,
-	},
-
-	{
-		"mg979/vim-visual-multi",
-		enabled = false,
-		event = "VeryLazy",
 	},
 
 	{
@@ -144,30 +125,6 @@ return {
 		event = "BufRead",
 	},
 
-	{
-		"folke/flash.nvim",
-		enabled = false,
-		event = "VeryLazy",
-		---@type Flash.Config
-		opts = {},
-		-- stylua: ignore
-		keys = {
-			{ "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-			{ "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-			{ "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-			{ "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-			{ "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-		},
-
-		commander = {
-			{
-				desc = "Flash: Toggle",
-				cmd = function()
-					require("flash").toggle()
-				end,
-			},
-		},
-	},
 	{
 		"lukas-reineke/headlines.nvim",
 		enabled = enabled("lukas-reineke/headlines.nvim"),

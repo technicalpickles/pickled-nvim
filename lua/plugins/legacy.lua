@@ -15,29 +15,6 @@ return {
 	},
 
 	{
-		"junegunn/fzf",
-		-- TODO confirm this isn't needed, or make lazy
-		enabled = false,
-		build = function()
-			vim.fn["fzf#install"]()
-		end,
-	},
-
-	{
-		"tpope/vim-characterize",
-		keys = {
-			{
-				"ga",
-				"<Plug>(characterize)",
-				"Print the unicode value of character in decimal, hex, and octal, HTML entity, Emoji, etc",
-			},
-		},
-		commander = {
-			{ desc = "Characterize: Show unicode of character under cursor", cmd = "ga" },
-		},
-	},
-
-	{
 		-- there is overlap with direnv somewhat, but more interested in filetype
 		"tpope/vim-dotenv",
 		cmd = {
@@ -66,21 +43,6 @@ return {
 			"OpenBrowser",
 			"OpenBrowserSearch",
 		},
-	},
-
-	{
-		"mattboehm/vim-unstack",
-		enabled = false,
-		cmd = {
-			"UnstackFromText",
-			"UnstackFromClipboard",
-			"UnstackFromTmux",
-			"UnstackFromSelection",
-		},
-		config = function()
-			g.unstack_mapkey = ""
-			g.unstack_populate_quickfix = 1
-		end,
 	},
 
 	{

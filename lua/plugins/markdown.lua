@@ -1,4 +1,5 @@
 local g = vim.g
+local enabled = require("pickled-nvim").enabled
 return {
 	{
 		"preservim/vim-markdown",
@@ -25,8 +26,16 @@ return {
 			g.vim_markdown_folding_disabled = 1
 		end,
 	},
+
 	{
 		"dhruvasagar/vim-table-mode",
 		ft = "markdown",
+	},
+
+	{
+		"lukas-reineke/headlines.nvim",
+		enabled = enabled("lukas-reineke/headlines.nvim"),
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		config = true, -- or `opts = {}`
 	},
 }

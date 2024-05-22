@@ -55,20 +55,4 @@ return {
 			{ desc = "Session: Choose which to Delete", cmd = "<CMD>Autosession delete<CR>" },
 		},
 	},
-
-	{
-		"rmagatti/session-lens",
-		enabled = false,
-		dependencies = {
-			"auto-session",
-			"telescope.nvim",
-		},
-		cmd = "SearchSession",
-		opts = {
-			path_display = { "shorten" },
-			previewer = true,
-			-- no transparency
-			theme_conf = { winblend = nil },
-		},
-	},
 }

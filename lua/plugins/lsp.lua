@@ -216,9 +216,9 @@ return {
 					on_attach = require("pickled-nvim.ruby-lsp").on_attach,
 				})
 
-				table.insert(ensure_installed, "ruby_ls")
+				table.insert(ensure_installed, "ruby_lsp")
 			else
-				handlers["ruby_ls"] = lsp_zero.noop
+				handlers["ruby_lsp"] = lsp_zero.noop
 			end
 
 			require("mason").setup({})

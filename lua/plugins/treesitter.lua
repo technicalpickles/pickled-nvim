@@ -64,11 +64,6 @@ return {
 		},
 	},
 
-	{
-		"RRethy/nvim-treesitter-textsubjects",
-		enabled = false,
-		event = "VeryLazy",
-	},
 	-- determine what type of comments to use in multi-syntax files, ie css in html... use with commentary
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",

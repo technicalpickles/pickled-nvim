@@ -86,20 +86,6 @@ return {
 	},
 
 	{
-		"sindrets/diffview.nvim",
-		enabled = false,
-		dependencies = "nvim-lua/plenary.nvim",
-		opts = true,
-		cmd = {
-			"DiffviewOpen",
-			"DiffviewClose",
-			"DiffviewToggleFiles",
-			"DiffviewFocusFiles",
-			"DiffviewRefresh",
-			"DiffviewFileHistory",
-		},
-	},
-	{
 		"tpope/vim-fugitive",
 		cmd = {
 			"Git",

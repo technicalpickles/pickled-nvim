@@ -172,13 +172,6 @@ return {
 	},
 
 	{
-		"nvim-telescope/telescope-live-grep-args.nvim",
-		enabled = false,
-		dependencies = { "plenary.nvim" },
-		lazy = true,
-	},
-
-	{
 		"FeiyouG/commander.nvim",
 		enabled = enabled("FeiyouG/commander.nvim"),
 		dependencies = { "nvim-telescope/telescope.nvim" },

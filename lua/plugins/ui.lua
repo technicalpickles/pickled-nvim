@@ -26,13 +26,14 @@ return {
 
 	{
 		"stevearc/dressing.nvim",
-		enabled = enabled("stevearc/dressing.nvim"),
+		-- enabled = enabled("stevearc/dressing.nvim"),
+		enabled = false,
 		event = "VeryLazy",
 		opts = {
 			input = {
 				-- disabled because it seems to mess with COMMAND mode, where the wrong thing is selected when using tab completion
 				enabled = false,
-				default_prompt = "❯ ",
+				-- default_prompt = "❯ ",
 			},
 			select = {
 				get_config = function(opts)
