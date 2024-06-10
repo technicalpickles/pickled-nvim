@@ -1,3 +1,5 @@
+vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
+
 -- barebones config (mostly vim.g and vim.o)
 require("pickled-nvim.basics")
 -- setup lazy

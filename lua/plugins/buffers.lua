@@ -3,6 +3,7 @@ local silent_noremap_both_modes = vim.tbl_deep_extend("keep", silent_noremap, { 
 local enabled = require("pickled-nvim").enabled
 
 return {
+	-- Heuristic buffer auto-close
 	{
 		"axkirillov/hbac.nvim",
 		enabled = enabled("axkirillov/hbac.nvim"),

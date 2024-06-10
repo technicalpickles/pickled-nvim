@@ -1,6 +1,7 @@
 local silent_noremap = { noremap = true, silent = true }
 local symbols_outline = "<CMD>SymbolsOutline<CR>"
 local enabled = require("pickled-nvim").enabled
+
 return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
@@ -17,6 +18,7 @@ return {
 			{ "hrsh7th/nvim-cmp" },
 			{ "hrsh7th/cmp-buffer" },
 			{ "hrsh7th/cmp-path" },
+			{ "hrsh7th/cmp-cmdline" },
 			{ "saadparwaiz1/cmp_luasnip" },
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "hrsh7th/cmp-nvim-lua" },
@@ -83,7 +85,13 @@ return {
 					{ name = "buffer", keyword_length = 3 },
 					{ name = "luasnip", keyword_length = 2 },
 				},
-				mapping = lsp_zero.defaults.cmp_mappings({
+				mapping = cmp.mapping.preset.insert({
+					["<C-e>"] = cmp.mapping({
+						i = cmp.mapping.abort(),
+						-- without this, there isn't a way to close autocomplete
+						c = cmp.mapping.close(),
+					}),
+
 					["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 					["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 
@@ -97,6 +105,8 @@ return {
 							end
 						end,
 						s = cmp.mapping.confirm({ select = true }),
+						-- TODO think about this a little... if typing fast, don't really want enter to select something. just run the thing
+						-- TODO shouldn't select anything by default? enter should execute the thing if nothing selected
 						c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 					}),
 
@@ -113,7 +123,7 @@ return {
 						else
 							fallback()
 						end
-					end, { "i", "s" }),
+					end, { "i", "c", "s" }),
 
 					-- super shift-tab like behavior w/ luasnip
 					["<S-Tab>"] = cmp.mapping(function(fallback)
@@ -124,7 +134,7 @@ return {
 						else
 							fallback()
 						end
-					end, { "i", "s" }),
+					end, { "i", "c", "s" }),
 				}),
 				sorting = {
 					priority_weight = 2,
@@ -162,6 +172,28 @@ return {
 				},
 				experimental = {
 					ghost_text = true,
+				},
+			})
+
+			cmp.setup.cmdline(":", {
+				mapping = cmp.mapping.preset.insert({}),
+				sources = {
+					{ name = "cmdline" },
+					{
+						name = "path",
+						keyword_length = 2,
+						option = {
+							trailing_slash = true,
+						},
+					},
+				},
+				matching = {},
+			})
+
+			cmp.setup.cmdline("/", {
+				mapping = cmp.mapping.preset.insert({}),
+				sources = {
+					{ name = "buffer" },
 				},
 			})
 
@@ -221,6 +253,10 @@ return {
 				handlers["ruby_lsp"] = lsp_zero.noop
 			end
 
+			-- we'll let rustacean handle this. still want it installed though
+			table.insert(ensure_installed, "rust_analyzer")
+			handlers["rust_analyzer"] = lsp_zero.noop
+
 			require("mason").setup({})
 			require("mason-lspconfig").setup({
 				ensure_installed = ensure_installed,
@@ -228,36 +264,35 @@ return {
 			})
 
 			local lsp_configurations = require("lspconfig.configs")
-			-- use ls to find a fuzzy command
-
-			if not lsp_configurations.fuzzy_ls then
-				lsp_configurations.fuzzy_ls = {
-					default_config = {
-						cmd = { "fuzzy" },
-						filetypes = { "ruby" },
-						root_dir = function(fname)
-							return lspconfig.util.find_git_ancestor(fname)
-						end,
-						settings = {},
-						init_options = {
-							allocationType = "ram",
-							indexGems = true,
-							reportDiagnostics = true,
-						},
-					},
-				}
-			end
-
-			fuzzy_path = vim.fn.trim(
-				vim.fn.system(
-					"echo ~/.vscode{-insiders,}/extensions/blinknlights.fuzzy-ruby-server-*/bin/fuzzy 2>/dev/null | head -n 1"
-				)
-			)
-			if fuzzy_path ~= "" and vim.fn.filereadable(fuzzy_path) == 1 then
-				lspconfig.fuzzy_ls.setup({
-					cmd = { fuzzy_path },
-				})
-			end
+			-- -- use ls to find a fuzzy command
+			-- if not lsp_configurations.fuzzy_ls then
+			-- 	lsp_configurations.fuzzy_ls = {
+			-- 		default_config = {
+			-- 			cmd = { "fuzzy" },
+			-- 			filetypes = { "ruby" },
+			-- 			root_dir = function(fname)
+			-- 				return lspconfig.util.find_git_ancestor(fname)
+			-- 			end,
+			-- 			settings = {},
+			-- 			init_options = {
+			-- 				allocationType = "ram",
+			-- 				indexGems = true,
+			-- 				reportDiagnostics = true,
+			-- 			},
+			-- 		},
+			-- 	}
+			-- end
+			--
+			-- fuzzy_path = vim.fn.trim(
+			-- 	vim.fn.system(
+			-- 		"echo ~/.vscode{-insiders,}/extensions/blinknlights.fuzzy-ruby-server-*/bin/fuzzy 2>/dev/null | head -n 1"
+			-- 	)
+			-- )
+			-- if fuzzy_path ~= "" and vim.fn.filereadable(fuzzy_path) == 1 then
+			-- 	lspconfig.fuzzy_ls.setup({
+			-- 		cmd = { fuzzy_path },
+			-- 	})
+			-- end
 
 			lsp_zero.setup()
 
@@ -335,4 +370,23 @@ return {
 			{ "<D-.>", symbols_outline, silent_noremap },
 		},
 	},
+
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^4", -- Recommended
+		lazy = false, -- This plugin is already lazy
+	},
+
+	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+			},
+		},
+	},
+	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
 }

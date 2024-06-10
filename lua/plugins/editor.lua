@@ -3,6 +3,7 @@ local enabled = require("pickled-nvim").enabled
 
 local kopts = { noremap = true, silent = true }
 return {
+	-- Pasting in Vim with indentation adjusted to destination context
 	{
 		"sickill/vim-pasta",
 		event = "VeryLazy",
@@ -11,6 +12,7 @@ return {
 		end,
 	},
 
+	-- split/join blocks of code
 	{
 		"Wansmer/treesj",
 		enabled = enabled("Wansmer/treesj"),
@@ -80,32 +82,6 @@ return {
 		},
 	},
 
-	{
-		"Wansmer/sibling-swap.nvim",
-		enabled = false,
-		dependencies = { "nvim-treesitter" },
-		event = "BufRead",
-		opts = {
-			use_default_keymaps = false,
-		},
-		keys = {
-			{
-				"<C-.>",
-				"<cmd>lua require('sibling-swap').swap_with_right()<CR>",
-				{ noremap = true, silent = true, desc = "Swap Sibling with Right" },
-			},
-			{
-				"<C-,>",
-				"<cmd>lua require('sibling-swap').swap_with_left()<CR>",
-				{ noremap = true, silent = true },
-				desc = "Swap Sibling with Left",
-			},
-			-- FIXME figure out how this is supposed to work
-			-- {"<leader>.>", "<cmd>lua require('sibling-swap').swap_with_right_with_opp()<CR>", {noremap = true, silent = true, desc = "Swap Sibling Right Separator for Opposite Value"}},
-			-- {"<leader>,", "<cmd>lua require('sibling-swap').swap_with_left_with_opp()<CR>", {noremap = true, silent = true}, desc = "Swap Sibling Left Separator for Opposite Value"},
-		},
-	},
-
 	-- toggling comments
 	{
 		"numToStr/Comment.nvim",
@@ -125,13 +101,7 @@ return {
 		event = "BufRead",
 	},
 
-	{
-		"lukas-reineke/headlines.nvim",
-		enabled = enabled("lukas-reineke/headlines.nvim"),
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		config = true, -- or `opts = {}`
-	},
-
+	-- better highlighting for search results
 	{
 		"kevinhwang91/nvim-hlslens",
 		enabled = enabled("kevinhwang91/nvim-hlslens"),
