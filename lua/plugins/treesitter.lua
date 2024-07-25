@@ -42,7 +42,8 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		enabled = enabled("nvim-treesitter/nvim-treesitter-context"),
+		enabled = false,
+		-- enabled = enabled("nvim-treesitter/nvim-treesitter-context"),
 		dependencies = { "nvim-treesitter" },
 		event = "VeryLazy",
 	},

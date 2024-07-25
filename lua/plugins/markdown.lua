@@ -34,7 +34,8 @@ return {
 
 	{
 		"lukas-reineke/headlines.nvim",
-		enabled = enabled("lukas-reineke/headlines.nvim"),
+		enabled = false,
+		-- enabled = enabled("lukas-reineke/headlines.nvim"),
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		config = true, -- or `opts = {}`
 	},

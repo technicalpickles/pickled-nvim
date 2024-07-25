@@ -173,7 +173,8 @@ return {
 
 	{
 		"FeiyouG/commander.nvim",
-		enabled = enabled("FeiyouG/commander.nvim"),
+		enabled = false,
+		-- enabled = enabled("FeiyouG/commander.nvim"),
 		dependencies = { "nvim-telescope/telescope.nvim" },
 		config = function()
 			require("commander").setup({

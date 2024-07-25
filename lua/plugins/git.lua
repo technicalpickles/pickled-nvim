@@ -112,6 +112,7 @@ return {
 
 	{
 		"rmagatti/igs.nvim",
+		enabled = false,
 		opts = true,
 		commander = {
 			{

@@ -329,6 +329,7 @@ return {
 
 	{
 		"simrat39/symbols-outline.nvim",
+		enabled = false,
 		cmd = "SymbolsOutline",
 		opts = {
 			-- https://github.com/simrat39/symbols-outline.nvim/issues/185
@@ -370,23 +371,4 @@ return {
 			{ "<D-.>", symbols_outline, silent_noremap },
 		},
 	},
-
-	{
-		"mrcjkb/rustaceanvim",
-		version = "^4", -- Recommended
-		lazy = false, -- This plugin is already lazy
-	},
-
-	{
-		"folke/lazydev.nvim",
-		ft = "lua", -- only load on lua files
-		opts = {
-			library = {
-				-- See the configuration section for more details
-				-- Load luvit types when the `vim.uv` word is found
-				{ path = "luvit-meta/library", words = { "vim%.uv" } },
-			},
-		},
-	},
-	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
 }

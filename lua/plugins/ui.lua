@@ -71,7 +71,8 @@ return {
 	-- styling cursor, ident lines, etc
 	{
 		"yamatsum/nvim-cursorline",
-		enabled = require("pickled-nvim").enabled("yamatsum/nvim-cursorline"),
+		enabled = false,
+		-- enabled = require("pickled-nvim").enabled("yamatsum/nvim-cursorline"),
 		event = "VeryLazy",
 		opts = {
 			cursorline = { enable = true, timeout = 1000, number = false },
@@ -182,6 +183,7 @@ return {
 
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		enabled = false,
 		enabled = enabled("lukas-reineke/indent-blankline.nvim"),
 		-- TODO update to 3.x
 		tag = "v2.20.8",
@@ -207,7 +209,8 @@ return {
 	-- popups for suggestions when starting shortcuts
 	{
 		"folke/which-key.nvim",
-		enabled = require("pickled-nvim").enabled("folke/which-key.nvim"),
+		enabled = false,
+		-- enabled = require("pickled-nvim").enabled("folke/which-key.nvim"),
 		opts = true,
 		event = "VeryLazy",
 	},
@@ -441,14 +444,16 @@ return {
 
 	{
 		"0xAdk/full_visual_line.nvim",
-		enabled = enabled("0xAdk/full_visual_line.nvim"),
+		enabled = false,
+		-- enabled = enabled("0xAdk/full_visual_line.nvim"),
 		keys = "V",
 		opts = {},
 	},
 
 	{
 		"petertriho/nvim-scrollbar",
-		enabled = enabled("petertriho/nvim-scrollbar"),
+		enabled = false,
+		-- enabled = enabled("petertriho/nvim-scrollbar"),
 		config = function()
 			local colors = require("tokyonight.colors").setup()
 

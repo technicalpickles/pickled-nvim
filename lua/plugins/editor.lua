@@ -104,7 +104,8 @@ return {
 	-- better highlighting for search results
 	{
 		"kevinhwang91/nvim-hlslens",
-		enabled = enabled("kevinhwang91/nvim-hlslens"),
+		enabled = false,
+		-- enabled = enabled("kevinhwang91/nvim-hlslens"),
 		event = { "BufReadPre", "BufNewFile" },
 		keys = {
 			{
